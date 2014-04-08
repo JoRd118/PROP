@@ -15,15 +15,16 @@ public class Controlador_Domini_Univers{
 
 	//Atributs
 	private ArrayList<Univers> u;
-	private ArrayList<ArrayList<Planeta>> p;
+	//private ArrayList<ArrayList<Planeta>> p;
 
 	private static String msg_univers_no_exists = "Error de Univers: Univers demanat no existeix";
 	private static String msg_univers_repetit = "Error de Univers: Ja existei un univers amb aquest nom";
 	//Instanciacio de la estructura de dades
-	public Controlador_Domini_Univers {
+	public Controlador_Domini_Univers(){
 		u = new ArrayList<Univers>();
-		p = new ArrayList<ArrayList<Planeta>>();
+		//p = new ArrayList<ArrayList<Planeta>>();
 	}
+
 
 	//Constructor
 	public void altaUnivers(string nom){
@@ -33,13 +34,13 @@ public class Controlador_Domini_Univers{
 			Univers aux = new Univers(nom);
 			u.add(aux);
 		}
-
 	}
 
 	public void baixaUnivers(String nom){
 		int pos = buscar_univers(nom);
 		if(pos < 0) throw new IllegalArgumentException(msg_univers_no_exists);
-	}	else r.remove(pos);
+		else r.remove(pos);
+	}
 
 	public void modificacioNomUnivers(String nomUnivers, String newnomUnivers){
 		int pos = buscar_univers(newnomUnivers);
@@ -79,6 +80,10 @@ public class Controlador_Domini_Univers{
 		return llistatUniversos;
 	}
 	
+
+
+
+
 
 	private int buscar_univers(String nom){
 		for(int i = 0; i < u.size(); ++i){
