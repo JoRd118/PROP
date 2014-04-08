@@ -29,7 +29,7 @@ public class Driver_Controlador_Domini_Univers{
 
 		menu();
 
-		while(!out{
+		while(!out){
 			try{
 				String op = scan.nextLine();
 				switch(op){
@@ -53,15 +53,16 @@ public class Driver_Controlador_Domini_Univers{
 						break;
 					case "5":
 						nom = scan.nextLine();
-						u.obtenirUnivers(nom);
+						System.out.println(u.obtenirUnivers(nom));
 						break;
 					case "6":
 						nom = scan.nextLine();
-						u.obtenirIdUnivers(nom);
+						System.out.println(u.obtenirIdUnivers(nom));
 						break;
 					case "7":
-						int id = scan.nextLine();
-						u.obtenirNomUnivers(id);
+						String num = scan.nextLine();
+						int id = Integer.parseInt(num);
+						System.out.println(u.obtenirNomUnivers(id));
 						break;
 					case "8":
 						System.out.println(u.llistatUnivers());
@@ -72,7 +73,7 @@ public class Driver_Controlador_Domini_Univers{
 
 				}
 			}
-			catch(Exception e)System.out.println(e.getMessage());
+			catch(Exception e){System.out.println(e.getMessage());}
 		}
 		scan.close();
 	}

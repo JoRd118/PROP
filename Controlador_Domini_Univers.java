@@ -14,20 +14,20 @@ public class Controlador_Domini_Univers{
 		
 
 	//Atributs
-	private ArrayList<Univers> u;
-	//private ArrayList<ArrayList<Planeta>> p;
+	private static ArrayList<Univers> u;
+	private static ArrayList<ArrayList<Planeta>> p;
 
 	private static String msg_univers_no_exists = "Error de Univers: Univers demanat no existeix";
 	private static String msg_univers_repetit = "Error de Univers: Ja existei un univers amb aquest nom";
 	//Instanciacio de la estructura de dades
 	public Controlador_Domini_Univers(){
 		u = new ArrayList<Univers>();
-		//p = new ArrayList<ArrayList<Planeta>>();
+		p = new ArrayList<ArrayList<Planeta>>();
 	}
 
 
 	//Constructor
-	public void altaUnivers(string nom){
+	public void altaUnivers(String nom){
 		//Busca repetits
 		if(buscar_univers(nom) >= 0)throw new IllegalArgumentException(msg_univers_repetit);
 		else{
@@ -39,7 +39,7 @@ public class Controlador_Domini_Univers{
 	public void baixaUnivers(String nom){
 		int pos = buscar_univers(nom);
 		if(pos < 0) throw new IllegalArgumentException(msg_univers_no_exists);
-		else r.remove(pos);
+		else u.remove(pos);
 	}
 
 	public void modificacioNomUnivers(String nomUnivers, String newnomUnivers){
@@ -48,14 +48,14 @@ public class Controlador_Domini_Univers{
 		else{
 			pos = buscar_univers(nomUnivers);
 			if(pos < 0)throw new IllegalArgumentException(msg_univers_no_exists);
-			else u.get(pos).modificacioNomUnivers(newnomUnivers);
+			else u.get(pos).modificarNomUnivers(newnomUnivers);
 		}
 	}
 
 	public Univers obtenirUnivers(String nom){
 		int pos = buscar_univers(nom);
 		if(pos < 0) throw new IllegalArgumentException(msg_univers_no_exists);
-		else return r.get(pos);
+		else return u.get(pos);
 	}
 
 	public int obtenirIdUnivers(String nom){
@@ -72,15 +72,18 @@ public class Controlador_Domini_Univers{
 	
 	public String llistatUnivers(){
 		String llistatUniversos = new String();
-		llistatUniversos = llistatUniversos+ "----------------\n";
+		llistatUniversos = llistatUniversos+"-------------------\n";
 		for(int i = 0; i < u.size();++i){
-			llistatUniversos = llistatUniversos + u.get(i).obtenirIdUnivers()+" "+u.get(i).obtenirNomUnivers+"\n";			
+			llistatUniversos = llistatUniversos + u.get(i).obtenirIdUnivers()+" "+u.get(i).obtenirNomUnivers()+"\n";			
 		}
-		llistatUniversos = llistatUniversos + "-------------------";
+		llistatUniversos = llistatUniversos+"-------------------";
 		return llistatUniversos;
 	}
 	
 
+	public int planetesUnivers(int id){
+		return p.get(id).size();
+	}
 
 
 
