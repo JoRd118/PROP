@@ -2,7 +2,7 @@ package Univers;
 
 /**
  *
- *Classe Univers2
+ *Classe Univers
  *
  * @author Jordi Farran
  */
