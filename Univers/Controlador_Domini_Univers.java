@@ -81,12 +81,22 @@ public class Controlador_Domini_Univers{
 	}
 	
 
-	public int planetesUnivers(int id){
-		return p.get(id).size();
+	public int numPlanetesUnivers(int id){
+		int pos = buscar_univers_nom(id);
+		if(pos < 0)throw new IllegalArgumentException(msg_univers_no_exists);
+		else return p.get(id).size();
 	}
 
 
+    public ArrayList<Planeta> dadesPlanetesUnivers(int id){
+    	int pos = buscar_univers_nom(id);
+		if(pos < 0)throw new IllegalArgumentException(msg_univers_no_exists);
+    	return p.get(id);
 
+    }
+
+
+    
 
 	private int buscar_univers(String nom){
 		for(int i = 0; i < u.size(); ++i){

@@ -40,28 +40,35 @@ public class Driver_Controlador_Domini_Univers{
 						u = new Controlador_Domini_Univers();
 						break;
 					case "2":
+						System.out.println("Escriu el nom de l'univers\n");
 						nom = scan.nextLine();
 						u.altaUnivers(nom);
 						break;
 					case "3":
+					    System.out.println("Escriu el nom de l'univers\n");
 						nom = scan.nextLine();
 						u.baixaUnivers(nom);
 					case "4":
+						System.out.println("Escriu el nom del univers vell\n");
 						nom = scan.nextLine();
+						System.out.println("Escriu el nom del nou univers\n");
 						String new_nom = scan.nextLine();
 						u.modificacioNomUnivers(nom, new_nom);
 						break;
 					case "5":
+						System.out.println("Escriu el nom de l'univers\n");
 						nom = scan.nextLine();
 						System.out.println(u.obtenirUnivers(nom));
 						break;
 					case "6":
+						System.out.println("Escriu el nom de l'univers\n");
 						nom = scan.nextLine();
 						System.out.println(u.obtenirIdUnivers(nom));
 						break;
 					case "7":
+						System.out.println("Escriu l'id del univers\n");
 						String num = scan.nextLine();
-						int id = Integer.parseInt(num);
+						int id = Integer.parseInt(num); //Pasa a Integer
 						System.out.println(u.obtenirNomUnivers(id));
 						break;
 					case "8":

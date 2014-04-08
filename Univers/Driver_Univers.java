@@ -44,10 +44,12 @@ public class Driver_Univers{
 						u = new Univers();
 						break;
 					case "2":
+						System.out.println("Escriu el nom de l'univers\n");
 						String nom = scan.nextLine();
 						u = new Univers(nom);
 						break;
 					case "3":
+						System.out.println("Escriu el nom nou de l'univers\n");
 						String nou_nom = scan.nextLine();
 						u.modificarNomUnivers(nou_nom);
 						break;
