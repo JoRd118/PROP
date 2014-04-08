@@ -34,33 +34,35 @@ public class Driver_Univers{
 		menu();
 
 		while(!out){
-			String num = scan.nextLine();
-			switch(num){
-				case "0":
-					out = true;
-					break;
-				case "1":
-					u = new Univers();
-					break;
-				case "2":
-					String nom = scan.nextLine();
-					u = new Univers(nom);
-					break;
-				case "3":
-					String nou_nom = scan.nextLine();
-					u.modificarNomUnivers(nou_nom);
-					break;
-				case "4":
-					System.out.println(u.obtenirIdUnivers());
-					break;
-				case "5":
-					System.out.println(u.obtenirNomUnivers());
-					break;
-				default:
-					System.out.println("Opcio no valida\n");
-					break;
-				
+			try{
+				String num = scan.nextLine();
+				switch(num){
+					case "0":
+						out = true;
+						break;
+					case "1":
+						u = new Univers();
+						break;
+					case "2":
+						String nom = scan.nextLine();
+						u = new Univers(nom);
+						break;
+					case "3":
+						String nou_nom = scan.nextLine();
+						u.modificarNomUnivers(nou_nom);
+						break;
+					case "4":
+						System.out.println(u.obtenirIdUnivers());
+						break;
+					case "5":
+						System.out.println(u.obtenirNomUnivers());
+						break;
+					default:
+						System.out.println("Opcio no valida\n");
+						break;				
+				}
 			}
+			catch(Exception e) System.out.println(e.getMessage());
 		}
 		scan.close();
 	}
