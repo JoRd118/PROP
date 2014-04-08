@@ -17,6 +17,8 @@ public class Controlador_Domini_Univers{
 	private ArrayList<Univers> u;
 	private ArrayList<ArrayList<Planeta>> p;
 
+	private static String msg_univers_no_exists = "Error de Univers: Univers demanat no existeix";
+	private static String msg_univers_repetit = "Error de Univers: Ja existei un univers amb aquest nom";
 	//Instanciacio de la estructura de dades
 	public Controlador_Domini_Univers {
 		u = new ArrayList<Univers>();
@@ -36,7 +38,7 @@ public class Controlador_Domini_Univers{
 
 	public void baixaUnivers(String nom){
 		int pos = buscar_univers(nom);
-		if(pos < 0) throw new IllegalArgumentException(msg_recurs_no_exists);
+		if(pos < 0) throw new IllegalArgumentException(msg_univers_no_exists);
 	}	else r.remove(pos);
 
 	public void modificacioNomUnivers(String nomUnivers, String newnomUnivers){
@@ -44,26 +46,38 @@ public class Controlador_Domini_Univers{
 		if(pos >= 0)throw new IllegalArgumentException(msg_univers_repetit);
 		else{
 			pos = buscar_univers(nomUnivers);
-			if(pos < 0)throw new IllegalArgumentException(msg_recurs_no_exists);
+			if(pos < 0)throw new IllegalArgumentException(msg_univers_no_exists);
 			else u.get(pos).modificacioNomUnivers(newnomUnivers);
 		}
 	}
 
+	public Univers obtenirUnivers(String nom){
+		int pos = buscar_univers(nom);
+		if(pos < 0) throw new IllegalArgumentException(msg_univers_no_exists);
+		else return r.get(pos);
+	}
+
 	public int obtenirIdUnivers(String nom){
 		int pos = buscar_univers(nom);
-		if(pos < 0) throw new IllegalArgumentException(msg_recurs_no_exists);
+		if(pos < 0) throw new IllegalArgumentException(msg_univers_no_exists);
 		else return u.get(pos).obtenirIdUnivers();
 	}
 
 	public String obtenirNomUnivers(int id){
 		int pos = buscar_univers_nom(id);
-		if (pos < 0)throw new IllegalArgumentException(msg_recurs_no_exists);
+		if (pos < 0)throw new IllegalArgumentException(msg_univers_no_exists);
 		else return u.get(pos).obtenirNomUnivers();
 	}
 	
-
-	public void Array<Univers> llistarUniversos(){}
-
+	public String llistatUnivers(){
+		String llistatUniversos = new String();
+		llistatUniversos = llistatUniversos+ "----------------\n";
+		for(int i = 0; i < u.size();++i){
+			llistatUniversos = llistatUniversos + u.get(i).obtenirIdUnivers()+" "+u.get(i).obtenirNomUnivers+"\n";			
+		}
+		llistatUniversos = llistatUniversos + "-------------------";
+		return llistatUniversos;
+	}
 	
 
 	private int buscar_univers(String nom){
