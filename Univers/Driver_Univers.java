@@ -16,13 +16,13 @@ public class Driver_Univers{
 	private static Univers u;
 
 	public static void menu(){
-		System.out.println("Tria una opcio:\n");
-		System.out.println("0 => Sortida\n");
-		System.out.println("1 => Univers()\n");
-		System.out.println("2 => Univers(nom)\n");
-		System.out.println("3 => modificarNomUnivers(nom)\n");
-		System.out.println("4 => obtenirIdUnivers\n");
-		System.out.println("5 => obtenirNomUnivers\n");
+		System.out.println("Tria una opcio:");
+		System.out.println("0 => Sortida");
+		System.out.println("1 => Univers()");
+		System.out.println("2 => Univers(nom)");
+		System.out.println("3 => modificarNomUnivers(nom)");
+		System.out.println("4 => obtenirIdUnivers");
+		System.out.println("5 => obtenirNomUnivers");
 	}
 
 	public static void main(String[] args){
@@ -44,12 +44,12 @@ public class Driver_Univers{
 						u = new Univers();
 						break;
 					case "2":
-						System.out.println("Escriu el nom de l'univers\n");
+						System.out.println("Escriu el nom de l'univers");
 						String nom = scan.nextLine();
 						u = new Univers(nom);
 						break;
 					case "3":
-						System.out.println("Escriu el nom nou de l'univers\n");
+						System.out.println("Escriu el nom nou de l'univers");
 						String nou_nom = scan.nextLine();
 						u.modificarNomUnivers(nou_nom);
 						break;
@@ -60,11 +60,11 @@ public class Driver_Univers{
 						System.out.println(u.obtenirNomUnivers());
 						break;
 					default:
-						System.out.println("Opcio no valida\n");
+						System.out.println("Opcio no valida");
 						break;				
 				}
 			}
-			catch(Exception e) System.out.println(e.getMessage());
+			catch(Exception e) {System.out.println(e.getMessage());}
 		}
 		scan.close();
 	}

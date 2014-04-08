@@ -15,14 +15,14 @@ public class Controlador_Domini_Univers{
 
 	//Atributs
 	private static ArrayList<Univers> u;
-	private static ArrayList<ArrayList<Planeta>> p;
+	//NEED THIS!//private static ArrayList<ArrayList<Planeta> > p;
 
 	private static String msg_univers_no_exists = "Error de Univers: Univers demanat no existeix";
 	private static String msg_univers_repetit = "Error de Univers: Ja existei un univers amb aquest nom";
 	//Instanciacio de la estructura de dades
 	public Controlador_Domini_Univers(){
 		u = new ArrayList<Univers>();
-		p = new ArrayList<ArrayList<Planeta>>();
+		//NEED THIS!//p = new ArrayList<ArrayList<Planeta>>();
 	}
 
 
@@ -79,8 +79,8 @@ public class Controlador_Domini_Univers{
 		llistatUniversos = llistatUniversos+"-------------------";
 		return llistatUniversos;
 	}
-	
-
+	//NEED THIS!//
+/*
 	public int numPlanetesUnivers(int id){
 		int pos = buscar_univers_nom(id);
 		if(pos < 0)throw new IllegalArgumentException(msg_univers_no_exists);
@@ -93,7 +93,7 @@ public class Controlador_Domini_Univers{
 		if(pos < 0)throw new IllegalArgumentException(msg_univers_no_exists);
     	return p.get(id);
 
-    }
+    }*/
 
 
     
