@@ -10,7 +10,7 @@ public class Univers {
     private static int idCounter = 0;
     private int idUnivers;
     private String nomUnivers;
-    
+     
     
     //Constructora per defecte
     public Univers(){

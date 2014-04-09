@@ -15,16 +15,22 @@ public class Controlador_Domini_Univers{
 	//Atributs
 	private ArrayList<Univers> u;
 	private ArrayList<ArrayList<Planeta> > p;
+	private Controlador_Domini_Planeta cp;
 
 	private String msg_univers_no_exists = "Error de Univers: Univers demanat no existeix";
 	private String msg_univers_repetit = "Error de Univers: Ja existei un univers amb aquest nom";
 	//Instanciacio de la estructura de dades
+	/*public Controlador_Domini_Univers(Controlador_Domini_Planeta cp1){
+		u = new ArrayList<Univers>();
+		p = new ArrayList<ArrayList<Planeta>>();
+		cp = cp1;
+	}*/
+
 	public Controlador_Domini_Univers(){
 		u = new ArrayList<Univers>();
 		p = new ArrayList<ArrayList<Planeta>>();
+		//cp = new Controlador_Domini_Planeta;
 	}
-
-
 	//Constructor
 	public void altaUnivers(String nom){
 		//Busca repetits
@@ -95,25 +101,27 @@ public class Controlador_Domini_Univers{
     }
 
   	public double[][] matriuDistanciaPlanetes(int id_univers){
-  		double[][] distancies;
+  		double[][] distancies = new double[p.get(id_univers).size()][p.get(id_univers).size()];
   		for(int i = 0; i < p.get(id_univers).size(); ++i){
-  			for(int j = 0; j < p p.get(id_univers).get(i).obtenirCoordenades().obtenirCoordenadesY();ze(); ++j){
+  			for(int j = 0; j < p.get(id_univers).size(); ++j){
   				if(i == j)distancies[i][j] = -1;
   				else{
 
-  					double p1x = p.get(id_univers).get(i).obtenirCoordenades().obtenirCoordenadesX();
-  					double p1y = p.get(id_univers).get(i).obtenirCoordenades().obtenirCoordenadesY();
-  					double p2x = p.get(id_univers).get(j).obtenirCoordenades().obtenirCoordenadesX();
-  					double p2y = p.get(id_univers).get(j).obtenirCoordenades().obtenirCoordenadesY();
-  					distancies[i][j] = sqrt(pow(p2x-p1x)+pow(p2y-p1y);	
+  					double p1x = (double) p.get(id_univers).get(i).obtenirCoordenades().obtenirCoordenadesX();
+  					double p1y = (double) p.get(id_univers).get(i).obtenirCoordenades().obtenirCoordenadesY();
+  					double p2x = (double) p.get(id_univers).get(j).obtenirCoordenades().obtenirCoordenadesX();
+  					double p2y = (double) p.get(id_univers).get(j).obtenirCoordenades().obtenirCoordenadesY();
+  					distancies[i][j] = Math.sqrt(Math.pow((p2x-p1x),2)+Math.pow((p2y-p1y),2));	
   				} 
   			}
   		}
+  		return distancies;
   	}
     
     public void afegirPlanetaUnivers(int idUnivers, int id){
-    	Planeta aux = obtenirPlaneta(id);
-    	p.get(idUnivers).add(aux);
+    	/*Planeta aux = new Planeta();
+    	aux = cp.obtenirPlaneta(id);
+    	p.get(idUnivers).add(aux);*/
     }
 
     
@@ -131,5 +139,6 @@ public class Controlador_Domini_Univers{
 		}
 		return -1;
 	}
+
 
 }
