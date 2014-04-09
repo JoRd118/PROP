@@ -1,6 +1,3 @@
-
-package Planeta;
-
 /**
  *
  * @author Oriolbv
