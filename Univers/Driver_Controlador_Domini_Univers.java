@@ -1,4 +1,4 @@
-package Univers;
+
 import java.util.*;
 import java.io.IOException;
 
@@ -12,11 +12,13 @@ public class Driver_Controlador_Domini_Univers{
 		System.out.println("1 => public Controlador_Domini_Univers");
 		System.out.println("2 => public void altaUnivers(String nom)");
 		System.out.println("3 => public void baixaUnivers(String nom)");
-		System.out.println("4 => void modificacioNomUnivers(String nomUnivers, String newnomUnivers)");
-		System.out.println("5 => Univers obtenirUnivers(String nom)");
+		System.out.println("4 => public void modificacioNomUnivers(String nomUnivers, String newnomUnivers)");
+		System.out.println("5 => public Univers obtenirUnivers(String nom)");
 		System.out.println("6 => public int obtenirIdUnivers(String nom)");
 		System.out.println("7 => public String obtenirNomUnivers(int id)");
 		System.out.println("8 => public String llistatUnivers()");
+		System.out.println("9 => public void afegirPlanetaUnivers(int idUnivers, int id)");
+		System.out.println("10 => public int numPlanetesUnivers(int id");
 	
 	}
 
@@ -26,6 +28,8 @@ public class Driver_Controlador_Domini_Univers{
 		Scanner scan = new Scanner(System.in);
 		boolean out = false;
 		String nom;
+		String num;
+		int id;
 
 		menu();
 
@@ -68,12 +72,27 @@ public class Driver_Controlador_Domini_Univers{
 						break;
 					case "7":
 						System.out.println("Escriu l'id del univers");
-						String num = scan.nextLine();
-						int id = Integer.parseInt(num); //Pasa a Integer
+						num = scan.nextLine();
+						id = Integer.parseInt(num); //Pasa a Integer
 						System.out.println(u.obtenirNomUnivers(id));
 						break;
 					case "8":
 						System.out.println(u.llistatUnivers());
+						break;
+					case "9":
+						System.out.println("Escriu l'id del univers");
+						num = scan.nextLine();
+						int id_univers = Integer.parseInt(num); //Pasa a Integer
+						System.out.println("Escriu l'id del univers");
+						num = scan.nextLine();
+						int id_planeta = Integer.parseInt(num); //Pasa a Integer
+						//NEED THIS!//afegirPlanetaUnivers(id_univers,id_planeta);
+						break;	
+					case "10":
+						System.out.println("Escriu l'id del univers");
+						num = scan.nextLine();
+						id = Integer.parseInt(num); //Pasa a Integer
+						System.out.println(u.numPlanetesUnivers(id));
 						break;
 					default:
 						System.out.println("Opcio no valida");
