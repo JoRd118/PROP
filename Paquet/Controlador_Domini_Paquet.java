@@ -1,4 +1,3 @@
-package PROP;
 import java.util.*;
 import java.io.IOException;
 
@@ -6,60 +5,72 @@ public class Controlador_Domini_Paquet{
     
     private ArrayList<Paquet> p; // Paquet
     private ArrayList<ArrayList<Recurs>> r; //Relacio Paquet-recurs
-    private List<Integer> o; //Ocupacio del paquet
-    
+   // private List<Integer> o; //Ocupacio del paquet
+
+    private static String msg_paquet_no_exists = "Error de Paquet: Paquet demanat no existeix.";
+    private static String msg_recurs_no_exists = "Error de Recurs: Recurs demanat no existeix.";
+
     public Controlador_Domini_Paquet() {
         p = new ArrayList<Paquet>();
         r = new ArrayList<ArrayList<Recurs>>();
-        o = new ArrayList<Integer>();
     }
     
     public void altaPaquet() {
         p.add(new Paquet());
         r.add(new ArrayList<Recurs>());
-        o.add(0);
     }
     
-   /* public void baixaPaquet(int id) {
+    public void baixaPaquet(int id) {
         int pos = buscar_paquet_id(id);
-        if (pos < 0)
+        if (pos < 0) throw new IllegalArgumentException(msg_paquet_no_exists);
             else {
                 p.remove(pos);
                 r.remove(pos);
             }
-    }*/
+    }
     
     public void assignarRecurs(int id, String nom) {
         int pos = buscar_paquet_id(id);
-        if (pos < 0) throw new IllegalArgumentException("aaaaa");
+        if (pos < 0) throw new IllegalArgumentException(msg_paquet_no_exists);
             else {
                 Controlador_Domini_Recurs n = new Controlador_Domini_Recurs();
                 r.get(pos).add(n.obtenirRecurs(nom));
-                int a  = o.get(pos);
-                o.add(pos,a+1);
+                int aux = p.get(pos).obtenirOcupacio() + 1;
+                p.get(pos).modificarOcupacio(aux);
             }
     }
     
-    /*
+    public String obtneirRecursosPaquet(int id) {
+        int pos = buscar_paquet_id(id);
+        if (pos < 0) throw new IllegalArgumentException(msg_paquet_no_exists);
+        else {
+            String recu = new String();
+            for (int i = 0; i < r.get(pos).size(); ++i) {
+                recu = recu + r.get(pos).get(i).obtenirNom() + ",";
+            } 
+            return recu;
+        }
+    }
+    
     public void esborrarRecurs(int id, String nom) {
         int pos = buscar_paquet_id(id);
-        if (pos < 0)
+        if (pos < 0) throw new IllegalArgumentException(msg_paquet_no_exists);
             else {
                 int aux = buscar_recurs_nom(pos,nom);
-                if (aux < 0)
+                if (aux < 0) throw new IllegalArgumentException(msg_recurs_no_exists);
                     else {
-                        p.get(pos).remove(aux);
-                        --o.get(pos);
+                        r.get(pos).remove(aux);
+                        p.get(pos).modificarOcupacio(p.get(pos).obtenirOcupacio() + 1);
                     }
             }
-    }*/
-    /*
+    }
+    
     public Paquet obtenirPaquet(int id) {
         int pos = buscar_paquet_id(id);
-        if (pos < 0) throw new IllegalArgumentException("aaaaa");
-            else return p.get(pos);
+        if (pos < 0) throw new IllegalArgumentException(msg_paquet_no_exists);
+        else return p.get(pos);
     }
-    */
+    
     
     private int buscar_paquet_id(int id) {
         for (int i = 0; i < p.size(); ++i) {
@@ -67,13 +78,13 @@ public class Controlador_Domini_Paquet{
         }
         return -1;
     }
-    /*
-    private int buscar_recurs_nom(int pos, String nom) {
-        for (int i = 0; i < o.get(pos); ++i) {
-            if (p.get(pos).get(i).equals(nom)) return i;
+    
+    public int buscar_recurs_nom(int pos, String nom) {
+        for (int i = 0; i < p.get(pos).obtenirOcupacio(); ++i) {
+            if (r.get(pos).get(i).obtenirNom().equals(nom)) return i;
         }
         return -1;
-    } */
+    } 
     
     
 }
