@@ -1,5 +1,3 @@
-package Paquet;
-
 /**
  *
  *Clase Paquets
@@ -32,7 +30,7 @@ public class Paquet{
 		return id;
 	}
 	
-	public int obtenirOcupacio(int id){
+	public int obtenirOcupacio(){
 		return ocupacio;
 	}
 	

@@ -1,4 +1,3 @@
-package Paquet;
 import java.util.*;
 import java.io.IOException;
 
@@ -11,7 +10,7 @@ public class Driver_Paquet {
         System.out.println("\t 00) Salida.");
         System.out.println("\t 01) public Paquet().");
         System.out.println("\t 02) public int obtenirId().");
-        System.out.println("\t 03) public int obtenirOcupacio(int id).");
+        System.out.println("\t 03) public int obtenirOcupacio().");
         System.out.println("\t 04) public int modificarOcupacio(int ocupacio).");
 	}
 
@@ -36,7 +35,7 @@ public class Driver_Paquet {
                         break;
                         
                     case "03":
-                        System.out.println(p.obtenirOcupacio(p.obtenirId()));
+                        System.out.println(p.obtenirOcupacio());
                         break;
                         
                     case "04":
