@@ -1,0 +1,29 @@
+2a ENTREGA!
+
+EN paper:
+	- Diagrama de la capa de domini (classes amb atributs i relacions)
+	- Diagrama del gestor de dades
+	- Operacions en un document a part.
+	- Document que expliqui els algoritmes.
+	- Taula d'implementació.
+			
+			|					|
+			|	NOM ALUMNE		|	NOM CLASSE
+			|-------------------|----------------
+			|					|
+			|					|
+			|					|
+			|					|
+			|					|
+
+Per Email:
+
+	- 3 subdirectoris:
+		- DOC: 1a entrega, els diagrames, document explicatiu dels algoritmes i la repartició.
+		- FONT: Tenen que haver-hi tots els fitxers font *.java
+		- EXE: Per a cada classe un subdirectori amb el següent: 
+					- Tots els *.java i tots els *.class estrictament necessaris.
+					- El driver que prova la classe
+					- El joc(s) de proves
+					- readme ==> Com es compila i s'executa
+		- Fitxer amb els integrants del grup.
