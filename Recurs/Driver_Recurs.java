@@ -44,15 +44,15 @@ public class Driver_Recurs{
                         
                     case "03":
                         String new_name = scan.nextLine();
-                       r.modificarNomRecurs(new_name);
+                        r.modificarNomRecurs(new_name);
                         break;
                         
                     case "04":
-                         System.out.println(r.obtenirId());
+                        System.out.println(r.obtenirId());
                         break;
                         
                     case "05":
-                       System.out.println(r.obtenirNom());
+                        System.out.println(r.obtenirNom());
                         break;
                         
                     case "00":
@@ -65,6 +65,9 @@ public class Driver_Recurs{
                 }
             }catch (Exception e) {
                 System.out.println(e.getMessage());
+            }
+            finally{
+                //S'executa sempre passi el q passi;
             }
         }
         scan.close();

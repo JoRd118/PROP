@@ -19,7 +19,7 @@ public class Driver_Controlador_Domini_Recurs{
         System.out.println("\t 04) public void modificarNom(String nom, String new_nom).");
         System.out.println("\t 05) public Recurs obtenirRecurs(String nom).");
         System.out.println("\t 06) public int obtenirId(String nom).");
-        System.out.println("\t 07) public String obtenirNom(int id).");
+        System.out.println("\t 07) (OPTION DOWN) public String obtenirNom(int id).");
         System.out.println("\t 08) public String llistatRecurs().");
     }
     
@@ -67,16 +67,16 @@ public class Driver_Controlador_Domini_Recurs{
                         System.out.println(r.obtenirId(nom));
                         break;
                         
-                    case "07":
+                   /* case "07":
                         nom = scan.nextLine();
                         int foo = Integer.parseInt(nom);
                         System.out.println(r.obtenirNom(foo));
                         break;
-                        
+                     */
                     case "08":
                         System.out.println(r.llistatRecurs());
                         break;
-
+                        
                     case "00":
                         out = true;
                         break;
@@ -87,6 +87,9 @@ public class Driver_Controlador_Domini_Recurs{
                 }
             }catch (Exception e) {
                 System.out.println(e.getMessage());
+            }
+            finally{
+                //S'executa SEMPRE.
             }
         }
         scan.close();
