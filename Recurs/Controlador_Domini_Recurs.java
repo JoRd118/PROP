@@ -9,12 +9,19 @@ import java.io.IOException;
 public class Controlador_Domini_Recurs{
     
     private TST<Recurs> r;
+    private Controlador_Dades_Recurs t;
     private static String msg_recurs_no_exists = "Error de Recurs: Recurs demanat no existeix.";
     private static String msg_recurs_repetit = "Error de Recurs: Ja existeix un recurs amb aquest nom.";
     
     
+    
     public Controlador_Domini_Recurs(){
         r = new TST<Recurs>();
+    }
+    
+    public Controlador_Domini_Recurs(Controlador_Dades_Recurs t){
+        r = new TST<Recurs>();
+        this.t = t;
     }
     
     public void altaRecurs(String nom){
@@ -80,8 +87,23 @@ public class Controlador_Domini_Recurs{
         return aux;
     }
     
+    public void guardarRecursos(String nomFitxer)throws IOException{
+        t.writeTextFile(nomFitxer, llistatRecurs_2());
     
-    public void guardarRecursos(){}
-    public void carregarRecursos(){}
+    }
+    
+    public void carregarRecursos(String nomFitxer)throws IOException{
+        ArrayList<String> s = t.readTextFile(nomFitxer);
+        for(int i = 0; i < s.size(); ++i){
+            altaRecurs(s.get(i));
+        }
+    
+    }
+    
+    private Iterable<String> llistatRecurs_2(){
+        Iterable<String> s = r.obtainAllTST();
+        return s;
+    }
+
     
 }
