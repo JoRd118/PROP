@@ -10,7 +10,7 @@ public class Planeta {
     private String nomPlaneta;
     private Coordenades coord;
     private boolean classeM;
-    
+
     
     // Constructores
     
@@ -18,7 +18,7 @@ public class Planeta {
     public Planeta() {
         id = idCounter;
         idCounter = idCounter + 1;
-        nomPlaneta = "";
+        nomPlaneta = "default "+idCounter;
         coord = new Coordenades();
         coord.modificarCoordenades(0, 0);
         classeM = false;
@@ -34,7 +34,7 @@ public class Planeta {
          int y = c.obtenirCoordenadesY();
          coord.modificarCoordenades(x, y);
          classeM = classe;
-     }
+    }
     
     // Metodes
 

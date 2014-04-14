@@ -2,119 +2,140 @@ import java.util.*;
 import java.io.IOException;
 
 public class Controlador_Domini_Planeta {
-	private ArrayList<Planeta> Conjunt_Planetes;
-	//private ArrayList<ArrayList<Recurs> > Necessitats_Planetes;
-	//private ArrayList<Paquet> Paquets_Assignats;
+	private TST<Planeta> Conjunt_Planetes_Assignat;
+	private TST<Planeta> Conjunt_Planetes_Desassignat;
+	private TST<TST<Recurs> > Necessitats_Planetes;
+	private TST<Paquet> Conjunt_Paquets;
+	private Controlador_Domini_Recurs cr;
+	private Controlador_Domini_Paquet cp;
     private static String msg_planeta_no_exists = "Error de Planeta: Planeta demanat no existeix.";
     private static String msg_planeta_repetit = "Error de planeta: Ja existeix un planeta amb aquest nom.";
-
+    private static String msg_recurs_repetit = "Error de Recurs: Ja existeix un recurs amb aquest nom.";
+    private static String msg_recurs_no_exists = "Error de Recurs: Recurs demanat no existeix.";
 
 
 
 
 	public Controlador_Domini_Planeta(){
-		Conjunt_Planetes = new ArrayList<Planeta>();
+		Conjunt_Planetes_Assignat = new TST<Planeta>();
+		Conjunt_Planetes_Desassignat = new TST<Planeta>();
+		Conjunt_Paquets = new TST<Paquet>();
+		Necessitats_Planetes = new TST<TST<Recurs> >();
+		cr = new Controlador_Domini_Recurs();
+		cp = new Controlador_Domini_Paquet(cr);
 	}
 
+	public Controlador_Domini_Planeta(Controlador_Domini_Paquet p, Controlador_Domini_Recurs r) {
+	 	Conjunt_Planetes_Assignat = new TST<Planeta>();
+	 	Conjunt_Planetes_Desassignat = new TST<Planeta>();
+	 	Necessitats_Planetes = new TST<TST<Recurs> >();
+	 	Conjunt_Paquets = new TST<Paquet>();
+		cr = r;
+	 	cp = p;
+	}
+
+	
+	// public void altaPlaneta() {		// Alta planeta random
+
+	// 	String nomdefault = "default "+
+
+	// }
+
+
 	public void altaPlaneta(String nom, Coordenades coord, boolean classeM) {
-		if(buscarPlaneta(nom) >= 0)throw new IllegalArgumentException(msg_planeta_repetit);
+		if(Conjunt_Planetes_Desassignat.contains(nom)) throw new IllegalArgumentException(msg_planeta_repetit);
 		else {
+			TST<Recurs> aux = new TST<Recurs>();
 			Planeta p = new Planeta(nom, coord, classeM);
-			Conjunt_Planetes.add(p);
+			Conjunt_Planetes_Desassignat.insert(nom, p);
+			Necessitats_Planetes.insert(nom,aux);
 		}
 	}
 
 	public void baixaPlaneta(String nom) {
-        int pos = buscarPlaneta(nom);
-        if(pos < 0){ throw new IllegalArgumentException(msg_planeta_no_exists);}
-        else { 
-        	Conjunt_Planetes.remove(pos);
+        if(Conjunt_Planetes_Desassignat.contains(nom)){
+        	Necessitats_Planetes.remove(nom); 
+        	Conjunt_Planetes_Desassignat.remove(nom);
+        } else { 
+       		throw new IllegalArgumentException(msg_planeta_no_exists);
         }		
 	}
 
-	public void modificarNom(String nom, String newnom) {
-		int pos = buscarPlaneta(newnom);
-		if (pos >= 0) throw new IllegalArgumentException(msg_planeta_repetit);
-		else {
-			pos = buscarPlaneta(nom);
-			if (pos < 0) throw new IllegalArgumentException(msg_planeta_no_exists);
-			else Conjunt_Planetes.get(pos).modificacioNom(newnom);
-		}
+	public void assignarPlaneta(String nomP) {
+		if (Conjunt_Planetes_Desassignat.contains(nomP)) {
+			Planeta p = Conjunt_Planetes_Desassignat.obtain(nomP);
+			Conjunt_Planetes_Assignat.insert(nomP, p);
+			Conjunt_Planetes_Desassignat.remove(nomP);
+		} else throw new IllegalArgumentException(msg_planeta_no_exists);
+
 
 	}
 
+	public void desassignarPlaneta(String nomP) {
+		if (Conjunt_Planetes_Assignat.contains(nomP)) {
+			Planeta p = Conjunt_Planetes_Assignat.obtain(nomP);
+			Conjunt_Planetes_Desassignat.insert(nomP, p);
+			Conjunt_Planetes_Assignat.remove(nomP);
+		} else throw new IllegalArgumentException(msg_planeta_no_exists);
+	}
+
+	public void modificarNom(String nom, String newnom) {
+		if (Conjunt_Planetes_Desassignat.contains(newnom)) throw new IllegalArgumentException(msg_planeta_repetit);
+		else {
+			if (Conjunt_Planetes_Desassignat.contains(nom)) {
+				Planeta pl = Conjunt_Planetes_Desassignat.obtain(nom);
+				TST<Recurs> aux = new TST<Recurs>();
+				Necessitats_Planetes.remove(nom);
+				Conjunt_Planetes_Desassignat.remove(nom);				
+				pl.modificacioNom(newnom);
+				Conjunt_Planetes_Desassignat.insert(newnom, pl);
+				Necessitats_Planetes.insert(newnom, aux);
+
+			} else { throw new IllegalArgumentException(msg_planeta_no_exists); }
+		}
+	}
 	public void modificarCoordenades(String nom, int x, int y) {
-		int pos = buscarPlaneta(nom);
-		if(pos < 0){ throw new IllegalArgumentException(msg_planeta_no_exists);}
+		if(Conjunt_Planetes_Desassignat.contains(nom)){	Conjunt_Planetes_Desassignat.obtain(nom).modificacioCoordenades(x, y); }
         else { 
-        	Conjunt_Planetes.get(pos).modificacioCoordenades(x, y);
+        	throw new IllegalArgumentException(msg_planeta_no_exists);	
         }		
 	}
 
 	public void modificarClasse(String nom, boolean classeM) {
-		int pos = buscarPlaneta(nom);
-		if(pos < 0){ throw new IllegalArgumentException(msg_planeta_no_exists);}
+		if(Conjunt_Planetes_Desassignat.contains(nom)){ Conjunt_Planetes_Desassignat.obtain(nom).modificacioClasse(classeM); }
         else { 
-        	Conjunt_Planetes.get(pos).modificacioClasse(classeM);
+        	throw new IllegalArgumentException(msg_planeta_no_exists);
         }
 	}
 
-	
 	public int obtenirId(String nom) {
-		int pos = buscarPlaneta(nom);
-		if (pos < 0) throw new IllegalArgumentException(msg_planeta_no_exists);
-		else return Conjunt_Planetes.get(pos).obtenirId();
+		if (Conjunt_Planetes_Desassignat.contains(nom)) return Conjunt_Planetes_Desassignat.obtain(nom).obtenirId();
+		else throw new IllegalArgumentException(msg_planeta_no_exists);
+	}
+	
+
+	// public String obtenirNom(int id) {
+	// 	if (Conjunt_Planetes.contains(id)) return Conjunt_Planetes.obtain(id).obtenirNom();
+	// 	else throw new IllegalArgumentException(msg_planeta_no_exists);
+	// }
+
+	public boolean obtenirClasse(String nom) {;
+		if (Conjunt_Planetes_Desassignat.contains(nom)) return Conjunt_Planetes_Desassignat.obtain(nom).obtenirClasse();
+		else throw new IllegalArgumentException(msg_planeta_no_exists);
 	}
 
-
-	public String obtenirNom(int id) {
-		int pos = buscarPlaneta(id);
-		if (pos < 0) throw new IllegalArgumentException(msg_planeta_no_exists);
-		else return Conjunt_Planetes.get(pos).obtenirNom();
-	}
-
-	public boolean obtenirClasse(String nom) {
-		int pos = buscarPlaneta(nom);
-		if (pos < 0) throw new IllegalArgumentException(msg_planeta_no_exists);
-		else return Conjunt_Planetes.get(pos).obtenirClasse();
-	}
 
 	public Coordenades obtenirCoordenades(String nom) {
-		int pos = buscarPlaneta(nom);
-		if (pos < 0) throw new IllegalArgumentException(msg_planeta_no_exists);
-		else return Conjunt_Planetes.get(pos).obtenirCoordenades();
-	}
-	public Planeta obtenirPlaneta(int id) {
-		int pos = buscarPlaneta(id);
-		if (pos < 0) throw new IllegalArgumentException(msg_planeta_no_exists);
-		else {
-			return Conjunt_Planetes.get(pos);
-		}
+		if (Conjunt_Planetes_Desassignat.contains(nom)) return Conjunt_Planetes_Desassignat.obtain(nom).obtenirCoordenades();
+		else throw new IllegalArgumentException(msg_planeta_no_exists);
 	}
 
 
-
-	// OBTENIR LA DISTANCIA ENTRE 2 planetes
-	// public double obtenirDistancia(Planeta p1, Planeta p2) {
-	// 	double distancia = 0;
-	// 	String nomp1 = p1.obtenirNom();
-	// 	int pos1 = buscarPlaneta(nomp1);
-	// 	String nomp2 = p2.obtenirNom();
-	// 	int pos2 = buscarPlaneta(nomp2);
-	// 	if (pos1 < 0 || pos2 < 0) throw new IllegalArgumentException(msg_planeta_no_exists);
-	// 	else {
-			
-	// 		// sqrt((x1 - x2)² + (y1 - y2)²)
-	// 		// Math.pow(2, 3)	Math.sqrt(***)
-	// 	double x1 = Conjunt_Planetes.get(pos1).obtenirCoordenades().obtenirCoordenadesX();
-	// 	double x2 = Conjunt_Planetes.get(pos2).obtenirCoordenades().obtenirCoordenadesX();
-	// 	double y1 = Conjunt_Planetes.get(pos1).obtenirCoordenades().obtenirCoordenadesY();
-	// 	double y2 = Conjunt_Planetes.get(pos2).obtenirCoordenades().obtenirCoordenadesY();
+	public Planeta obtenirPlaneta(String nom) {
 		
-	// 	}
-	// 	return distancia;
-	// }
-	
+		if (Conjunt_Planetes_Desassignat.contains(nom)) {return Conjunt_Planetes_Desassignat.obtain(nom); }
+		else { throw new IllegalArgumentException(msg_planeta_no_exists);}
+	}
 
 
 	// OBTENIR TOTES LES NECESSITATS DE 1 PLANETA
@@ -123,26 +144,49 @@ public class Controlador_Domini_Planeta {
 	// OBTENIR LA ID DEL PAQUET Del PLANETA 
 	//public int obtenirIdPaquet(Planeta p) {}
 
-	public ArrayList<Planeta> llistarPlanetes() {
-		return Conjunt_Planetes;
-	}
-
     public void guardarPlanetes(){}
     public void carregarPlanetes(){}
 
-    private int buscarPlaneta(String nom){
-        for(int i = 0; i < Conjunt_Planetes.size(); ++i){
-            if(Conjunt_Planetes.get(i).obtenirNom().equals(nom)) return i;
-        }
-        return -1;
-    }
+    public String llistarPlanetes() {
+		Iterable<String> s = Conjunt_Planetes_Desassignat.obtainAllTST();
+		String aux = new String();
+		for(String a: s) {
+		 	aux = aux + a +"\n";
+		}
+		return aux;
+	}
 
-    private int buscarPlaneta(int id){
-        for(int i = 0; i < Conjunt_Planetes.size(); ++i){
-            if(Conjunt_Planetes.get(i).obtenirId() == id) return i;
-        }
-        return -1;
-    }
+	public void altaNecessitats(String nomP, String nomR) {
+		if (Conjunt_Planetes_Desassignat.contains(nomP)) {
+			if (cr.validarRecurs(nomR)) {
+				TST<Recurs> aux = Necessitats_Planetes.obtain(nomP);
+				if (aux.contains(nomR)) {
+					throw new IllegalArgumentException(msg_recurs_repetit);
+				} else {
+					Recurs rec = cr.obtenirRecurs(nomR);
+					aux.insert(nomR, rec);
+				}
+			}
+		} else {
+			throw new IllegalArgumentException(msg_planeta_no_exists);
+		}
+	}
 
+	public void baixaNecessitats(String nomP, String nomR) {
+		if (Conjunt_Planetes_Desassignat.contains(nomP)) {
+			TST<Recurs> aux = Necessitats_Planetes.obtain(nomP);
+			if (aux.contains(nomR)) {
+				aux.remove(nomR);
+			} else throw new IllegalArgumentException(msg_recurs_no_exists);
+		} else throw new IllegalArgumentException(msg_planeta_no_exists);
+	}
+	// obtenirRecursosDisponibles(String nomP) {}
+
+	public Iterable<String> obtenirNecessitats(String nomP) {
+		if (Conjunt_Planetes_Desassignat.contains(nomP)) {
+			TST<Recurs> aux = Necessitats_Planetes.obtain(nomP);
+			return aux.obtainAllTST();		
+		} else throw new IllegalArgumentException(msg_planeta_no_exists);
+	}
 
 }
