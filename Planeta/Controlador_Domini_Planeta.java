@@ -212,12 +212,14 @@ public class Controlador_Domini_Planeta {
 		else throw new IllegalArgumentException(msg_planeta_no_exists);
 	}
 
-	//public Iterable<String> obtenirRecursosDisponibles(String nomP) {
-	//	if (Conjunt_Planetes_Desassignat.contains(nomP) || Conjunt_Planetes_Assignat.contains(nomP)) {
-			//Paquet p = Conjunt_Paquets.obtain();
-			//return cp.llistarRecursosPaquetIterator(p);
-	//	}
-	//}
+
+	public Iterable<String> obtenirRecursosDisponibles(String nomP) {
+		if (Conjunt_Planetes_Desassignat.contains(nomP) || Conjunt_Planetes_Assignat.contains(nomP)) {
+			Paquet p = Conjunt_Paquets.obtain(nomP);
+			return cp.llistatRecursosPaquetIterator(p);
+		}
+		else throw new IllegalArgumentException(msg_planeta_no_exists);
+	}
 
 	public Iterable<String> obtenirNecessitats(String nomP) {
 		if (Conjunt_Planetes_Desassignat.contains(nomP) || Conjunt_Planetes_Assignat.contains(nomP)) {
