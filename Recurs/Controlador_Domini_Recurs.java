@@ -63,6 +63,11 @@ public class Controlador_Domini_Recurs{
         }
         else{ throw new IllegalArgumentException(msg_recurs_no_exists);}
     }
+    
+    public String obtenirNom(Recurs rec){
+       return rec.obtenirNom();
+    }
+    
     /*
     public String obtenirNom(int id){
         int pos = busca_recurs_num(id);
@@ -97,7 +102,6 @@ public class Controlador_Domini_Recurs{
         for(int i = 0; i < s.size(); ++i){
             altaRecurs(s.get(i));
         }
-    
     }
     
     private Iterable<String> llistatRecurs_2(){
