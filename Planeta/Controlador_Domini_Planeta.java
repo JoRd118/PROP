@@ -70,8 +70,6 @@ public class Controlador_Domini_Planeta {
 			Conjunt_Planetes_Assignat.insert(nomP, p);
 			Conjunt_Planetes_Desassignat.remove(nomP);
 		} else throw new IllegalArgumentException(msg_planeta_no_exists);
-
-
 	}
 
 	public void desassignarPlaneta(String nomP) {
@@ -205,7 +203,16 @@ public class Controlador_Domini_Planeta {
 			} else throw new IllegalArgumentException(msg_recurs_no_exists);
 		} else throw new IllegalArgumentException(msg_planeta_no_exists);
 	}
-	// obtenirRecursosDisponibles(String nomP) {}
+
+	// ASSIGNAR PAQUET!!
+
+
+	//public Iterable<String> obtenirRecursosDisponibles(String nomP) {
+	//	if (Conjunt_Planetes_Desassignat.contains(nomP) || Conjunt_Planetes_Assignat.contains(nomP)) {
+			//Paquet p = Conjunt_Paquets.obtain();
+			//return cp.llistarRecursosPaquetIterator(p);
+	//	}
+	//}
 
 	public Iterable<String> obtenirNecessitats(String nomP) {
 		if (Conjunt_Planetes_Desassignat.contains(nomP) || Conjunt_Planetes_Assignat.contains(nomP)) {
