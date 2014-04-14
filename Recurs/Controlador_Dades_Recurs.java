@@ -35,6 +35,14 @@ public class Controlador_Dades_Recurs{
         return s;
     }
     
+    /*
+    public void writeTextFile(String nomFitxer, String aLines, int p) throws IOException {
+        Path path = Paths.get(nomFitxer);
+        try (BufferedWriter writer = Files.newBufferedWriter(path, ENCODING)){
+            writer.write(aLines, p, aLines.length());
+        }
+    }*/
+    
     public void writeTextFile(String nomFitxer, Iterable<String> aLines) throws IOException {
         Path path = Paths.get(nomFitxer);
         try (BufferedWriter writer = Files.newBufferedWriter(path, ENCODING)){
@@ -44,6 +52,7 @@ public class Controlador_Dades_Recurs{
             }
         }
     }
+    
     
     private static void log(Object aMsg){
         System.out.println(String.valueOf(aMsg));

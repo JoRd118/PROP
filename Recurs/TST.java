@@ -9,7 +9,7 @@ import java.io.IOException;
  */
 
 public class TST<Value> {
-    private int N;       // size
+    private int N = 0;       // size
     private Node root;   // root of TST
     
     private String msg_TST_repetit = "Error TST: Aquest 'Valor' ja existeix a l'estructura.";
@@ -20,6 +20,7 @@ public class TST<Value> {
         if(contains(s)){throw new IllegalArgumentException(msg_TST_repetit);}
         else{
             root = put(root, s, v,0);
+            ++N;
         }
     }
     
@@ -27,6 +28,7 @@ public class TST<Value> {
         if (s == null) throw new NullPointerException();
         if (s.length() == 0) throw new IllegalArgumentException(msg_TST_void_argument);
         put(root, s, null, 0);
+        --N;
         
     
     }
@@ -43,6 +45,11 @@ public class TST<Value> {
     //Check
     public boolean contains(String s){
         return obtain(s) != null;
+    }
+    
+    //Size
+    public int nElements(){
+        return N;
     }
     
     //Lists
@@ -85,18 +92,18 @@ public class TST<Value> {
         if (key.length() == 0) throw new IllegalArgumentException(msg_TST_void_argument);
         if (x == null) return null;
         char c = key.charAt(d);
-        if      (c < x.c)              return get(x.left,  key, d);
-        else if (c > x.c)              return get(x.right, key, d);
+        if (c < x.c) return get(x.left,  key, d);
+        else if (c > x.c) return get(x.right, key, d);
         else if (d < key.length() - 1) return get(x.mid,   key, d+1);
-        else                           return x;
+        else return x;
     }
     
     private void collectTST(Node x, String prefix, Queue<String> queue) {
         if (x == null) return;
-        collectTST(x.left,  prefix,       queue);
+        collectTST(x.left,  prefix, queue);
         if (x.val != null) queue.add(prefix + x.c);
         collectTST(x.mid,   prefix + x.c, queue);
-        collectTST(x.right, prefix,       queue);
+        collectTST(x.right, prefix, queue);
     }
 
     private void collectTST(Node x, String prefix, int i, String pat, Queue<String> q) {
