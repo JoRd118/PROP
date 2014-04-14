@@ -56,6 +56,9 @@ public class Controlador_Domini_Planeta {
         if(Conjunt_Planetes_Desassignat.contains(nom)){
         	Necessitats_Planetes.remove(nom); 
         	Conjunt_Planetes_Desassignat.remove(nom);
+       	} else if (Conjunt_Planetes_Assignat.contains(nom)) {
+       		Necessitats_Planetes.remove(nom);
+       		Conjunt_Planetes_Assignat.remove(nom);
         } else { 
        		throw new IllegalArgumentException(msg_planeta_no_exists);
         }		
@@ -90,19 +93,28 @@ public class Controlador_Domini_Planeta {
 				pl.modificacioNom(newnom);
 				Conjunt_Planetes_Desassignat.insert(newnom, pl);
 				Necessitats_Planetes.insert(newnom, aux);
-
+			} else if (Conjunt_Planetes_Assignat.contains(nom)) {
+				Planeta pl = Conjunt_Planetes_Assignat.obtain(nom);
+				TST<Recurs> aux = new TST<Recurs>();
+				Necessitats_Planetes.remove(nom);
+				Conjunt_Planetes_Assignat.remove(nom);
+				pl.modificacioNom(newnom);
+				Conjunt_Planetes_Assignat.insert(newnom, pl);
+				Necessitats_Planetes.insert(newnom, aux);
 			} else { throw new IllegalArgumentException(msg_planeta_no_exists); }
 		}
 	}
 	public void modificarCoordenades(String nom, int x, int y) {
 		if(Conjunt_Planetes_Desassignat.contains(nom)){	Conjunt_Planetes_Desassignat.obtain(nom).modificacioCoordenades(x, y); }
+        else if(Conjunt_Planetes_Assignat.contains(nom)) { Conjunt_Planetes_Assignat.obtain(nom).modificacioCoordenades(x, y); }
         else { 
         	throw new IllegalArgumentException(msg_planeta_no_exists);	
         }		
 	}
 
 	public void modificarClasse(String nom, boolean classeM) {
-		if(Conjunt_Planetes_Desassignat.contains(nom)){ Conjunt_Planetes_Desassignat.obtain(nom).modificacioClasse(classeM); }
+		if (Conjunt_Planetes_Desassignat.contains(nom)){ Conjunt_Planetes_Desassignat.obtain(nom).modificacioClasse(classeM); }
+        else if (Conjunt_Planetes_Assignat.contains(nom)) { Conjunt_Planetes_Assignat.obtain(nom).modificacioClasse(classeM); }
         else { 
         	throw new IllegalArgumentException(msg_planeta_no_exists);
         }
@@ -110,6 +122,7 @@ public class Controlador_Domini_Planeta {
 
 	public int obtenirId(String nom) {
 		if (Conjunt_Planetes_Desassignat.contains(nom)) return Conjunt_Planetes_Desassignat.obtain(nom).obtenirId();
+		else if (Conjunt_Planetes_Assignat.contains(nom)) return Conjunt_Planetes_Assignat.obtain(nom).obtenirId();
 		else throw new IllegalArgumentException(msg_planeta_no_exists);
 	}
 	
@@ -121,12 +134,14 @@ public class Controlador_Domini_Planeta {
 
 	public boolean obtenirClasse(String nom) {;
 		if (Conjunt_Planetes_Desassignat.contains(nom)) return Conjunt_Planetes_Desassignat.obtain(nom).obtenirClasse();
+		else if (Conjunt_Planetes_Assignat.contains(nom)) return Conjunt_Planetes_Assignat.obtain(nom).obtenirClasse();
 		else throw new IllegalArgumentException(msg_planeta_no_exists);
 	}
 
 
 	public Coordenades obtenirCoordenades(String nom) {
 		if (Conjunt_Planetes_Desassignat.contains(nom)) return Conjunt_Planetes_Desassignat.obtain(nom).obtenirCoordenades();
+		else if (Conjunt_Planetes_Assignat.contains(nom)) return Conjunt_Planetes_Assignat.obtain(nom).obtenirCoordenades();
 		else throw new IllegalArgumentException(msg_planeta_no_exists);
 	}
 
@@ -134,6 +149,7 @@ public class Controlador_Domini_Planeta {
 	public Planeta obtenirPlaneta(String nom) {
 		
 		if (Conjunt_Planetes_Desassignat.contains(nom)) {return Conjunt_Planetes_Desassignat.obtain(nom); }
+		else if (Conjunt_Planetes_Assignat.contains(nom)) return Conjunt_Planetes_Assignat.obtain(nom);
 		else { throw new IllegalArgumentException(msg_planeta_no_exists);}
 	}
 
@@ -147,7 +163,7 @@ public class Controlador_Domini_Planeta {
     public void guardarPlanetes(){}
     public void carregarPlanetes(){}
 
-    public String llistarPlanetes() {
+    public String llistarPlanetesDesassignat() {
 		Iterable<String> s = Conjunt_Planetes_Desassignat.obtainAllTST();
 		String aux = new String();
 		for(String a: s) {
@@ -156,8 +172,17 @@ public class Controlador_Domini_Planeta {
 		return aux;
 	}
 
+	public String llistarPlanetesAssignat() {
+		Iterable<String> s = Conjunt_Planetes_Assignat.obtainAllTST();
+		String aux = new String();
+		for(String a: s) {
+		 	aux = aux + a +"\n";
+		}
+		return aux;
+	}
+
 	public void altaNecessitats(String nomP, String nomR) {
-		if (Conjunt_Planetes_Desassignat.contains(nomP)) {
+		if (Conjunt_Planetes_Desassignat.contains(nomP) || Conjunt_Planetes_Assignat.contains(nomP)) {
 			if (cr.validarRecurs(nomR)) {
 				TST<Recurs> aux = Necessitats_Planetes.obtain(nomP);
 				if (aux.contains(nomR)) {
@@ -173,7 +198,7 @@ public class Controlador_Domini_Planeta {
 	}
 
 	public void baixaNecessitats(String nomP, String nomR) {
-		if (Conjunt_Planetes_Desassignat.contains(nomP)) {
+		if (Conjunt_Planetes_Desassignat.contains(nomP) || Conjunt_Planetes_Assignat.contains(nomP)) {
 			TST<Recurs> aux = Necessitats_Planetes.obtain(nomP);
 			if (aux.contains(nomR)) {
 				aux.remove(nomR);
@@ -183,7 +208,7 @@ public class Controlador_Domini_Planeta {
 	// obtenirRecursosDisponibles(String nomP) {}
 
 	public Iterable<String> obtenirNecessitats(String nomP) {
-		if (Conjunt_Planetes_Desassignat.contains(nomP)) {
+		if (Conjunt_Planetes_Desassignat.contains(nomP) || Conjunt_Planetes_Assignat.contains(nomP)) {
 			TST<Recurs> aux = Necessitats_Planetes.obtain(nomP);
 			return aux.obtainAllTST();		
 		} else throw new IllegalArgumentException(msg_planeta_no_exists);
