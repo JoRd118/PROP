@@ -1,6 +1,6 @@
 /**
  *
- *Clase Paquets
+ *Classe Paquets
  *
  *@author Jordi Vilella
  */
@@ -12,7 +12,6 @@ public class Paquet{
 	private static int idCounter = 0;
 	private int id;
 	private int ocupacio;
-	//private int capacitat;
 
 	//Constructores
 	
