@@ -21,6 +21,10 @@ public class Paquet{
 		ocupacio = 0;
 	}
 
+	public Paquet(int id) {
+		this.id = id; 
+		idCounter = idCounter + 1;
+	}
 	//Metodes
 
 

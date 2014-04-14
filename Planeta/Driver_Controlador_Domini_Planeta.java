@@ -94,7 +94,7 @@ public class Driver_Controlador_Domini_Planeta {
 						System.out.println("Escriu el id del planeta a consultar:");
 						String id_nom = scan.nextLine();
 						int idn = Integer.parseInt(id_nom);
-						p.obtenirNom(idn);
+						//p.obtenirNom(idn);
 						break;
 					case "09":
 						System.out.println("Escriu el nom del planeta a consultar:");
@@ -115,11 +115,9 @@ public class Driver_Controlador_Domini_Planeta {
 
 						break;
 					case "12":
-						ArrayList<Planeta> Conj;
-						Conj = p.llistarPlanetes();
-						for (int i = 0; i < Conj.size(); ++i) {
-							System.out.println(Conj.get(i).obtenirId()+" "+Conj.get(i).obtenirNom());
-						}
+						String Conj;
+						Conj = p.llistarPlanetesDesassignat();
+						System.out.println(Conj);
 						break;
 					case "00":
 						out = true;

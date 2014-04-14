@@ -205,7 +205,12 @@ public class Controlador_Domini_Planeta {
 	}
 
 	// ASSIGNAR PAQUET!!
-
+	public void assignarPaquet(String nomP, int id) {
+		if (Conjunt_Planetes_Desassignat.contains(nomP) || Conjunt_Planetes_Assignat.contains(nomP)) {
+			Conjunt_Paquets.insert(nomP,cp.obtenirPaquet(id));
+		}
+		else throw new IllegalArgumentException(msg_planeta_no_exists);
+	}
 
 	//public Iterable<String> obtenirRecursosDisponibles(String nomP) {
 	//	if (Conjunt_Planetes_Desassignat.contains(nomP) || Conjunt_Planetes_Assignat.contains(nomP)) {
