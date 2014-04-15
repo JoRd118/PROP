@@ -1,0 +1,112 @@
+Driver Controlador Univers
+Tria una opcio:
+0 => Sortida
+1 => public Controlador_Domini_Univers
+2 => public void altaUnivers(String nom)
+3 => public void baixaUnivers(String nom)
+4 => public void modificacioNomUnivers(String nomUnivers, String newnomUnivers)
+5 => public Univers obtenirUnivers(String nom)
+6 => public int obtenirIdUnivers(String nom)
+7 => public String llistatUnivers()
+8 => public void afegirPlanetaUnivers(String nomUnivers, String nomPlaneta)
+9 => public int numPlanetesUnivers(String nom
+10 => public void altaPlaneta(String nom, Cooordenades coord, boolean classeM)
+11 => public double[][] matriuDistanciaPlanetes(String nom_univers)
+12 => public void desafegirPlanetaUnivers(String nomUnivers, String nomPlaneta
+13) public void altaRecurs(String nom).
+14) public void baixaRecurs(String nom).
+15) public altaPaquet().
+16) public assignarRecurs(int id, String nom).
+17) public esborrarRecurs(int id, String nom).
+18) public assginarPaquet(String nomP, int id.
+19) public altaNecessetats(String nomP, String nomR).
+20 => public int[][] matriuNecesitatsPlanetes(String nom_univers)
+21 => public int[][] matriuRecursosPlanetes(String nom_univers)
+	 22) public String llistatPaquetsAssignats().
+	 23) public String llistatPaquetsNoAssignats().
+Escriu el nom de l'univers
+Escriu el nom de l'univers
+Escriu el nom de l'univers
+Escriu el nom del recurs
+Escriu el nom del recurs
+Escriu el nom del recurs
+Escriu el nom del recurs
+Escriu el nom del recurs
+Introduir id
+Introduir nom del recurs
+Introduir id
+Introduir nom del recurs
+Introduir id
+Introduir nom del recurs
+Introduir id
+Introduir nom del recurs
+Introduir id
+Introduir nom del recurs
+Introduir id
+Introduir nom del recurs
+Introduir id
+Introduir nom del recurs
+Escriu nom Planeta: 
+Escriu coordenades: 
+Escriu Si/No és de classe M
+Escriu nom Planeta: 
+Escriu coordenades: 
+Escriu Si/No és de classe M
+Escriu nom Planeta: 
+Escriu coordenades: 
+Escriu Si/No és de classe M
+Escriu nom Planeta: 
+Escriu coordenades: 
+Escriu Si/No és de classe M
+Escriu el nom del Planeta
+Escriu el id del paquet
+Escriu el nom del Planeta
+Escriu el id del paquet
+Escriu el nom del Planeta
+Escriu el id del paquet
+Escriu el nom del Planeta
+Escriu el id del paquet
+Escriu el nom del Planeta
+Escriu el nom del recurs
+Escriu el nom del Planeta
+Escriu el nom del recurs
+Escriu el nom del Planeta
+Escriu el nom del recurs
+Escriu el nom del Planeta
+Escriu el nom del recurs
+Escriu el nom del Planeta
+Escriu el nom del recurs
+Escriu el nom del Planeta
+Escriu el nom del recurs
+Escriu el nom del Planeta
+Escriu el nom del recurs
+Escriu el nom del univers
+Escriu el nom del planeta
+Escriu el nom del univers
+Escriu el nom del planeta
+Escriu el nom del univers
+Escriu el nom del planeta
+Escriu el nom del univers
+Escriu el nom del planeta
+Escriu el nom del univers
+entra a la func
+surt de la func
+0.0 24.166091947189145 2.0 5.0 
+24.166091947189145 0.0 26.0 28.792360097775937 
+2.0 26.0 0.0 3.0 
+5.0 28.792360097775937 3.0 0.0 
+Escriu el nom del univers
+entra a la func
+Numero de recursos:   5
+surt de la func
+0 1 0 1 0 
+0 0 1 0 1 
+0 0 1 0 0 
+1 0 0 0 1 
+Escriu el nom del univers
+entra a la func
+surt de la func
+0 0 0 0 1 
+0 0 1 1 0 
+1 0 0 0 1 
+0 1 0 1 0 

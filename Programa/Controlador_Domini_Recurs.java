@@ -17,6 +17,7 @@ public class Controlador_Domini_Recurs{
     
     public Controlador_Domini_Recurs(){
         r = new TST<Recurs>();
+        t = new Controlador_Dades_Recurs();
     }
     
     public Controlador_Domini_Recurs(Controlador_Dades_Recurs t){
@@ -92,9 +93,22 @@ public class Controlador_Domini_Recurs{
         return aux;
     }
     
-    public void guardarRecursos(String nomFitxer)throws IOException{
-        t.writeTextFile(nomFitxer, llistatRecurs_2());
+    public Iterable<String> llistatRecurs_2(){
+        Iterable<String> s = r.obtainAllTST();
+        return s;
+    }
     
+    public int totalRecursos(){
+        return r.nElements();
+    }
+    
+    public void guardarRecursos(String nomFitxer)throws IOException{
+         t.writeTextFile(nomFitxer, llistatRecurs_2());
+        /*String aux = llistatRecurs();
+        String aux2 = aux.substring(0, (aux.length())/2);
+        t.writeTextFile(nomFitxer, aux2, 0);
+        aux2 = aux.substring((aux.length())/2, aux.length());
+        t.writeTextFile(nomFitxer, aux2, (aux.length())/2);*/
     }
     
     public void carregarRecursos(String nomFitxer)throws IOException{
@@ -103,11 +117,4 @@ public class Controlador_Domini_Recurs{
             altaRecurs(s.get(i));
         }
     }
-    
-    private Iterable<String> llistatRecurs_2(){
-        Iterable<String> s = r.obtainAllTST();
-        return s;
-    }
-
-    
 }

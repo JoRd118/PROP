@@ -9,7 +9,7 @@ import java.io.IOException;
  */
 
 public class TST<Value> {
-    private int N;       // size
+    private int N = 0;       // size
     private Node root;   // root of TST
     
     private String msg_TST_repetit = "Error TST: Aquest 'Valor' ja existeix a l'estructura.";
@@ -20,6 +20,7 @@ public class TST<Value> {
         if(contains(s)){throw new IllegalArgumentException(msg_TST_repetit);}
         else{
             root = put(root, s, v,0);
+            ++N;
         }
     }
     
@@ -27,6 +28,7 @@ public class TST<Value> {
         if (s == null) throw new NullPointerException();
         if (s.length() == 0) throw new IllegalArgumentException(msg_TST_void_argument);
         put(root, s, null, 0);
+        --N;
         
     
     }
@@ -43,6 +45,11 @@ public class TST<Value> {
     //Check
     public boolean contains(String s){
         return obtain(s) != null;
+    }
+    
+    //Size
+    public int nElements(){
+        return N;
     }
     
     //Lists
