@@ -8,6 +8,7 @@ public class Controlador_Domini_Planeta {
 	private TST<Paquet> Conjunt_Paquets;
 	private Controlador_Domini_Recurs cr;
 	private Controlador_Domini_Paquet cp;
+	private Controlador_Dades_Planeta cdp;
     private static String msg_planeta_no_exists = "Error de Planeta: Planeta demanat no existeix.";
     private static String msg_planeta_repetit = "Error de planeta: Ja existeix un planeta amb aquest nom.";
     private static String msg_recurs_repetit = "Error de Recurs: Ja existeix un recurs amb aquest nom.";
@@ -23,6 +24,7 @@ public class Controlador_Domini_Planeta {
 		Necessitats_Planetes = new TST<TST<Recurs> >();
 		cr = new Controlador_Domini_Recurs();
 		cp = new Controlador_Domini_Paquet(cr);
+		cdp = new Controlador_Dades_Planeta();
 	}
 
 	public Controlador_Domini_Planeta(Controlador_Domini_Paquet p, Controlador_Domini_Recurs r) {
@@ -32,6 +34,7 @@ public class Controlador_Domini_Planeta {
 	 	Conjunt_Paquets = new TST<Paquet>();
 		cr = r;
 	 	cp = p;
+		cdp = new Controlador_Dades_Planeta();
 	}
 
 	
@@ -158,10 +161,23 @@ public class Controlador_Domini_Planeta {
 
 	// OBTENIR LA ID DEL PAQUET Del PLANETA 
 	//public int obtenirIdPaquet(Planeta p) {}
-
-    public void guardarPlanetes(){}
-    public void carregarPlanetes(){}
-
+/*
+    public void guardarPlanetes(String nomFitxer) throws IOException{
+        cdp.writeTextFile(nomFitxer, llistatGuardar());
+    }
+    public void carregarPlanetes(){
+    	ArrayList s = cdp.readTextFile(nomFitxer);
+    	while (!s.empty()) {
+    		String id = s.get(0);
+    		Planeta plan = new Planeta(Integer.parseInt(id));
+    		s.remove(0);
+    		if (s.get(0).equals("0")) Conjunt_Planetes_Desassignat.insert(id, plan);
+    		else Conjunt_Planetes_Assignat.insert(id, plan);
+    		s.remove(0);
+    		if (s.get(0).equals("*"))
+    	}
+    }
+*/
     public String llistarPlanetesDesassignat() {
 		Iterable<String> s = Conjunt_Planetes_Desassignat.obtainAllTST();
 		String aux = new String();
@@ -228,5 +244,39 @@ public class Controlador_Domini_Planeta {
 			return aux.obtainAllTST();		
 		} else throw new IllegalArgumentException(msg_planeta_no_exists);
 	}
+/*
+	private ArrayList<String> llistatGuardar() {
+		ArrayList<String> list = new ArrayList<String>();
+        Iterable<String> s = Necessitats_Planetes.obtainAllTST();
+        for(String a : s){
+            list.add(a);
+            Planeta p;
+            if (Conjunt_Planetes_Desassignat.contains(a)) {
+            	list.add("0");
+            	p = Conjunt_Planetes_Desassignat.obtain(a);
+            }
+            else {		// Conjunt_Planetes_Assignat
+            	list.add("1");		
+            	p = Conjunt_Planetes_Assignat.obtain(a); 
+            }
+           	if (p.teCoordenades()) {	// Té coordenades 
+            	list.add(Integer.toString(p.obtenirCoordenadesX()));
+            	list.add(Integer.toString(p.obtenirCoordenadesY()));
+            else {
+            	list.add("*");
+            }
+            TST<Recurs> aux = Necessitats_Planetes.obtain(a);
+            Iterable<String> s1 = aux.obtainAllTST();
+            for (String nom : s1) {
+                list.add(nom);
+            }
+            list.add("#");
 
+            Planeta aux1 = Conjunt_Paquets.obtain(a);
+            list.add(cp.obtenirIdPaquet());
+        }
+        cp.guardarPaquets();
+        return list;
+	}
+*/
 }
