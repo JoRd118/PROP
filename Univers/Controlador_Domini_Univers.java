@@ -18,6 +18,7 @@ public class Controlador_Domini_Univers{
 	private Controlador_Domini_Planeta cp;
 	private Controlador_Domini_Recurs cr;
 	private Controlador_Domini_Paquet cpa;
+  private Controlador_Dades_Univers cdu;
 
 	private String msg_univers_no_exists = "Error de Univers: Univers demanat no existeix";
 	private String msg_univers_repetit = "Error de Univers: Ja existei un univers amb aquest nom";
@@ -211,5 +212,49 @@ public class Controlador_Domini_Univers{
     		cp.desassignarPlaneta(aux.obtenirNom());
     	}
     }
+
+
+
+    public void guardarUniversos(String nomFitxer) throws IOException{
+        cdu.writeTextFile(nomFitxer, llistatGuardar());
+    }
+
+    public void carregarUniversos(String nomFitxer) throws IOException {
+      ArrayList<String> s = cdu.readTextFile(nomFitxer);
+      while(s.size() > 0) {
+        String nom = s.get(0);
+        Univers uni = new Univers(nom);
+        s.remove(0);
+        TST<Planeta> aux = new TST<Planeta>();
+        p.insert(nom, aux);
+        while (!s.get(0).equals("#")) {
+          Planeta plan = cp.obtenirPlaneta(s.get(0));
+          aux.insert(s.get(0),plan);
+          s.remove(0);
+        }
+      }
+    }
+
+
+    private ArrayList<String> llistatGuardar(){
+      ArrayList<String> list = new ArrayList<String>();
+      Iterable<String> s = p.obtainAllTST();
+      for(String a : s){
+        list.add(a);
+        TST<Planeta> aux = p.obtain(a);
+        Iterable<String> s1 = aux.obtainAllTST();
+        for(String b : s1){
+            list.add(b);              
+        }
+        list.add("#");
+      }
+      cp.guardarPlaneta();
+    }
+
+
+
+
+
+
 
 }
