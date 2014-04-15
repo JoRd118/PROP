@@ -20,13 +20,13 @@ public class Controlador_Domini_Paquet{
     private static String msg_recurs_no_esta_assignat = "Error de Recurs: Recurs demanat no esta assignat al paquet o no existeix.";
     private static String msg_recurs_no_existeix = "Error de Recurs: Recurs demanat no existeix.";
 
-    /*public Controlador_Domini_Paquet() {
+    public Controlador_Domini_Paquet() {
         p = new TST<Paquet>();
         pa = new TST<Paquet>();
         r = new TST<TST<Recurs>>();
         cr = new Controlador_Domini_Recurs();
     }
-    */
+    
     public Controlador_Domini_Paquet(Controlador_Domini_Recurs n) {
         p = new TST<Paquet>();
         pa = new TST<Paquet>();
@@ -68,7 +68,7 @@ public class Controlador_Domini_Paquet{
             if (aux.contains(nom)) throw new IllegalArgumentException(msg_recurs_ja_assignat);
             else {
                 aux.insert(nom,rec);
-                Paquet paq = new Paquet();
+                Paquet paq;
                 if (p.contains(id_string)) {
                     paq = p.obtain(id_string);
                     int o = paq.obtenirOcupacio();
@@ -91,7 +91,7 @@ public class Controlador_Domini_Paquet{
             aux = r.obtain(id_string);
             if (aux.contains(nom)) {
                 aux.remove(nom);
-                Paquet paq = new Paquet();
+                Paquet paq;
                 if (p.contains(id_string)) {
                     paq = p.obtain(id_string);
                     int o = paq.obtenirOcupacio();
@@ -118,7 +118,7 @@ public class Controlador_Domini_Paquet{
     public Paquet obtenirPaquetAssignar(int id) {
         String id_string = Integer.toString(id);
         if (p.contains(id_string)) {
-            Paquet paq = new Paquet();
+            Paquet paq;
             paq = p.obtain(id_string);
             p.remove(id_string);
             pa.insert(id_string,paq);

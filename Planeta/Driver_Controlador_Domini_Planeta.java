@@ -19,8 +19,12 @@ public class Driver_Controlador_Domini_Planeta {
 		System.out.println("\t 10) public Coordenades obtenirCoordenades(String nom).");
 		System.out.println("\t 11) public Planeta obtenirPlaneta(int id).");
 		System.out.println("\t 12) public ArrayList<Planeta> llistarPlanetes().");
-	}
 
+		System.out.println("\t 13) public assignarPaquet(String nomP, int id)");
+		System.out.println("\t 14) public Iterable<String> obtenirRecursosDisponibles(String nomP)");
+		System.out.println("\t 15) public assignarPlaneta(String nomP)");
+		System.out.println("\t 16) public altaNecessitats(String nomP)");
+	}
 	public static void main(String[] args) {
 		System.out.println("Driver Controlador Planeta");
 		Scanner scan = new Scanner(System.in);
@@ -119,6 +123,29 @@ public class Driver_Controlador_Domini_Planeta {
 						Conj = p.llistarPlanetesDesassignat();
 						System.out.println(Conj);
 						break;
+
+					case "13":
+						System.out.println("Escriu el nom del planeta:");
+						String nom1 = scan.nextLine();
+						System.out.println("Escriu el id del paquet:");
+						String id1 = scan.nextLine();
+					    p.assignarPaquet(nom1,Integer.parseInt(id1));
+						break;
+
+					case "14":
+
+						break;
+
+					case "15":
+						System.out.println("Escriu el nom del planeta:");
+						String nom2 = scan.nextLine();
+						p.assignarPlaneta(nom2);
+						break;
+
+					case "16":
+
+						break;
+
 					case "00":
 						out = true;
 						break;

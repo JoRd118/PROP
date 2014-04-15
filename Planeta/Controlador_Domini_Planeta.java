@@ -64,11 +64,12 @@ public class Controlador_Domini_Planeta {
         }		
 	}
 
-	public void assignarPlaneta(String nomP) {
+	public Planeta assignarPlaneta(String nomP) {
 		if (Conjunt_Planetes_Desassignat.contains(nomP)) {
 			Planeta p = Conjunt_Planetes_Desassignat.obtain(nomP);
 			Conjunt_Planetes_Assignat.insert(nomP, p);
 			Conjunt_Planetes_Desassignat.remove(nomP);
+			return p;
 		} else throw new IllegalArgumentException(msg_planeta_no_exists);
 	}
 
