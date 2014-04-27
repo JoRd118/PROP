@@ -1,0 +1,238 @@
+=======================
+BranchBound: Planeta  [0]: P0
+  Necessitats Pendents 10: [0]: r0 [1]: r1 [2]: r2 [3]: r3 [4]: r4 [5]: r5 [6]:
+r6 [7]: r7 [8]: r8 [9]: r9
+  Planetes Pendents 10: [1]: P1 [2]: P2 [3]: P3 [4]: P4
+Solucio inicial:
+  Millor Recorregut 110.0
+  Planetes: P0 P1 P2 P3 P4
+===============
+Posat en cua: 1
+[1]idPlaneta: 1 Distancia: 1.0 Cami: 0 1 <
+---
+===============
+Posat en cua: 2
+[1]idPlaneta: 1 Distancia: 1.0 Cami: 0 1
+[2]idPlaneta: 2 Distancia: 2.0 Cami: 0 2 <
+---
+===============
+Posat en cua: 3
+[1]idPlaneta: 1 Distancia: 1.0 Cami: 0 1
+[2]idPlaneta: 2 Distancia: 2.0 Cami: 0 2
+[3]idPlaneta: 3 Distancia: 3.0 Cami: 0 3 <
+---
+===============
+Posat en cua: 4
+[2]idPlaneta: 2 Distancia: 2.0 Cami: 0 2
+[4]idPlaneta: 2 Distancia: 3.0 Cami: 0 1 2 <
+[3]idPlaneta: 3 Distancia: 3.0 Cami: 0 3
+---
+===============
+Posat en cua: 5
+[2]idPlaneta: 2 Distancia: 2.0 Cami: 0 2
+[4]idPlaneta: 2 Distancia: 3.0 Cami: 0 1 2
+[3]idPlaneta: 3 Distancia: 3.0 Cami: 0 3
+[5]idPlaneta: 3 Distancia: 4.0 Cami: 0 1 3 <
+---
+...................
+Descarto per recorregut: 105.0 >= 104.0
+[1]idPlaneta: 1 --> 4 Distancia: 1.0
+Cami: 0 1
+...................
+===============
+Posat en cua: 6
+[4]idPlaneta: 2 Distancia: 3.0 Cami: 0 1 2
+[6]idPlaneta: 1 Distancia: 3.0 Cami: 0 2 1 <
+[3]idPlaneta: 3 Distancia: 3.0 Cami: 0 3
+[5]idPlaneta: 3 Distancia: 4.0 Cami: 0 1 3
+---
+===============
+Posat en cua: 7
+[4]idPlaneta: 2 Distancia: 3.0 Cami: 0 1 2
+[6]idPlaneta: 1 Distancia: 3.0 Cami: 0 2 1
+[3]idPlaneta: 3 Distancia: 3.0 Cami: 0 3
+[5]idPlaneta: 3 Distancia: 4.0 Cami: 0 1 3
+[7]idPlaneta: 3 Distancia: 5.0 Cami: 0 2 3 <
+---
+...................
+Descarto per recorregut: 106.0 >= 104.0
+[2]idPlaneta: 2 --> 4 Distancia: 2.0
+Cami: 0 2
+...................
+===============
+Posat en cua: 8
+[6]idPlaneta: 1 Distancia: 3.0 Cami: 0 2 1
+[3]idPlaneta: 3 Distancia: 3.0 Cami: 0 3
+[5]idPlaneta: 3 Distancia: 4.0 Cami: 0 1 3
+[7]idPlaneta: 3 Distancia: 5.0 Cami: 0 2 3
+[8]idPlaneta: 3 Distancia: 6.0 Cami: 0 1 2 3 <
+---
+...................
+Descarto per recorregut: 107.0 >= 104.0
+[4]idPlaneta: 2 --> 4 Distancia: 3.0
+Cami: 0 1 2
+...................
+===============
+Posat en cua: 9
+[3]idPlaneta: 3 Distancia: 3.0 Cami: 0 3
+[5]idPlaneta: 3 Distancia: 4.0 Cami: 0 1 3
+[7]idPlaneta: 3 Distancia: 5.0 Cami: 0 2 3
+[9]idPlaneta: 3 Distancia: 6.0 Cami: 0 2 1 3 <
+[8]idPlaneta: 3 Distancia: 6.0 Cami: 0 1 2 3
+---
+...................
+Descarto per recorregut: 107.0 >= 104.0
+[6]idPlaneta: 1 --> 4 Distancia: 3.0
+Cami: 0 2 1
+...................
+===============
+Posat en cua: 10
+[5]idPlaneta: 3 Distancia: 4.0 Cami: 0 1 3
+[10]idPlaneta: 1 Distancia: 4.0 Cami: 0 3 1 <
+[7]idPlaneta: 3 Distancia: 5.0 Cami: 0 2 3
+[9]idPlaneta: 3 Distancia: 6.0 Cami: 0 2 1 3
+[8]idPlaneta: 3 Distancia: 6.0 Cami: 0 1 2 3
+---
+===============
+Posat en cua: 11
+[5]idPlaneta: 3 Distancia: 4.0 Cami: 0 1 3
+[10]idPlaneta: 1 Distancia: 4.0 Cami: 0 3 1
+[11]idPlaneta: 2 Distancia: 5.0 Cami: 0 3 2 <
+[7]idPlaneta: 3 Distancia: 5.0 Cami: 0 2 3
+[9]idPlaneta: 3 Distancia: 6.0 Cami: 0 2 1 3
+[8]idPlaneta: 3 Distancia: 6.0 Cami: 0 1 2 3
+---
+...................
+Descarto per recorregut: 107.0 >= 104.0
+[3]idPlaneta: 3 --> 4 Distancia: 3.0
+Cami: 0 3
+...................
+===============
+Posat en cua: 12
+[10]idPlaneta: 1 Distancia: 4.0 Cami: 0 3 1
+[7]idPlaneta: 3 Distancia: 5.0 Cami: 0 2 3
+[11]idPlaneta: 2 Distancia: 5.0 Cami: 0 3 2
+[8]idPlaneta: 3 Distancia: 6.0 Cami: 0 1 2 3
+[9]idPlaneta: 3 Distancia: 6.0 Cami: 0 2 1 3
+[12]idPlaneta: 2 Distancia: 6.0 Cami: 0 1 3 2 <
+---
+...................
+Descarto per recorregut: 108.0 >= 104.0
+[5]idPlaneta: 3 --> 4 Distancia: 4.0
+Cami: 0 1 3
+...................
+===============
+Posat en cua: 13
+[7]idPlaneta: 3 Distancia: 5.0 Cami: 0 2 3
+[11]idPlaneta: 2 Distancia: 5.0 Cami: 0 3 2
+[9]idPlaneta: 3 Distancia: 6.0 Cami: 0 2 1 3
+[8]idPlaneta: 3 Distancia: 6.0 Cami: 0 1 2 3
+[13]idPlaneta: 2 Distancia: 6.0 Cami: 0 3 1 2 <
+[12]idPlaneta: 2 Distancia: 6.0 Cami: 0 1 3 2
+---
+...................
+Descarto per recorregut: 108.0 >= 104.0
+[10]idPlaneta: 1 --> 4 Distancia: 4.0
+Cami: 0 3 1
+...................
+===============
+Posat en cua: 14
+[11]idPlaneta: 2 Distancia: 5.0 Cami: 0 3 2
+[14]idPlaneta: 1 Distancia: 6.0 Cami: 0 2 3 1 <
+[13]idPlaneta: 2 Distancia: 6.0 Cami: 0 3 1 2
+[8]idPlaneta: 3 Distancia: 6.0 Cami: 0 1 2 3
+[9]idPlaneta: 3 Distancia: 6.0 Cami: 0 2 1 3
+[12]idPlaneta: 2 Distancia: 6.0 Cami: 0 1 3 2
+---
+...................
+Descarto per recorregut: 109.0 >= 104.0
+[7]idPlaneta: 3 --> 4 Distancia: 5.0
+Cami: 0 2 3
+...................
+===============
+Posat en cua: 15
+[12]idPlaneta: 2 Distancia: 6.0 Cami: 0 1 3 2
+[15]idPlaneta: 1 Distancia: 6.0 Cami: 0 3 2 1 <
+[9]idPlaneta: 3 Distancia: 6.0 Cami: 0 2 1 3
+[8]idPlaneta: 3 Distancia: 6.0 Cami: 0 1 2 3
+[13]idPlaneta: 2 Distancia: 6.0 Cami: 0 3 1 2
+[14]idPlaneta: 1 Distancia: 6.0 Cami: 0 2 3 1
+---
+...................
+Descarto per recorregut: 109.0 >= 104.0
+[11]idPlaneta: 2 --> 4 Distancia: 5.0
+Cami: 0 3 2
+...................
+...................
+Descarto per recorregut: 110.0 >= 104.0
+[12]idPlaneta: 2 --> 4 Distancia: 6.0
+Cami: 0 1 3 2
+...................
+...................
+Descarto per recorregut: 110.0 >= 104.0
+[14]idPlaneta: 1 --> 4 Distancia: 6.0
+Cami: 0 2 3 1
+...................
+...................
+Descarto per recorregut: 110.0 >= 104.0
+[13]idPlaneta: 2 --> 4 Distancia: 6.0
+Cami: 0 3 1 2
+...................
+...................
+Descarto per recorregut: 110.0 >= 104.0
+[8]idPlaneta: 3 --> 4 Distancia: 6.0
+Cami: 0 1 2 3
+...................
+...................
+Descarto per recorregut: 110.0 >= 104.0
+[9]idPlaneta: 3 --> 4 Distancia: 6.0
+Cami: 0 2 1 3
+...................
+...................
+Descarto per recorregut: 110.0 >= 104.0
+[15]idPlaneta: 1 --> 4 Distancia: 6.0
+Cami: 0 3 2 1
+...................
+Solucio final:
+  Millor Recorregut 104.0
+  Planetes: P0 P4
+--------------------------
+Nodes utilitzats: 16
+--------------------------
+=======================
+BranchBound: Planeta  [1]: P1
+  Necessitats Pendents 0:
+SOLUCIO:
+  Recorregut 0.0
+  Planetes: P1
+--------------------------
+Nodes utilitzats: 0
+--------------------------
+=======================
+BranchBound: Planeta  [2]: P2
+  Necessitats Pendents 0:
+SOLUCIO:
+  Recorregut 0.0
+  Planetes: P2
+--------------------------
+Nodes utilitzats: 0
+--------------------------
+=======================
+BranchBound: Planeta  [3]: P3
+  Necessitats Pendents 0:
+SOLUCIO:
+  Recorregut 0.0
+  Planetes: P3
+--------------------------
+Nodes utilitzats: 0
+--------------------------
+=======================
+BranchBound: Planeta  [4]: P4
+  Necessitats Pendents 0:
+SOLUCIO:
+  Recorregut 0.0
+  Planetes: P4
+--------------------------
+Nodes utilitzats: 0
+--------------------------
+<intro>
