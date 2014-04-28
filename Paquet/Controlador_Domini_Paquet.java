@@ -17,8 +17,9 @@ public class Controlador_Domini_Paquet{
     private static String msg_paquet_no_exists = "Error de Paquet: Paquet demanat no existeix.";
     private static String msg_paquet_ja_assignat = "Error de Paquet: Paquet demanat ja esta assignat.";
     private static String msg_recurs_ja_assignat = "Error de Recurs: Recurs demanat ja esta assignat en el paquet.";
-    private static String msg_recurs_no_esta_assignat = "Error de Recurs: Recurs demanat no esta assignat al paquet o no existeix.";
+    private static String msg_recurs_no_esta_assignat = "Error de Recurs: Recurs demanat no esta assignat al paquet.";
     private static String msg_recurs_no_existeix = "Error de Recurs: Recurs demanat no existeix.";
+    private static String msg_paquet_no_assignat = "Error de Paquet: Paquet demanat no ha estat assignat.";
 
     public Controlador_Domini_Paquet() {
         p = new TST<Paquet>();
@@ -59,29 +60,32 @@ public class Controlador_Domini_Paquet{
     }
     
     public void assignarRecurs(int id, String nom) {
-        String id_string = Integer.toString(id);
-        if (p.contains(id_string) || pa.contains(id_string)) {
-            Recurs rec = new Recurs();
-            TST<Recurs> aux = new TST<Recurs>();
-            aux = r.obtain(id_string);
-            rec = cr.obtenirRecurs(nom);
-            if (aux.contains(nom)) throw new IllegalArgumentException(msg_recurs_ja_assignat);
-            else {
-                aux.insert(nom,rec);
-                Paquet paq;
-                if (p.contains(id_string)) {
-                    paq = p.obtain(id_string);
-                    int o = paq.obtenirOcupacio();
-                    paq.modificarOcupacio(o + 1);
-                }
+        if (cr.validarRecurs(nom)) {
+            String id_string = Integer.toString(id);
+            if (p.contains(id_string) || pa.contains(id_string)) {
+                Recurs rec = new Recurs();
+                TST<Recurs> aux = new TST<Recurs>();
+                aux = r.obtain(id_string);
+                rec = cr.obtenirRecurs(nom);
+                if (aux.contains(nom)) throw new IllegalArgumentException(msg_recurs_ja_assignat);
                 else {
-                    paq = pa.obtain(id_string);
-                    int o = paq.obtenirOcupacio();
-                    paq.modificarOcupacio(o + 1);
+                    aux.insert(nom,rec);
+                    Paquet paq;
+                    if (p.contains(id_string)) {
+                        paq = p.obtain(id_string);
+                        int o = paq.obtenirOcupacio();
+                        paq.modificarOcupacio(o + 1);
+                    }
+                    else {
+                        paq = pa.obtain(id_string);
+                        int o = paq.obtenirOcupacio();
+                        paq.modificarOcupacio(o + 1);
+                    }
                 }
             }
+            else throw new IllegalArgumentException(msg_paquet_no_exists);
         }
-        else throw new IllegalArgumentException(msg_paquet_no_exists);
+        else throw new IllegalArgumentException(msg_recurs_no_existeix);
     }
 
     public void esborrarRecurs(int id, String nom) {
@@ -103,6 +107,7 @@ public class Controlador_Domini_Paquet{
                     paq.modificarOcupacio(o - 1);
                 }
             }
+            else if (cr.validarRecurs(nom)) throw new IllegalArgumentException(msg_recurs_no_existeix);
             else throw new IllegalArgumentException(msg_recurs_no_esta_assignat);
         }
         else throw new IllegalArgumentException(msg_paquet_no_exists);
@@ -127,6 +132,18 @@ public class Controlador_Domini_Paquet{
         else if (pa.contains(id_string)) throw new IllegalArgumentException(msg_paquet_ja_assignat);
         else throw new IllegalArgumentException(msg_paquet_no_exists);
     } 
+
+    public void desassignarPaquet(int id) {
+        String id_string = Integer.toString(id);
+        if (pa.contains(id_string)) {
+            Paquet paq;
+            paq = pa.obtain(id_string);
+            pa.remove(id_string);
+            p.insert(id_string,paq);
+        }
+        else if (p.contains(id_string)) throw new IllegalArgumentException(msg_paquet_no_assignat);
+        else throw new IllegalArgumentException(msg_paquet_no_exists);
+    }
     
     public String llistatPaquetsAssignats(){
         Iterable<String> s = pa.obtainAllTST();
@@ -174,16 +191,15 @@ public class Controlador_Domini_Paquet{
 
     public void carregarPaquets(String nomFitxer) throws IOException {
         ArrayList<String> s = cp.readTextFile(nomFitxer);
-        while(s.size() > 0) {
+        while(!s.isEmpty()) {
             String id = s.get(0);
             Paquet pac = new Paquet(Integer.parseInt(id));
             s.remove(0);
-            if (s.get(0).equals("0")) pa.insert(id, pac);
+            if (s.get(0).equals("0")) p.insert(id, pac);
             else pa.insert(id, pac);
             s.remove(0);
             TST<Recurs> aux = new TST<Recurs>();
             r.insert(id, aux);
-            s.remove(0);
             while (!s.get(0).equals("#")) {
                 if (cr.validarRecurs(s.get(0))) {
                     Recurs re = cr.obtenirRecurs(s.get(0));
@@ -192,6 +208,7 @@ public class Controlador_Domini_Paquet{
                 }
                 else throw new IllegalArgumentException(msg_paquet_no_exists);
             }
+            s.remove(0);
         }
     }
 

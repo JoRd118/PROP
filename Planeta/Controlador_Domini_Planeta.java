@@ -46,7 +46,13 @@ public class Controlador_Domini_Planeta {
 
 
 	public void altaPlaneta(String nom, Coordenades coord, boolean classeM) {
-		if(Conjunt_Planetes_Desassignat.contains(nom)) throw new IllegalArgumentException(msg_planeta_repetit);
+		/*
+
+		modificacio JOVIGU
+
+		*/
+
+		if(Conjunt_Planetes_Desassignat.contains(nom)||Conjunt_Planetes_Assignat.contains(nom)) throw new IllegalArgumentException(msg_planeta_repetit);
 		else {
 			TST<Recurs> aux = new TST<Recurs>();
 			Planeta p = new Planeta(nom, coord, classeM);
@@ -161,23 +167,9 @@ public class Controlador_Domini_Planeta {
 
 	// OBTENIR LA ID DEL PAQUET Del PLANETA 
 	//public int obtenirIdPaquet(Planeta p) {}
-/*
-    public void guardarPlanetes(String nomFitxer) throws IOException{
-        cdp.writeTextFile(nomFitxer, llistatGuardar());
-    }
-    public void carregarPlanetes(){
-    	ArrayList s = cdp.readTextFile(nomFitxer);
-    	while (!s.empty()) {
-    		String id = s.get(0);
-    		Planeta plan = new Planeta(Integer.parseInt(id));
-    		s.remove(0);
-    		if (s.get(0).equals("0")) Conjunt_Planetes_Desassignat.insert(id, plan);
-    		else Conjunt_Planetes_Assignat.insert(id, plan);
-    		s.remove(0);
-    		if (s.get(0).equals("*"))
-    	}
-    }
-*/
+
+
+
     public String llistarPlanetesDesassignat() {
 		Iterable<String> s = Conjunt_Planetes_Desassignat.obtainAllTST();
 		String aux = new String();
@@ -229,6 +221,9 @@ public class Controlador_Domini_Planeta {
 		else throw new IllegalArgumentException(msg_planeta_no_exists);
 	}
 
+	/*public void desassignarPaquet(String nomP, int id) {
+
+	} */
 
 	public Iterable<String> obtenirRecursosDisponibles(String nomP) {
 		if (Conjunt_Planetes_Desassignat.contains(nomP) || Conjunt_Planetes_Assignat.contains(nomP)) {
@@ -244,13 +239,42 @@ public class Controlador_Domini_Planeta {
 			return aux.obtainAllTST();		
 		} else throw new IllegalArgumentException(msg_planeta_no_exists);
 	}
-/*
+
+	public void guardarPlanetes(String nomFitxer) throws IOException{
+        cdp.writeTextFile(nomFitxer, llistatGuardar());
+    }
+
+    public void carregarPlanetes(String nomFitxer) throws IOException {
+    	ArrayList<String> s = cdp.readTextFile(nomFitxer);
+    	while (!s.isEmpty()) {
+    		String nom = s.get(0);
+    		s.remove(0);
+    		Coordenades c = new Coordenades();
+    		c.modificarCoordenades(Integer.parseInt(s.get(2)), Integer.parseInt(s.get(3)));
+    		Planeta plan;
+    		if (s.get(3).equals("1")) plan = new Planeta(nom,c,true);
+    		else plan = new Planeta(nom,c,false);
+    		if (s.get(0).equals("0")) Conjunt_Planetes_Desassignat.insert(nom, plan);
+    		else Conjunt_Planetes_Assignat.insert(nom, plan);
+    		s.remove(0);
+    		s.remove(0);
+    		s.remove(0);
+    		s.remove(0);
+    		while (!s.get(0).equals("#")) {
+    			altaNecessitats(nom,s.get(0));
+    			s.remove(0);
+    		}
+    		s.remove(0);
+    	}
+    }
+
 	private ArrayList<String> llistatGuardar() {
 		ArrayList<String> list = new ArrayList<String>();
         Iterable<String> s = Necessitats_Planetes.obtainAllTST();
         for(String a : s){
             list.add(a);
             Planeta p;
+
             if (Conjunt_Planetes_Desassignat.contains(a)) {
             	list.add("0");
             	p = Conjunt_Planetes_Desassignat.obtain(a);
@@ -259,24 +283,19 @@ public class Controlador_Domini_Planeta {
             	list.add("1");		
             	p = Conjunt_Planetes_Assignat.obtain(a); 
             }
-           	if (p.teCoordenades()) {	// Té coordenades 
-            	list.add(Integer.toString(p.obtenirCoordenadesX()));
-            	list.add(Integer.toString(p.obtenirCoordenadesY()));
-            else {
-            	list.add("*");
-            }
+            Coordenades c = p.obtenirCoordenades();
+            list.add(Integer.toString(c.obtenirCoordenadesX()));
+            list.add(Integer.toString(c.obtenirCoordenadesY()));
+            if (p.obtenirClasse()) list.add("1");
+            else list.add("0");
             TST<Recurs> aux = Necessitats_Planetes.obtain(a);
             Iterable<String> s1 = aux.obtainAllTST();
             for (String nom : s1) {
                 list.add(nom);
             }
             list.add("#");
-
-            Planeta aux1 = Conjunt_Paquets.obtain(a);
-            list.add(cp.obtenirIdPaquet());
         }
-        cp.guardarPaquets();
         return list;
 	}
-*/
+
 }

@@ -35,9 +35,10 @@ public class Controlador_Dades_Paquet {
     public void writeTextFile(String nomFitxer, ArrayList<String> aLines) throws IOException {
         Path path = Paths.get(nomFitxer);
         try (BufferedWriter writer = Files.newBufferedWriter(path, ENCODING)){
-            for(String line : aLines){
-                writer.write(line);
+            while(!aLines.isEmpty()){
+                writer.write(aLines.get(0));
                 writer.newLine();
+                aLines.remove(0);
             }
         }
     }

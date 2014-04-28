@@ -7,8 +7,8 @@ public class Driver_Controlador_Domini_Paquet {
     private static Controlador_Domini_Recurs r;
 
 	public static void menu() {
-		System.out.println("Escoge una opción:");
-        System.out.println("\t 00) Salida.");
+		System.out.println("Escull una opcio:");
+        System.out.println("\t 00) Sortida.");
         //System.out.println("\t 01) public Controlador_Domini_Paquet().");
         System.out.println("\t 02) public Controlador_Domini_Paquet(Controlador_Domini_Recurs n).");
         System.out.println("\t 03) public altaPaquet().");
@@ -19,7 +19,9 @@ public class Driver_Controlador_Domini_Paquet {
         System.out.println("\t 08) public Paquet obtenirPaquetAssignar(int id).");
         System.out.println("\t 09) public String llistatPaquetsAssignats().");
         System.out.println("\t 10) public String llistatPaquetsNoAssignats().");
-        System.out.println("\t 11) public String llistatRecursosPaquet(int id).\n");
+        System.out.println("\t 11) public String llistatRecursosPaquet(int id).");
+        System.out.println("\t 12) public void carregarPaquets(String nomFitxer).");
+        System.out.println("\t 13) public void guardarPaquets(String nomFitxer).\n");
 
         System.out.println("\t 21) public Controlador_Domini_Recurs().");
         System.out.println("\t 22) public void altaRecurs(String nom).");
@@ -39,7 +41,7 @@ public class Driver_Controlador_Domini_Paquet {
 
 		while(!out){
             try{
-                System.out.println("Elegiu una opcio del menu:");
+                System.out.println("Escollir una opcio del menu:");
                 String op = scan.nextLine();
                 String num;
                 String nom;
@@ -104,6 +106,18 @@ public class Driver_Controlador_Domini_Paquet {
                         System.out.println(p.llistatRecursosPaquet(Integer.parseInt(num)));
                         break;
 
+                    case "12":
+                        System.out.println("Introduir nom del fitxer");
+                        nom = scan.nextLine();
+                        p.carregarPaquets(nom);
+                        break;
+
+                    case "13":
+                        System.out.println("Introduir nom del fitxer");
+                        nom = scan.nextLine();
+                        p.guardarPaquets(nom);
+                        break;
+
                     case "21":
                         r = new Controlador_Domini_Recurs();
                         break;
@@ -143,7 +157,7 @@ public class Driver_Controlador_Domini_Paquet {
                         break;
                         
                     default:
-                        out = true;
+                        System.out.println("Opcio no valida");
                         break;
                 }
             }

@@ -9,7 +9,7 @@ import java.nio.file.Paths;
 import java.util.*;
 
 
-public class Controlador_Dades_Plnaeta {
+public class Controlador_Dades_Planeta {
 
 	final static Charset ENCODING = StandardCharsets.UTF_8;
 
@@ -28,12 +28,13 @@ public class Controlador_Dades_Plnaeta {
         return s;
     }
 
-    public void writeTextFile(String nomFitxer, Iterable<String> aLines) throws IOException {
+    public void writeTextFile(String nomFitxer, ArrayList<String> aLines) throws IOException {
         Path path = Paths.get(nomFitxer);
         try (BufferedWriter writer = Files.newBufferedWriter(path, ENCODING)){
-            for(String line : aLines){
-                writer.write(line);
+            while(!aLines.isEmpty()){
+                writer.write(aLines.get(0));
                 writer.newLine();
+                aLines.remove(0);
             }
         }
     }
