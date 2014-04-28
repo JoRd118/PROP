@@ -107,8 +107,8 @@ public class Driver_Controlador_Domini_Planeta {
 
 					case "07":	//obtenirId(String nom)
 						System.out.println("Escriu el nom del planeta a consultar:");
-						String nomp_id = scan.nextLine();
-						p.obtenirId(nomp_id);
+						nom = scan.nextLine();
+						p.obtenirId(nom);
 						break;
 					case "08":	// obtenirNom(Int id)
 						System.out.println("Escriu el id del planeta a consultar:");
