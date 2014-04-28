@@ -34,9 +34,6 @@ public class Driver_Controlador_Domini_Planeta{
         System.out.println("\t 23) public void carregarPlanetes(String nomFitxer).");
         
         
-        
-        
-        
 
         System.out.println("\t 01) public Controlador_Domini_Paquet().");
         System.out.println("\t 02) public Controlador_Domini_Paquet(Controlador_Domini_Recurs n).");
@@ -54,6 +51,7 @@ public class Driver_Controlador_Domini_Planeta{
         System.out.println("\t 14) public void desassignarPaquet(int id).");
         System.out.println("\t 15) public Iterable<String> llistatRecursosPaquetIterator(Paquet pac).");
         System.out.println("\t 16) public int obtenirIdPaquet(Paquet pac).\n");
+        
         
         System.out.println("\t 21) public Controlador_Domini_Recurs().");
         System.out.println("\t 22) public void altaRecurs(String nom).");
