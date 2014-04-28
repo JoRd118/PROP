@@ -1,4 +1,4 @@
-Compilar Recurs: [Ruta]
+Compilar Paquet: [Ruta]
 
 javac *.java
-java Driver_Recurs < JocProva_Recurs.in
+java Driver_Paquet < JocProva_Paquet.in
