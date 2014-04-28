@@ -9,6 +9,8 @@ import java.io.IOException;
  */
 
 public class TST<Value> {
+    
+    //Class atributes
     private int N = 0;       // size
     private Node root;   // root of TST
     
@@ -16,6 +18,9 @@ public class TST<Value> {
     private String msg_TST_void_argument = "Error TST: Argument ha de tenir length > 0.";
     
     //Inserts
+    
+    //Pre: True.
+    //Post: Insereix al TST la clau valor.
     public void insert(String s, Value v){
         if(contains(s)){throw new IllegalArgumentException(msg_TST_repetit);}
         else{
@@ -24,6 +29,8 @@ public class TST<Value> {
         }
     }
     
+    //Pre: True.
+    //Post: Esborra al TST la clau valor.
     public void remove(String s){
         if (s == null) throw new NullPointerException();
         if (s.length() == 0) throw new IllegalArgumentException(msg_TST_void_argument);
@@ -34,6 +41,9 @@ public class TST<Value> {
     }
     
     //Obtain
+    
+    //Pre: True.
+    //Post: Retorna el valor que te per clau el strig que es passa per parametre.
     public Value obtain(String s){
         if (s == null) throw new NullPointerException();
         if (s.length() == 0) throw new IllegalArgumentException(msg_TST_void_argument);
@@ -43,23 +53,33 @@ public class TST<Value> {
     }
     
     //Check
+    
+    //Pre: True.
+    //Post: Comprova al TST si existeix la clau.
     public boolean contains(String s){
         return obtain(s) != null;
     }
     
     //Size
+    
+    //Pre: True.
+    //Post: Retorna el numero d'elemets del TST.
     public int nElements(){
         return N;
     }
     
     //Lists
+    
+    //Pre: True.
+    //Post: Retorna totes les claus del TST.
     public Iterable<String> obtainAllTST(){
         LinkedList<String> q = new LinkedList<String>();
         collectTST(root, "", q);
         return q;
     }
+    
     /*
-     *Option Down
+     *-Option Down-
      *
     public Iterable<String> obtainPatternTST(String pat) {
         LinkedList<String> q = new LinkedList<String>();

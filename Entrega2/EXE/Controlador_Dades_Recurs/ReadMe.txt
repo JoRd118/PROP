@@ -1,4 +1,4 @@
-Compilar Controlador_Domini_Recurs: [Ruta]
+Compilar Controlador_Dades_Recurs: [Ruta]
 
 javac *.java
 java Driver_Controlador_Dades_Recurs < JocProva_Controlador_Dades_Recurs.in

@@ -14,10 +14,17 @@ public class Driver_Controlador_Domini_Recurs{
     public static void menu() {
         System.out.println("Escollir opció:");
         System.out.println("\t 00) Salida.");
-        System.out.println("\t 01) public ArrayList<String> readTextFile(String nomFitxer).");
-        System.out.println("\t 02) public void writeTextFile(String nomFitxer, Iterable<String> aLines).");
-        System.out.println("\t 03) Introduir String.");
-        System.out.println("\t 04) Veure String.");
+        System.out.println("\t 01) public Controlador_Domini_Recurs().");
+        System.out.println("\t 02) public void altaRecurs(String nom).");
+        System.out.println("\t 03) public void baixaRecurs(String nom).");
+        System.out.println("\t 04) public void modificarNom(String nom, String new_nom).");
+        System.out.println("\t 05) public Recurs obtenirRecurs(String nom).");
+        System.out.println("\t 06) public int obtenirId(String nom).");
+        System.out.println("\t 07) (OPTION DOWN) public String obtenirNom(int id).");
+        System.out.println("\t 08) public String llistatRecurs().");
+        System.out.println("\t 09) public String llistatRecurs_2().");
+        System.out.println("\t 10) public void carregarRecursos(String nomFitxer).");
+        System.out.println("\t 11) public void guardarRecursos(String nomFitxer).");
     }
     
     public static void main(String[] args) {
@@ -75,13 +82,17 @@ public class Driver_Controlador_Domini_Recurs{
                     case "08":
                         System.out.println(r.llistatRecurs());
                         break;
-                        
+                    
                     case "09":
+                        System.out.println(r.llistatRecurs_2());
+                        break;
+                        
+                    case "10":
                         nom = scan.nextLine();
                         r.carregarRecursos(nom);
                         break;
                         
-                    case "10":
+                    case "11":
                         nom = scan.nextLine();
                         r.guardarRecursos(nom);
                         break;
