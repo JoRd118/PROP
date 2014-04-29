@@ -5,7 +5,7 @@ public class Driver_Controlador_Domini_Planeta {
 	private static Controlador_Domini_Planeta cp;
 	private static	Controlador_Domini_Recurs cr;
 	private static	Controlador_Domini_Paquet cpa;
-
+    
 	public static void menu() {
 		System.out.println("Escoge una opción:");
 		System.out.println("\t 00) Salida.");
@@ -30,7 +30,7 @@ public class Driver_Controlador_Domini_Planeta {
         System.out.println("\t 19) public Iterable<String> obtenirNecessitats(String nomP).");
         System.out.println("\t 20) public void guardarPlanetes(String nomFitxer).");
         System.out.println("\t 21) public void carregarPlanetes(String nomFitxer).");
-
+        
         System.out.println("\t 31) public Controlador_Domini_Paquet(Controlador_Domini_Recurs n).");
         System.out.println("\t 32) public altaPaquet().");
         System.out.println("\t 33) public baixaPaquet(int id).");
@@ -55,7 +55,7 @@ public class Driver_Controlador_Domini_Planeta {
         System.out.println("\t 55) public Recurs obtenirRecurs(String nom).");
         System.out.println("\t 56) public int obtenirId(String nom).");
         System.out.println("\t 57) public String llistatRecurs().");
-
+        
         
 	}
 	public static void main(String[] args) {
@@ -75,7 +75,7 @@ public class Driver_Controlador_Domini_Planeta {
 		Coordenades c;
 		String new_nom;
 		menu();
-
+        
 		while (!out) {
 			try {
 				String op = scan.nextLine();
@@ -109,7 +109,7 @@ public class Driver_Controlador_Domini_Planeta {
 						System.out.println("Escriu el nom del planeta:");
 						nom = scan.nextLine();
 						cp.desassignarPlaneta(nom);
-						break;		
+						break;
 					case "06":	// modificarNom(nom, nou_nom)
 						System.out.println("Escriu el nom del planeta a modificar:");
 						nom = scan.nextLine();
@@ -138,7 +138,7 @@ public class Driver_Controlador_Domini_Planeta {
 						System.out.println("Escriu el nom del planeta a consultar:");
 						nom = scan.nextLine();
 						cp.obtenirId(nom);
-						break;					
+						break;
 					case "10":
 						System.out.println("Escriu el nom del planeta a consultar:");
 						String nom_m = scan.nextLine();
@@ -152,8 +152,8 @@ public class Driver_Controlador_Domini_Planeta {
 						int x3 = cp.obtenirCoordenades(nom_c).obtenirCoordenadesX();
 						System.out.println(x3);
 						break;
-
-
+                        
+                        
 					case "12":	// Planeta obtenirPlaneta(String nom)
 						System.out.println("Escriu el nom del planeta a consultar:");
 						nom = scan.nextLine();
@@ -186,7 +186,7 @@ public class Driver_Controlador_Domini_Planeta {
 						nom_recurs = scan.nextLine();
 						cp.baixaNecessitats(nom, nom_recurs);
 						break;
-
+                        
 					case "17":
 						System.out.println("Escriu el nom del planeta:");
 						String nom1 = scan.nextLine();
@@ -210,13 +210,13 @@ public class Driver_Controlador_Domini_Planeta {
 							System.out.println(a);
 						}
 						break;
-
+                        
 					case "20":
                         System.out.println("Introduir nom del fitxer");
                         nom = scan.nextLine();
                         cp.carregarPlanetes(nom);
                         break;
-
+                        
                     case "21":
                         System.out.println("Introduir nom del fitxer");
                         nom = scan.nextLine();
@@ -224,105 +224,105 @@ public class Driver_Controlador_Domini_Planeta {
                         break;
                     case "31":
                         cpa = new Controlador_Domini_Paquet(cr);
-                        break;   
+                        break;
                     case "32":
                         cpa.altaPaquet();
-                        break;                        
+                        break;
                     case "33":
                         //System.out.println("Introduir id");
                         num = scan.nextLine();
                         cpa.baixaPaquet(Integer.parseInt(num));
-                        break;                        
+                        break;
                     case "34":
                         //System.out.println("Introduir id");
                         num = scan.nextLine();
                         //System.out.println("Introduir nom del recurs");
                         nom = scan.nextLine();
                         cpa.assignarRecurs(Integer.parseInt(num),nom);
-                        break;                        
+                        break;
                     case "35":
                         //System.out.println("Introduir id");
                         num = scan.nextLine();
                         //System.out.println("Introduir nom del recurs");
                         nom = scan.nextLine();
                         cpa.esborrarRecurs(Integer.parseInt(num),nom);
-                        break;                        
+                        break;
                     case "36":
                         //System.out.println("Introduir id");
                         num = scan.nextLine();
                         pa = cpa.obtenirPaquet(Integer.parseInt(num));
                         System.out.println(Integer.toString(pa.obtenirId()));
-                        break;                        
+                        break;
                     case "37":
                         //System.out.println("Introduir id");
                         num = scan.nextLine();
                         pa = cpa.obtenirPaquetAssignar(Integer.parseInt(num));
-                        break;                        
+                        break;
                     case "38":
                         System.out.println(cpa.llistatPaquetsAssignats());
-                        break;                        
+                        break;
                     case "39":
                         System.out.println(cpa.llistatPaquetsNoAssignats());
-                        break;                        
+                        break;
                     case "40":
                         //System.out.println("Introduir id");
                         num = scan.nextLine();
                         System.out.println(cpa.llistatRecursosPaquet(Integer.parseInt(num)));
-                        break;                        
+                        break;
                     case "41":
                         //System.out.println("Introduir nom del fitxer");
                         nom = scan.nextLine();
                         cpa.carregarPaquets(nom);
-                        break;                        
+                        break;
                     case "42":
                         //System.out.println("Introduir nom del fitxer");
                         nom = scan.nextLine();
                         cpa.guardarPaquets(nom);
-                        break;                        
+                        break;
                     case "43":
                         num = scan.nextLine();
                         cpa.desassignarPaquet(Integer.parseInt(num));
-                        break;                        
+                        break;
                     case "44":
                         num = scan.nextLine();
                         pa = cpa.obtenirPaquet(Integer.parseInt(num));
                         Iterable<String> s = cpa.llistatRecursosPaquetIterator(pa);
                         String aux = new String();
                         for(String a : s) System.out.println(a);
-                        break;                        
+                        break;
                     case "45":
                         num = scan.nextLine();
                         pa = cpa.obtenirPaquet(Integer.parseInt(num));
                         System.out.println(cpa.obtenirIdPaquet(pa));
-                        break;                        
+                        break;
                     case "51":
                         cr = new Controlador_Domini_Recurs();
-                        break;                        
+                        break;
                     case "52":
                         nom = scan.nextLine();
                         cr.altaRecurs(nom);
-                        break;                        
+                        break;
                     case "53":
                         nom = scan.nextLine();
                         cr.baixaRecurs(nom);
-                        break;                        
+                        break;
                     case "54":
                         nom = scan.nextLine();
                         new_nom = scan.nextLine();
                         cr.modificarNom(nom,new_nom);
-                        break;                        
+                        break;
                     case "55":
                         nom = scan.nextLine();
                         cr.obtenirRecurs(nom);
-                        break;                        
+                        break;
                     case "56":
                         nom = scan.nextLine();
                         System.out.println(cr.obtenirId(nom));
-                        break;                        
+                        break;
                     case "57":
                         System.out.println(cr.llistatRecurs());
                         break;
-
+                        
 					case "00":
 						out = true;
 						break;
@@ -335,14 +335,5 @@ public class Driver_Controlador_Domini_Planeta {
             }
 		}
 		scan.close();
-
-
-
-
-
 	}        
-
-
-
-
 }
