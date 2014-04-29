@@ -13,7 +13,8 @@ public class Controlador_Domini_Planeta {
     private static String msg_planeta_repetit = "Error de planeta: Ja existeix un planeta amb aquest nom.";
     private static String msg_recurs_repetit = "Error de Recurs: Ja existeix un recurs amb aquest nom.";
     private static String msg_recurs_no_exists = "Error de Recurs: Recurs demanat no existeix.";
-
+    private static String msg_planeta_paquet_assginat = "Error de Planeta: Aquest Planeta ja te un Paquet assignat.";
+    private static String msg_planeta_cap_paquet_assginat = "Error de Planeta: Aquest Planeta no te un Paquet assignat.";
 
 
 
@@ -198,6 +199,7 @@ public class Controlador_Domini_Planeta {
 					aux.insert(nomR, rec);
 				}
 			}
+			else throw new IllegalArgumentException(msg_recurs_no_exists);
 		} else {
 			throw new IllegalArgumentException(msg_planeta_no_exists);
 		}
@@ -215,19 +217,33 @@ public class Controlador_Domini_Planeta {
 	// ASSIGNAR PAQUET!!
 	public void assignarPaquet(String nomP, int id) {
 		if (Conjunt_Planetes_Desassignat.contains(nomP) || Conjunt_Planetes_Assignat.contains(nomP)) {
-			Conjunt_Paquets.insert(nomP,cp.obtenirPaquet(id));
+			if(Conjunt_Paquets.contains(nomP)) throw new IllegalArgumentException(msg_planeta_paquet_assginat);
+			else Conjunt_Paquets.insert(nomP,cp.obtenirPaquetAssignar(id));
 		}
 		else throw new IllegalArgumentException(msg_planeta_no_exists);
 	}
 
-	/*public void desassignarPaquet(String nomP, int id) {
-
-	} */
+	public void desassignarPaquet(String nomP) {
+		if (Conjunt_Planetes_Desassignat.contains(nomP) || Conjunt_Planetes_Assignat.contains(nomP)) {
+			if(!Conjunt_Paquets.contains(nomP))throw new IllegalArgumentException(msg_planeta_cap_paquet_assginat);
+			else {
+				Paquet pp = Conjunt_Paquets.obtain(nomP);
+				int id_aux = cp.obtenirIdPaquet(pp);
+				cp.desassignarPaquet(id_aux);
+				Conjunt_Paquets.remove(nomP);
+			}
+		}
+		else throw new IllegalArgumentException(msg_planeta_no_exists);
+	}
+	
 
 	public Iterable<String> obtenirRecursosDisponibles(String nomP) {
 		if (Conjunt_Planetes_Desassignat.contains(nomP) || Conjunt_Planetes_Assignat.contains(nomP)) {
-			Paquet p = Conjunt_Paquets.obtain(nomP);
-			return cp.llistatRecursosPaquetIterator(p);
+			if(Conjunt_Paquets.contains(nomP)){
+				Paquet p = Conjunt_Paquets.obtain(nomP);
+				return cp.llistatRecursosPaquetIterator(p);
+			}
+			else throw new IllegalArgumentException(msg_planeta_cap_paquet_assginat);
 		}
 		else throw new IllegalArgumentException(msg_planeta_no_exists);
 	}
