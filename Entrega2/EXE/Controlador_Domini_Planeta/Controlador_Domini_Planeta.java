@@ -47,14 +47,9 @@ public class Controlador_Domini_Planeta {
     
 	// }
     
-    
+    //Pre: coord que siguin valides
+    //Post: S'haura creat un planeta en el Conjunt_Planetes_Desassignat 
 	public void altaPlaneta(String nom, Coordenades coord, boolean classeM) {
-		/*
-         
-         modificacio JOVIGU
-         
-         */
-        
 		if(Conjunt_Planetes_Desassignat.contains(nom)||Conjunt_Planetes_Assignat.contains(nom)) throw new IllegalArgumentException(msg_planeta_repetit);
 		else {
 			TST<Recurs> aux = new TST<Recurs>();
@@ -63,7 +58,9 @@ public class Controlador_Domini_Planeta {
 			Necessitats_Planetes.insert(nom,aux);
 		}
 	}
-    
+
+	//Pre:
+	//Post: S'esborra el planeta amb el nom demanat    
 	public void baixaPlaneta(String nom) {
         if(Conjunt_Planetes_Desassignat.contains(nom)){
         	Necessitats_Planetes.remove(nom);
@@ -76,6 +73,9 @@ public class Controlador_Domini_Planeta {
         }
 	}
     
+    //Pre: 
+    //Post: Si el planeta nomP passar en el vector de Conjunt_Planetes_Assignat 
+    //		si es que estava el el vector de Conjunt_Planetes_Desassignat 
 	public void assignarPlaneta(String nomP) {
 		if (Conjunt_Planetes_Desassignat.contains(nomP)) {
 			Planeta p = Conjunt_Planetes_Desassignat.obtain(nomP);
@@ -84,6 +84,9 @@ public class Controlador_Domini_Planeta {
 		} else throw new IllegalArgumentException(msg_planeta_no_exists);
 	}
     
+    //Pre:
+    //Post: Si el planeta nomp esta el el vector Conjunt_Planetes_Assignat el
+    //		el passar en el vector Conjunt_Planetes_Desassignat
 	public void desassignarPlaneta(String nomP) {
 		if (Conjunt_Planetes_Assignat.contains(nomP)) {
 			Planeta p = Conjunt_Planetes_Assignat.obtain(nomP);
@@ -92,6 +95,8 @@ public class Controlador_Domini_Planeta {
 		} else throw new IllegalArgumentException(msg_planeta_no_exists);
 	}
     
+    //Pre:
+    //Post: El nom de un planeta es canvia per el nou nom
 	public void modificarNom(String nom, String newnom) {
 		if (Conjunt_Planetes_Desassignat.contains(newnom)) throw new IllegalArgumentException(msg_planeta_repetit);
 		else {
@@ -114,6 +119,8 @@ public class Controlador_Domini_Planeta {
 			} else { throw new IllegalArgumentException(msg_planeta_no_exists); }
 		}
 	}
+	//Pre:
+	//Post: Les coordenades de un planeta son modificades per unes noves coordenades x i y
 	public void modificarCoordenades(String nom, int x, int y) {
 		if(Conjunt_Planetes_Desassignat.contains(nom)){	Conjunt_Planetes_Desassignat.obtain(nom).modificacioCoordenades(x, y); }
         else if(Conjunt_Planetes_Assignat.contains(nom)) { Conjunt_Planetes_Assignat.obtain(nom).modificacioCoordenades(x, y); }
@@ -121,7 +128,8 @@ public class Controlador_Domini_Planeta {
         	throw new IllegalArgumentException(msg_planeta_no_exists);
         }
 	}
-    
+    //Pre:
+    //Post: La classeM de un planeta passar a ser de classeM si classeM es true
 	public void modificarClasse(String nom, boolean classeM) {
         if(Conjunt_Planetes_Assignat.contains(nom) || Conjunt_Paquets.contains(nom))throw new IllegalArgumentException(msg_planeta_classM);
             else{
@@ -133,6 +141,8 @@ public class Controlador_Domini_Planeta {
             }
     }
     
+    //Pre:
+    //Post: Retornar id del planeta amb el nom nom
 	public int obtenirId(String nom) {
 		if (Conjunt_Planetes_Desassignat.contains(nom)) return Conjunt_Planetes_Desassignat.obtain(nom).obtenirId();
 		else if (Conjunt_Planetes_Assignat.contains(nom)) return Conjunt_Planetes_Assignat.obtain(nom).obtenirId();
@@ -145,20 +155,25 @@ public class Controlador_Domini_Planeta {
 	// 	else throw new IllegalArgumentException(msg_planeta_no_exists);
 	// }
     
+    //Pre:
+    //Post: Retorna true si el paquet amb el nom nom es de la classe m
+    //		Retorna false si el paquet amb el nom nom no es de la classe m
 	public boolean obtenirClasse(String nom) {;
 		if (Conjunt_Planetes_Desassignat.contains(nom)) return Conjunt_Planetes_Desassignat.obtain(nom).obtenirClasse();
 		else if (Conjunt_Planetes_Assignat.contains(nom)) return Conjunt_Planetes_Assignat.obtain(nom).obtenirClasse();
 		else throw new IllegalArgumentException(msg_planeta_no_exists);
 	}
     
-    
+    //Pre:
+    //Post: Retornar les coordenades d'un planeta amb el nom nom
 	public Coordenades obtenirCoordenades(String nom) {
 		if (Conjunt_Planetes_Desassignat.contains(nom)) return Conjunt_Planetes_Desassignat.obtain(nom).obtenirCoordenades();
 		else if (Conjunt_Planetes_Assignat.contains(nom)) return Conjunt_Planetes_Assignat.obtain(nom).obtenirCoordenades();
 		else throw new IllegalArgumentException(msg_planeta_no_exists);
 	}
     
-    
+    //Pre:
+    //Post: Retornar el planeta amb el nom nom
 	public Planeta obtenirPlaneta(String nom) {
 		
 		if (Conjunt_Planetes_Desassignat.contains(nom)) {return Conjunt_Planetes_Desassignat.obtain(nom); }
@@ -174,7 +189,8 @@ public class Controlador_Domini_Planeta {
 	//public int obtenirIdPaquet(Planeta p) {}
     
     
-    
+    //Pre:
+    //Post: Retornar un String on hi han tots els nom dels planetes no assignats
     public String llistarPlanetesDesassignat() {
 		Iterable<String> s = Conjunt_Planetes_Desassignat.obtainAllTST();
 		String aux = new String();
@@ -184,6 +200,8 @@ public class Controlador_Domini_Planeta {
 		return aux;
 	}
     
+    //Pre:
+    //Post: Retornar un String on hi han tots els nom dels planetes assignats
 	public String llistarPlanetesAssignat() {
 		Iterable<String> s = Conjunt_Planetes_Assignat.obtainAllTST();
 		String aux = new String();
@@ -193,6 +211,8 @@ public class Controlador_Domini_Planeta {
 		return aux;
 	}
     
+    //Pre:
+    //Post: Afegeix una necessitat a un planeta
 	public void altaNecessitats(String nomP, String nomR) {
 		if (Conjunt_Planetes_Desassignat.contains(nomP) || Conjunt_Planetes_Assignat.contains(nomP)) {
             Planeta p;
@@ -220,6 +240,8 @@ public class Controlador_Domini_Planeta {
 		}
 	}
     
+    //Pre:
+    //Post: Baixa una necessitat a un planeta amb nom nomP
 	public void baixaNecessitats(String nomP, String nomR) {
 		if (Conjunt_Planetes_Desassignat.contains(nomP) || Conjunt_Planetes_Assignat.contains(nomP)) {
 			TST<Recurs> aux = Necessitats_Planetes.obtain(nomP);
@@ -230,6 +252,8 @@ public class Controlador_Domini_Planeta {
 	}
     
 	// ASSIGNAR PAQUET!!
+	//Pre:
+	//Post: Assignar un paquet a un planeta amb nom nomP
 	public void assignarPaquet(String nomP, int id) {
 		if (Conjunt_Planetes_Desassignat.contains(nomP) || Conjunt_Planetes_Assignat.contains(nomP)) {
 			if(Conjunt_Paquets.contains(nomP)) throw new IllegalArgumentException(msg_planeta_paquet_assginat);
@@ -248,6 +272,8 @@ public class Controlador_Domini_Planeta {
 		else throw new IllegalArgumentException(msg_planeta_no_exists);
 	}
     
+    //Pre:
+    //Post: Desassignar un paqueta a un planeta amb nom nomP
 	public void desassignarPaquet(String nomP) {
 		if (Conjunt_Planetes_Desassignat.contains(nomP) || Conjunt_Planetes_Assignat.contains(nomP)) {
 			if(!Conjunt_Paquets.contains(nomP))throw new IllegalArgumentException(msg_planeta_cap_paquet_assginat);
@@ -261,7 +287,8 @@ public class Controlador_Domini_Planeta {
 		else throw new IllegalArgumentException(msg_planeta_no_exists);
 	}
 	
-    
+    //Pre:
+    //Post: Retornar un un Iterable<String> on hi ha tots els noms dels recursos d'un paquet
 	public Iterable<String> obtenirRecursosDisponibles(String nomP) {
 		if (Conjunt_Planetes_Desassignat.contains(nomP) || Conjunt_Planetes_Assignat.contains(nomP)) {
 			if(Conjunt_Paquets.contains(nomP)){
@@ -273,6 +300,8 @@ public class Controlador_Domini_Planeta {
 		else throw new IllegalArgumentException(msg_planeta_no_exists);
 	}
     
+    //Pre:
+    //Post: Retornar un un Iterable<String> on hi ha tots els noms dels recursos d'un planeta
 	public Iterable<String> obtenirNecessitats(String nomP) {
 		if (Conjunt_Planetes_Desassignat.contains(nomP) || Conjunt_Planetes_Assignat.contains(nomP)) {
 			TST<Recurs> aux = Necessitats_Planetes.obtain(nomP);
@@ -280,10 +309,14 @@ public class Controlador_Domini_Planeta {
 		} else throw new IllegalArgumentException(msg_planeta_no_exists);
 	}
     
+    //Pre:
+    //Post: Guardar en el fitxer nomFitxer totes les dades becessaries pero tornar a carregar i que tot estigui igual
 	public void guardarPlanetes(String nomFitxer) throws IOException{
         cdp.writeTextFile(nomFitxer, llistatGuardar());
     }
     
+    //Pre:
+    //Post: Carregar del fitxer nomFitxer totes les dades i ho restaura tot
     public void carregarPlanetes(String nomFitxer) throws IOException {
     	ArrayList<String> s = cdp.readTextFile(nomFitxer);
     	while (!s.isEmpty()) {
@@ -308,6 +341,8 @@ public class Controlador_Domini_Planeta {
     	}
     }
     
+    //Pre:
+    //Post: Retornar un ArrayList<String> on hi han totes les dades ben colocades
 	private ArrayList<String> llistatGuardar() {
 		ArrayList<String> list = new ArrayList<String>();
         Iterable<String> s = Necessitats_Planetes.obtainAllTST();
