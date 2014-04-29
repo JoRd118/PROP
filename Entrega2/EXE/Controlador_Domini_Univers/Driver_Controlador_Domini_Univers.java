@@ -23,7 +23,9 @@ public class Driver_Controlador_Domini_Univers{
 		System.out.println("\t 11) public void desafegirPlanetaUnivers(String nomUnivers, String nomPlaneta");
         System.out.println("\t 12) public int[][] matriuNecesitatsPlanetes(String nom_univers)");
         System.out.println("\t 13) public int[][] matriuRecursosPlanetes(String nom_univers)");
-        System.out.println("\t 14) public String[] vectorPlanetes(String nomUnivers).\n");
+        System.out.println("\t 14) public String[] vectorPlanetes(String nomUnivers).");
+        System.out.println("\t 15) public void guardarPlanetes(String nomFitxer).");
+        System.out.println("\t 16) public void carregarUnivers(String nomFitxer).\n");
    
 
 
@@ -222,7 +224,14 @@ public class Driver_Controlador_Domini_Univers{
 						for(int i = 0; i < planetes.length; ++i){
 							System.out.println(planetes[i]);
 						}
-
+						break;
+					case "15":
+						nom = scan.nextLine();
+                        u.guardarUniversos(nom);
+						break;
+					case "16":
+						nom = scan.nextLine();
+                        u.carregarUniversos(nom);
 						break;
 					case "21":
 						cp = new Controlador_Domini_Planeta(cpa, cr);
