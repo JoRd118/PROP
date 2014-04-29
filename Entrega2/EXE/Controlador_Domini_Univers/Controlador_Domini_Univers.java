@@ -120,27 +120,38 @@ public class Controlador_Domini_Univers{
   	public double[][] matriuDistanciaPlanetes(String nom_univers){
   		if(u.contains(nom_univers) == false) throw new IllegalArgumentException(msg_univers_no_exists);
   		else{
+        int planetesm = 0;        
   			TST<Planeta> p1 = new TST<Planeta>();
   			p1 = p.obtain(nom_univers);
-  			double[][] distancies = new double[p1.nElements()][p1.nElements()];
+        Iterable<String> planm = p1.obtainAllTST();
+        for(String a : planm){ //contar quans planetes M hi ha
+          Planeta p = p1.obtain(a);
+          if(p.obtenirClasse()) ++planetesm;
+        }
+        //System.out.println("EL num de planetes m es: "+planetesm);
+  			double[][] distancies = new double[planetesm][planetesm];
   			Iterable<String> s = p1.obtainAllTST();
   			int i = 0;
   			for(String a : s){
   				int j = 0;
-  				for(String b : s){ 
-  					Planeta auxi = p1.obtain(a);
-  					Planeta auxj = p1.obtain(b);
-  					if(auxi.obtenirId() == auxj.obtenirId())distancies[i][j] = 0;
-  					else{
-  						double p1x = (double) auxi.obtenirCoordenades().obtenirCoordenadesX();
-  						double p1y = (double) auxi.obtenirCoordenades().obtenirCoordenadesY();
-  						double p2x = (double) auxj.obtenirCoordenades().obtenirCoordenadesX();
-  						double p2y = (double) auxj.obtenirCoordenades().obtenirCoordenadesY();
-  						distancies[i][j] = Math.sqrt(Math.pow((p2x-p1x),2)+Math.pow((p2y-p1y),2));	
-  					} 
-  					++j;
-  				}
+          Planeta auxi = p1.obtain(a);
+          if(auxi.obtenirClasse()){ //Si no es M no fer re
+  				  for(String b : s){   					
+  					 Planeta auxj = p1.obtain(b);
+             if(auxj.obtenirClasse()){ //Si no es M no fer re
+  					   if(auxi.obtenirId() == auxj.obtenirId())distancies[i][j] = 0;
+  					   else{
+  						    double p1x = (double) auxi.obtenirCoordenades().obtenirCoordenadesX();
+  						    double p1y = (double) auxi.obtenirCoordenades().obtenirCoordenadesY();
+  						    double p2x = (double) auxj.obtenirCoordenades().obtenirCoordenadesX();
+  						    double p2y = (double) auxj.obtenirCoordenades().obtenirCoordenadesY();
+  						    distancies[i][j] = Math.sqrt(Math.pow((p2x-p1x),2)+Math.pow((p2y-p1y),2));	
+  					    } 
+  					  ++j;
+              }
+            }
   				++i;
+          } 
   			}
   			return distancies;
   		}
@@ -151,11 +162,17 @@ public class Controlador_Domini_Univers{
 	public int[][] matriuNecesitatsPlanetes(String nom_univers){
   		if(u.contains(nom_univers) == false) throw new IllegalArgumentException(msg_univers_no_exists);
   		else{
+        int planetesm = 0;
   			TST<Planeta> p1 = new TST<Planeta>();
   			p1 = p.obtain(nom_univers);
-        System.out.println("Numero de recursos:   "+cr.totalRecursos());
-  			int[][] necesitats_planetes = new int[p1.nElements()][cr.totalRecursos()];
-  			for(int i = 0; i < p1.nElements(); ++i){
+        Iterable<String> planm = p1.obtainAllTST();
+        for(String a : planm){ //contar quans planetes M hi ha
+          Planeta p = p1.obtain(a);
+          if(p.obtenirClasse()) ++planetesm;
+        }
+        //System.out.println("Numero de recursos:   "+cr.totalRecursos());
+  			int[][] necesitats_planetes = new int[planetesm][cr.totalRecursos()];
+  			for(int i = 0; i < planetesm; ++i){
   				for(int j = 0; j < cr.totalRecursos();++j){
   					necesitats_planetes[i][j] = 0;
   				}
@@ -165,15 +182,17 @@ public class Controlador_Domini_Univers{
   			for(String a : s){
   				int j = 0;
   				Planeta auxi = p1.obtain(a);
-  				Iterable<String> rec = cr.llistatRecurs_2();
-  				Iterable<String> necesitats = cp.obtenirNecessitats(auxi.obtenirNom());
-  				for(String b : rec){ 
-  					for(String c : necesitats){
-  						if(c.equals(b)) necesitats_planetes[i][j] = 1;
-  					} 
-  				++j;
-  				}
-  			++i;
+          if(auxi.obtenirClasse()){ //Si no es M no fer re
+  				  Iterable<String> rec = cr.llistatRecurs_2();
+  				  Iterable<String> necesitats = cp.obtenirNecessitats(auxi.obtenirNom());
+  				  for(String b : rec){ 
+  					 for(String c : necesitats){
+  					 	 if(c.equals(b)) necesitats_planetes[i][j] = 1;
+  					  } 
+  				  ++j;
+  				  }
+  			 ++i;
+          }          
   			}
   			return necesitats_planetes;
   		}
@@ -184,10 +203,16 @@ public class Controlador_Domini_Univers{
   	public int[][] matriuRecursosPlanetes(String nom_univers){
   		if(u.contains(nom_univers) == false) throw new IllegalArgumentException(msg_univers_no_exists);
   		else{
+         int planetesm = 0;
   			TST<Planeta> p1 = new TST<Planeta>();
   			p1 = p.obtain(nom_univers);
-  			int[][] recursos_planetes = new int[p1.nElements()][cr.totalRecursos()];
-  			for(int i = 0; i < p1.nElements(); ++i){
+        Iterable<String> planm = p1.obtainAllTST();
+        for(String a : planm){ //contar quans planetes M hi ha
+          Planeta p = p1.obtain(a);
+          if(p.obtenirClasse()) ++planetesm;
+        }
+  			int[][] recursos_planetes = new int[planetesm][cr.totalRecursos()];
+  			for(int i = 0; i < planetesm; ++i){
   				for(int j = 0; j < cr.totalRecursos();++j){
   					recursos_planetes[i][j] = 0;
   				}
@@ -197,16 +222,18 @@ public class Controlador_Domini_Univers{
   			for(String a : s){
   				int j = 0;
   				Planeta auxi = p1.obtain(a);
-  				Iterable<String> rec = cr.llistatRecurs_2();
-  				Iterable<String> recursos = cp.obtenirRecursosDisponibles(auxi.obtenirNom());
-  				for(String b : rec){ 
-  					for(String c : recursos){
-  						if(c.equals(b)) recursos_planetes[i][j] = 1;
-  					} 
-  				++j;
-  				}
-  			++i;
-  			}
+          if(auxi.obtenirClasse()){ //Si no es M no fer re
+  				  Iterable<String> rec = cr.llistatRecurs_2();
+  				  Iterable<String> recursos = cp.obtenirRecursosDisponibles(auxi.obtenirNom());
+  				  for(String b : rec){ 
+  					 for(String c : recursos){
+  					   	if(c.equals(b)) recursos_planetes[i][j] = 1;
+  				  	} 
+  				  ++j;
+  				  }
+  			 ++i;
+  			 }
+        }
   			return recursos_planetes;
   		}
   	}
