@@ -68,10 +68,13 @@ public class Controlador_Domini_Univers{
 	public void modificacioNomUnivers(String nomUnivers, String newnomUnivers){
 		if(u.contains(nomUnivers) == false) throw new IllegalArgumentException(msg_univers_no_exists);
 		else{
-			u.obtain(nomUnivers).modificarNomUnivers(newnomUnivers);
-			TST<Planeta> aux = p.obtain(nomUnivers);
+			Univers aux = u.obtain(nomUnivers);
+      aux.modificarNomUnivers(newnomUnivers);
+      u.remove(nomUnivers);
+      u.insert(newnomUnivers, aux);
+			TST<Planeta> aux2 = p.obtain(nomUnivers);
 			p.remove(nomUnivers);
-			p.insert(newnomUnivers, aux);
+			p.insert(newnomUnivers, aux2);
 		}	
 	}
    /*
@@ -228,9 +231,10 @@ public class Controlador_Domini_Univers{
     public void desafegirPlanetaUnivers(String nomUnivers, String nomPlaneta){
     	if(u.contains(nomUnivers) == false) throw new IllegalArgumentException(msg_univers_no_exists);
     	else{
+
     		TST<Planeta> p1 = new TST<Planeta>();
-    		Planeta aux = new Planeta();
-    		p1 = p.obtain(nomUnivers); 
+        p1 = p.obtain(nomUnivers);
+    		Planeta aux = p1.obtain(nomPlaneta);    		
     		p1.remove(nomPlaneta);
     		cp.desassignarPlaneta(aux.obtenirNom());
     	}

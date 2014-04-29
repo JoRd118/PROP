@@ -4,9 +4,9 @@ import java.io.IOException;
 public class Driver_Controlador_Domini_Univers{
 
 	private static Controlador_Domini_Univers u;
-	private static	Controlador_Domini_Recurs cr;
-	private static	Controlador_Domini_Paquet cpa;
-	private static	Controlador_Domini_Planeta cp;
+	private static Controlador_Domini_Planeta cp;
+	private static Controlador_Domini_Paquet cpa;
+	private static Controlador_Domini_Recurs cr;
 	public static void menu(){
 		System.out.println("Escollir opcio:");
 		System.out.println("\t 00) Sortida");
@@ -23,7 +23,7 @@ public class Driver_Controlador_Domini_Univers{
 		System.out.println("\t 11) public void desafegirPlanetaUnivers(String nomUnivers, String nomPlaneta");
         System.out.println("\t 12) public int[][] matriuNecesitatsPlanetes(String nom_univers)");
         System.out.println("\t 13) public int[][] matriuRecursosPlanetes(String nom_univers)");
-        System.out.println("\t 14) public String[] vectorPlanetes(String nomUnivers)");
+        System.out.println("\t 14) public String[] vectorPlanetes(String nomUnivers).\n");
    
 
 
@@ -48,6 +48,7 @@ public class Driver_Controlador_Domini_Univers{
         System.out.println("\t 39) public Iterable<String> obtenirNecessitats(String nomP).");
         System.out.println("\t 40) public void guardarPlanetes(String nomFitxer).");
         System.out.println("\t 41) public void carregarPlanetes(String nomFitxer).");
+        System.out.println("\t 42) public void desassignarPaquet(String nomP).\n");
         
         
 
@@ -233,7 +234,7 @@ public class Driver_Controlador_Domini_Univers{
 						c = new Coordenades();
 						x = scan.nextLine();
 						y = scan.nextLine();
-						cp.modificarCoordenades(nom, Integer.parseInt(x), Integer.parseInt(y));
+						c.modificarCoordenades(Integer.parseInt(x), Integer.parseInt(y));
 						System.out.println("Escriu Si/No és de classe M");
 						resposta = scan.nextLine();
 						if (resposta.equals("Si")) cp.altaPlaneta(nom, c, true);
@@ -280,7 +281,7 @@ public class Driver_Controlador_Domini_Univers{
 					case "29":	//obtenirId(String nom)
 						System.out.println("Escriu el nom del planeta a consultar:");
 						nom = scan.nextLine();
-						cp.obtenirId(nom);
+						System.out.println(cp.obtenirId(nom));
 						break;					
 					case "30":
 						System.out.println("Escriu el nom del planeta a consultar:");
@@ -293,7 +294,9 @@ public class Driver_Controlador_Domini_Univers{
 						System.out.println("Escriu el nom del planeta a consultar:");
 						String nom_c = scan.nextLine();
 						int x3 = cp.obtenirCoordenades(nom_c).obtenirCoordenadesX();
+						int y3 = cp.obtenirCoordenades(nom_c).obtenirCoordenadesY();
 						System.out.println(x3);
+						System.out.println(y3);
 						break;
 
 
@@ -302,7 +305,8 @@ public class Driver_Controlador_Domini_Univers{
 						nom = scan.nextLine();
 						Planeta paux = cp.obtenirPlaneta(nom);
 						System.out.println("Nom planeta: "+paux.obtenirNom());
-						System.out.println("Coordenades planeta: "+paux.obtenirCoordenades());
+						System.out.println("Coordenades X planeta: "+paux.obtenirCoordenades().obtenirCoordenadesX());
+						System.out.println("Coordenades Y planeta: "+paux.obtenirCoordenades().obtenirCoordenadesY());
 						System.out.println("Classe M: "+paux.obtenirClasse());
 						break;
 					case "33":
@@ -364,7 +368,12 @@ public class Driver_Controlador_Domini_Univers{
                         System.out.println("Introduir nom del fitxer");
                         nom = scan.nextLine();
                         cp.guardarPlanetes(nom);
-                        break;	
+                        break;
+                    case "42":
+						System.out.println("Escriu el nom del planeta:");
+						String nom11 = scan.nextLine();
+						cp.desassignarPaquet(nom11);
+                    	break;
                     case "51":
                         cpa = new Controlador_Domini_Paquet(cr);
                         break;   
