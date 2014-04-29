@@ -30,7 +30,12 @@ public class Driver_Controlador_Domini_Planeta {
         System.out.println("\t 19) public Iterable<String> obtenirNecessitats(String nomP).");
         System.out.println("\t 20) public void guardarPlanetes(String nomFitxer).");
         System.out.println("\t 21) public void carregarPlanetes(String nomFitxer).");
+<<<<<<< HEAD
         
+=======
+        System.out.println("\t 22) public void desassignarPaquet(String nomP)");
+
+>>>>>>> FETCH_HEAD
         System.out.println("\t 31) public Controlador_Domini_Paquet(Controlador_Domini_Recurs n).");
         System.out.println("\t 32) public altaPaquet().");
         System.out.println("\t 33) public baixaPaquet(int id).");
@@ -90,7 +95,7 @@ public class Driver_Controlador_Domini_Planeta {
 						c = new Coordenades();
 						x = scan.nextLine();
 						y = scan.nextLine();
-						cp.modificarCoordenades(nom, Integer.parseInt(x), Integer.parseInt(y));
+						c.modificarCoordenades(Integer.parseInt(x), Integer.parseInt(y));
 						System.out.println("Escriu Si/No és de classe M");
 						resposta = scan.nextLine();
 						if (resposta.equals("Si")) cp.altaPlaneta(nom, c, true);
@@ -137,8 +142,13 @@ public class Driver_Controlador_Domini_Planeta {
 					case "09":	//obtenirId(String nom)
 						System.out.println("Escriu el nom del planeta a consultar:");
 						nom = scan.nextLine();
+<<<<<<< HEAD
 						cp.obtenirId(nom);
 						break;
+=======
+						System.out.println(cp.obtenirId(nom));
+						break;					
+>>>>>>> FETCH_HEAD
 					case "10":
 						System.out.println("Escriu el nom del planeta a consultar:");
 						String nom_m = scan.nextLine();
@@ -150,7 +160,9 @@ public class Driver_Controlador_Domini_Planeta {
 						System.out.println("Escriu el nom del planeta a consultar:");
 						String nom_c = scan.nextLine();
 						int x3 = cp.obtenirCoordenades(nom_c).obtenirCoordenadesX();
+						int y3 = cp.obtenirCoordenades(nom_c).obtenirCoordenadesY();
 						System.out.println(x3);
+						System.out.println(y3);
 						break;
                         
                         
@@ -159,7 +171,8 @@ public class Driver_Controlador_Domini_Planeta {
 						nom = scan.nextLine();
 						Planeta paux = cp.obtenirPlaneta(nom);
 						System.out.println("Nom planeta: "+paux.obtenirNom());
-						System.out.println("Coordenades planeta: "+paux.obtenirCoordenades());
+						System.out.println("Coordenades X planeta: "+paux.obtenirCoordenades().obtenirCoordenadesX());
+						System.out.println("Coordenades Y planeta: "+paux.obtenirCoordenades().obtenirCoordenadesY());
 						System.out.println("Classe M: "+paux.obtenirClasse());
 						break;
 					case "13":
@@ -222,6 +235,11 @@ public class Driver_Controlador_Domini_Planeta {
                         nom = scan.nextLine();
                         cp.guardarPlanetes(nom);
                         break;
+                    case "22":
+						System.out.println("Escriu el nom del planeta:");
+						String nom11 = scan.nextLine();
+						cp.desassignarPaquet(nom11);
+                    	break;
                     case "31":
                         cpa = new Controlador_Domini_Paquet(cr);
                         break;
