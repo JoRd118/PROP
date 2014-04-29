@@ -6,25 +6,25 @@ import java.io.IOException;
  *
  *@author Claudi
  */
-public class Driver_Controlador_Dades_Planeta{
+public class Driver_Controlador_Dades_Paquet{
     
-    private static Controlador_Dades_Planeta t;
+    private static Controlador_Dades_Paquet t;
     
     public static void menu() {
         System.out.println("Escolllir opción:");
         System.out.println("\t 00) Salida.");
-        System.out.println("\t 01) public Controlador_Dades_Planeta().");
+        System.out.println("\t 01) public Controlador_Dades_Paquet().");
         System.out.println("\t 02) public ArrayList<String> readTextFile(String nomFitxer).");
         System.out.println("\t 03) public void writeTextFile(String nomFitxer).");
     }
     
     public static void main(String[] args) {
-        String nombreClase = "Controlador_Dades_Planeta";
+        String nombreClase = "Controlador_Dades_Paquet";
         System.out.println("Driver "+nombreClase);
         Scanner scan = new Scanner(System.in);
         ArrayList<String> a = new ArrayList<String>();
         boolean out = false;
-        t = new Controlador_Dades_Planeta();
+        t = new Controlador_Dades_Paquet();
         menu();
         
         while(!out){
@@ -33,7 +33,7 @@ public class Driver_Controlador_Dades_Planeta{
                 switch (op) {
                     case "01":
                         
-                         t = new Controlador_Dades_Planeta();
+                         t = new Controlador_Dades_Paquet();
                         break;
                         
                     case "02":
