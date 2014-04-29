@@ -46,6 +46,11 @@ public class Controlador_Domini_Planeta {
 
 
 	public void altaPlaneta(String nom, Coordenades coord, boolean classeM) {
+		/*
+
+		modificacio JOVIGU
+
+		*/
 
 		if(Conjunt_Planetes_Desassignat.contains(nom)||Conjunt_Planetes_Assignat.contains(nom)) throw new IllegalArgumentException(msg_planeta_repetit);
 		else {
@@ -68,12 +73,11 @@ public class Controlador_Domini_Planeta {
         }		
 	}
 
-	public Planeta assignarPlaneta(String nomP) {
+	public void assignarPlaneta(String nomP) {
 		if (Conjunt_Planetes_Desassignat.contains(nomP)) {
 			Planeta p = Conjunt_Planetes_Desassignat.obtain(nomP);
 			Conjunt_Planetes_Assignat.insert(nomP, p);
 			Conjunt_Planetes_Desassignat.remove(nomP);
-			return p;
 		} else throw new IllegalArgumentException(msg_planeta_no_exists);
 	}
 
@@ -107,7 +111,6 @@ public class Controlador_Domini_Planeta {
 			} else { throw new IllegalArgumentException(msg_planeta_no_exists); }
 		}
 	}
-    
 	public void modificarCoordenades(String nom, int x, int y) {
 		if(Conjunt_Planetes_Desassignat.contains(nom)){	Conjunt_Planetes_Desassignat.obtain(nom).modificacioCoordenades(x, y); }
         else if(Conjunt_Planetes_Assignat.contains(nom)) { Conjunt_Planetes_Assignat.obtain(nom).modificacioCoordenades(x, y); }
@@ -256,10 +259,7 @@ public class Controlador_Domini_Planeta {
     		s.remove(0);
     		s.remove(0);
     		s.remove(0);
-            Paquet paq = cp.obtenirPaquet(Integer.parseInt(s.get(0)));
-    		Conjunt_Paquets.insert(nom,paq);
-            s.remove(0);
-            while (!s.get(0).equals("#")) {
+    		while (!s.get(0).equals("#")) {
     			altaNecessitats(nom,s.get(0));
     			s.remove(0);
     		}
@@ -287,8 +287,6 @@ public class Controlador_Domini_Planeta {
             list.add(Integer.toString(c.obtenirCoordenadesY()));
             if (p.obtenirClasse()) list.add("1");
             else list.add("0");
-            Paquet paq = Conjunt_Paquets.obtain(a);
-            list.add(Integer.toString(cp.obtenirIdPaquet(paq)));
             TST<Recurs> aux = Necessitats_Planetes.obtain(a);
             Iterable<String> s1 = aux.obtainAllTST();
             for (String nom : s1) {
