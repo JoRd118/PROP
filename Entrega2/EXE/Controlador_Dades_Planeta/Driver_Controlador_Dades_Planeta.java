@@ -4,7 +4,7 @@ import java.io.IOException;
  *
  *Driver Controlador Domini Classe Recurs
  *
- *@author Claudi
+ *@author Jordi Vilella
  */
 public class Driver_Controlador_Dades_Planeta{
     

@@ -29,10 +29,14 @@ public class Paquet{
 
 
 	//Consultores
+	//Pre: 
+	//Post: Retornar un id d'un planeta
 	public int obtenirId(){
 		return id;
 	}
 	
+	//Pre:
+	//Post: Retornar l'ocupacio d'un Paquet
 	public int obtenirOcupacio(){
 		return ocupacio;
 	}
@@ -40,6 +44,8 @@ public class Paquet{
 
 	//Modificadores
 
+	//Pre: ocupacio >= 0
+	//Post: la ocupacio del paquet es modifica
 	public void modificarOcupacio(int ocupacio){
 		this.ocupacio = ocupacio;
 	}
