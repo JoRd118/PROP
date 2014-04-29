@@ -3,8 +3,8 @@
  * @author Oriolbv
  */
 public class Coordenades {
-    public int x;
-    public int y;
+    private int x;
+    private int y;
     
     // pre: -
     // post: Es creen unes coordenades per defecte  
