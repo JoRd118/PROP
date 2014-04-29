@@ -85,14 +85,14 @@ public class Driver_Controlador_Domini_Planeta {
 						cp = new Controlador_Domini_Planeta(cpa, cr);
 						break;
 					case "02":
-						System.out.println("Escriu nom Planeta: ");
+						//System.out.println("Escriu nom Planeta: ");
 						nom = scan.nextLine();
-						System.out.println("Escriu coordenades: ");
+						//System.out.println("Escriu coordenades: ");
 						c = new Coordenades();
 						x = scan.nextLine();
 						y = scan.nextLine();
 						c.modificarCoordenades(Integer.parseInt(x), Integer.parseInt(y));
-						System.out.println("Escriu Si/No és de classe M");
+						//System.out.println("Escriu Si/No és de classe M");
 						resposta = scan.nextLine();
 						if (resposta.equals("Si")) cp.altaPlaneta(nom, c, true);
 						else cp.altaPlaneta(nom, c, false);
@@ -102,53 +102,53 @@ public class Driver_Controlador_Domini_Planeta {
 						cp.baixaPlaneta(nom);
 						break;
 					case "04": //assignarPlaneta
-						System.out.println("Escriu el nom del planeta:");
+						//System.out.println("Escriu el nom del planeta:");
 						String nom2 = scan.nextLine();
 						cp.assignarPlaneta(nom2);
 						break;
 					case "05": //desassignarPlaneta
-						System.out.println("Escriu el nom del planeta:");
+						//System.out.println("Escriu el nom del planeta:");
 						nom = scan.nextLine();
 						cp.desassignarPlaneta(nom);
 						break;		
 					case "06":	// modificarNom(nom, nou_nom)
-						System.out.println("Escriu el nom del planeta a modificar:");
+						//System.out.println("Escriu el nom del planeta a modificar:");
 						nom = scan.nextLine();
-						System.out.println("Escriu el nou nom per al planeta:");
+						//System.out.println("Escriu el nou nom per al planeta:");
 						String nou_nom = scan.nextLine();
 						cp.modificarNom(nom, nou_nom);
 						break;
 					case "07":	// modificarCoordenades(String nom, int x, int y)
-						System.out.println("Escriu el nom del planeta a modificar:");
+						//System.out.println("Escriu el nom del planeta a modificar:");
 						nom = scan.nextLine();
-						System.out.println("Escriu coordenades noves:");
+						//System.out.println("Escriu coordenades noves:");
 						//Coordenades co = new Coordenades();
 						x = scan.nextLine();
 						y = scan.nextLine();
 						cp.modificarCoordenades(nom, Integer.parseInt(x), Integer.parseInt(y));
 						break;
 					case "08":	// modificarClasse(String nom, boolean classeM)
-						System.out.println("Escriu el nom del planeta a modificar:");
+						//System.out.println("Escriu el nom del planeta a modificar:");
 						nom = scan.nextLine();
-						System.out.println("Escriu Si/No és de classe M");
+						//System.out.println("Escriu Si/No és de classe M");
 						resposta = scan.nextLine();
 						if (resposta.equals("Si")) cp.modificarClasse(nom, true);
 						else cp.modificarClasse(nom, false);
 						break;
 					case "09":	//obtenirId(String nom)
-						System.out.println("Escriu el nom del planeta a consultar:");
+						//System.out.println("Escriu el nom del planeta a consultar:");
 						nom = scan.nextLine();
 						System.out.println(cp.obtenirId(nom));
 						break;					
 					case "10":
-						System.out.println("Escriu el nom del planeta a consultar:");
+						//System.out.println("Escriu el nom del planeta a consultar:");
 						String nom_m = scan.nextLine();
 						boolean b = cp.obtenirClasse(nom_m);
 						if (b) System.out.println("Classe M");
 						else System.out.println("No Classe M");
 						break;
 					case "11":
-						System.out.println("Escriu el nom del planeta a consultar:");
+						//System.out.println("Escriu el nom del planeta a consultar:");
 						String nom_c = scan.nextLine();
 						int x3 = cp.obtenirCoordenades(nom_c).obtenirCoordenadesX();
 						int y3 = cp.obtenirCoordenades(nom_c).obtenirCoordenadesY();
@@ -158,7 +158,7 @@ public class Driver_Controlador_Domini_Planeta {
 
 
 					case "12":	// Planeta obtenirPlaneta(String nom)
-						System.out.println("Escriu el nom del planeta a consultar:");
+						//System.out.println("Escriu el nom del planeta a consultar:");
 						nom = scan.nextLine();
 						Planeta paux = cp.obtenirPlaneta(nom);
 						System.out.println("Nom planeta: "+paux.obtenirNom());
@@ -177,29 +177,29 @@ public class Driver_Controlador_Domini_Planeta {
 						System.out.println(Conj2);
 						break;
 					case "15": //altaNecesitats(String nomP, String nomR)
-						System.out.println("Escriu el nom del planeta:");
+						//System.out.println("Escriu el nom del planeta:");
 						nom = scan.nextLine();
-						System.out.println("Escriu el nom del recurs:");
+						//System.out.println("Escriu el nom del recurs:");
 						nom_recurs = scan.nextLine();
 						cp.altaNecessitats(nom, nom_recurs);
 						break;
 					case "16": //baixaNecesitats(String nomP, String nomR)
-						System.out.println("Escriu el nom del planeta:");
+						//System.out.println("Escriu el nom del planeta:");
 						nom = scan.nextLine();
-						System.out.println("Escriu el nom del recurs:");
+						//System.out.println("Escriu el nom del recurs:");
 						nom_recurs = scan.nextLine();
 						cp.baixaNecessitats(nom, nom_recurs);
 						break;
 
 					case "17":
-						System.out.println("Escriu el nom del planeta:");
+						//System.out.println("Escriu el nom del planeta:");
 						String nom1 = scan.nextLine();
-						System.out.println("Escriu el id del paquet:");
+						//System.out.println("Escriu el id del paquet:");
 						String id1 = scan.nextLine();
 						cp.assignarPaquet(nom1,Integer.parseInt(id1));
 						break;
 					case "18":
-						System.out.println("Escriu el nom del planeta:");
+						//System.out.println("Escriu el nom del planeta:");
 						nom = scan.nextLine();
 						Iterable<String> itaux = cp.obtenirRecursosDisponibles(nom);
 						for(String a : itaux){
@@ -207,7 +207,7 @@ public class Driver_Controlador_Domini_Planeta {
 						}
 						break;
 					case "19":
-						System.out.println("Escriu el nom del planeta:");
+						//System.out.println("Escriu el nom del planeta:");
 						nom = scan.nextLine();
 						Iterable<String> itaux2 = cp.obtenirNecessitats(nom);
 						for(String a : itaux2){
@@ -216,18 +216,18 @@ public class Driver_Controlador_Domini_Planeta {
 						break;
 
 					case "20":
-                        System.out.println("Introduir nom del fitxer");
+                        //System.out.println("Introduir nom del fitxer");
                         nom = scan.nextLine();
                         cp.carregarPlanetes(nom);
                         break;
 
                     case "21":
-                        System.out.println("Introduir nom del fitxer");
+                        //System.out.println("Introduir nom del fitxer");
                         nom = scan.nextLine();
                         cp.guardarPlanetes(nom);
                         break;
                     case "22":
-						System.out.println("Escriu el nom del planeta:");
+						//System.out.println("Escriu el nom del planeta:");
 						String nom11 = scan.nextLine();
 						cp.desassignarPaquet(nom11);
                     	break;
