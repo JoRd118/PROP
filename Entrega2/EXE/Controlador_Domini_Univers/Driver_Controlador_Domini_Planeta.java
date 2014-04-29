@@ -90,7 +90,7 @@ public class Driver_Controlador_Domini_Planeta {
 						c = new Coordenades();
 						x = scan.nextLine();
 						y = scan.nextLine();
-						cp.modificarCoordenades(nom, Integer.parseInt(x), Integer.parseInt(y));
+						c.modificarCoordenades(Integer.parseInt(x), Integer.parseInt(y));
 						System.out.println("Escriu Si/No és de classe M");
 						resposta = scan.nextLine();
 						if (resposta.equals("Si")) cp.altaPlaneta(nom, c, true);
