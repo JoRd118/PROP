@@ -1,5 +1,5 @@
 Compilar Hungarian: [Ruta]
 
 javac *.java
-java HungarianAlgorithm < JocProva_HungarianAlgorithm.in
+java Driver_HungarianAlgorithm < JocProva_HungarianAlgorithm.in
 
