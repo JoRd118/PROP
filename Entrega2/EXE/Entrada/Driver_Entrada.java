@@ -449,13 +449,13 @@ public class Driver_Entrada{
                     case "50":
                        // System.out.println("Introduir nom del fitxer");
                         nom = scan.nextLine();
-                        cp.carregarPlanetes(nom);
+                        cp.guardarPlanetes(nom);
                         break;
 
                     case "51":
                         //System.out.println("Introduir nom del fitxer");
                         nom = scan.nextLine();
-                        cp.guardarPlanetes(nom);
+                        cp.carregarPlanetes(nom);
                         break;
                     case "52":
                         //System.out.println("Escriu el nom del planeta:");
