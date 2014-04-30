@@ -199,18 +199,12 @@ public class Controlador_Domini_Paquet{
             String id = s.get(0);
             Paquet pac = new Paquet(Integer.parseInt(id));
             s.remove(0);
-            if (s.get(0).equals("0")) p.insert(id, pac);
-            else pa.insert(id, pac);
-            s.remove(0);
+            p.insert(id, pac);
             TST<Recurs> aux = new TST<Recurs>();
             r.insert(id, aux);
             while (!s.get(0).equals("#")) {
-                if (cr.validarRecurs(s.get(0))) {
-                    Recurs re = cr.obtenirRecurs(s.get(0));
-                    aux.insert(s.get(0),re);
-                    s.remove(0);
-                }
-                else throw new IllegalArgumentException(msg_paquet_no_exists);
+                assignarRecurs(Integer.parseInt(id),s.get(0));
+                s.remove(0);
             }
             s.remove(0);
         }
@@ -221,8 +215,6 @@ public class Controlador_Domini_Paquet{
         Iterable<String> s = r.obtainAllTST();
         for(String a : s){
             list.add(a);
-            if (p.contains(a)) list.add("0");
-            else list.add("1");
             TST<Recurs> aux = r.obtain(a);
             Iterable<String> s1 = aux.obtainAllTST();
             for (String nom : s1) {

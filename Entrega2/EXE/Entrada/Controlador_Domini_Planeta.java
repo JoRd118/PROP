@@ -323,15 +323,14 @@ public class Controlador_Domini_Planeta {
     		String nom = s.get(0);
     		s.remove(0);
     		Coordenades c = new Coordenades();
-    		c.modificarCoordenades(Integer.parseInt(s.get(2)), Integer.parseInt(s.get(3)));
+    		c.modificarCoordenades(Integer.parseInt(s.get(0)), Integer.parseInt(s.get(1)));
     		Planeta plan;
-    		if (s.get(3).equals("1")) plan = new Planeta(nom,c,true);
-    		else plan = new Planeta(nom,c,false);
-    		if (s.get(0).equals("0")) Conjunt_Planetes_Desassignat.insert(nom, plan);
-    		else Conjunt_Planetes_Assignat.insert(nom, plan);
+    		if (s.get(2).equals("1")) altaPlaneta(nom,c,true);
+    		else altaPlaneta(nom,c,false);
     		s.remove(0);
     		s.remove(0);
     		s.remove(0);
+    		assignarPaquet(nom, Integer.parseInt(s.get(0)));
     		s.remove(0);
     		while (!s.get(0).equals("#")) {
     			altaNecessitats(nom,s.get(0));
@@ -349,20 +348,15 @@ public class Controlador_Domini_Planeta {
         for(String a : s){
             list.add(a);
             Planeta p;
-            
-            if (Conjunt_Planetes_Desassignat.contains(a)) {
-            	list.add("0");
-            	p = Conjunt_Planetes_Desassignat.obtain(a);
-            }
-            else {		// Conjunt_Planetes_Assignat
-            	list.add("1");
-            	p = Conjunt_Planetes_Assignat.obtain(a);
-            }
+            if (Conjunt_Planetes_Desassignat.contains(a)) p = Conjunt_Planetes_Desassignat.obtain(a);
+            else p = Conjunt_Planetes_Assignat.obtain(a);
             Coordenades c = p.obtenirCoordenades();
             list.add(Integer.toString(c.obtenirCoordenadesX()));
             list.add(Integer.toString(c.obtenirCoordenadesY()));
             if (p.obtenirClasse()) list.add("1");
             else list.add("0");
+            Paquet pac = Conjunt_Paquets.obtain(a);
+            list.add(Integer.toString(cp.obtenirIdPaquet(pac)));
             TST<Recurs> aux = Necessitats_Planetes.obtain(a);
             Iterable<String> s1 = aux.obtainAllTST();
             for (String nom : s1) {
