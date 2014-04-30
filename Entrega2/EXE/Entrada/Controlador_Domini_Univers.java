@@ -27,6 +27,7 @@ public class Controlador_Domini_Univers{
 	public Controlador_Domini_Univers(Controlador_Domini_Planeta cp1, Controlador_Domini_Recurs cr1, Controlador_Domini_Paquet cpa1){ 
 		u = new TST<Univers>();
 		p = new TST<TST<Planeta>>();
+    cdu = new Controlador_Dades_Univers();
 		cp = cp1;
 		cr = cr1;
 		cpa = cpa1;
@@ -39,6 +40,7 @@ public class Controlador_Domini_Univers{
 	public Controlador_Domini_Univers(){
 		u = new TST<Univers>();
 		p = new TST<TST<Planeta>>();
+    cdu = new Controlador_Dades_Univers();
 	}
 
 	//Pre: True
@@ -268,13 +270,23 @@ public class Controlador_Domini_Univers{
     }
 
     public String[] vectorPlanetes(String nomUnivers){
+      int planetesm = 0;
       TST<Planeta> aux = p.obtain(nomUnivers);
       Iterable<String> aux1= aux.obtainAllTST();
-      String[] planetes = new String[aux.nElements()];
+      Iterable<String> planm = aux.obtainAllTST();
+      for(String a : planm){ //contar quans planetes M hi ha
+        Planeta p = aux.obtain(a);
+        if(p.obtenirClasse()) ++planetesm;
+       }
+      String[] planetes = new String[planetesm];
       int i = 0;
+      
       for(String a : aux1){
-        planetes[i] = a;
-        ++i;
+        Planeta p = aux.obtain(a);
+        if(p.obtenirClasse()){
+          planetes[i] = a;
+          ++i;
+        }
       }
       return planetes;
     }
@@ -283,6 +295,7 @@ public class Controlador_Domini_Univers{
     //Post: Guarda en un fitxer les dades dels unviersos
     public void guardarUniversos(String nomFitxer) throws IOException{
         cdu.writeTextFile(nomFitxer, llistatGuardar());
+
     }
 
     //Pre: True
@@ -291,15 +304,13 @@ public class Controlador_Domini_Univers{
       ArrayList<String> s = cdu.readTextFile(nomFitxer);
       while(s.size() > 0) {
         String nom = s.get(0);
-        Univers uni = new Univers(nom);
+        altaUnivers(nom);
         s.remove(0);
-        TST<Planeta> aux = new TST<Planeta>();
-        p.insert(nom, aux);
         while (!s.get(0).equals("#")) {
-          Planeta plan = cp.obtenirPlaneta(s.get(0));
-          aux.insert(s.get(0),plan);
+          afegirPlanetaUnivers(nom,s.get(0));
           s.remove(0);
         }
+        s.remove(0);
       }
     }
 
@@ -313,11 +324,11 @@ public class Controlador_Domini_Univers{
         TST<Planeta> aux = p.obtain(a);
         Iterable<String> s1 = aux.obtainAllTST();
         for(String b : s1){
-            list.add(b);              
+                  System.out.println(b);
+            list.add(b);          
         }
         list.add("#");
-      }
-      //cp.guardarPlaneta();
+      }   
       return list;
     }
 
