@@ -56,7 +56,9 @@ public class Driver_Controlador_Domini_Planeta {
         System.out.println("\t 55) public Recurs obtenirRecurs(String nom).");
         System.out.println("\t 56) public int obtenirId(String nom).");
         System.out.println("\t 57) public String llistatRecurs().");
-
+        System.out.println("\t 58) public String llistatRecurs_2().");
+        System.out.println("\t 59) public void carregarRecursos(String nomFitxer).");
+        System.out.println("\t 60) public void guardarRecursos(String nomFitxer).");
         
 	}
 	public static void main(String[] args) {
@@ -331,6 +333,21 @@ public class Driver_Controlador_Domini_Planeta {
                     case "57":
                         System.out.println(cr.llistatRecurs());
                         break;
+
+                    case "58":
+                        System.out.println(cr.llistatRecurs_2());
+                        break;
+                        
+                    case "59":
+                        nom = scan.nextLine();
+                        cr.carregarRecursos(nom);
+                        break;
+                        
+                    case "60":
+                        nom = scan.nextLine();
+                        cr.guardarRecursos(nom);
+                        break;
+                        
 
 					case "00":
 						out = true;
