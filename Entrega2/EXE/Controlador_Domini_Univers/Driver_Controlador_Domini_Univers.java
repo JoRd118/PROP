@@ -353,13 +353,13 @@ public class Driver_Controlador_Domini_Univers{
 					case "40":
                        // System.out.println("Introduir nom del fitxer");
                         nom = scan.nextLine();
-                        cp.carregarPlanetes(nom);
+                        cp.guardarPlanetes(nom);
                         break;
 
                     case "41":
                         //System.out.println("Introduir nom del fitxer");
                         nom = scan.nextLine();
-                        cp.guardarPlanetes(nom);
+                        cp.carregarPlanetes(nom);
                         break;
                     case "42":
 						//System.out.println("Escriu el nom del planeta:");
