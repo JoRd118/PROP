@@ -32,7 +32,10 @@ public class Driver_Controlador_Domini_Paquet {
         System.out.println("\t 24) public void modificarNom(String nom, String new_nom).");
         System.out.println("\t 25) public Recurs obtenirRecurs(String nom).");
         System.out.println("\t 26) public int obtenirId(String nom).");
-        System.out.println("\t 28) public String llistatRecurs().");
+        System.out.println("\t 27) public String llistatRecurs().");
+        System.out.println("\t 28) public String llistatRecurs_2().");
+        System.out.println("\t 29) public void carregarRecursos(String nomFitxer).");
+        System.out.println("\t 30) public void guardarRecursos(String nomFitxer).");
 	}
 
 	public static void main(String[] args) {
@@ -169,10 +172,24 @@ public class Driver_Controlador_Domini_Paquet {
                         System.out.println(r.obtenirId(nom));
                         break;
                         
-                    case "28":
+                    case "27":
                         System.out.println(r.llistatRecurs());
                         break;
 
+                    case "28":
+                        System.out.println(r.llistatRecurs_2());
+                        break;
+                        
+                    case "29":
+                        nom = scan.nextLine();
+                        r.carregarRecursos(nom);
+                        break;
+                        
+                    case "30":
+                        nom = scan.nextLine();
+                        r.guardarRecursos(nom);
+                        break;
+                        
                     case "00":
                         out = true;
                         break;

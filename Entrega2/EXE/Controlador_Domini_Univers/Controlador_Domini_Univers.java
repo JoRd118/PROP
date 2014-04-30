@@ -268,13 +268,23 @@ public class Controlador_Domini_Univers{
     }
 
     public String[] vectorPlanetes(String nomUnivers){
+      int planetesm = 0;
       TST<Planeta> aux = p.obtain(nomUnivers);
       Iterable<String> aux1= aux.obtainAllTST();
-      String[] planetes = new String[aux.nElements()];
+      Iterable<String> planm = aux.obtainAllTST();
+      for(String a : planm){ //contar quans planetes M hi ha
+        Planeta p = aux.obtain(a);
+        if(p.obtenirClasse()) ++planetesm;
+       }
+      String[] planetes = new String[planetesm];
       int i = 0;
+      
       for(String a : aux1){
-        planetes[i] = a;
-        ++i;
+        Planeta p = aux.obtain(a);
+        if(p.obtenirClasse()){
+          planetes[i] = a;
+          ++i;
+        }
       }
       return planetes;
     }

@@ -92,10 +92,9 @@ public class Driver_Entrada{
         System.out.println("\t 85) public Recurs obtenirRecurs(String nom).");
         System.out.println("\t 86) public int obtenirId(String nom).");
         System.out.println("\t 87) public String llistatRecurs().");
-
-
-
-
+        System.out.println("\t 88) public String llistatRecurs_2().");
+        System.out.println("\t 89) public void carregarRecursos(String nomFitxer).");
+        System.out.println("\t 90) public void guardarRecursos(String nomFitxer).");
 
         System.out.println("\t 00) Salida.");
     }
@@ -449,13 +448,13 @@ public class Driver_Entrada{
                     case "50":
                        // System.out.println("Introduir nom del fitxer");
                         nom = scan.nextLine();
-                        cp.carregarPlanetes(nom);
+                        cp.guardarPlanetes(nom);
                         break;
 
                     case "51":
                         //System.out.println("Introduir nom del fitxer");
                         nom = scan.nextLine();
-                        cp.guardarPlanetes(nom);
+                        cp.carregarPlanetes(nom);
                         break;
                     case "52":
                         //System.out.println("Escriu el nom del planeta:");
@@ -561,6 +560,20 @@ public class Driver_Entrada{
                         break;                        
                     case "87":
                         System.out.println(cr.llistatRecurs());
+                        break;
+
+                    case "88":
+                        System.out.println(cr.llistatRecurs_2());
+                        break;
+                        
+                    case "89":
+                        nom = scan.nextLine();
+                        cr.carregarRecursos(nom);
+                        break;
+                        
+                    case "90":
+                        nom = scan.nextLine();
+                        cr.guardarRecursos(nom);
                         break;
                         
                     default:
