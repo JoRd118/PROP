@@ -77,7 +77,9 @@ public class Driver_Controlador_Domini_Univers{
         System.out.println("\t 75) public Recurs obtenirRecurs(String nom).");
         System.out.println("\t 76) public int obtenirId(String nom).");
         System.out.println("\t 77) public String llistatRecurs().");
-
+        System.out.println("\t 78) public String llistatRecurs_2().");
+        System.out.println("\t 79) public void carregarRecursos(String nomFitxer).");
+        System.out.println("\t 80) public void guardarRecursos(String nomFitxer).");
 
 			
 	}
@@ -463,8 +465,21 @@ public class Driver_Controlador_Domini_Univers{
                         nom = scan.nextLine();
                         System.out.println(cr.obtenirId(nom));
                         break;                        
-                    case "78":
+                    case "77":
                         System.out.println(cr.llistatRecurs());
+                        break;
+                    case "78":
+                        System.out.println(cr.llistatRecurs_2());
+                        break;
+                        
+                    case "79":
+                        nom = scan.nextLine();
+                        cr.carregarRecursos(nom);
+                        break;
+                        
+                    case "80":
+                        nom = scan.nextLine();
+                        cr.guardarRecursos(nom);
                         break;
 					default:
 						System.out.println("Opcio no valida");
