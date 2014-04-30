@@ -18,7 +18,6 @@ public class Driver_Controlador_Domini_Univers{
 		System.out.println("\t 06) public String llistatUnivers()");
 		System.out.println("\t 07) public void afegirPlanetaUnivers(String nomUnivers, String nomPlaneta)");
 		System.out.println("\t 08) public int numPlanetesUnivers(String nom");
-		System.out.println("\t 09) public void altaPlaneta(String nom, Cooordenades coord, boolean classeM)");
 		System.out.println("\t 10) public double[][] matriuDistanciaPlanetes(String nom_univers)");
 		System.out.println("\t 11) public void desafegirPlanetaUnivers(String nomUnivers, String nomPlaneta");
         System.out.println("\t 12) public int[][] matriuNecesitatsPlanetes(String nom_univers)");
@@ -156,22 +155,6 @@ public class Driver_Controlador_Domini_Univers{
 						//System.out.println("Escriu el nom del univers");
 						num = scan.nextLine();
 						//System.out.println(u.numPlanetesUnivers(num));
-						break;
-					case "09":
-						//System.out.println("Escriu nom Planeta: ");
-						nom = scan.nextLine();
-						//System.out.println("Escriu coordenades: ");
-						c = new Coordenades();
-						x = scan.nextLine();
-						int Eix_x = Integer.parseInt(x); 
-						y = scan.nextLine();
-						int Eix_y = Integer.parseInt(y);
-						c.modificarCoordenades(Eix_x, Eix_y);
-						//System.out.println("Escriu Si/No és de classe M");
-						resposta = scan.nextLine();
-						String Si = "Si";
-						if (Si.equals(resposta)) cp.altaPlaneta(nom, c, true);
-						else cp.altaPlaneta(nom, c, false);
 						break;
 					case "10":
 						//System.out.println("Escriu el nom del univers");
