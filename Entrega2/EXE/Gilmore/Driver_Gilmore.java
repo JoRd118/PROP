@@ -27,35 +27,35 @@ while(!out){
                     enti = scan.nextLine();
                     n = Integer.parseInt(enti);
                     double matriuA[][] = new double[n][n];
-                        for (int x=0; x < matriuA.length; x++) {
-    						for (int y=0; y < matriuA[x].length; y++) {
-    							//System.out.println("Introdueix l'element [" + x + "," + y + "]");
-   	 							entd = scan.nextLine();
-                                matriuA[x][y] = Double.parseDouble(entd);
-    						}
-    					}
-    				//System.out.println("Introdueix el tamany de la matriu B:");
+                    for (int i = 0; i < n; i++) {
+                        String linia = scan.nextLine();
+                        String[] elements = linia.split(",");
+                        for (int j = 0; j < n; j++) {
+                            matriuA[i][j] = Double.valueOf(elements[j]);
+                        }
+                    }
+                    //System.out.println("Introdueix el tamany de la matriu B:");
                     enti = scan.nextLine();
                     n = Integer.parseInt(enti);
                     double matriuB[][] = new double[n][n];
-                        for (int x=0; x < matriuB.length; x++) {
-    						for (int y=0; y < matriuB[x].length; y++) {
-    							//System.out.println("Introdueix l'element [" + x + "," + y + "]");
-   	 							entd = scan.nextLine();
-                                matriuB[x][y] = Double.parseDouble(entd);
-    						}
-    					}
-    				//System.out.println("Introdueix el tamany de la matriu C:");
+                    for (int i = 0; i < n; i++) {
+                        String linia = scan.nextLine();
+                        String[] elements = linia.split(",");
+                        for (int j = 0; j < n; j++) {
+                            matriuB[i][j] = Double.valueOf(elements[j]);
+                        }
+                    }
+                    //System.out.println("Introdueix el tamany de la matriu C:");
                     enti = scan.nextLine();
                     n = Integer.parseInt(enti);
                     double matriuC[][] = new double[n][n];
-                        for (int x=0; x < matriuC.length; x++) {
-    						for (int y=0; y < matriuC[x].length; y++) {
-    							//System.out.println("Introdueix l'element [" + x + "," + y + "]");
-   	 							entd = scan.nextLine();
-                                matriuC[x][y] = Double.parseDouble(entd);
-    						}
-    					}
+                    for (int i = 0; i < n; i++) {
+                        String linia = scan.nextLine();
+                        String[] elements = linia.split(",");
+                        for (int j = 0; j < n; j++) {
+                            matriuC[i][j] = Double.valueOf(elements[j]);
+                        }
+                    }
     				double solucio = g.Bound(matriuA, matriuB, matriuC);
     				System.out.println(solucio);
     				break;

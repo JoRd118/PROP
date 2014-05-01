@@ -7,7 +7,7 @@ public class Driver_HungarianAlgorithm {
 	public static void menu() {
         System.out.println("Escoge una opción:");
         System.out.println("\t 00) Salida.");
-        System.out.println("\t 01) public int[][] computeAssignments(double[][] matrix).");
+        System.out.println("\t 01) public int[][] computeAssignments(double[][] mat).");
     }
 public static void main(String[] args) {
 		System.out.println("Driver Hungarian Algorithm");
@@ -23,20 +23,21 @@ while(!out){
                 switch (op) {
                     case "01":
                         ha = new HungarianAlgorithm();
+
                         enti = scan.nextLine();
                         nfiles = Integer.parseInt(enti);
                         enti = scan.nextLine();
                         ncolumnes = Integer.parseInt(enti);
                         double matriu[][] = new double[nfiles][ncolumnes];
                         double matriuorig[][] = new double[nfiles][ncolumnes];
-                            for (int x=0; x < matriu.length; x++) {
-                                for (int y=0; y < matriu[x].length; y++) {
-                                    entd = scan.nextLine();
-                                    matriu[x][y] = Double.parseDouble(entd);
-                                    matriuorig[x][y] = Double.parseDouble(entd);
-                                }
+                        for (int i = 0; i < nfiles; i++) {
+                            String linia = scan.nextLine();
+                            String[] elements = linia.split(",");
+                            for (int j = 0; j < ncolumnes; j++) {
+                                matriu[i][j] = Double.valueOf(elements[j]);
+                                matriuorig[i][j] = Double.valueOf(elements[j]);
                             }
-
+                        }
                         int resultat[][] = ha.computeAssignments(matriu);
                         for (int z=0; z < resultat.length; z++) {
                             for (int w=0; w < resultat[z].length; w++) {
@@ -49,7 +50,7 @@ while(!out){
                             suma = suma + matriuorig[resultat[i][0]][resultat[i][1]];
                         }
                         System.out.println(suma);
-    				break;
+    				    break;
                     case "00":
                         out = true;
                         break;
