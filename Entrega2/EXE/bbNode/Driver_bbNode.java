@@ -44,6 +44,9 @@ public class Driver_bbNode{
         boolean create = false;
         double value;
         String new_name;
+        int i = 0;
+        DefaultMutableTreeNode mutarrel = null;
+        DefaultMutableTreeNode mutnode = null;
         
         menu();
         while(!out){
@@ -144,8 +147,8 @@ public class Driver_bbNode{
                          -
                          -
                          */
-                        DefaultMutableTreeNode mutarrel = null;
-                        DefaultMutableTreeNode mutnode = null;
+                         mutarrel = null;
+                         mutnode = null;
                         NodeArbre nar;
                         
                         boolean vesfent = true;
@@ -251,25 +254,25 @@ public class Driver_bbNode{
                         break;
                     case "13":
                         ArrayList<Integer> a = n.obtenirCami();
-                        for(int i = 0; i < a.size(); i++){
+                        for(i = 0; i < a.size(); i++){
                             System.out.println(a.get(i));
                         }
                         break;
                     case "14":
                         ArrayList<Integer> a2 = n.obtenirNecessitatsPendents();
-                        for(int i = 0; i < a2.size(); i++){
+                        for(i = 0; i < a2.size(); i++){
                             System.out.println(a2.get(i));
                         }
                         break;
                     case "15":
                         ArrayList<Integer> a3 = n.obtenirPlanetesPendents();
-                        for(int i = 0; i < a3.size(); i++){
+                        for(i = 0; i < a3.size(); i++){
                             System.out.println(a3.get(i));
                         }
                         break;
                     case "16":
                         //ARBRE
-                        DefaultMutableTreeNode mutarrel = n.obtenirMutNode();
+                        mutarrel = n.obtenirMutNode();
                         Enumeration e = mutarrel.preorderEnumeration();
                         while(e.hasMoreElements()){
                             DefaultMutableTreeNode dmtn = (DefaultMutableTreeNode) e.nextElement();
