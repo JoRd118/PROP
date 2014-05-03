@@ -80,8 +80,8 @@ public class Driver_bbNode{
                         
                         new_name = scan.nextLine();
                         boolean descartat = false;
-                        if(new_name.equals("True")) essolucio = true;
-                        else if(new_name.equals("False")) essolucio = false;
+                        if(new_name.equals("True")) descartat = true;
+                        else if(new_name.equals("False")) descartat = false;
                         
                         new_name = scan.nextLine();
                         int nivell = Integer.parseInt(new_name);
@@ -254,21 +254,27 @@ public class Driver_bbNode{
                         break;
                     case "13":
                         ArrayList<Integer> a = n.obtenirCami();
+                        String s_cami = new String();
                         for(i = 0; i < a.size(); i++){
-                            System.out.println(a.get(i));
+                            s_cami = s_cami + a.get(i) + " ";
                         }
+                        System.out.println(s_cami);
                         break;
                     case "14":
                         ArrayList<Integer> a2 = n.obtenirNecessitatsPendents();
+                        String s_need = new String();
                         for(i = 0; i < a2.size(); i++){
-                            System.out.println(a2.get(i));
+                            s_need = s_need + a2.get(i) + " ";
                         }
+                        System.out.println(s_need);
                         break;
                     case "15":
                         ArrayList<Integer> a3 = n.obtenirPlanetesPendents();
+                        String s_planet = new String();
                         for(i = 0; i < a3.size(); i++){
-                            System.out.println(a3.get(i));
+                            s_planet = s_planet + a3.get(i) + " ";
                         }
+                        System.out.println(s_planet);
                         break;
                     case "16":
                         //ARBRE
