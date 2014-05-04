@@ -189,6 +189,61 @@ public class Controlador_Domini_Paquet{
         else throw new IllegalArgumentException(msg_paquet_no_exists);
     }
 
+
+
+    //NOVES FUNCS!!
+    public void borrar_recurs3(String nom){
+        Iterable<String> paquets = p.obtainAllTST();
+        for(String a : paquets){
+            Paquet aux = p.obtain(a);
+            Iterable<String> recursos = llistatRecursosPaquetIterator(aux);
+            for(String b : recursos){
+                if(b.equals(nom)) esborrarRecurs(aux.obtenirId(),nom);
+            }
+        }
+        paquets = pa.obtainAllTST();
+        for(String a : paquets){
+            Paquet aux = p.obtain(a);
+            Iterable<String> recursos = llistatRecursosPaquetIterator(aux);
+            for(String b : recursos){
+                if(b.equals(nom)) esborrarRecurs(aux.obtenirId(),nom);
+            }
+        }
+
+    }
+
+    public void modificar_nom_recurs3(String old_name, String new_name){
+        TST<Paquet> paquets_amb_recurs =  new TST<Paquet>();
+        Iterable<String> paquets = p.obtainAllTST();
+        for(String a : paquets){
+            Paquet aux = p.obtain(a);
+            Iterable<String> recursos = llistatRecursosPaquetIterator(aux);
+            for(String b : recursos){
+                if(b.equals(old_name)){
+                    esborrarRecurs(aux.obtenirId(),old_name);                    
+                    paquets_amb_recurs.insert(Integer.toString(aux.obtenirId()), aux);  
+                } 
+            }
+        }
+        paquets = pa.obtainAllTST();
+        for(String a : paquets){
+            Paquet aux = p.obtain(a);
+            Iterable<String> recursos = llistatRecursosPaquetIterator(aux);
+            for(String b : recursos){
+                if(b.equals(old_name)){
+                    esborrarRecurs(aux.obtenirId(),old_name);
+                    paquets_amb_recurs.insert(Integer.toString(aux.obtenirId()), aux);  
+                } 
+            }
+        }
+        cr.modificarNom(old_name, new_name);
+        Iterable<String> paquetsrecursos = paquets_amb_recurs.obtainAllTST();
+        for(String a : paquetsrecursos){
+            Paquet aux2 = paquets_amb_recurs.obtain(a);
+            assignarRecurs(aux2.obtenirId(), new_name);
+        }
+    }
+
     public void guardarPaquets(String nomFitxer) throws IOException{
         cp.writeTextFile(nomFitxer, llistatGuardar());
     }

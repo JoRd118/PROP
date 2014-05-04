@@ -339,6 +339,65 @@ public class Controlador_Domini_Planeta {
     		s.remove(0);
     	}
     }
+    //NOVES FUNCIONS!
+   public void borrar_paquet2(String id){
+    	if(Conjunt_Paquets.contains(id)){
+    		desassignarPaquet(id);
+    	}
+    	cp.baixaPaquet(Integer.parseInt(id));        
+    }
+
+    public void borrar_recurs2(String nom){
+    	Iterable<String> planetes = Conjunt_Planetes_Assignat.obtainAllTST();
+        for(String a : planetes){
+        	Planeta aux = Conjunt_Planetes_Assignat.obtain(a);
+        	Iterable<String> necesitats = obtenirNecessitats(aux.obtenirNom());
+        	for(String b : necesitats){
+        		if(b.equals(nom)) baixaNecessitats(a, b);
+        	}
+        }
+        planetes = Conjunt_Planetes_Desassignat.obtainAllTST();
+        for(String a : planetes){
+        	Planeta aux = Conjunt_Planetes_Assignat.obtain(a);
+        	Iterable<String> necesitats = obtenirNecessitats(aux.obtenirNom());
+        	for(String b : necesitats){
+        		if(b.equals(nom)) baixaNecessitats(a, b);
+        	}
+        }
+    	cp.borrar_recurs3(nom);
+    }
+    public void modificar_nom_recurs2(String old_name, String new_name){
+    	TST<Planeta> planetes_amb_recurs = new TST<Planeta>();
+        Iterable<String> planetes = Conjunt_Planetes_Assignat.obtainAllTST();
+        for(String a : planetes){
+        	Planeta aux = Conjunt_Planetes_Assignat.obtain(a);
+        	Iterable<String> necesitats = obtenirNecessitats(aux.obtenirNom());
+        	for(String b : necesitats){
+        		if(b.equals(old_name)){
+        			planetes_amb_recurs.insert(a, aux);
+        			baixaNecessitats(a, b);
+        		} 
+        	}
+        }
+       planetes = Conjunt_Planetes_Desassignat.obtainAllTST();
+        for(String a : planetes){
+        	Planeta aux = Conjunt_Planetes_Assignat.obtain(a);
+        	Iterable<String> necesitats = obtenirNecessitats(aux.obtenirNom());
+        	for(String b : necesitats){
+        		if(b.equals(old_name)){
+        			planetes_amb_recurs.insert(a, aux);
+        			baixaNecessitats(a, b);
+        		} 
+        	}
+        }
+
+    	cp.modificar_nom_recurs3(old_name, new_name);
+    	Iterable<String> planetesrecurs = planetes_amb_recurs.obtainAllTST();
+    	for(String a : planetesrecurs){
+    		altaNecessitats(a, new_name);
+    	}
+    }
+
     
     //Pre:
     //Post: Retornar un ArrayList<String> on hi han totes les dades ben colocades

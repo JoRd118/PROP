@@ -57,10 +57,12 @@ public class Driver_Controlador_Domini_QAP{
         //---Planeta---
         System.out.println("\t 31) public Controlador_Domini_Planeta(Controlador_Domini_Paquet p, Controlador_Domini_Recurs r).");
         System.out.println("\t 32) public void altaPlaneta(String nom, Coordenades coord, boolean classeM).");
-        System.out.println("\t 33) public void baixaPlaneta(String nom).");
+        //System.out.println("\t 33) public void baixaPlaneta(String nom).");
+        System.out.println("\t 33) public void borra_planeta (String nom).");
         System.out.println("\t 34) public void assignarPlaneta(String nomP).");
         System.out.println("\t 35) public void desassignarPlaneta(String nomP).");
-        System.out.println("\t 36) public void modificarNom(String nom, String newnom).");
+        //System.out.println("\t 36) public void modificarNom(String nom, String newnom).");
+        System.out.println("\t 36) public void modificar_nom_planeta(String oldnom, String newnom).");
         System.out.println("\t 37) public void modificarCoordenades(String nom, int x, int y).");
         System.out.println("\t 38) public void modificarClasse(String nom, boolean classeM).");
         System.out.println("\t 39) public int obtenirId(String nom).");
@@ -81,7 +83,8 @@ public class Driver_Controlador_Domini_QAP{
         //---Paquet---
         System.out.println("\t 61) public Controlador_Domini_Paquet(Controlador_Domini_Recurs n).");
         System.out.println("\t 62) public altaPaquet().");
-        System.out.println("\t 63) public baixaPaquet(int id).");
+        //System.out.println("\t 63) public baixaPaquet(int id).");
+        System.out.println("\t 63) public borrar_paquet(String id).");
         System.out.println("\t 64) public assignarRecurs(int id, String nom).");
         System.out.println("\t 65) public esborrarRecurs(int id, String nom).");
         System.out.println("\t 66) public Paquet obtenirPaquet(int id).");
@@ -98,8 +101,10 @@ public class Driver_Controlador_Domini_QAP{
         //---Recurs---
         System.out.println("\t 81) public Controlador_Domini_Recurs().");
         System.out.println("\t 82) public void altaRecurs(String nom).");
-        System.out.println("\t 83) public void baixaRecurs(String nom).");
-        System.out.println("\t 84) public void modificarNom(String nom, String new_nom).");
+        //System.out.println("\t 83) public void baixaRecurs(String nom).");
+        System.out.println("\t 83) public void borrar_recurs(String nom).");
+        //System.out.println("\t 84) public void modificarNom(String nom, String new_nom).");
+        System.out.println("\t 84) public void modificar_nom_recurs (String nom, String new_nom).");
         System.out.println("\t 85) public Recurs obtenirRecurs(String nom).");
         System.out.println("\t 86) public int obtenirId(String nom).");
         System.out.println("\t 87) public String llistatRecurs().");
@@ -345,7 +350,7 @@ public class Driver_Controlador_Domini_QAP{
                         break;
                     case "33":  // baixaPlaneta
                         nom = scan.nextLine();
-                        cp.baixaPlaneta(nom);
+                        u.borrar_planeta(nom);
                         break;
                     case "34": //assignarPlaneta
                         //System.out.println("Escriu el nom del planeta:");
@@ -362,7 +367,7 @@ public class Driver_Controlador_Domini_QAP{
                         nom = scan.nextLine();
                         //System.out.println("Escriu el nou nom per al planeta:");
                         String nou_nom = scan.nextLine();
-                        cp.modificarNom(nom, nou_nom);
+                        u.modificar_nom_planeta(nom, nou_nom);
                         break;
                     case "37":  // modificarCoordenades(String nom, int x, int y)
                         //System.out.println("Escriu el nom del planeta a modificar:");
@@ -486,7 +491,8 @@ public class Driver_Controlador_Domini_QAP{
                     case "63":
                         //System.out.println("Introduir id");
                         num = scan.nextLine();
-                        cpa.baixaPaquet(Integer.parseInt(num));
+                        //u.borrar_paquet(Integer.parseInt(num));
+                        u.borrar_paquet(num);
                         break;
                     case "64":
                         //System.out.println("Introduir id");
@@ -559,12 +565,12 @@ public class Driver_Controlador_Domini_QAP{
                         break;
                     case "83":
                         nom = scan.nextLine();
-                        cr.baixaRecurs(nom);
+                        u.borrar_recurs(nom);
                         break;
                     case "84":
                         nom = scan.nextLine();
                         new_nom = scan.nextLine();
-                        cr.modificarNom(nom,new_nom);
+                        u.modificar_nom_recurs(nom,new_nom);
                         break;
                     case "85":
                         nom = scan.nextLine();
