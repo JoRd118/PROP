@@ -43,7 +43,7 @@ public class Driver_Controlador_Domini_Recurs{
                 switch (op) {
                         
                     case "01":
-                        r = new Controlador_Domini_Recurs(t);
+                        r = new Controlador_Domini_Recurs();
                         break;
                         
                     case "02":

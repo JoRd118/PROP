@@ -20,10 +20,6 @@ public class Controlador_Domini_Recurs{
         t = new Controlador_Dades_Recurs();
     }
     
-    public Controlador_Domini_Recurs(Controlador_Dades_Recurs t){
-        r = new TST<Recurs>();
-        this.t = t;
-    }
     
     public void altaRecurs(String nom){
         //Buscar REPETITS
