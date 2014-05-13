@@ -27,6 +27,7 @@ public class Controlador_Domini_Univers{
 	public Controlador_Domini_Univers(Controlador_Domini_Planeta cp1, Controlador_Domini_Recurs cr1, Controlador_Domini_Paquet cpa1){ 
 		u = new TST<Univers>();
 		p = new TST<TST<Planeta>>();
+    cdu = new Controlador_Dades_Univers();
 		cp = cp1;
 		cr = cr1;
 		cpa = cpa1;
@@ -39,6 +40,7 @@ public class Controlador_Domini_Univers{
 	public Controlador_Domini_Univers(){
 		u = new TST<Univers>();
 		p = new TST<TST<Planeta>>();
+    cdu = new Controlador_Dades_Univers();
 	}
 
 	//Pre: True
@@ -289,10 +291,43 @@ public class Controlador_Domini_Univers{
       return planetes;
     }
 
+    //NOVES FUNCIONS!
+    public void borrar_planeta(String nom){
+      String aux = existeixplanetaunivers(nom);
+      if(!aux.equals("none")){
+        System.out.println("Entra al if");
+        desafegirPlanetaUnivers(aux, nom);
+      }
+      cp.baixaPlaneta(nom);
+
+    }
+
+   public void borrar_paquet(String id){
+      cp.borrar_paquet2(id);
+    }
+
+    public void borrar_recurs(String nom){
+      cp.borrar_recurs2(nom);
+    }
+
+    public void modificar_nom_planeta(String old_name, String new_name){
+      String aux = existeixplanetaunivers(old_name);
+      if(!aux.equals("none")){
+        desafegirPlanetaUnivers(aux, old_name);
+        cp.modificarNom(old_name, new_name);
+        afegirPlanetaUnivers(aux, new_name);
+      }
+    }
+
+    public void modificar_nom_recurs(String old_name, String new_name){
+      cp.modificar_nom_recurs2(old_name, new_name);
+    }
+
     //Pre: True
     //Post: Guarda en un fitxer les dades dels unviersos
     public void guardarUniversos(String nomFitxer) throws IOException{
         cdu.writeTextFile(nomFitxer, llistatGuardar());
+
     }
 
     //Pre: True
@@ -301,15 +336,13 @@ public class Controlador_Domini_Univers{
       ArrayList<String> s = cdu.readTextFile(nomFitxer);
       while(s.size() > 0) {
         String nom = s.get(0);
-        Univers uni = new Univers(nom);
+        altaUnivers(nom);
         s.remove(0);
-        TST<Planeta> aux = new TST<Planeta>();
-        p.insert(nom, aux);
         while (!s.get(0).equals("#")) {
-          Planeta plan = cp.obtenirPlaneta(s.get(0));
-          aux.insert(s.get(0),plan);
+          afegirPlanetaUnivers(nom,s.get(0));
           s.remove(0);
         }
+        s.remove(0);
       }
     }
 
@@ -323,14 +356,32 @@ public class Controlador_Domini_Univers{
         TST<Planeta> aux = p.obtain(a);
         Iterable<String> s1 = aux.obtainAllTST();
         for(String b : s1){
-            list.add(b);              
+                  System.out.println(b);
+            list.add(b);          
         }
         list.add("#");
-      }
-      //cp.guardarPlaneta();
+      }   
       return list;
     }
 
+
+    //NOVA FUNCIO!
+    private String existeixplanetaunivers(String nom){
+      TST<Planeta> p1 = new TST<Planeta>();
+      Iterable<String> universos = u.obtainAllTST();
+      //System.out.println("Entra al for");
+      for(String nom_univers : universos){
+        p1 = p.obtain(nom_univers);
+        Iterable<String> planetesunivers = p1.obtainAllTST();
+        //System.out.println("Entra al for2");
+        for(String planeta : planetesunivers){
+          //System.out.println("Entra al if2");
+          if(planeta.equals(nom)) return nom_univers;
+          //System.out.println("Surt al if");
+        }
+      }
+      return "none";
+    }
 
 
 
