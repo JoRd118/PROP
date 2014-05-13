@@ -10,6 +10,7 @@ public class Controlador_Domini_Recurs{
     
     private TST<Recurs> r;
     private Controlador_Dades t;
+    private Identificador i;
     private static String msg_recurs_no_exists = "Error de Recurs: Recurs demanat no existeix.";
     private static String msg_recurs_repetit = "Error de Recurs: Ja existeix un recurs amb aquest nom.";
     
@@ -18,6 +19,7 @@ public class Controlador_Domini_Recurs{
     public Controlador_Domini_Recurs(){
         r = new TST<Recurs>();
         t = new Controlador_Dades();
+        i = new Identificador();
     }
     
     
@@ -25,7 +27,7 @@ public class Controlador_Domini_Recurs{
         //Buscar REPETITS
         if(r.contains(nom))throw new IllegalArgumentException(msg_recurs_repetit);
         else{
-            Recurs aux = new Recurs(nom);
+            Recurs aux = new Recurs(nom, i.id());
             r.insert(nom,aux);
         }
     }
@@ -126,6 +128,7 @@ public class Controlador_Domini_Recurs{
     }
     
     public void carregarRecursos(String nomFitxer)throws IOException{
+        i.reset();
         t.obrirFitxer(nomFitxer);
         String s = t.readTextFile();
         String[] elements = s.split("\n");

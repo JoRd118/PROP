@@ -8,26 +8,23 @@
 public class Recurs{
     
     //Class atributes
-    private static int idCounter = 0;
     private int id;
     private String nom;
 
     //Constructores
     
     //Pre: True.
-    //Post: Instancia de Recurs.
-    public Recurs(){
-        id = idCounter;
-        idCounter = idCounter + 1;
-        nom = "Recurs_"+id;
+    //Post: Default.
+    public Recurs(int i){
+        id = i;
+        nom = "Recurs_"+i;
     }
     
     //Pre: True.
     //Post: Instancia de Recurs.
-    public Recurs(String nom){
-        id = idCounter;
-        idCounter = idCounter + 1;
-        this.nom = nom;
+    public Recurs(String n, int i){
+        id = i;
+        nom = n;
     }
     
     
@@ -36,7 +33,7 @@ public class Recurs{
     //Pre: True.
     //Post: El nom del recurs queda modificat a que es passa per paramatre.
     public void modificarNomRecurs(String new_name){
-        this.nom = new_name;
+        nom = new_name;
     }
     
     
@@ -45,7 +42,7 @@ public class Recurs{
     //Pre: True.
     //Post: Retorna el id del Recurs.
     public int obtenirId(){
-        return this.id;
+        return id;
     }
     
     //Pre: True.
