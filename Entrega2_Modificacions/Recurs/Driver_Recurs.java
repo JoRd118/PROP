@@ -14,7 +14,7 @@ public class Driver_Recurs{
         System.out.println("Escollir opció:");
         System.out.println("\t 00) Salida.");
         System.out.println("\t 01) public Recurs().");
-        System.out.println("\t 02) public Recurs(String nom).");
+        System.out.println("\t 02) public Recurs(String nom, int i).");
         System.out.println("\t 03) public void modificarNomRecurs(String new_name).");
         System.out.println("\t 04) public int obtenirId().");
         System.out.println("\t 05) public String obtenirNom().");
@@ -39,13 +39,18 @@ public class Driver_Recurs{
                         break;
                         
                     case "01":
-                        r = new Recurs();
+                        String aux3 = scan.nextLine();
+                        int aux4 = Integer.parseInt(aux3);
+                        
+                        r = new Recurs(aux4);
                         create = true;
                         break;
                         
                     case "02":
                         String nom = scan.nextLine();
-                        r = new Recurs(nom);
+                        String aux = scan.nextLine();
+                        int aux2 = Integer.parseInt(aux);
+                        r = new Recurs(nom, aux2);
                         create = true;
                         break;
                         

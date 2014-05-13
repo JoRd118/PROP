@@ -8,25 +8,22 @@
 public class Recurs{
     
     //Class atributes
-    private Identificador i;
     private int id;
     private String nom;
 
     //Constructores
     
     //Pre: True.
-    //Post: Instancia de Recurs.
-    public Recurs(){
-        i = new Identificador();
-        id = i.idRecurs();
-        nom = "Recurs_"+id;
+    //Post: Default.
+    public Recurs(int i){
+        id = i;
+        nom = "Recurs_"+i;
     }
     
     //Pre: True.
     //Post: Instancia de Recurs.
-    public Recurs(String n){
-        i = new Identificador();
-        id = i.idRecurs();
+    public Recurs(String n, int i){
+        id = i;
         nom = n;
     }
     

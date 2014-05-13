@@ -14,10 +14,7 @@ public class Driver_Identificador{
         System.out.println("Escollir opció:");
         System.out.println("\t 00) Salida.");
         System.out.println("\t 01) public Identificador().");
-        System.out.println("\t 02) public int idRecurs().");
-        System.out.println("\t 03) public int idPaquet().");
-        System.out.println("\t 04) public int idPlaneta().");
-        System.out.println("\t 05) public int idUnivers().");
+        System.out.println("\t 02) public int id().");
         System.out.println("\t 06) public void reset().");
     }
     public static void main(String[] args) {
@@ -43,16 +40,7 @@ public class Driver_Identificador{
                         create = true;
                         break;
                     case "02":
-                        System.out.println(i.idRecurs());
-                        break;
-                    case "03":
-                        System.out.println(i.idPaquet());
-                        break;
-                    case "04":
-                        System.out.println(i.idPlaneta());
-                        break;
-                    case "05":
-                        System.out.println(i.idUnivers());
+                        System.out.println(i.id());
                         break;
                     case "06":
                        i.reset();
