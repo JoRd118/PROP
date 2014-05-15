@@ -293,16 +293,24 @@ public class Controlador_Domini_Planeta {
     		}
     		s.remove(0);
     	}
-    }
+    }*/
 
 
-    public void borrar_paquet2(String id){
-    	if(Conjunt_Paquets.contains(id)){
-    		desassignarPaquet(id);
-    	}
-    	cp.baixaPaquet(Integer.parseInt(id));        
+    public void borrar_paquet2(int id){
+        Iterable<String> planetes = Conjunt_Planetes_Assignat.obtainAllTST();
+        for(String a : planetes){
+            Planeta aux = Conjunt_Planetes_Assignat.obtain(a);
+            Paquet p = aux.obtenirPaquet();
+            if(id == p.obtenirId()) desassignarPaquet(aux.obtenirNom());
+        }
+        planetes = Conjunt_Planetes_Desassignat.obtainAllTST();
+        for(String a : planetes){
+            Planeta aux = Conjunt_Planetes_Desassignat.obtain(a);
+            Paquet p = aux.obtenirPaquet();
+            if(id == p.obtenirId()) desassignarPaquet(aux.obtenirNom());
+        }
+    	cp.baixaPaquet(id);        
     }
-*/
 
     public void borrar_recurs2(String nom){
     	Iterable<String> planetes = Conjunt_Planetes_Assignat.obtainAllTST();
