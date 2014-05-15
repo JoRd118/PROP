@@ -86,6 +86,7 @@ public class Controlador_Domini_Paquet{
         else throw new IllegalArgumentException(msg_paquet_no_exists);
     }
 
+   
     public int obtenirIdPaquet(Paquet pac) {
         return pac.obtenirId();
     }
