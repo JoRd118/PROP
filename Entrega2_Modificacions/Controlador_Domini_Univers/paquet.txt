@@ -1,0 +1,12 @@
+0
+Aigua
+Diamant
+#1
+Ferro
+Or
+#2
+Coure
+#3
+Aigua
+Ferro
+#
