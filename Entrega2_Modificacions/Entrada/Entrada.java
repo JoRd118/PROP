@@ -57,6 +57,26 @@ public class Entrada {
 		return null;
 	}
 
+	public double[][] obtenirMatriuDisPla() {
+		return mat_dis_plan;
+	}
+
+	public int[][] obtenirMatriuNecPla() {
+		return mat_nec_plan;
+	}
+
+	public int[][] obtenirMatriuRecPla() {
+		return mat_rec_plan;
+	}
+
+	public String[] obtenirVectorRecu() {
+		return recu;
+	}
+	
+	public String[] obtenirVectorPlan() {
+		return plan;
+	}
+
 	//Modificadores
 	public void modificarPosDis(int i, int j, double valor) {
 		if(validarPos(mat_dis_plan, i, j)) mat_dis_plan[i][j] = valor;

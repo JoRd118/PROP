@@ -25,6 +25,11 @@ public class Driver_Entrada{
         System.out.println("\t 11) public void modificarPosRecPlaneta(int i, int j, int valor).");
         System.out.println("\t 12) public void modificarPosRecu(int i, String valor).");
         System.out.println("\t 13) public void modificarPosPlan(int i, String valor).");
+        System.out.println("\t 14) public double[][] obtenirMatriuDisPla().");
+        System.out.println("\t 15) public int[][] obtenirMatriuNecPla().");
+        System.out.println("\t 16) public int[][] obtenirMatriuRecPla().");
+        System.out.println("\t 17) public String[] obtenirVectorRecu().");
+        System.out.println("\t 18) public String[] obtenirVectorPlan().");
         System.out.println("\t 00) Salida.");
     }
     
@@ -249,6 +254,56 @@ public class Driver_Entrada{
                         valor_str = scan.nextLine();
                         en.modificarPosPlan(i,valor_str);
                         break;
+
+                    case "14":
+                        dou = en.obtenirMatriuDisPla();
+                        for (int i = 0; i < dou.length; ++i) {
+                            for (int j = 0; j < dou[0].length; ++j) {
+                                System.out.println(dou[i][j]);
+                            }
+                            System.out.println();
+                        }
+                        System.out.println("\n");
+                        break;
+
+                    case "15":
+                        in = en.obtenirMatriuNecPla();
+                        for (int i = 0; i < in.length; ++i) {
+                            for (int j = 0; j < in[0].length; ++j) {
+                                System.out.println(in[i][j]);
+                            }
+                            System.out.println();
+                        }
+                        System.out.println("\n");
+                        break;
+
+                    case "16":
+                        in = en.obtenirMatriuRecPla();
+                        for (int i = 0; i < in.length; ++i) {
+                            for (int j = 0; j < in[0].length; ++j) {
+                                System.out.println(in[i][j]);
+                            }
+                            System.out.println();
+                        }
+                        System.out.println("\n");
+                        break;
+
+                    case "17":
+                        str = en.obtenirVectorRecu();
+                        for (int i = 0; i < str.length; ++i) {
+                            System.out.println(str[i]);
+                        }
+                        System.out.println("\n");
+                        break;
+
+                    case "18":
+                        str = en.obtenirVectorPlan();
+                        for (int i = 0; i < str.length; ++i) {
+                            System.out.println(str[i]);
+                        }
+                        System.out.println("\n");
+                        break;
+
 
 
                     default:
