@@ -43,7 +43,7 @@ public class Controlador_Domini_Planeta {
 	public void altaPlaneta(String nom, Coordenades coord, boolean classeM) {
 		if(Conjunt_Planetes_Desassignat.contains(nom)||Conjunt_Planetes_Assignat.contains(nom)) throw new IllegalArgumentException(msg_planeta_repetit);
 		else {
-			Planeta p = new Planeta(nom,id.id() , coord, classeM);
+			Planeta p = new Planeta(nom, id.id() , coord, classeM);
 			Conjunt_Planetes_Desassignat.insert(nom, p);
 		}
 	}
@@ -220,7 +220,7 @@ public class Controlador_Domini_Planeta {
             if(Conjunt_Planetes_Assignat.contains(nomP)) p = Conjunt_Planetes_Assignat.obtain(nomP);
             else p = Conjunt_Planetes_Desassignat.obtain(nomP);
             if(p.obtenirClasse()){
-             	Paquet pq = cp.obtenirPaquet(id);
+             	Paquet pq = cp.obtenirPaquetAssignar(id);
                	p.assignarPaquet(pq);
             } else throw new IllegalArgumentException(msg_planeta_no_classM);
 		} else throw new IllegalArgumentException(msg_planeta_no_exists);
@@ -265,38 +265,7 @@ public class Controlador_Domini_Planeta {
 			return aux.obtainAllTST();
 		} else throw new IllegalArgumentException(msg_planeta_no_exists);
 	}
-/*    
-    //Pre:
-    //Post: Guardar en el fitxer nomFitxer totes les dades becessaries pero tornar a carregar i que tot estigui igual
-	public void guardarPlanetes(String nomFitxer) throws IOException{
-        cdp.writeTextFile(nomFitxer, llistatGuardar());
-    }
     
-    //Pre:
-    //Post: Carregar del fitxer nomFitxer totes les dades i ho restaura tot
-    public void carregarPlanetes(String nomFitxer) throws IOException {
-    	ArrayList<String> s = cdp.readTextFile(nomFitxer);
-    	while (!s.isEmpty()) {
-    		String nom = s.get(0);
-    		s.remove(0);
-    		Coordenades c = new Coordenades();
-    		c.modificarCoordenades(Integer.parseInt(s.get(0)), Integer.parseInt(s.get(1)));
-    		Planeta plan;
-    		if (s.get(2).equals("1")) altaPlaneta(nom,c,true);
-    		else altaPlaneta(nom,c,false);
-    		s.remove(0);
-    		s.remove(0);
-    		s.remove(0);
-    		assignarPaquet(nom, Integer.parseInt(s.get(0)));
-    		s.remove(0);
-    		while (!s.get(0).equals("#")) {
-    			altaNecessitats(nom,s.get(0));
-    			s.remove(0);
-    		}
-    		s.remove(0);
-    	}
-    }*/
-
 
     public void borrar_paquet2(int id){
         Iterable<String> planetes = Conjunt_Planetes_Assignat.obtainAllTST();
@@ -365,33 +334,116 @@ public class Controlador_Domini_Planeta {
     		altaNecessitats(a, new_name);
     	}
     }
+    //Pre:
+    //Post: Guardar en el fitxer nomFitxer totes les dades becessaries pero tornar a carregar i que tot estigui igual
+    public void guardarPlanetes(String nomFitxer) throws IOException{
+        cd.obrirFitxer(nomFitxer);
+        cd.deleteFile();
+        guardar();
+        cd.tancarFitxer();
+    }
+    
+    //Pre:
+    //Post: Carregar del fitxer nomFitxer totes les dades i ho restaura tot
+    public void carregarPlanetes(String nomFitxer) throws IOException {
+        id.reset();
+        cd.obrirFitxer(nomFitxer);
+        String d = cd.readTextFile();
+        String[] dades = d.split("#");
+        for(int i = 0; i < dades.length; ++i) {
+            String[] aux = dades[i].split("\n");
+            Coordenades aux1 = new Coordenades(Integer.parseInt(aux[1]), Integer.parseInt(aux[2]));
+            if(aux[3].equals("1")) altaPlaneta(aux[0], aux1, true);
+            else altaPlaneta(aux[0], aux1, false);
+            assignarPaquet(aux[0], Integer.parseInt(aux[4]));
+            for(int j = 5; j < aux.length; ++j) {
+                altaNecessitats(aux[0],aux[j]);
+            }
+        }
+        cd.tancarFitxer();
+        /*while (!s.isEmpty()) {
+            String nom = s.get(0);
+            s.remove(0);
+            Coordenades c = new Coordenades();
+            c.modificarCoordenades(Integer.parseInt(s.get(0)), Integer.parseInt(s.get(1)));
+            Planeta plan;
+            if (s.get(2).equals("1")) altaPlaneta(nom,c,true);
+            else altaPlaneta(nom,c,false);
+            s.remove(0);
+            s.remove(0);
+            s.remove(0);
+            assignarPaquet(nom, Integer.parseInt(s.get(0)));
+            s.remove(0);
+            while (!s.get(0).equals("#")) {
+                altaNecessitats(nom,s.get(0));
+                s.remove(0);
+            }
+            s.remove(0);
+        }*/
+    }
 
-/*
     //Pre:
     //Post: Retornar un ArrayList<String> on hi han totes les dades ben colocades
-	private ArrayList<String> llistatGuardar() {
-		ArrayList<String> list = new ArrayList<String>();
-        Iterable<String> s = Necessitats_Planetes.obtainAllTST();
-        for(String a : s){
-            list.add(a);
+	private void guardar() throws IOException {
+        Iterable<String> s = Conjunt_Planetes_Desassignat.obtainAllTST();
+        for(String id : s){
+            String list = new String();
+            list += id + "\n";
+            //list.add(a);
             Planeta p;
-            if (Conjunt_Planetes_Desassignat.contains(a)) p = Conjunt_Planetes_Desassignat.obtain(a);
-            else p = Conjunt_Planetes_Assignat.obtain(a);
+            p = Conjunt_Planetes_Desassignat.obtain(id);
             Coordenades c = p.obtenirCoordenades();
-            list.add(Integer.toString(c.obtenirCoordenadesX()));
-            list.add(Integer.toString(c.obtenirCoordenadesY()));
-            if (p.obtenirClasse()) list.add("1");
-            else list.add("0");
-            Paquet pac = Conjunt_Paquets.obtain(a);
-            list.add(Integer.toString(cp.obtenirIdPaquet(pac)));
-            TST<Recurs> aux = Necessitats_Planetes.obtain(a);
+            list += Integer.toString(c.obtenirCoordenadesX()) + "\n";
+            list += Integer.toString(c.obtenirCoordenadesY()) + "\n";
+            //list.add(Integer.toString(c.obtenirCoordenadesX()));
+            //list.add(Integer.toString(c.obtenirCoordenadesY()));
+            if (p.obtenirClasse()) list += "1\n"; //list.add("1");
+            else list += "0\n"; //list.add("0");
+            Paquet pac = p.obtenirPaquet();
+            list += Integer.toString(cp.obtenirIdPaquet(pac)) + "\n";
+            //list.add(Integer.toString(cp.obtenirIdPaquet(pac)));
+            TST<Recurs> aux = p.obtenirNecessitats();
             Iterable<String> s1 = aux.obtainAllTST();
             for (String nom : s1) {
-                list.add(nom);
+                list += nom + "\n";
+                //list.add(nom);
             }
-            list.add("#");
+            list += "#";
+            cd.writeTextFile(list); 
+            //list.add("#");
         }
-        return list;
-	}
-*/
+        //System.out.println("Hola");
+        Iterable<String> s1 = Conjunt_Planetes_Assignat.obtainAllTST();
+        for(String nom : s1){
+            String list = new String();
+            list += nom + "\n";
+            //list.add(a);
+            Planeta p;
+            p = Conjunt_Planetes_Assignat.obtain(nom);
+            Coordenades c = p.obtenirCoordenades();
+            list += Integer.toString(c.obtenirCoordenadesX()) + "\n";
+            list += Integer.toString(c.obtenirCoordenadesY()) + "\n";
+            //list.add(Integer.toString(c.obtenirCoordenadesX()));
+            //list.add(Integer.toString(c.obtenirCoordenadesY()));
+            if (p.obtenirClasse()) {
+                list += "1\n"; //list.add("1");
+                Paquet pac = p.obtenirPaquet();
+                list += Integer.toString(cp.obtenirIdPaquet(pac)) + "\n";
+                //list.add(Integer.toString(cp.obtenirIdPaquet(pac)));
+                TST<Recurs> aux = p.obtenirNecessitats();
+                Iterable<String> s2 = aux.obtainAllTST();
+                for (String nom1 : s2) {
+                    list += nom1 + "\n";
+                    //list.add(nom);
+                }
+            }
+            else list += "0\n"; //list.add("0");
+
+            list += "#";
+            //System.out.println(list);
+            cd.writeTextFile(list); 
+            //System.out.println("Hola3");
+            //list.add("#");
+        }
+    }
 }

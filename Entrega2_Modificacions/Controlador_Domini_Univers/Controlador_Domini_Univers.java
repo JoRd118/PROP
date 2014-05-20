@@ -334,7 +334,7 @@ public class Controlador_Domini_Univers{
       for(int i = 0; i < dades.length; ++i) {
         String[] aux = dades[i].split("\n");
         altaUnivers(aux[0]);
-        for(int j = 0; j < aux.length; ++j) {
+        for(int j = 1; j < aux.length; ++j) {
           afegirPlanetaUnivers(aux[0],aux[j]);
         }
       }
@@ -354,6 +354,7 @@ public class Controlador_Domini_Univers{
             list += b + "\n";        
         }
         list += "#";
+        cdu.writeTextFile(list);
       }   
     }
 
