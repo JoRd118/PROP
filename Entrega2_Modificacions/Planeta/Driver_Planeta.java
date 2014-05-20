@@ -20,7 +20,7 @@ public class Driver_Planeta{
         System.out.println("\t 07) public modificacioNom(String nomPlaneta).");
         System.out.println("\t 08) public modificacioCoordenades(int x, int y).");
         System.out.println("\t 09) public modificacioClasse(boolean classeM).");
-        System.out.println("\t 10) public void afegirNecessitat(Recurs r).");
+        System.out.println("\t 10) public void afegirNecessitat(Recurs r, int id).");
         System.out.println("\t 11) public void eliminarNecessitat(String nomR).");
         System.out.println("\t 12) public void assignarPaquet(Paquet pq).");
         System.out.println("\t 13) public void desassignarPaquet().");
