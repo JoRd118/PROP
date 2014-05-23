@@ -205,6 +205,7 @@ public class Controlador_Domini_Paquet{
                 aux.assignarRecurs(new_name, cr.obtenirRecurs(new_name));
             }
         }
+        
     }
 
     public void guardarPaquets(String nomFitxer) throws IOException{
