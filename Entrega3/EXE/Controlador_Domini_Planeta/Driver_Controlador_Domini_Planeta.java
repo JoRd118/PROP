@@ -320,7 +320,7 @@ public class Driver_Controlador_Domini_Planeta {
                     case "54":
                         nom = scan.nextLine();
                         new_nom = scan.nextLine();
-                        cr.modificarNom(nom,new_nom);
+                        cp.modificar_nom_recurs2(nom,new_nom);
                         break;                        
                     case "55":
                         nom = scan.nextLine();
