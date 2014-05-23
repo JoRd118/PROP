@@ -95,7 +95,6 @@ public class Driver_Planeta{
                         String nom = scan.nextLine();
                         p.modificacioNom(nom);
                         break;
-                        
                     case "08":
                         String x = scan.nextLine();
                         int Eix_x = Integer.parseInt(x);
@@ -103,7 +102,6 @@ public class Driver_Planeta{
                         int Eix_y = Integer.parseInt(y);
                         p.modificacioCoordenades(Eix_x, Eix_y);
                         break;
-                        
                     case "09":
                         String resposta = scan.nextLine();//Yes - No
                         if (resposta.equals("Yes")) p.modificacioClasse(true);
