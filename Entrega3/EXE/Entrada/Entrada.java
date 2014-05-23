@@ -12,6 +12,7 @@ public class Entrada {
 	private String[] recu;
 	private String[] plan;
 	private static String msg_pos = "Error Entrada: la posicio demanada no es correcta.";
+	private static String msg_inv = "Error Entrada: matrius inserides invalides";
 
 	public Entrada() {}
 
@@ -23,13 +24,7 @@ public class Entrada {
 		recu = re;
 	}
 
-	public void modificarMatrius(double[][] dis, int[][] nec, int[][] rec, String[] pl, String[] re) {
-		mat_dis_plan = dis;
-		mat_nec_plan = nec;
-		mat_rec_plan = rec;
-		plan = pl;
-		recu = re;
-	}
+	
 
 	//Consultores
 	public double obtenirPosDis(int i, int j) {
@@ -81,7 +76,7 @@ public class Entrada {
 		String aux = new String();
 		for(int i = 0; i < mat_dis_plan.length; ++i) {
 			for (int j = 0; j < mat_dis_plan[0].length; ++j) {
-				if (j > 0) aux += "\t";
+				if (j > 0) aux += ",";
 				aux += mat_dis_plan[i][j];
 			}
 			aux += "\n";
@@ -93,7 +88,7 @@ public class Entrada {
 		String aux = new String();
 		for(int i = 0; i < mat_nec_plan.length; ++i) {
 			for (int j = 0; j < mat_nec_plan[0].length; ++j) {
-				if (j > 0) aux += "\t";
+				if (j > 0) aux += ",";
 				aux += mat_nec_plan[i][j];
 			}
 			aux += "\n";
@@ -105,7 +100,7 @@ public class Entrada {
 		String aux = new String();
 		for(int i = 0; i < mat_rec_plan.length; ++i) {
 			for (int j = 0; j < mat_rec_plan[0].length; ++j) {
-				if (j > 0) aux += "\t";
+				if (j > 0) aux += ",";
 				aux += mat_rec_plan[i][j];
 			}
 			aux += "\n";
@@ -113,7 +108,60 @@ public class Entrada {
 		return aux;
 	}
 
-	//Modificadores
+	//Modificadores 
+	public void modificarMatrius(double[][] dis, int[][] nec, int[][] rec, String[] pl, String[] re) {
+		mat_dis_plan = dis;
+		mat_nec_plan = nec;
+		mat_rec_plan = rec;
+		plan = pl;
+		recu = re;
+	}
+
+	public void modificarMatrius(String dist, String nec, String rec, String p, String r) {
+		String[] linia;
+		String[] col;
+
+		int nplant;
+		int nrec;
+
+        linia = p.split("\n");
+        nplant = Integer.parseInt(linia[0]);
+        plan = linia[2].split(",");
+        if (plan.length != nplant) throw new IllegalArgumentException(msg_inv);
+        
+        linia = p.split("\n");
+        nrec = Integer.parseInt(linia[0]);
+        recu = linia[2].split(",");
+        if (recu.length != nrec) throw new IllegalArgumentException(msg_inv);
+
+        linia = rec.split("\n");
+        if(nplant != Integer.parseInt(linia[0]) && nrec != Integer.parseInt(linia[1])) throw new IllegalArgumentException(msg_inv);
+        for(int i = 0; i < nplant; ++i) {
+        	col = linia[i + 2].split(",");
+        	for(int j = 0; j < nrec; ++j) {
+        		mat_rec_plan[i][j] = Integer.parseInt(col[j]);
+        	}
+        }
+
+        linia = nec.split("\n");
+        if(nplant != Integer.parseInt(linia[0]) && nrec != Integer.parseInt(linia[1])) throw new IllegalArgumentException(msg_inv);
+        for(int i = 0; i < nplant; ++i) {
+        	col = linia[i + 2].split(",");
+        	for(int j = 0; j < nrec; ++j) {
+        		mat_nec_plan[i][j] = Integer.parseInt(col[j]);
+        	}
+        }
+
+        linia = dist.split("\n");
+        if(nplant != Integer.parseInt(linia[0]) && nplant != Integer.parseInt(linia[1])) throw new IllegalArgumentException(msg_inv);
+        for(int i = 0; i < nplant; ++i) {
+        	col = linia[i + 2].split(",");
+        	for(int j = 0; j < nplant; ++j) {
+        		mat_dis_plan[i][j] = Double.parseDouble(col[j]);
+        	}
+        }
+	}
+	
 	public void modificarPosDis(int i, int j, double valor) {
 		if(validarPos(mat_dis_plan, i, j)) mat_dis_plan[i][j] = valor;
 	}
