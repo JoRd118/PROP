@@ -287,7 +287,7 @@ public class Controlador_Domini_Univers{
     public void borrar_planeta(String nom){
       String aux = existeixplanetaunivers(nom);
       if(!aux.equals("none")){
-        System.out.println("Entra al if");
+        //System.out.println("Entra al if");
         desafegirPlanetaUnivers(aux, nom);
       }
       cp.baixaPlaneta(nom);

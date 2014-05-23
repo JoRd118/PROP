@@ -172,6 +172,7 @@ public class Controlador_Domini_Paquet{
 
     //NOVES FUNCS!!
     public void borrar_recurs3(String nom){
+        cr.baixaRecurs(nom);
         Iterable<String> paquets;
         paquets = p.obtainAllTST();
         for(String a : paquets){
@@ -182,7 +183,7 @@ public class Controlador_Domini_Paquet{
         for(String a : paquets){
             Paquet aux = pa.obtain(a);
             if(aux.validarrecurs(nom)) aux.esborrarRecurs(nom);
-        }
+        }        
     }
 
     public void modificar_nom_recurs3(String old_name, String new_name){
