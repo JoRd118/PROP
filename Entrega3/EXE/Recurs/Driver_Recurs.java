@@ -13,7 +13,7 @@ public class Driver_Recurs{
     public static void menu() {
         System.out.println("Escollir opció:");
         System.out.println("\t 00) Salida.");
-        System.out.println("\t 01) public Recurs().");
+        System.out.println("\t 01) public Recurs(int i).");
         System.out.println("\t 02) public Recurs(String nom, int i).");
         System.out.println("\t 03) public void modificarNomRecurs(String new_name).");
         System.out.println("\t 04) public int obtenirId().");
