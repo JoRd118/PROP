@@ -77,6 +77,42 @@ public class Entrada {
 		return plan;
 	}
 
+	public String obtenirMatriuDisString() {
+		String aux = new String();
+		for(int i = 0; i < mat_dis_plan.length; ++i) {
+			for (int j = 0; j < mat_dis_plan[0].length; ++j) {
+				if (j > 0) aux += "\t";
+				aux += mat_dis_plan[i][j];
+			}
+			aux += "\n";
+		}
+		return aux;
+	}
+
+	public String obtenirMatriuNecString() {
+		String aux = new String();
+		for(int i = 0; i < mat_nec_plan.length; ++i) {
+			for (int j = 0; j < mat_nec_plan[0].length; ++j) {
+				if (j > 0) aux += "\t";
+				aux += mat_nec_plan[i][j];
+			}
+			aux += "\n";
+		}
+		return aux;
+	}
+
+	public String obtenirMatriuRecString() {
+		String aux = new String();
+		for(int i = 0; i < mat_rec_plan.length; ++i) {
+			for (int j = 0; j < mat_rec_plan[0].length; ++j) {
+				if (j > 0) aux += "\t";
+				aux += mat_rec_plan[i][j];
+			}
+			aux += "\n";
+		}
+		return aux;
+	}
+
 	//Modificadores
 	public void modificarPosDis(int i, int j, double valor) {
 		if(validarPos(mat_dis_plan, i, j)) mat_dis_plan[i][j] = valor;
@@ -98,6 +134,7 @@ public class Entrada {
 		if(validarPos(plan, i)) plan[i] = valor;
 	}
 
+
 	private boolean validarPos(double[][] aux, int i, int j) {
 		if (i < aux.length && j < aux[0].length && i >= 0 && j >= 0) return true;
 		else throw new IllegalArgumentException(msg_pos);
@@ -111,6 +148,5 @@ public class Entrada {
 	private boolean validarPos(String[] aux, int i) {
 		if (i < aux.length && i >= 0) return true;
 		else throw new IllegalArgumentException(msg_pos);
-
 	}
 }	
