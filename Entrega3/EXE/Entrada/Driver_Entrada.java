@@ -30,6 +30,9 @@ public class Driver_Entrada{
         System.out.println("\t 16) public int[][] obtenirMatriuRecPla().");
         System.out.println("\t 17) public String[] obtenirVectorRecu().");
         System.out.println("\t 18) public String[] obtenirVectorPlan().");
+        System.out.println("\t 19) public String obtenirMatriuDisString().");
+        System.out.println("\t 20) public String obtenirMatriuNecString().");
+        System.out.println("\t 21) public String obtenirMatriuRecString().");
         System.out.println("\t 00) Salida.");
     }
     
@@ -55,6 +58,9 @@ public class Driver_Entrada{
         double valor_dou;
         int valor_int;
         String valor_str;
+        double[][] dou;
+        int[][] in;
+        String[] str;
         boolean out = false;
         //Entrada en;
 
@@ -257,54 +263,64 @@ public class Driver_Entrada{
 
                     case "14":
                         dou = en.obtenirMatriuDisPla();
-                        for (int i = 0; i < dou.length; ++i) {
-                            for (int j = 0; j < dou[0].length; ++j) {
-                                System.out.println(dou[i][j]);
+                        for (i = 0; i < dou.length; ++i) {
+                            for (j = 0; j < dou[0].length; ++j) {
+                                System.out.print(dou[i][j]+ "\t");
                             }
                             System.out.println();
                         }
-                        System.out.println("\n");
+                        System.out.println();
                         break;
 
                     case "15":
                         in = en.obtenirMatriuNecPla();
-                        for (int i = 0; i < in.length; ++i) {
-                            for (int j = 0; j < in[0].length; ++j) {
-                                System.out.println(in[i][j]);
+                        for (i = 0; i < in.length; ++i) {
+                            for (j = 0; j < in[0].length; ++j) {
+                                System.out.print(in[i][j] + "\t");
                             }
                             System.out.println();
                         }
-                        System.out.println("\n");
+                        System.out.println();
                         break;
 
                     case "16":
                         in = en.obtenirMatriuRecPla();
-                        for (int i = 0; i < in.length; ++i) {
-                            for (int j = 0; j < in[0].length; ++j) {
-                                System.out.println(in[i][j]);
+                        for (i = 0; i < in.length; ++i) {
+                            for (j = 0; j < in[0].length; ++j) {
+                                System.out.print(in[i][j] + "\t");
                             }
                             System.out.println();
                         }
-                        System.out.println("\n");
+                        System.out.println();
                         break;
 
                     case "17":
                         str = en.obtenirVectorRecu();
-                        for (int i = 0; i < str.length; ++i) {
-                            System.out.println(str[i]);
+                        for (i = 0; i < str.length; ++i) {
+                            System.out.print(str[i] + "\t");
                         }
-                        System.out.println("\n");
+                        System.out.println();
                         break;
 
                     case "18":
                         str = en.obtenirVectorPlan();
-                        for (int i = 0; i < str.length; ++i) {
-                            System.out.println(str[i]);
+                        for (i = 0; i < str.length; ++i) {
+                            System.out.print(str[i] + "\t");
                         }
-                        System.out.println("\n");
+                        System.out.println();
                         break;
 
+                    case "19":
+                        System.out.println(en.obtenirMatriuDisString());
+                        break;
 
+                    case "20":
+                        System.out.println(en.obtenirMatriuNecString());
+                        break;
+
+                    case "21":
+                        System.out.println(en.obtenirMatriuRecString());
+                        break;
 
                     default:
                         System.out.println("Opció no valida.");
