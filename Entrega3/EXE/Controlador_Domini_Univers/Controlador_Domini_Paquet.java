@@ -8,7 +8,7 @@ import java.io.IOException;
 
 public class Controlador_Domini_Paquet{
     
-    private TST<Paquet> p; // Paquet
+    private TST<Paquet> p; // Paquets No assignats
     private TST<Paquet> pa; // Paquets assignats
     private Controlador_Domini_Recurs cr;
     private Controlador_Dades cp;
@@ -180,7 +180,7 @@ public class Controlador_Domini_Paquet{
         }
         paquets = pa.obtainAllTST();
         for(String a : paquets){
-            Paquet aux = p.obtain(a);
+            Paquet aux = pa.obtain(a);
             if(aux.validarrecurs(nom)) aux.esborrarRecurs(nom);
         }
     }
@@ -198,7 +198,7 @@ public class Controlador_Domini_Paquet{
         }
         paquets = pa.obtainAllTST();
         for(String a : paquets){
-            Paquet aux = p.obtain(a);
+            Paquet aux = pa.obtain(a);
             if(aux.validarrecurs(old_name)) {
                 aux.esborrarRecurs(old_name);
                 aux.assignarRecurs(new_name, cr.obtenirRecurs(new_name));

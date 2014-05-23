@@ -294,7 +294,7 @@ public class Controlador_Domini_Planeta {
         }
         planetes = Conjunt_Planetes_Desassignat.obtainAllTST();
         for(String a : planetes){
-        	Planeta aux = Conjunt_Planetes_Assignat.obtain(a);
+        	Planeta aux = Conjunt_Planetes_Desassignat.obtain(a);
         	Iterable<String> necesitats = obtenirNecessitats(aux.obtenirNom());
         	for(String b : necesitats){
         		if(b.equals(nom)) baixaNecessitats(a, b);
@@ -318,7 +318,7 @@ public class Controlador_Domini_Planeta {
         }
        planetes = Conjunt_Planetes_Desassignat.obtainAllTST();
         for(String a : planetes){
-        	Planeta aux = Conjunt_Planetes_Assignat.obtain(a);
+        	Planeta aux = Conjunt_Planetes_Desassignat.obtain(a);
         	Iterable<String> necesitats = obtenirNecessitats(aux.obtenirNom());
         	for(String b : necesitats){
         		if(b.equals(old_name)){
