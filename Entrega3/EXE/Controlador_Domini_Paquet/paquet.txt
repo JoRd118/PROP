@@ -1,0 +1,10 @@
+0
+Aigua
+Sorra
+#2
+Aigua
+Terra
+#3
+Or
+Terra
+#
