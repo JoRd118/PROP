@@ -18,7 +18,7 @@ public class Driver_Univers{
 		System.out.println("\t 07) public Planeta obtenirPlaneta(String nom)");
         System.out.println("\t 08) public Iterable<String> obtenirPlanetes()");
         System.out.println("\t 09) public Planeta(String nom, int i, Coordenades c, boolean classe)");
-        System.out.println("\t 10) public void afegirPlaneta(String nom, Planeta planeta)");
+        System.out.println("\t 10) public void afegirPlaneta(String nomPlaneta)");
         System.out.println("\t 11) public void desafegirPlaneta(String nomPlaneta)");
 	}
 
@@ -70,33 +70,40 @@ public class Driver_Univers{
 						else System.out.println("Univers no creat");
 						break;
 					case "06":
-						System.out.println(u.numplanetes());
+						if(creat) System.out.println(u.numplanetes());
+						else System.out.println("Univers no creat");
 						break;
 					case "07":
+						if(creat){
 						aux = scan.nextLine();
 						Planeta paux = u.obtenirPlaneta(aux);
 						System.out.println("Nom planeta: "+paux.obtenirNom());
 						System.out.println("Coordenades X planeta: "+paux.obtenirCoordenades().obtenirCoordenadesX());
 						System.out.println("Coordenades Y planeta: "+paux.obtenirCoordenades().obtenirCoordenadesY());
 						System.out.println("Classe M: "+paux.obtenirClasse());
+						}
+						else System.out.println("Univers no creat");
 						break;
 					case "08":
+						if(creat){
 						Iterable<String> planetes = u.obtenirPlanetes();
 						for(String a : planetes){
 							System.out.println(a);
 						}
+						}
+						else System.out.println("Univers no creat");
 						break;
-					case "09":					
+					case "09":				
 						Planeta plan;
 					    String name,coordX,coordY,classM;
-					    System.out.println("Escriu el nom del planeta");
+					    //System.out.println("Escriu el nom del planeta");
                         name = scan.nextLine();
-                        System.out.println("Escriu el identifiacor planeta");
+                        //System.out.println("Escriu el identifiacor planeta");
                         String i3 = scan.nextLine();
-                        System.out.println("Escriu les coords del plaenta");
+                        //System.out.println("Escriu les coords del plaenta");
                         coordX = scan.nextLine();
                         coordY = scan.nextLine();
-                        System.out.println("Planeta classe M?");
+                        //System.out.println("Planeta classe M?");
                         classM = scan.nextLine();//Yes - No
                         int cx = Integer.parseInt(coordX);
                         int cy = Integer.parseInt(coordY);
@@ -109,18 +116,27 @@ public class Driver_Univers{
                         planets.insert(name, plan);
                         break;
                     case "10":
-                    	System.out.println("Escriu el nom del planeta");
+			if(creat){
+                    	//System.out.println("Escriu el nom del planeta");
                     	aux = scan.nextLine();
                     	if(planets.contains(aux)){
                     	  	Planeta paux2 = planets.obtain(aux);
                     		u.afegirPlaneta(aux, paux2);
                     	}
                     	else System.out.println("No existeix el Planeta");
+			}
+			else System.out.println("Univers no creat");
                     	break;
                     case "11":
-                    	System.out.println("Escriu el nom del planeta");
+			if(creat){
+                    	//System.out.println("Escriu el nom del planeta");
                     	aux = scan.nextLine();
-                    	u.desafegirPlaneta(aux);
+			if(planets.contains(aux)){
+                    	   u.desafegirPlaneta(aux);
+			}
+			else System.out.println("El planeta no existeix al univers");
+			}
+			else System.out.println("Univers no creat");
                     	break;
 					default:
 						System.out.println("Opcio no valida");
