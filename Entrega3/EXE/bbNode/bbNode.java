@@ -79,33 +79,30 @@ public class bbNode {
   public void modificarDescartat(boolean desc) { descartat = desc; }
 
 
-  public void imprimirNode() {
-		System.out.println();
-    System.out.println("Node: "+this.idnode+" (pare: "+this.idnodepare+")");
-		System.out.println("  idplaneta.. "+this.idplaneta);
-    if(cami != null) {
-      System.out.print("  visitats..:");
-      for(int ip:this.cami) System.out.print(" "+ip);
-		  System.out.println();
+  	public String imprimirNode() {
+  		String s = new String();
+		s = s + "\n";
+		s = s + "Node: " +idnode+" (pare: " +idnodepare+ ")\n";
+		s = s + "idplaneta: " + idplaneta + "\n";
+    	if(cami != null) {
+    		s = s + "Visitats:";
+      		for(int ip:cami) s = s +" "+ip;
+		  	s= s + "\n";
 		}
-		System.out.println("  es solucio. "+this.essolucio);
-		System.out.println("  descartat.. "+this.descartat);
-		System.out.println("  nivell..... "+this.nivell);
-		System.out.println("  recorregut. "+this.recorregut);
-		System.out.println("  cotarestant "+this.cotarestant);
-		System.out.println("  ordreprimer "+this.ordreprimer);
-		System.out.println("  ordresegon. "+this.ordresegon);
-    if(necessitatspendents != null) {
-      System.out.print("  necessitats pendents:");
-      for(int ir:this.necessitatspendents) System.out.print(" "+ir);
-		  System.out.println();
-		}
-    if(planetespendents != null) {
-  		System.out.print("  planetes pendents...:");
-      for(int ip:this.planetespendents) System.out.print(" "+ip);
-		  System.out.println();
-		}
-	  System.out.println();
-  }
-
-};
+		s = s + "es solucio: " + essolucio + "\n";
+		s = s + "nivell: " + nivell + "\n";
+		s = s + "recorregut: " + recorregut + "\n";
+		s = s + "cotarestant: " + cotarestant + "\n";
+    	if(necessitatspendents != null) {
+    		s = s + "necessitats pendents:";
+      		for(int ir:necessitatspendents) s = s + " " + ir;
+		 	s = s + "\n";
+			}
+    	if(planetespendents != null) {
+    		s = s + "planetes pendents";
+      		for(int ip:planetespendents) s = s + " " + ip;
+			s = s + "\n";
+  		}
+  		return s;
+	}
+}
