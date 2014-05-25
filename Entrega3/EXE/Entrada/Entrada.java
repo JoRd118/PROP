@@ -24,8 +24,6 @@ public class Entrada {
 		recu = re;
 	}
 
-	
-
 	//Consultores
 	public double obtenirPosDis(int i, int j) {
 		if(validarPos(mat_dis_plan, i, j)) return mat_dis_plan[i][j];
@@ -117,25 +115,29 @@ public class Entrada {
 		recu = re;
 	}
 
-	public void modificarMatrius(String dist, String nec, String rec, String p, String r) {
+	public void modificarMatriusString(String dist, String nec, String rec, String p, String r) {
 		String[] linia;
 		String[] col;
 
 		int nplant;
 		int nrec;
-
         linia = p.split("\n");
         nplant = Integer.parseInt(linia[0]);
-        plan = linia[2].split(",");
+        plan = new String[nplant];
+        plan = linia[1].split(",");
         if (plan.length != nplant) throw new IllegalArgumentException(msg_inv);
         
-        linia = p.split("\n");
+        linia = r.split("\n");
         nrec = Integer.parseInt(linia[0]);
-        recu = linia[2].split(",");
+        recu = new String[nrec];
+        recu = linia[1].split(",");
         if (recu.length != nrec) throw new IllegalArgumentException(msg_inv);
 
+        		System.out.println(nplant);
+        		System.out.println(nrec);
         linia = rec.split("\n");
         if(nplant != Integer.parseInt(linia[0]) && nrec != Integer.parseInt(linia[1])) throw new IllegalArgumentException(msg_inv);
+        mat_rec_plan = new int[nplant][nrec];
         for(int i = 0; i < nplant; ++i) {
         	col = linia[i + 2].split(",");
         	for(int j = 0; j < nrec; ++j) {
@@ -145,6 +147,7 @@ public class Entrada {
 
         linia = nec.split("\n");
         if(nplant != Integer.parseInt(linia[0]) && nrec != Integer.parseInt(linia[1])) throw new IllegalArgumentException(msg_inv);
+        mat_nec_plan = new int[nplant][nrec];
         for(int i = 0; i < nplant; ++i) {
         	col = linia[i + 2].split(",");
         	for(int j = 0; j < nrec; ++j) {
@@ -154,6 +157,7 @@ public class Entrada {
 
         linia = dist.split("\n");
         if(nplant != Integer.parseInt(linia[0]) && nplant != Integer.parseInt(linia[1])) throw new IllegalArgumentException(msg_inv);
+        mat_dis_plan = new double[nplant][nrec];
         for(int i = 0; i < nplant; ++i) {
         	col = linia[i + 2].split(",");
         	for(int j = 0; j < nplant; ++j) {
@@ -161,7 +165,7 @@ public class Entrada {
         	}
         }
 	}
-	
+
 	public void modificarPosDis(int i, int j, double valor) {
 		if(validarPos(mat_dis_plan, i, j)) mat_dis_plan[i][j] = valor;
 	}

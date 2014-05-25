@@ -33,6 +33,7 @@ public class Driver_Entrada{
         System.out.println("\t 19) public String obtenirMatriuDisString().");
         System.out.println("\t 20) public String obtenirMatriuNecString().");
         System.out.println("\t 21) public String obtenirMatriuRecString().");
+        System.out.println("\t 22) public void modificarMatriusString(String dist, String nec, String rec, String p, String r).");
         System.out.println("\t 00) Salida.");
     }
     
@@ -320,6 +321,43 @@ public class Driver_Entrada{
 
                     case "21":
                         System.out.println(en.obtenirMatriuRecString());
+                        break;
+
+                    case "22":
+                        String distan;
+                        String nece;
+                        String recur;
+                        String p;
+                        String r;
+                        int aux;
+                        distan = scan.nextLine();
+                        aux = Integer.parseInt(distan);
+                        distan += "\n";
+                        for(i = 0; i < aux + 1; ++i) {
+                            distan += scan.nextLine() + "\n";
+                        }
+                        
+                        nece = scan.nextLine();
+                        aux = Integer.parseInt(nece);
+                        nece += "\n";
+                        for(i = 0; i < aux + 1; ++i) {
+                            nece += scan.nextLine() + "\n";
+                        }
+
+                        recur = scan.nextLine();
+                        aux = Integer.parseInt(recur);
+                        recur += "\n";
+                        for(i = 0; i < aux + 1; ++i) {
+                            recur += scan.nextLine() + "\n";
+                        }
+
+                        p = scan.nextLine();
+                        p += "\n" + scan.nextLine();
+
+                        r = scan.nextLine();
+                        r += "\n" + scan.nextLine();
+                    
+                        en.modificarMatriusString(distan, nece, recur, p, r);
                         break;
 
                     default:
