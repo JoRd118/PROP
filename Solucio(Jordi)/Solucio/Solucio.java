@@ -8,7 +8,7 @@ import java.util.*;
 
 public class Solucio {
 	private ArrayList<SolucioQAP> sol;
-	private int temps;
+	private long temps;
 
 
 	public Solucio() {
@@ -19,11 +19,11 @@ public class Solucio {
 		sol.add(s);
 	}
 
-	public void afegirTemps(int tem) {
+	public void afegirTemps(long tem) {
 		temps = tem;
 	}
 
-	public int obtenirTemps() {
+	public long obtenirTemps() {
 		return temps;
 	}
 
