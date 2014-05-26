@@ -15,7 +15,8 @@ public class Driver_Identificador{
         System.out.println("\t 00) Salida.");
         System.out.println("\t 01) public Identificador().");
         System.out.println("\t 02) public int id().");
-        System.out.println("\t 06) public void reset().");
+        System.out.println("\t 03) public void reset().");
+        System.out.println("\t 04) public void reset(int valor).");
     }
     public static void main(String[] args) {
         String nombreClase = "Identificador";
@@ -23,6 +24,7 @@ public class Driver_Identificador{
         Scanner scan = new Scanner(System.in);
         boolean out = false;
         boolean create = false;
+        int valor;
         
         menu();
         
@@ -42,9 +44,14 @@ public class Driver_Identificador{
                     case "02":
                         System.out.println(i.id());
                         break;
-                    case "06":
-                       i.reset();
+                    case "03":
+                        i.reset();
                         break;
+                    case "04":
+                        valor = Integer.parseInt(scan.nextLine());
+                        i.reset(valor);
+                        break;
+
                     default:
                         System.out.println("Opció no valida.");
                         break;
