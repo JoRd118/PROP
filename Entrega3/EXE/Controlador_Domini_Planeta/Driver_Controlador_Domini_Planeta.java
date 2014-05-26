@@ -218,16 +218,16 @@ public class Driver_Controlador_Domini_Planeta {
 						break;
 
 					case "20":
-/*                        //System.out.println("Introduir nom del fitxer");
+                        //System.out.println("Introduir nom del fitxer");
                         nom = scan.nextLine();
                         cp.guardarPlanetes(nom);
-*/                        break;
+                        break;
 
                     case "21":
-/*                        //System.out.println("Introduir nom del fitxer");
+                       //System.out.println("Introduir nom del fitxer");
                         nom = scan.nextLine();
                         cp.carregarPlanetes(nom);
-*/                        break;
+                        break;
                     case "22":
 						//System.out.println("Escriu el nom del planeta:");
 						String nom11 = scan.nextLine();
