@@ -13,7 +13,7 @@ public class Controlador_Domini_Recurs{
     private Identificador i;
     private static String msg_recurs_no_exists = "Error de Recurs: Recurs demanat no existeix.";
     private static String msg_recurs_repetit = "Error de Recurs: Ja existeix un recurs amb aquest nom.";
-    
+    private static String msg_carregar = "Error de Recurs: Carregar no es pot portar a terme perque ja s'han introduit dades.";
     
     
     public Controlador_Domini_Recurs(){
@@ -129,6 +129,7 @@ public class Controlador_Domini_Recurs{
     
     public void carregarRecursos(String nomFitxer)throws IOException{
         i.reset();
+        if (r.nElements() > 0) throw new IllegalArgumentException(msg_carregar);
         t.obrirFitxer(nomFitxer);
         String s = t.readTextFile();
         String[] elements = s.split("\n");
