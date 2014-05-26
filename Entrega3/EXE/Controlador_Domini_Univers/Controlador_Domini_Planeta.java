@@ -354,19 +354,21 @@ public class Controlador_Domini_Planeta {
         for(int i = 0; i < dades.length - 1; ++i) {
             String[] aux = dades[i].split("\n");
             Coordenades aux1 = new Coordenades(Integer.parseInt(aux[1]), Integer.parseInt(aux[2]));
-            if(aux[3].equals("1")) altaPlaneta(aux[0], aux1, true);
-            else altaPlaneta(aux[0], aux1, false);
-            assignarPaquet(aux[0], Integer.parseInt(aux[4]));
-            for(int j = 5; j < aux.length; ++j) {
-                altaNecessitats(aux[0],aux[j]);
+            if(aux[3].equals("1")) {
+                altaPlaneta(aux[0], aux1, true);
+                assignarPaquet(aux[0], Integer.parseInt(aux[4]));
+                for(int j = 5; j < aux.length; ++j) {
+                    altaNecessitats(aux[0],aux[j]);
+                }
             }
+            else altaPlaneta(aux[0], aux1, false);
         }
         cd.tancarFitxer();
     }
 
     //Pre:
     //Post: Retornar un ArrayList<String> on hi han totes les dades ben colocades
-	private void guardar() throws IOException {
+    private void guardar() throws IOException {
         Iterable<String> s = Conjunt_Planetes_Desassignat.obtainAllTST();
         for(String id : s){
             String list = new String();
@@ -398,7 +400,7 @@ public class Controlador_Domini_Planeta {
             list += Integer.toString(c.obtenirCoordenadesX()) + "\n";
             list += Integer.toString(c.obtenirCoordenadesY()) + "\n";
             if (p.obtenirClasse()) {
-                list += "1\n"; //list.add("1");
+                list += "1\n"; 
                 Paquet pac = p.obtenirPaquet();
                 list += Integer.toString(cp.obtenirIdPaquet(pac)) + "\n";
                 TST<Recurs> aux = p.obtenirNecessitats();

@@ -21,7 +21,8 @@ public class Controlador_Domini_Univers{
   private Identificador ide;
 	private String msg_univers_no_exists = "Error de Univers: Univers demanat no existeix";
 	private String msg_univers_repetit = "Error de Univers: Ja existeix un univers amb aquest nom";
-	//Instanciacio de la estructura de dades
+	private static String msg_carregar = "Error de Univers: Carregar no es pot portar a terme perque ja s'han introduit dades.";
+  //Instanciacio de la estructura de dades
 	
 	public Controlador_Domini_Univers(Controlador_Domini_Planeta cp1, Controlador_Domini_Recurs cr1, Controlador_Domini_Paquet cpa1){ 
 		u = new TST<Univers>();
@@ -328,10 +329,11 @@ public class Controlador_Domini_Univers{
     //Post: Carrega les dades d'un fitxer
     public void carregarUniversos(String nomFitxer) throws IOException {
       ide.reset();
+      if (u.nElements() > 0) throw new IllegalArgumentException(msg_carregar);
       cdu.obrirFitxer(nomFitxer);
       String s = cdu.readTextFile();
       String[] dades = s.split("#");
-      for(int i = 0; i < dades.length; ++i) {
+      for(int i = 0; i < dades.length - 1; ++i) {
         String[] aux = dades[i].split("\n");
         altaUnivers(aux[0]);
         for(int j = 1; j < aux.length; ++j) {
