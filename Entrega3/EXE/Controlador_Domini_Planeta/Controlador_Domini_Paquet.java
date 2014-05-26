@@ -17,10 +17,11 @@ public class Controlador_Domini_Paquet{
     private static String msg_paquet_no_exists = "Error de Paquet: Paquet demanat no existeix.";
     private static String msg_paquet_ja_assignat = "Error de Paquet: Paquet demanat ja esta assignat.";
     private static String msg_recurs_ja_assignat = "Error de Recurs: Recurs demanat ja esta assignat en el paquet.";
-    private static String msg_recurs_no_esta_assignat = "Error de Recurs: Recurs demanat no esta assignat al paquet.";
+    private static String msg_recurs_no_esta_assignat = "Error de Paquet: Recurs demanat no esta assignat al paquet.";
     private static String msg_recurs_no_existeix = "Error de Recurs: Recurs demanat no existeix.";
     private static String msg_paquet_no_assignat = "Error de Paquet: Paquet demanat no ha estat assignat.";
-
+    private static String msg_carregar = "Error de Paquet: Carregar no es pot portar a terme perque ja s'han introduit dades.";
+    
     public Controlador_Domini_Paquet() {
         p = new TST<Paquet>();
         pa = new TST<Paquet>();
@@ -205,7 +206,6 @@ public class Controlador_Domini_Paquet{
                 aux.assignarRecurs(new_name, cr.obtenirRecurs(new_name));
             }
         }
-        
     }
 
     public void guardarPaquets(String nomFitxer) throws IOException{
@@ -217,18 +217,22 @@ public class Controlador_Domini_Paquet{
     }
 
     public void carregarPaquets(String nomFitxer) throws IOException {
-        ide.reset();
+        int idmax = -1;
+        if (pa.nElements() > 0 || p.nElements() > 0) throw new IllegalArgumentException(msg_carregar);
         cp.obrirFitxer(nomFitxer);
         String d = cp.readTextFile();
         String[] dades = d.split("#");
-        for (int i = 0; i < dades.length;++i) {
+        for (int i = 0; i < dades.length-1; ++i) {
             String[] aux = dades[i].split("\n");
-            Paquet pac = new Paquet(Integer.parseInt(aux[0]));
+            int aux_id = Integer.parseInt(aux[0]);
+            if (aux_id > idmax) idmax = aux_id;
+            Paquet pac = new Paquet(aux_id);
             p.insert(aux[0],pac);
             for(int j = 1; j < aux.length; ++j) {
                 pac.assignarRecurs(aux[j],cr.obtenirRecurs(aux[j]));
             }
         }
+        ide.reset(idmax);
         cp.tancarFitxer();
     }
 
