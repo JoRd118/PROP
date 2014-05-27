@@ -35,6 +35,8 @@ public class Driver_Controlador_Domini_Planeta {
         System.out.println("\t 24) public String obtenirCoordenadesVista(String nom)");
         System.out.println("\t 25) public String obtenirRecursosDisponiblesVista(String nomP)");
         System.out.println("\t 26) public String obtenirNecessitatsVista(String nomP)");
+        System.out.println("\t 27) public void modificarCoordenadesVista(String nom, String coorden)");
+
 
         System.out.println("\t 31) public Controlador_Domini_Paquet(Controlador_Domini_Recurs n).");
         System.out.println("\t 32) public altaPaquet().");
@@ -50,7 +52,7 @@ public class Driver_Controlador_Domini_Planeta {
         System.out.println("\t 42) public void guardarPaquets(String nomFitxer).");
         System.out.println("\t 43) public void desassignarPaquet(int id).");
         System.out.println("\t 44) public Iterable<String> llistatRecursosPaquetIterator(Paquet pac).");
-        System.out.println("\t 45) public int obtenirIdPaquet(Paquet pac).\n");
+        System.out.println("\t 45) public int obtenirIdPaquet(Paquet pac)");
         
         
         System.out.println("\t 51) public Controlador_Domini_Recurs().");
@@ -257,6 +259,11 @@ public class Driver_Controlador_Domini_Planeta {
         			case "26":	//System.out.println("\t 26) public String obtenirNecessitatsVista(String nomP)");
 						nom = scan.nextLine();
 						System.out.println(cp.obtenirNecessitatsVista(nom));
+						break;
+					case "27": // public void modificarCoordenadesVista(String nom, String coorden)
+						nom = scan.nextLine();
+						String linia = scan.nextLine();
+						cp.modificarCoordenadesVista(nom, linia); 
 						break;
                     case "31":
                         cpa = new Controlador_Domini_Paquet(cr);

@@ -119,6 +119,17 @@ public class Controlador_Domini_Planeta {
         	throw new IllegalArgumentException(msg_planeta_no_exists);
         }
 	}
+
+    public void modificarCoordenadesVista(String nom, String coorden) {
+        String[] aux = coorden.split(",");
+        int x = Integer.parseInt(aux[0]);
+        int y = Integer.parseInt(aux[1]);
+        if(Conjunt_Planetes_Desassignat.contains(nom)){
+            Conjunt_Planetes_Desassignat.obtain(nom).modificacioCoordenades(x, y);
+        } else if(Conjunt_Planetes_Assignat.contains(nom)) {
+            Conjunt_Planetes_Assignat.obtain(nom).modificacioCoordenades(x, y);
+        } else throw new IllegalArgumentException(msg_planeta_no_exists);
+    }
     //Pre:
     //Post: La classeM de un planeta passar a ser de classeM si classeM es true
 	public void modificarClasse(String nom, boolean classeM) {
