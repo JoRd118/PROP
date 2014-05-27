@@ -182,7 +182,7 @@ public class Controlador_Domini_Planeta {
             c = Conjunt_Planetes_Assignat.obtain(nom).obtenirCoordenades();
             int xa = c.obtenirCoordenadesX();
             int ya = c.obtenirCoordenadesY();
-            String sa = xa + "," + xa;
+            String sa = xa + "," + ya;
             return sa;
         }
         else throw new IllegalArgumentException(msg_planeta_no_exists);
