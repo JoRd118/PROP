@@ -32,6 +32,7 @@ public class Driver_Controlador_Domini_Planeta {
         System.out.println("\t 21) public void carregarPlanetes(String nomFitxer).");
         System.out.println("\t 22) public void desassignarPaquet(String nomP)");
         System.out.println("\t 23) public void altaPlanetaVista(String nom, String coorden, boolean classeM)");
+        System.out.println("\t 24)public String obtenirCoordenadesVista(String nom)");
 
         System.out.println("\t 31) public Controlador_Domini_Paquet(Controlador_Domini_Recurs n).");
         System.out.println("\t 32) public altaPaquet().");
@@ -241,6 +242,11 @@ public class Driver_Controlador_Domini_Planeta {
                     	resposta = scan.nextLine();
 						if (resposta.equals("Si")) cp.altaPlanetaVista(nom, coords, true);
 						else cp.altaPlanetaVista(nom, coords, false);
+                    	break;
+                    case "24":	// public String obtenirCoordenadesVista(String nom)
+                    	nom = scan.nextLine();
+                    	String resp = cp.obtenirCoordenadesVista(nom);
+                    	System.out.println(resp);
                     	break;
                     case "31":
                         cpa = new Controlador_Domini_Paquet(cr);

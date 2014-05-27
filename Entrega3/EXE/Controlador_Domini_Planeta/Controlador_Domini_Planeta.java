@@ -157,6 +157,25 @@ public class Controlador_Domini_Planeta {
 		else if (Conjunt_Planetes_Assignat.contains(nom)) return Conjunt_Planetes_Assignat.obtain(nom).obtenirCoordenades();
 		else throw new IllegalArgumentException(msg_planeta_no_exists);
 	}
+
+    public String obtenirCoordenadesVista(String nom) {
+        Coordenades c = new Coordenades();
+        if (Conjunt_Planetes_Desassignat.contains(nom)) {
+            c = Conjunt_Planetes_Desassignat.obtain(nom).obtenirCoordenades();
+            int xd = c.obtenirCoordenadesX();
+            int yd = c.obtenirCoordenadesY();
+            String sd = xd + "," + yd; 
+            return sd;
+        }
+        else if (Conjunt_Planetes_Assignat.contains(nom)) {
+            c = Conjunt_Planetes_Assignat.obtain(nom).obtenirCoordenades();
+            int xa = c.obtenirCoordenadesX();
+            int ya = c.obtenirCoordenadesY();
+            String sa = xa + "," + xa;
+            return sa;
+        }
+        else throw new IllegalArgumentException(msg_planeta_no_exists);
+    }
     
     //Pre:
     //Post: Retornar el planeta amb el nom nom
