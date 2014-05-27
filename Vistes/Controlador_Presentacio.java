@@ -20,9 +20,9 @@ public class Controlador_Presentacio{
         //sv = new  SubVista(v);
         //Instencia tots els controladors.
         cr = new Controlador_Domini_Recurs();
-        cp = new Controlador_Domini_Paquet();
-        cpl = new Controlador_Domini_Planeta();
-        cu = new Controlador_Domini_Univers();
+        cp = new Controlador_Domini_Paquet(cr);
+        cpl = new Controlador_Domini_Planeta(cp, cr);
+        cu = new Controlador_Domini_Univers(cpl, cr, cp);
     }
     
     

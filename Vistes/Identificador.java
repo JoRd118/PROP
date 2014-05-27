@@ -20,4 +20,8 @@ public class Identificador{
        id = -1;
         
     }
+
+    public void reset(int valor) {
+        id = valor;
+    }
 }

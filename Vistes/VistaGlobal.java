@@ -16,6 +16,7 @@ public class VistaGlobal extends JFrame {
     private JButton buttonPlaneta = new JButton("Planeta");
     private JButton buttonUnivers = new JButton("Univers");
     private JButton buttonQAP = new JButton("QAP");
+    private JButton buttonMod = new JButton("Mod&Esborra");
     
     
     public VistaGlobal(){
@@ -64,6 +65,7 @@ public class VistaGlobal extends JFrame {
         panel1.add(buttonPlaneta);
         panel1.add(buttonUnivers);
         panel1.add(buttonQAP);
+        panel1.add(buttonMod);
         
         assignar_actionListeners();
         
@@ -128,6 +130,13 @@ public class VistaGlobal extends JFrame {
                 buttonQAPListener(event);
             }
         });
+        
+        buttonMod.addActionListener
+        (new ActionListener() {
+            public void actionPerformed (ActionEvent event) {
+                buttonModListener(event);
+            }
+        });
     }
     
     
@@ -160,6 +169,14 @@ public class VistaGlobal extends JFrame {
     
     private void buttonQAPListener(ActionEvent event){
         
+    }
+    
+    private void buttonModListener(ActionEvent event){
+        VistaMod vm = new VistaMod();
+        JPanel p = vm.construct();
+        revalidatepanel2(p);
+    
+    
     }
     
     

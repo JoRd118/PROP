@@ -11,18 +11,15 @@ public class VistaPlaneta extends Vista{
     private static Controlador_Domini_Planeta cp;
     private static JPanel planeta;
     private VistaGlobal v;
-    private JButton buttonPlanetaOP1 = new JButton("AltaPlaneta");
-    private JButton buttonPlanetaOP2 = new JButton("BaixaPlaneta");
+    
     private JButton buttonPlanetaOP3 = new JButton("AssignarPlaneta");
     private JButton buttonPlanetaOP4 = new JButton("DesassignarPlaneta");
     private JButton buttonPlanetaOP5 = new JButton("ModificarNom");
     private JButton buttonPlanetaOP6 = new JButton("ModificarCoordenades");
     private JButton buttonPlanetaOP7 = new JButton("ModificarClasse");
-    private JButton buttonPlanetaOP8 = new JButton("ObtenirId");
     private JButton buttonPlanetaOP9 = new JButton("ObtenirClasse");
     private JButton buttonPlanetaOP10 = new JButton("ObtenirCoordenades");
     private JButton buttonPlanetaOP11 = new JButton("ObtenirPlaneta");
-    private JButton buttonPlanetaOP12 = new JButton("LlistarDesassignat");
     private JButton buttonPlanetaOP13 = new JButton("LlistarAssignat");
     private JButton buttonPlanetaOP14 = new JButton("AltaNecessitats");
     private JButton buttonPlanetaOP15 = new JButton("BaixaNecessitats");
@@ -30,19 +27,7 @@ public class VistaPlaneta extends Vista{
     private JButton buttonPlanetaOP17 = new JButton("DesassignarPaquet");
     private JButton buttonPlanetaOP18 = new JButton("obtenirRecursosDisponibles");
     private JButton buttonPlanetaOP19 = new JButton("ObtenirNecessitats");
-    private JButton buttonPlanetaOP20 = new JButton("Guardar");
-    private JButton buttonPlanetaOP21 = new JButton("Carregar");
     
-    
-    
-    
-    
-    
-    //Content Tools
-    private static JPanel  content;
-    private JTextField text;
-    private JLabel  label;
-    private JButton b;
     
     public VistaPlaneta (){
         v = super.getF();
@@ -59,18 +44,13 @@ public class VistaPlaneta extends Vista{
     public void createVistaPlaneta(){
         planeta = new JPanel();
         planeta.setLayout(new GridLayout(3, 2, 5, 5));
-        planeta.add(buttonPlanetaOP1);
-        planeta.add(buttonPlanetaOP2);
-        planeta.add(buttonPlanetaOP3);
-        planeta.add(buttonPlanetaOP4);
-        planeta.add(buttonPlanetaOP5);
-        planeta.add(buttonPlanetaOP6);
-        planeta.add(buttonPlanetaOP7);
-        planeta.add(buttonPlanetaOP8);
+        planeta.add(buttonAlta = new JButton("AltaPlaneta"));
+        //planeta.add(buttonBaixa = new JButton("BaixaPlaneta"));
+        planeta.add(buttonObtenirID = new JButton("ObtenirID"));
         planeta.add(buttonPlanetaOP9);
         planeta.add(buttonPlanetaOP10);
         planeta.add(buttonPlanetaOP11);
-        planeta.add(buttonPlanetaOP12);
+        planeta.add(buttonllistat = new JButton("Llistar"));
         planeta.add(buttonPlanetaOP13);
         planeta.add(buttonPlanetaOP14);
         planeta.add(buttonPlanetaOP15);
@@ -78,8 +58,8 @@ public class VistaPlaneta extends Vista{
         planeta.add(buttonPlanetaOP17);
         planeta.add(buttonPlanetaOP18);
         planeta.add(buttonPlanetaOP19);
-        planeta.add(buttonPlanetaOP20);
-        planeta.add(buttonPlanetaOP21);
+        planeta.add(buttonGuardar = new JButton("Guardar"));
+        planeta.add(buttonCarregar = new JButton("Carregar"));
         
         
         assignar_actionListeners();
@@ -91,262 +71,589 @@ public class VistaPlaneta extends Vista{
     }
     
     private void assignar_actionListeners(){
-        buttonPlanetaOP1.addActionListener
+        buttonAlta.addActionListener
         (new ActionListener() {
             public void actionPerformed (ActionEvent event) {
                 altaPlaneta(event);
             }
-        });   
-
-        buttonPlanetaOP2.addActionListener
+        });
+        /*
+        buttonBaixa.addActionListener
         (new ActionListener() {
             public void actionPerformed (ActionEvent event) {
                 baixaPlaneta(event);
             }
         });
-
-        buttonPlanetaOP3.addActionListener
-        (new ActionListener() {
-            public void actionPerformed (ActionEvent event) {
-                assignarPlaneta(event);
-            }
-        });
-
-        buttonPlanetaOP4.addActionListener
-        (new ActionListener() {
-            public void actionPerformed (ActionEvent event) {
-                desassignarPlaneta(event);
-            }
-        });
-
-        buttonPlanetaOP5.addActionListener
-        (new ActionListener() {
-            public void actionPerformed (ActionEvent event) {
-                modificarNom(event);
-            }
-        }); 
-
-        buttonPlanetaOP6.addActionListener
-        (new ActionListener() {
-            public void actionPerformed (ActionEvent event) {
-                modificarCoordenades(event);
-            }
-        });
-
-        buttonPlanetaOP7.addActionListener
-        (new ActionListener() {
-            public void actionPerformed (ActionEvent event) {
-                modificarClasse(event);
-            }
-        });
-
-        buttonPlanetaOP8.addActionListener
+        */
+        buttonObtenirID.addActionListener
         (new ActionListener() {
             public void actionPerformed (ActionEvent event) {
                 obtenirId(event);
             }
         });
-
+        
         buttonPlanetaOP9.addActionListener
         (new ActionListener() {
             public void actionPerformed (ActionEvent event) {
                 obtenirClasse(event);
             }
         });
-
+        
         buttonPlanetaOP10.addActionListener
         (new ActionListener() {
             public void actionPerformed (ActionEvent event) {
                 obtenirCoordenades(event);
             }
         });
-
+        
         buttonPlanetaOP11.addActionListener
         (new ActionListener() {
             public void actionPerformed (ActionEvent event) {
                 obtenirPlaneta(event);
             }
         });
-
-        buttonPlanetaOP12.addActionListener
+        
+        buttonllistat.addActionListener
         (new ActionListener() {
             public void actionPerformed (ActionEvent event) {
                 llistarPlanetesDesassignat(event);
             }
         });
-
+        
         buttonPlanetaOP13.addActionListener
         (new ActionListener() {
             public void actionPerformed (ActionEvent event) {
                 llistarPlanetesAssignat(event);
             }
-        }); 
-
+        });
+        
         buttonPlanetaOP14.addActionListener
         (new ActionListener() {
             public void actionPerformed (ActionEvent event) {
                 altaNecessitats(event);
             }
         });
-
+        
         buttonPlanetaOP15.addActionListener
         (new ActionListener() {
             public void actionPerformed (ActionEvent event) {
                 baixaNecessitats(event);
             }
-        }); 
-
+        });
+        
         buttonPlanetaOP16.addActionListener
         (new ActionListener() {
             public void actionPerformed (ActionEvent event) {
                 assignarPaquet(event);
             }
         });
-
+        
         buttonPlanetaOP17.addActionListener
         (new ActionListener() {
             public void actionPerformed (ActionEvent event) {
                 desassignarPaquet(event);
             }
         });
-
+        
         buttonPlanetaOP18.addActionListener
         (new ActionListener() {
             public void actionPerformed (ActionEvent event) {
                 obtenirRecursosDisponibles(event);
             }
         });
-
+        
         buttonPlanetaOP19.addActionListener
         (new ActionListener() {
             public void actionPerformed (ActionEvent event) {
                 obtenirNecessitats(event);
             }
         });
-
-        buttonPlanetaOP20.addActionListener
+        
+        buttonGuardar.addActionListener
         (new ActionListener() {
             public void actionPerformed (ActionEvent event) {
                 guardar(event);
             }
         });
-
-        buttonPlanetaOP21.addActionListener
+        
+        buttonCarregar.addActionListener
         (new ActionListener() {
             public void actionPerformed (ActionEvent event) {
                 carregar(event);
             }
         });
-
-
+        
+        
         
         
     }
-
+    
     private void altaPlaneta (ActionEvent event){
-
-
-    } 
-
+        contentSchemaE();
+        
+        b.addActionListener
+        (new ActionListener() {
+            public void actionPerformed (ActionEvent event) {
+                doaltaPlaneta(event);
+            }
+        });
+        
+        
+        paint(content);
+        
+    }
+    
     private void baixaPlaneta (ActionEvent event){
-
-
-    } 
-
-    private void assignarPlaneta (ActionEvent event){
-
-
-    } 
-
-    private void desassignarPlaneta (ActionEvent event){
-
-
-    } 
-
-    private void modificarNom (ActionEvent event){
-
-
-    } 
-
-    private void modificarCoordenades (ActionEvent event){
-
-
-    } 
-
-    private void modificarClasse (ActionEvent event){
-
-
-    } 
-
+        label = new JLabel("OP:BaixaPlaneta  Nom Planeta:");
+         contentSchemaA();
+        content.add(label, BorderLayout.NORTH );
+        
+        b.addActionListener
+        (new ActionListener() {
+            public void actionPerformed (ActionEvent event) {
+                dobaixaPlaneta(event);
+            }
+        });
+        
+        paint(content);
+        
+    }
+    
     private void obtenirId (ActionEvent event){
-
-
-    } 
-
+        label = new JLabel("OP:ObtenirIdPlaneta  Nom Planeta:");
+        contentSchemaA();
+        content.add(label, BorderLayout.NORTH );
+        
+        b.addActionListener
+        (new ActionListener() {
+            public void actionPerformed (ActionEvent event) {
+                doobtenirIdPlaneta(event);
+            }
+        });
+        
+        paint(content);
+        
+        
+    }
+    
     private void obtenirClasse (ActionEvent event){
-
-
-    } 
-
+        label = new JLabel("OP:ObtenirClassePlaneta  Nom Planeta:");
+        contentSchemaA();
+        content.add(label, BorderLayout.NORTH );
+        
+        b.addActionListener
+        (new ActionListener() {
+            public void actionPerformed (ActionEvent event) {
+                doobtenirclassePlaneta(event);
+            }
+        });
+        
+        paint(content);
+        
+    }
+    
     private void obtenirCoordenades (ActionEvent event){
-
-
-    } 
-
+        label = new JLabel("OP:ObtenirCoordPlaneta  Nom Planeta:");
+        contentSchemaA();
+        content.add(label, BorderLayout.NORTH );
+        
+        b.addActionListener
+        (new ActionListener() {
+            public void actionPerformed (ActionEvent event) {
+                doobtenirCoordPlaneta(event);
+            }
+        });
+        
+        paint(content);
+        
+    }
+    
     private void obtenirPlaneta (ActionEvent event){
-
-
-    } 
-
+        label = new JLabel("OP:ObtenirPlaneta  Nom Planeta:");
+        contentSchemaA();
+        content.add(label, BorderLayout.NORTH );
+        
+        b.addActionListener
+        (new ActionListener() {
+            public void actionPerformed (ActionEvent event) {
+                doobtenirPlaneta(event);
+            }
+        });
+        
+        paint(content);
+        
+    }
+    
     private void llistarPlanetesDesassignat (ActionEvent event){
-
-
-    } 
-
+        try{
+            contentSchemaC();
+            textarea.setText(cp.llistarPlanetesDesassignat());
+            paint(content);
+        }
+        catch (Exception ex){
+            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+        }
+        
+    }
+    
     private void llistarPlanetesAssignat (ActionEvent event){
-
-
-    } 
-
+        try{
+            contentSchemaC();
+            textarea.setText(cp.llistarPlanetesAssignat());
+            paint(content);
+        }
+        catch (Exception ex){
+            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+        }
+        
+    }
+    
     private void altaNecessitats(ActionEvent event){
-
-
-    } 
-
+        label = new JLabel("OP:AltaNecessitat  Nom Planeta:");
+        label2 = new JLabel("Nom Recurs:");
+        contentSchemaD();
+        b.addActionListener
+        (new ActionListener() {
+            public void actionPerformed (ActionEvent event) {
+                doaltaNecesitat(event);
+            }
+        });
+        paint(content);
+        
+    }
+    
     private void baixaNecessitats (ActionEvent event){
-
-
-    } 
-
+        label = new JLabel("OP:BaixaNecessitat  Nom Planeta:");
+        contentSchemaA();
+        b.addActionListener
+        (new ActionListener() {
+            public void actionPerformed (ActionEvent event) {
+                dobaixaNecesitat(event);
+            }
+        });
+        paint(content);
+        
+    }
+    
     private void assignarPaquet (ActionEvent event){
-
-
-    } 
-
+        label = new JLabel("OP:AssignarPaquet  Nom Planeta:");
+        label2 = new JLabel("ID Paquet:");
+        contentSchemaD();
+        b.addActionListener
+        (new ActionListener() {
+            public void actionPerformed (ActionEvent event) {
+                doassignarPaquet(event);
+            }
+        });
+        paint(content);
+        
+    }
+    
     private void desassignarPaquet (ActionEvent event){
-
-
-    } 
-
+        label = new JLabel("OP:DeassignarPaquet  Nom Planeta:");
+        contentSchemaA();
+        content.add(label, BorderLayout.NORTH );
+        
+        b.addActionListener
+        (new ActionListener() {
+            public void actionPerformed (ActionEvent event) {
+                dodesassignarPaquet(event);
+            }
+        });
+        
+        paint(content);
+        
+    }
+    
     private void obtenirRecursosDisponibles (ActionEvent event){
-
-
-    } 
-
+        label = new JLabel("OP:RecursosDisponibles  Nom Planeta:");
+        contentSchemaA();
+        content.add(label, BorderLayout.NORTH );
+        
+        b.addActionListener
+        (new ActionListener() {
+            public void actionPerformed (ActionEvent event) {
+                dorecursosDisponib(event);
+            }
+        });
+        
+        paint(content);
+        
+    }
+    
     private void obtenirNecessitats (ActionEvent event){
-
-
-    } 
-
+        label = new JLabel("OP:ObtenirNecesitats  Nom Planeta:");
+        contentSchemaA();
+        content.add(label, BorderLayout.NORTH );
+        
+        b.addActionListener
+        (new ActionListener() {
+            public void actionPerformed (ActionEvent event) {
+                doobtenirneed(event);
+            }
+        });
+        
+        paint(content);
+    }
+    
     private void guardar (ActionEvent event){
-
-
-    } 
-
+        label = new JLabel("OP:Guardar - ABSOLUTE PATH - :");
+        contentSchemaA();
+        content.add(label, BorderLayout.NORTH );
+        
+        b.addActionListener
+        (new ActionListener() {
+            public void actionPerformed (ActionEvent event) {
+                doguardarPlanetes(event);
+            }
+        });
+        
+        paint(content);
+        
+    }
+    
     private void carregar (ActionEvent event){
+        label = new JLabel("OP:Carregar - ABSOLUTE PATH - :");
+        contentSchemaA();
+        content.add(label, BorderLayout.NORTH );
+        
+        b.addActionListener
+        (new ActionListener() {
+            public void actionPerformed (ActionEvent event) {
+                docarregarPlaneta(event);
+            }
+        });
+        
+        paint(content);
+        
+    }
+    
+//do-functions
+    private void doaltaPlaneta(ActionEvent event){
+        try{
+            String nom = text.getText();
+            String coords = text2.getText();
+            if(chinButton.isSelected()){cp.altaPlanetaVista(nom,coords,true);}
+            else if(chinButton2.isSelected()){cp.altaPlanetaVista(nom,coords,false);}
+            else{
+                throw new IllegalArgumentException("Cal Seleccionar el tipus M");
+            }
+            content = new JPanel();
+            label = new JLabel("Fet.");
+            content.setLayout( new BorderLayout() );
+            content.setPreferredSize( new Dimension( 400, 100 ) );
+            content.setMinimumSize( new Dimension( 100, 50 ) );
+            content.add(label, BorderLayout.NORTH );
+            paint(content);
+        }
+        catch (Exception ex){
+            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+        }
+    }
+    
+    private void dobaixaPlaneta(ActionEvent event){
+        try{
+            cp.baixaPlaneta(text.getText());
+            content = new JPanel();
+            label = new JLabel("Fet.");
+            content.setLayout( new BorderLayout() );
+            content.setPreferredSize( new Dimension( 400, 100 ) );
+            content.setMinimumSize( new Dimension( 100, 50 ) );
+            content.add(label, BorderLayout.NORTH );
+            paint(content);
+        
+        }
+        catch (Exception ex){
+            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+        }
+    
+    }
+    
+    private void doobtenirIdPlaneta(ActionEvent event){
+        try{
+            String aux = text.getText();
+            contentSchemaB();
+            label = new JLabel("ID Planeta: "+ cp.obtenirId(aux));
+            content.add(label, BorderLayout.NORTH );
+            paint(content);
+        }
+        catch (Exception ex){
+            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+        }
+    
+    }
+    
+    private void doobtenirclassePlaneta(ActionEvent event){
+        try{
+            String aux = text.getText();
+            contentSchemaB();
+            label = new JLabel("Classe Planeta: "+ cp.obtenirClasse(aux));
+            content.add(label, BorderLayout.NORTH );
+            paint(content);
+        }
+        catch (Exception ex){
+            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+        }
+    
+    }
+    private void doobtenirCoordPlaneta(ActionEvent event){
+        try{
+            String aux = text.getText();
+            contentSchemaB();
+            label = new JLabel("Coordenades Planeta: "+ cp.obtenirCoordenadesVista(aux));
+            content.add(label, BorderLayout.NORTH );
+            paint(content);
+        }
+        catch (Exception ex){
+            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+        }
+    
+    }
+    
+    private void doobtenirPlaneta(ActionEvent event){
+        try{
+            String aux = text.getText();
+            contentSchemaB();
+            label = new JLabel("ID Planeta: "+ cp.obtenirId(aux)+" Nom Planeta: "+ aux +" Classe Planeta: "+ cp.obtenirClasse(aux)+ " Coords Planeta: "+ cp.obtenirCoordenadesVista(aux));
+            content.add(label, BorderLayout.NORTH );
+            paint(content);
+        }
+        catch (Exception ex){
+            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+        }
+    
+    }
+    
+    private void doaltaNecesitat(ActionEvent event){
+        try{
+            cp.altaNecessitats(text.getText(),text2.getText());
+            
+            done();
+            
+            
+        }
+        catch (Exception ex){
+            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+        }
+    
+    }
+    
+    private void dobaixaNecesitat(ActionEvent event){
+        try{
+            cp.baixaNecessitats(text.getText(),text2.getText());
+            
+            done();
+            
+        }
+        catch (Exception ex){
+            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+        }
+    }
+    
+    private void doassignarPaquet(ActionEvent event){
+        try{
+            cp.assignarPaquet(text.getText(),Integer.parseInt(text2.getText()));
+            
+            done();
+            
+        }
+        catch (Exception ex){
+            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+        }
+    
+    }
+    
+    private void dodesassignarPaquet(ActionEvent event){
+        try{
+            cp.desassignarPaquet(text.getText());
+            
+            done();
+            
+        }
+        catch (Exception ex){
+            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+        }
+        
+    }
+    
+    private void doobtenirneed(ActionEvent event){
+        try{
+            
+            textarea.setText(cp.obtenirNecessitatsVista(text.getText()));
+            contentSchemaC();
+            paint(content);
+        }
+        catch (Exception ex){
+            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+        }
+        
+    }
+    
+    private void dorecursosDisponib(ActionEvent event){
+        try{
 
-
-    } 
+            textarea.setText(cp.obtenirRecursosDisponiblesVista(text.getText()));
+                        contentSchemaC();
+            paint(content);
+        }
+        catch (Exception ex){
+            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+        }
+    
+    
+    
+    }
+    
+    private void doguardarPlanetes(ActionEvent event){
+        try{
+            cp.guardarPlanetes(text.getText());
+            
+            content = new JPanel();
+            label = new JLabel("Exit al Guardar.");
+            content.setLayout( new BorderLayout() );
+            content.setPreferredSize( new Dimension( 400, 100 ) );
+            content.setMinimumSize( new Dimension( 100, 50 ) );
+            content.add(label, BorderLayout.NORTH );
+            paint(content);
+        }
+        catch (Exception ex){
+            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+        }
+    
+    }
+    
+    private void docarregarPlaneta(ActionEvent event){
+        try{
+            cp.carregarPlanetes(text.getText());
+            
+            content = new JPanel();
+            label = new JLabel("Exit al Carregar.");
+            content.setLayout( new BorderLayout() );
+            content.setPreferredSize( new Dimension( 400, 100 ) );
+            content.setMinimumSize( new Dimension( 100, 50 ) );
+            content.add(label, BorderLayout.NORTH );
+            paint(content);
+        }
+        catch (Exception ex){
+            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+        }
+    
+    
+    }
+    
+    
+    
+    private void done(){
+        
+        content = new JPanel();
+        label = new JLabel("Fet.");
+        content.setLayout( new BorderLayout() );
+        content.setPreferredSize( new Dimension( 400, 100 ) );
+        content.setMinimumSize( new Dimension( 100, 50 ) );
+        content.add(label, BorderLayout.NORTH );
+        paint(content);
+    }
+    
     public void paint(JPanel p){
         v.revalidatepanel3(p);
     }

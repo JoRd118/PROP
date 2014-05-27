@@ -12,7 +12,6 @@ public class VistaRecurs extends Vista{
     private static JPanel recurs;
     private VistaGlobal v;
     
-    private JButton buttonRecursOP1 = new JButton("ModificarNom");
     private JButton buttonRecursOP2 = new JButton("NumRecursos");
     
     
@@ -35,8 +34,6 @@ public class VistaRecurs extends Vista{
         recurs = new JPanel();
         recurs.setLayout(new GridLayout(3, 2, 5, 5));
         recurs.add(buttonAlta = new JButton("AltaRecurs"));
-        recurs.add(buttonBaixa = new JButton("BaixaRecurs"));
-        recurs.add(buttonRecursOP1);
         recurs.add(buttonObtenir = new JButton("ObtenirRecurs"));
         recurs.add(buttonObtenirID = new JButton("ObtenirID"));
         recurs.add(buttonllistat = new JButton("Llistar"));
@@ -58,20 +55,6 @@ public class VistaRecurs extends Vista{
         (new ActionListener() {
             public void actionPerformed (ActionEvent event) {
                 altaRecurs(event);
-            }
-        });
-        
-        buttonBaixa.addActionListener
-        (new ActionListener() {
-            public void actionPerformed (ActionEvent event) {
-                baixaRecurs(event);
-            }
-        });
-        
-        buttonRecursOP1.addActionListener
-        (new ActionListener() {
-            public void actionPerformed (ActionEvent event) {
-                modificarNom(event);
             }
         });
         
@@ -117,17 +100,14 @@ public class VistaRecurs extends Vista{
             }
         });
         
-        
-        
-        
-        
     }
     
     
     
     private void altaRecurs(ActionEvent event){
-        contentSchemaA();
         label = new JLabel("OP:AltaRecurs  Nom Recurs:");
+        contentSchemaA();
+        
         content.add(label, BorderLayout.NORTH );
         
         b.addActionListener
@@ -140,31 +120,10 @@ public class VistaRecurs extends Vista{
         paint(content);
     }
     
-    
-    private void baixaRecurs(ActionEvent event){
-        contentSchemaA();
-        label = new JLabel("OP:BaixaRecurs  Nom Recurs:");
-        content.add(label, BorderLayout.NORTH );
-        
-        b.addActionListener
-        (new ActionListener() {
-            public void actionPerformed (ActionEvent event) {
-                dobaixaRecurs(event);
-            }
-        });
-        
-        paint(content);
-        
-    }
-    
-    private void modificarNom(ActionEvent event){
-        
-        
-    }
-    
     private void obtenirRecurs(ActionEvent event){
+        label = new JLabel("OP:ObtenirRecurs  Nom Recurs:");
         contentSchemaA();
-        label = new JLabel("OP:BaixaRecurs  Nom Recurs:");
+        
         content.add(label, BorderLayout.NORTH );
         
         b.addActionListener
@@ -179,8 +138,9 @@ public class VistaRecurs extends Vista{
     }
     
     private void obtenirId(ActionEvent event){
-        contentSchemaA();
         label = new JLabel("OP:ObtenirIdRecurs  Nom Recurs:");
+        contentSchemaA();
+        
         content.add(label, BorderLayout.NORTH );
         
         b.addActionListener
@@ -195,24 +155,55 @@ public class VistaRecurs extends Vista{
     }
     
     private void llistatRecurs(ActionEvent event){
-        contentSchemaC();
-        textarea.setText(cr.llistatRecurs());
-        paint(content);
+        try{
+            contentSchemaC();
+            textarea.setText(cr.llistatRecurs());
+            paint(content);
+        }
+        catch (Exception ex){
+            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+        }
         
     }
     
     private void numRecursos(ActionEvent event){
-        
+        contentSchemaC();
+        textarea.setText(String.valueOf(cr.totalRecursos()));
+        paint(content);
         
     }
     
     private void guardar(ActionEvent event){
+        label = new JLabel("OP:Guardar - ABSOLUTE PATH - :");
+        contentSchemaA();
         
+        content.add(label, BorderLayout.NORTH );
+        
+        b.addActionListener
+        (new ActionListener() {
+            public void actionPerformed (ActionEvent event) {
+                doguardarRecurs(event);
+            }
+        });
+        
+        paint(content);
         
     }
     
     private void carregar(ActionEvent event){
+        label = new JLabel("OP:Carregar - ABSOLUTE PATH - :");
+        contentSchemaA();
         
+        content.add(label, BorderLayout.NORTH );
+        
+        b.addActionListener
+        (new ActionListener() {
+            public void actionPerformed (ActionEvent event) {
+                docarregarRecurs(event);
+            }
+        });
+        
+        paint(content);
         
     }
     
@@ -278,6 +269,40 @@ public class VistaRecurs extends Vista{
         
     }
     
+    private void doguardarRecurs(ActionEvent event){
+        try{
+            cr.guardarRecursos(text.getText());
+            
+            content = new JPanel();
+            label = new JLabel("Exit al Guardar.");
+            content.setLayout( new BorderLayout() );
+            content.setPreferredSize( new Dimension( 400, 100 ) );
+            content.setMinimumSize( new Dimension( 100, 50 ) );
+            content.add(label, BorderLayout.NORTH );
+            paint(content);
+        }
+        catch (Exception ex){
+            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+        }
+    }
+    
+    private void docarregarRecurs(ActionEvent event){
+        try{
+            cr.carregarRecursos(text.getText());
+            
+            content = new JPanel();
+            label = new JLabel("Exit al Carregar.");
+            content.setLayout( new BorderLayout() );
+            content.setPreferredSize( new Dimension( 400, 100 ) );
+            content.setMinimumSize( new Dimension( 100, 50 ) );
+            content.add(label, BorderLayout.NORTH );
+            paint(content);
+        }
+        catch (Exception ex){
+            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+        }
+        
+    }
     
     public void paint(JPanel p){
         v.revalidatepanel3(p);
