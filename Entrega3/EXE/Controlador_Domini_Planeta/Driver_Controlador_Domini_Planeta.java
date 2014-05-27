@@ -32,7 +32,9 @@ public class Driver_Controlador_Domini_Planeta {
         System.out.println("\t 21) public void carregarPlanetes(String nomFitxer).");
         System.out.println("\t 22) public void desassignarPaquet(String nomP)");
         System.out.println("\t 23) public void altaPlanetaVista(String nom, String coorden, boolean classeM)");
-        System.out.println("\t 24)public String obtenirCoordenadesVista(String nom)");
+        System.out.println("\t 24) public String obtenirCoordenadesVista(String nom)");
+        System.out.println("\t 25) public String obtenirRecursosDisponiblesVista(String nomP)");
+        System.out.println("\t 26) public String obtenirNecessitatsVista(String nomP)");
 
         System.out.println("\t 31) public Controlador_Domini_Paquet(Controlador_Domini_Recurs n).");
         System.out.println("\t 32) public altaPaquet().");
@@ -248,6 +250,14 @@ public class Driver_Controlador_Domini_Planeta {
                     	String resp = cp.obtenirCoordenadesVista(nom);
                     	System.out.println(resp);
                     	break;
+                    case "25": 	// System.out.println("\t 25) public String obtenirRecursosDisponiblesVista(String nomP)");
+						nom = scan.nextLine();
+						System.out.println(cp.obtenirRecursosDisponiblesVista(nom));
+						break;
+        			case "26":	//System.out.println("\t 26) public String obtenirNecessitatsVista(String nomP)");
+						nom = scan.nextLine();
+						System.out.println(cp.obtenirNecessitatsVista(nom));
+						break;
                     case "31":
                         cpa = new Controlador_Domini_Paquet(cr);
                         break;   

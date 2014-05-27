@@ -283,6 +283,21 @@ public class Controlador_Domini_Planeta {
 		else throw new IllegalArgumentException(msg_planeta_no_exists);
 	}
 
+    public String obtenirRecursosDisponiblesVista(String nomP) {
+        if (Conjunt_Planetes_Desassignat.contains(nomP) || Conjunt_Planetes_Assignat.contains(nomP)) {
+            Planeta p;
+            if (Conjunt_Planetes_Assignat.contains(nomP)) p = Conjunt_Planetes_Assignat.obtain(nomP);
+            else p = Conjunt_Planetes_Desassignat.obtain(nomP);
+            if (p.obtenirClasse()) {
+                Paquet pq = p.obtenirPaquet();
+                
+                return cp.llistatRecursosPaquet(cp.obtenirIdPaquet(pq));
+            }
+            else throw new IllegalArgumentException(msg_planeta_cap_paquet_assginat);
+        }
+        else throw new IllegalArgumentException(msg_planeta_no_exists);
+    }
+
     //Pre:
     //Post: Retornar un un Iterable<String> on hi ha tots els noms dels recursos d'un planeta
 	public Iterable<String> obtenirNecessitats(String nomP) {
@@ -295,6 +310,20 @@ public class Controlador_Domini_Planeta {
 		} else throw new IllegalArgumentException(msg_planeta_no_exists);
 	}
     
+    public String obtenirNecessitatsVista(String nomP) {
+        if (Conjunt_Planetes_Desassignat.contains(nomP) || Conjunt_Planetes_Assignat.contains(nomP)) {
+            Planeta p;
+            if (Conjunt_Planetes_Assignat.contains(nomP)) p = Conjunt_Planetes_Assignat.obtain(nomP);
+            else p = Conjunt_Planetes_Desassignat.obtain(nomP);
+            TST<Recurs> aux = p.obtenirNecessitats();
+            Iterable<String> aux1 = aux.obtainAllTST();
+            String llistat = new String();
+            for (String nom : aux1) {
+                llistat += nom + "\n";
+            }
+            return llistat;
+        } else throw new IllegalArgumentException(msg_planeta_no_exists);
+    }
 
     public void borrar_paquet2(int id){
         Iterable<String> planetes = Conjunt_Planetes_Assignat.obtainAllTST();
