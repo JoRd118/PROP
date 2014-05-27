@@ -48,6 +48,16 @@ public class Controlador_Domini_Planeta {
 		}
 	}
 
+    public void altaPlanetaVista(String nom, String coorden, boolean classeM) {
+        if(Conjunt_Planetes_Desassignat.contains(nom)||Conjunt_Planetes_Assignat.contains(nom)) throw new IllegalArgumentException(msg_planeta_repetit);
+        else {
+            String[] aux = coorden.split(",");
+            Coordenades coord = new Coordenades(Integer.parseInt(aux[0]), Integer.parseInt(aux[1]));
+            Planeta p = new Planeta(nom, id.id() , coord, classeM);
+            Conjunt_Planetes_Desassignat.insert(nom, p);
+        }
+    }
+
 	//Pre:
 	//Post: S'esborra el planeta amb el nom demanat    
 	public void baixaPlaneta(String nom) {
@@ -356,7 +366,7 @@ public class Controlador_Domini_Planeta {
             Coordenades aux1 = new Coordenades(Integer.parseInt(aux[1]), Integer.parseInt(aux[2]));
             if(aux[3].equals("1")) {
                 altaPlaneta(aux[0], aux1, true);
-                assignarPaquet(aux[0], Integer.parseInt(aux[4]));
+                if(!aux[4].equals("NULL")) assignarPaquet(aux[0], Integer.parseInt(aux[4]));
                 for(int j = 5; j < aux.length; ++j) {
                     altaNecessitats(aux[0],aux[j]);
                 }
@@ -378,15 +388,18 @@ public class Controlador_Domini_Planeta {
             Coordenades c = p.obtenirCoordenades();
             list += Integer.toString(c.obtenirCoordenadesX()) + "\n";
             list += Integer.toString(c.obtenirCoordenadesY()) + "\n";
-            if (p.obtenirClasse()) list += "1\n"; 
-            else list += "0\n";
-            Paquet pac = p.obtenirPaquet();
-            list += Integer.toString(cp.obtenirIdPaquet(pac)) + "\n";
-            TST<Recurs> aux = p.obtenirNecessitats();
-            Iterable<String> s1 = aux.obtainAllTST();
-            for (String nom : s1) {
-                list += nom + "\n";
+            if (p.obtenirClasse()) {
+                list += "1\n"; 
+                Paquet pac = p.obtenirPaquet();
+                if (pac == null) list += "NULL\n"; 
+                else list += Integer.toString(cp.obtenirIdPaquet(pac)) + "\n";
+                TST<Recurs> aux = p.obtenirNecessitats();
+                Iterable<String> s1 = aux.obtainAllTST();
+                for (String nom : s1) {
+                    list += nom + "\n";
+                }
             }
+            else list += "0\n";
             list += "#";
             cd.writeTextFile(list); 
         }
@@ -402,7 +415,8 @@ public class Controlador_Domini_Planeta {
             if (p.obtenirClasse()) {
                 list += "1\n"; 
                 Paquet pac = p.obtenirPaquet();
-                list += Integer.toString(cp.obtenirIdPaquet(pac)) + "\n";
+                if (pac == null) list += "NULL\n";
+                else list += Integer.toString(cp.obtenirIdPaquet(pac)) + "\n";
                 TST<Recurs> aux = p.obtenirNecessitats();
                 Iterable<String> s2 = aux.obtainAllTST();
                 for (String nom1 : s2) {
