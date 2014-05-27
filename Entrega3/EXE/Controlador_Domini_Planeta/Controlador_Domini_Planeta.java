@@ -356,7 +356,7 @@ public class Controlador_Domini_Planeta {
             Coordenades aux1 = new Coordenades(Integer.parseInt(aux[1]), Integer.parseInt(aux[2]));
             if(aux[3].equals("1")) {
                 altaPlaneta(aux[0], aux1, true);
-                assignarPaquet(aux[0], Integer.parseInt(aux[4]));
+                if(aux[4] == "NULL") assignarPaquet(aux[0], Integer.parseInt(aux[4]));
                 for(int j = 5; j < aux.length; ++j) {
                     altaNecessitats(aux[0],aux[j]);
                 }
@@ -381,7 +381,8 @@ public class Controlador_Domini_Planeta {
             if (p.obtenirClasse()) list += "1\n"; 
             else list += "0\n";
             Paquet pac = p.obtenirPaquet();
-            list += Integer.toString(cp.obtenirIdPaquet(pac)) + "\n";
+            if (pac == null) list += "NULL\n"; 
+            else list += Integer.toString(cp.obtenirIdPaquet(pac)) + "\n";
             TST<Recurs> aux = p.obtenirNecessitats();
             Iterable<String> s1 = aux.obtainAllTST();
             for (String nom : s1) {
@@ -402,7 +403,8 @@ public class Controlador_Domini_Planeta {
             if (p.obtenirClasse()) {
                 list += "1\n"; 
                 Paquet pac = p.obtenirPaquet();
-                list += Integer.toString(cp.obtenirIdPaquet(pac)) + "\n";
+                if (pac == null) list += "NULL\n";
+                else list += Integer.toString(cp.obtenirIdPaquet(pac)) + "\n";
                 TST<Recurs> aux = p.obtenirNecessitats();
                 Iterable<String> s2 = aux.obtainAllTST();
                 for (String nom1 : s2) {
