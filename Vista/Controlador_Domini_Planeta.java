@@ -134,7 +134,7 @@ public class Controlador_Domini_Planeta {
             Conjunt_Planetes_Assignat.obtain(nom).modificacioCoordenades(x, y);
         } else throw new IllegalArgumentException(msg_planeta_no_exists);
     }
-
+    
     //Pre:
     //Post: La classeM de un planeta passar a ser de classeM si classeM es true
 	public void modificarClasse(String nom, boolean classeM) {
@@ -330,7 +330,8 @@ public class Controlador_Domini_Planeta {
         if (Conjunt_Planetes_Desassignat.contains(nomP) || Conjunt_Planetes_Assignat.contains(nomP)) {
             Planeta p;
             if (Conjunt_Planetes_Assignat.contains(nomP)) p = Conjunt_Planetes_Assignat.obtain(nomP);
-            else p = Conjunt_Planetes_Desassignat.obtain(nomP);
+            else{
+                p = Conjunt_Planetes_Desassignat.obtain(nomP); }
             TST<Recurs> aux = p.obtenirNecessitats();
             Iterable<String> aux1 = aux.obtainAllTST();
             String llistat = new String();
@@ -338,7 +339,9 @@ public class Controlador_Domini_Planeta {
                 llistat += nom + "\n";
             }
             return llistat;
-        } else throw new IllegalArgumentException(msg_planeta_no_exists);
+        }
+        else{
+            throw new IllegalArgumentException(msg_planeta_no_exists);}
     }
     
     public void borrar_paquet2(int id){

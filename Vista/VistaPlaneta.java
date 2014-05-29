@@ -50,7 +50,7 @@ public class VistaPlaneta extends Vista{
         planeta.add(buttonPlanetaOP9);
         planeta.add(buttonPlanetaOP10);
         planeta.add(buttonPlanetaOP11);
-        planeta.add(buttonllistat = new JButton("Llistar"));
+        planeta.add(buttonllistat = new JButton("LlistarDessasignats"));
         planeta.add(buttonPlanetaOP13);
         planeta.add(buttonPlanetaOP14);
         planeta.add(buttonPlanetaOP15);
@@ -578,9 +578,9 @@ public class VistaPlaneta extends Vista{
     
     private void doobtenirneed(ActionEvent event){
         try{
-            
-            textarea.setText(cp.obtenirNecessitatsVista(text.getText()));
             contentSchemaC();
+            textarea.setText(cp.obtenirNecessitatsVista(text.getText()));
+            
             paint(content);
         }
         catch (Exception ex){
@@ -591,9 +591,9 @@ public class VistaPlaneta extends Vista{
     
     private void dorecursosDisponib(ActionEvent event){
         try{
-
+            contentSchemaC();
             textarea.setText(cp.obtenirRecursosDisponiblesVista(text.getText()));
-                        contentSchemaC();
+            
             paint(content);
         }
         catch (Exception ex){

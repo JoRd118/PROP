@@ -25,6 +25,5 @@ public class Controlador_Presentacio{
         cu = new Controlador_Domini_Univers(cpl, cr, cp);
     }
     
-    
 
 }
