@@ -271,8 +271,9 @@ public class VistaPaquet extends Vista{
     private void doobtenirPaquet(ActionEvent event){
         try{
             String aux = text.getText();
-            contentSchemaB();
-            label = new JLabel("ID Paquet: "+ cp.obtenirIdPaquet(cp.obtenirPaquet(Integer.parseInt(aux))) + "  Recursos: " + cp.llistatRecursosPaquet(Integer.parseInt(aux)));
+            contentSchemaC();
+            textarea.setText(cp.llistatRecursosPaquet(cp.obtenirIdPaquet(cp.obtenirPaquet(Integer.parseInt(aux)))));
+                             label = new JLabel("ID Paquet: "+ cp.obtenirIdPaquet(cp.obtenirPaquet(Integer.parseInt(aux))));
             content.add(label, BorderLayout.NORTH );
             paint(content);
         }
