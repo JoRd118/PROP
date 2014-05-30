@@ -76,7 +76,7 @@ public class VistaSave extends Vista{
              }*/
         }
         catch (Exception ex){
-            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+            error_ex("Exception: " + ex.getMessage());
         }
         
     }
@@ -88,13 +88,25 @@ public class VistaSave extends Vista{
     private void done(){
         
         content = new JPanel();
-        label = new JLabel("Fet.");
+        label = new JLabel("   Fet.(aka Good!)");
+        label.setForeground(Color.blue);
         content.setLayout( new BorderLayout() );
         content.setPreferredSize( new Dimension( 400, 100 ) );
         content.setMinimumSize( new Dimension( 100, 50 ) );
         content.add(label, BorderLayout.NORTH );
         paint(content);
     }
+    public void error_ex(String a){
+        content = new JPanel();
+        label = new JLabel("-> "+a);
+        label.setForeground(Color.red);
+        content.setLayout( new BorderLayout() );
+        content.setPreferredSize( new Dimension( 400, 100 ) );
+        content.setMinimumSize( new Dimension( 100, 50 ) );
+        content.add(label, BorderLayout.NORTH );
+        paint(content);
+    }
+
     
     public void paint(JPanel p){
         v.revalidatepanel3(p);

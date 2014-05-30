@@ -37,6 +37,9 @@ public class Controlador_Presentacio{
     }
     
     public void borrar_planeta(String a){
+        /*String[] aux = a.split("/");
+        String[] aux2 = aux.[aux.length-1].split(".");
+        aux2[0] = aux2[0] + "Recurs";*/
         cu.borrar_planeta(a);
     }
     

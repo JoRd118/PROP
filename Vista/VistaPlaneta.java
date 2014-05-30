@@ -322,7 +322,7 @@ public class VistaPlaneta extends Vista{
             paint(content);
         }
         catch (Exception ex){
-            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+           error_ex("Exception: " + ex.getMessage());
         }
         
     }
@@ -334,7 +334,7 @@ public class VistaPlaneta extends Vista{
             paint(content);
         }
         catch (Exception ex){
-            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+           error_ex("Exception: " + ex.getMessage());
         }
         
     }
@@ -502,9 +502,13 @@ public class VistaPlaneta extends Vista{
             if (estado == JFileChooser.APPROVE_OPTION) {
                 archivo = elegirArchivo.getSelectedFile();
                 String direccion = archivo.toString();
+                String direccion_copy = direccion;
+                direccion_copy = direccion_copy.substring((direccion_copy.length())-3,direccion_copy.length());
+                if(direccion_copy.equals("pla")){
                 cp.guardarPlanetes(direccion);
                 done();
-                
+                }
+                 else{error_ex("Exception: Extencio del fitxer incorrecte (hauria de ser '.rec') ");}
             }
             /*
              else if (estado == JFileChooser.CANCEL_OPTION) {
@@ -512,7 +516,7 @@ public class VistaPlaneta extends Vista{
              }*/
         }
         catch (Exception ex){
-            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+           error_ex("Exception: " + ex.getMessage());
         }
         
     }
@@ -531,9 +535,13 @@ public class VistaPlaneta extends Vista{
             if (estado == JFileChooser.APPROVE_OPTION) {
                 archivo = elegirArchivo.getSelectedFile();
                 String direccion = archivo.toString();
+                String direccion_copy = direccion;
+                direccion_copy = direccion_copy.substring((direccion_copy.length())-3,direccion_copy.length());
+                if(direccion_copy.equals("pla")){
                 cp.carregarPlanetes(direccion);
                 done();
-                
+                }
+                else{error_ex("Exception: Extencio del fitxer incorrecte (hauria de ser '.rec') ");}
             }
             /*
              else if (estado == JFileChooser.CANCEL_OPTION) {
@@ -541,7 +549,7 @@ public class VistaPlaneta extends Vista{
              }*/
         }
         catch (Exception ex){
-            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+           error_ex("Exception: " + ex.getMessage());
         }
     }
     
@@ -564,7 +572,7 @@ public class VistaPlaneta extends Vista{
             paint(content);
         }
         catch (Exception ex){
-            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+           error_ex("Exception: " + ex.getMessage());
         }
     }
     
@@ -581,7 +589,7 @@ public class VistaPlaneta extends Vista{
         
         }
         catch (Exception ex){
-            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+           error_ex("Exception: " + ex.getMessage());
         }
     
     }
@@ -595,7 +603,7 @@ public class VistaPlaneta extends Vista{
             paint(content);
         }
         catch (Exception ex){
-            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+           error_ex("Exception: " + ex.getMessage());
         }
     
     }
@@ -609,7 +617,7 @@ public class VistaPlaneta extends Vista{
             paint(content);
         }
         catch (Exception ex){
-            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+           error_ex("Exception: " + ex.getMessage());
         }
     
     }
@@ -622,7 +630,7 @@ public class VistaPlaneta extends Vista{
             paint(content);
         }
         catch (Exception ex){
-            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+            error_ex("Exception: " + ex.getMessage());
         }
     
     }
@@ -631,12 +639,15 @@ public class VistaPlaneta extends Vista{
         try{
             String aux = text.getText();
             contentSchemaB();
-            label = new JLabel("ID Planeta: "+ cp.obtenirId(aux)+" Nom Planeta: "+ aux +" Classe Planeta: "+ cp.obtenirClasse(aux)+ " Coords Planeta: "+ cp.obtenirCoordenadesVista(aux) + " Paquet:" + cp.obtenirPaquetPlaneta(aux));
+            int aux3 = cp.obtenirPaquetPlaneta(aux);
+            String aux4 = "No te paquet";
+            if(aux3 > 0) aux4 = " " + aux3;
+            label = new JLabel("ID Planeta: "+ cp.obtenirId(aux)+" Nom Planeta: "+ aux +" Classe Planeta: "+ cp.obtenirClasse(aux)+ " Coords Planeta: "+ cp.obtenirCoordenadesVista(aux) + " Paquet:" + aux4);
             content.add(label, BorderLayout.NORTH );
             paint(content);
         }
         catch (Exception ex){
-            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+            error_ex("Exception: " + ex.getMessage());
         }
     
     }
@@ -650,7 +661,7 @@ public class VistaPlaneta extends Vista{
             
         }
         catch (Exception ex){
-            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+           error_ex("Exception: " + ex.getMessage());
         }
     
     }
@@ -663,7 +674,7 @@ public class VistaPlaneta extends Vista{
             
         }
         catch (Exception ex){
-            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+           error_ex("Exception: " + ex.getMessage());
         }
     }
     
@@ -675,7 +686,7 @@ public class VistaPlaneta extends Vista{
             
         }
         catch (Exception ex){
-            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+           error_ex("Exception: " + ex.getMessage());
         }
     
     }
@@ -688,7 +699,7 @@ public class VistaPlaneta extends Vista{
             
         }
         catch (Exception ex){
-            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+           error_ex("Exception: " + ex.getMessage());
         }
         
     }
@@ -701,7 +712,7 @@ public class VistaPlaneta extends Vista{
             paint(content);
         }
         catch (Exception ex){
-            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+          error_ex("Exception: " + ex.getMessage());
         }
         
     }
@@ -714,7 +725,7 @@ public class VistaPlaneta extends Vista{
             paint(content);
         }
         catch (Exception ex){
-            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+            error_ex("Exception: " + ex.getMessage());
         }
     }
     
@@ -724,14 +735,14 @@ public class VistaPlaneta extends Vista{
             done();
         }
         catch (Exception ex){
-            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+            error_ex("Exception: " + ex.getMessage());
         }
     }
     
     private void doclassePlaneta(ActionEvent event){
         try{
-            if(chinButton.isSelected()){cp.modificarCoordPlanetaVista(text.getText(),true);}
-            else if(chinButton2.isSelected()){cp.modificarCoordPlanetaVista(text.getText(),false);}
+            if(chinButton.isSelected()){cp.modificarClassePlanetaVista(text.getText(),true);}
+            else if(chinButton2.isSelected()){cp.modificarClassePlanetaVista(text.getText(),false);}
             else{
                 throw new IllegalArgumentException("Cal Seleccionar el tipus M");
             }
@@ -739,16 +750,17 @@ public class VistaPlaneta extends Vista{
             done();
         }
         catch (Exception ex){
-            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+            error_ex("Exception: " + ex.getMessage());
         }
     }
     private void docoordPlaneta(ActionEvent event){
         try{
             String[] aux = text2.getText().split(",");
             cp.modificarCoordPlanetaVista(text.getText(),Integer.parseInt(aux[0]),Integer.parseInt(aux[1]));
+            done();
         }
         catch (Exception ex){
-            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+            error_ex("Exception: " + ex.getMessage());
         }
         
     }
@@ -792,7 +804,18 @@ public class VistaPlaneta extends Vista{
     private void done(){
         
         content = new JPanel();
-        label = new JLabel("Fet.");
+        label = new JLabel("   Fet.(aka Good!)");
+        label.setForeground(Color.blue);
+        content.setLayout( new BorderLayout() );
+        content.setPreferredSize( new Dimension( 400, 100 ) );
+        content.setMinimumSize( new Dimension( 100, 50 ) );
+        content.add(label, BorderLayout.NORTH );
+        paint(content);
+    }
+    public void error_ex(String a){
+        content = new JPanel();
+        label = new JLabel("-> "+a);
+        label.setForeground(Color.red);
         content.setLayout( new BorderLayout() );
         content.setPreferredSize( new Dimension( 400, 100 ) );
         content.setMinimumSize( new Dimension( 100, 50 ) );

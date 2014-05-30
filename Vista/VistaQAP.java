@@ -294,7 +294,7 @@ public class VistaQAP extends Vista{
             paint(content);
         }
         catch (Exception ex){
-            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+           error_ex("Exception: " + ex.getMessage());
         }
     }
     
@@ -305,7 +305,7 @@ public class VistaQAP extends Vista{
             paint(content);
         }
         catch (Exception ex){
-            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+            error_ex("Exception: " + ex.getMessage());
         }
     
     }
@@ -317,7 +317,7 @@ public class VistaQAP extends Vista{
             paint(content);
         }
         catch (Exception ex){
-            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+            error_ex("Exception: " + ex.getMessage());
         }
     }
     
@@ -328,7 +328,7 @@ public class VistaQAP extends Vista{
             paint(content);
         }
         catch (Exception ex){
-            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+            error_ex("Exception: " + ex.getMessage());
         }
     
     }
@@ -340,7 +340,7 @@ public class VistaQAP extends Vista{
             paint(content);
         }
         catch (Exception ex){
-            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+            error_ex("Exception: " + ex.getMessage());
         }
     
     }
@@ -363,7 +363,7 @@ public class VistaQAP extends Vista{
             paint(content);
         }
         catch (Exception ex){
-            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+            error_ex("Exception: " + ex.getMessage());
         }
     
     }
@@ -375,7 +375,7 @@ public class VistaQAP extends Vista{
             paint(content);
         }
         catch (Exception ex){
-            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+            error_ex("Exception: " + ex.getMessage());
         }
     }
     
@@ -386,7 +386,7 @@ public class VistaQAP extends Vista{
             paint(content);
         }
         catch (Exception ex){
-            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+            error_ex("Exception: " + ex.getMessage());
         }
     }
     
@@ -397,7 +397,7 @@ public class VistaQAP extends Vista{
             paint(content);
         }
         catch (Exception ex){
-            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+            error_ex("Exception: " + ex.getMessage());
         }
     }
     
@@ -415,9 +415,13 @@ public class VistaQAP extends Vista{
             if (estado == JFileChooser.APPROVE_OPTION) {
                 archivo = elegirArchivo.getSelectedFile();
                 String direccion = archivo.toString();
+                String direccion_copy = direccion;
+                direccion_copy = direccion_copy.substring((direccion_copy.length())-3,direccion_copy.length());
+                if(direccion_copy.equals("qap")){
                 q.guardar_solucioQAP(direccion);
                 done();
-                
+                }
+                else{error_ex("Exception: Extencio del fitxer incorrecte (hauria de ser '.rec') ");}
             }
             /*
              else if (estado == JFileChooser.CANCEL_OPTION) {
@@ -425,7 +429,7 @@ public class VistaQAP extends Vista{
              }*/
         }
         catch (Exception ex){
-            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+           error_ex("Exception: " + ex.getMessage());
         }
     
     }
@@ -445,7 +449,7 @@ public class VistaQAP extends Vista{
             
         }
         catch (Exception ex){
-            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+           error_ex("Exception: " + ex.getMessage());
         }
     }
     
@@ -459,7 +463,7 @@ public class VistaQAP extends Vista{
         
         }
         catch (Exception ex){
-            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+           error_ex("Exception: " + ex.getMessage());
         }
     
     }
@@ -474,7 +478,7 @@ public class VistaQAP extends Vista{
             
         }
         catch (Exception ex){
-            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+           error_ex("Exception: " + ex.getMessage());
         }
     }
     
@@ -488,7 +492,7 @@ public class VistaQAP extends Vista{
             
         }
         catch (Exception ex){
-            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+           error_ex("Exception: " + ex.getMessage());
         }
     }
     
@@ -500,7 +504,7 @@ public class VistaQAP extends Vista{
         
         }
         catch (Exception ex){
-            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+            error_ex("Exception: " + ex.getMessage());
         }
     }
     
@@ -509,7 +513,7 @@ public class VistaQAP extends Vista{
             q.calcularMatrius(text.getText());
         }
         catch (Exception ex){
-            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+            error_ex("Exception: " + ex.getMessage());
         }
     
     }
@@ -520,7 +524,18 @@ public class VistaQAP extends Vista{
     private void done(){
         
         content = new JPanel();
-        label = new JLabel("Fet.");
+        label = new JLabel("   Fet.(aka Good!)");
+        label.setForeground(Color.blue);
+        content.setLayout( new BorderLayout() );
+        content.setPreferredSize( new Dimension( 400, 100 ) );
+        content.setMinimumSize( new Dimension( 100, 50 ) );
+        content.add(label, BorderLayout.NORTH );
+        paint(content);
+    }
+    public void error_ex(String a){
+        content = new JPanel();
+        label = new JLabel("-> "+a);
+        label.setForeground(Color.red);
         content.setLayout( new BorderLayout() );
         content.setPreferredSize( new Dimension( 400, 100 ) );
         content.setMinimumSize( new Dimension( 100, 50 ) );

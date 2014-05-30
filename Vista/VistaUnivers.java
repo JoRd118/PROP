@@ -16,21 +16,21 @@ public class VistaUnivers extends Vista{
     private static Controlador_Domini_Univers cu;
     private static JPanel univers;
     private VistaGlobal v;
-
-
-   
-
-    private JButton buttonUniversOP1 = new JButton("NumPlanetes");    
+    
+    
+    
+    
+    private JButton buttonUniversOP1 = new JButton("NumPlanetes");
     private JButton buttonUniversOP2 = new JButton("AfegirPlaneta");
     private JButton buttonUniversOP3 = new JButton("DesafegirPlaneta");
     private JButton buttonUniversOP4 = new JButton("VectorPlanetes");
     private JButton buttonUniversOP5 = new JButton("MatriuDistanciaPlanetes");
     private JButton buttonUniversOP6 = new JButton("MatriuNecessitatsPlanetes");
-    private JButton buttonUniversOP7 = new JButton("MatriuRecursosPlanetes");  
-   private JButton buttonUniversOP8 = new JButton("ModificarNom");
+    private JButton buttonUniversOP7 = new JButton("MatriuRecursosPlanetes");
+    private JButton buttonUniversOP8 = new JButton("ModificarNom");
     
     
-
+    
     
     public VistaUnivers (){
         v = super.getF();
@@ -65,11 +65,11 @@ public class VistaUnivers extends Vista{
         assignar_actionListeners();
         
     }
-
+    
     public JPanel construct(){
         return univers;
     }
-
+    
     private void assignar_actionListeners(){
         //Alta
         buttonAlta.addActionListener
@@ -150,7 +150,7 @@ public class VistaUnivers extends Vista{
                 matriuNecessitatsPlanetes(event);
             }
         });
-        //Mat Recursos 
+        //Mat Recursos
         buttonUniversOP7.addActionListener
         (new ActionListener() {
             public void actionPerformed (ActionEvent event) {
@@ -172,7 +172,7 @@ public class VistaUnivers extends Vista{
             }
         });
     }
-
+    
     private void altaUnivers(ActionEvent event){
         contentSchemaA();
         label = new JLabel("OP:AltaUnivers  Nom Univers:");
@@ -186,9 +186,9 @@ public class VistaUnivers extends Vista{
         });
         
         paint(content);
-
+        
     }
-
+    
     private void baixaUnivers(ActionEvent event){
         label = new JLabel("OP:BaixaUnivers  Nom Univers:");
         contentSchemaA();
@@ -202,7 +202,7 @@ public class VistaUnivers extends Vista{
         });
         
         paint(content);
-
+        
     }
     
     private void obtenirId(ActionEvent event){
@@ -218,9 +218,9 @@ public class VistaUnivers extends Vista{
         });
         
         paint(content);
-
+        
     }
-
+    
     private void llistatUniversos(ActionEvent event){
         try{
             contentSchemaC();
@@ -228,16 +228,16 @@ public class VistaUnivers extends Vista{
             paint(content);
         }
         catch (Exception ex){
-            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+            error_ex("Exception: " + ex.getMessage());
         }
-
+        
     }
-
+    
     private void numPlanetes(ActionEvent event){
         label = new JLabel("OP:ObtenirNumPlanetesUnivers  Nom Univers:");
         contentSchemaA();
         content.add(label, BorderLayout.NORTH );
-
+        
         b.addActionListener
         (new ActionListener() {
             public void actionPerformed (ActionEvent event) {
@@ -247,7 +247,7 @@ public class VistaUnivers extends Vista{
         
         paint(content);
     }
-
+    
     private void afegirPlaneta(ActionEvent event){
         label = new JLabel("OP:Assignar Univers-Planeta  Nom Univers:");
         label2 = new JLabel("Nom Planeta:");
@@ -261,7 +261,7 @@ public class VistaUnivers extends Vista{
         });
         paint(content);
     }
-
+    
     private void desafegirPlaneta(ActionEvent event){
         label = new JLabel("OP:Assignar Univers-Planeta  Nom Univers:");
         label2 = new JLabel("Nom Planeta:");
@@ -275,12 +275,12 @@ public class VistaUnivers extends Vista{
         });
         paint(content);
     }
-
+    
     private void vectorPlanetes(ActionEvent event){
         label = new JLabel("OP:ObtenirPlanetesUnivers  Nom Univers:");
         contentSchemaA();
         content.add(label, BorderLayout.NORTH );
-
+        
         b.addActionListener
         (new ActionListener() {
             public void actionPerformed (ActionEvent event) {
@@ -290,12 +290,12 @@ public class VistaUnivers extends Vista{
         
         paint(content);
     }
-
+    
     private void matriuDistanciaPlanetes(ActionEvent event){
         label = new JLabel("OP:ObtenirDistanciaPlanetes Nom Univers:");
         contentSchemaA();
         content.add(label, BorderLayout.NORTH );
-
+        
         b.addActionListener
         (new ActionListener() {
             public void actionPerformed (ActionEvent event) {
@@ -305,12 +305,12 @@ public class VistaUnivers extends Vista{
         
         paint(content);
     }
-
+    
     private void matriuNecessitatsPlanetes(ActionEvent event){
         label = new JLabel("OP:ObtenirNecessitatsPlanetes Nom Univers:");
         contentSchemaA();
         content.add(label, BorderLayout.NORTH );
-
+        
         b.addActionListener
         (new ActionListener() {
             public void actionPerformed (ActionEvent event) {
@@ -319,14 +319,14 @@ public class VistaUnivers extends Vista{
         });
         
         paint(content);
-
+        
     }
-
+    
     private void matriusRecursosPlanetes(ActionEvent event){
         label = new JLabel("OP:ObtenirRecursosPlanetes  Nom Univers:");
         contentSchemaA();
         content.add(label, BorderLayout.NORTH );
-
+        
         b.addActionListener
         (new ActionListener() {
             public void actionPerformed (ActionEvent event) {
@@ -335,7 +335,7 @@ public class VistaUnivers extends Vista{
         });
         
         paint(content);
-
+        
     }
     
     private void modificarNom(ActionEvent event){
@@ -349,9 +349,9 @@ public class VistaUnivers extends Vista{
             }
         });
         paint(content);
-    
+        
     }
-
+    
     private void guardar(ActionEvent event){
         try{
             content = new JPanel();
@@ -366,9 +366,13 @@ public class VistaUnivers extends Vista{
             if (estado == JFileChooser.APPROVE_OPTION) {
                 archivo = elegirArchivo.getSelectedFile();
                 String direccion = archivo.toString();
-                cu.guardarUniversos(direccion);
-                done();
-                
+                String direccion_copy = direccion;
+                direccion_copy = direccion_copy.substring((direccion_copy.length())-3,direccion_copy.length());
+                if(direccion_copy.equals("uni")){
+                    cu.guardarUniversos(direccion);
+                    done();
+                }
+                else{error_ex("Exception: Extencio del fitxer incorrecte (hauria de ser '.rec') ");}
             }
             /*
              else if (estado == JFileChooser.CANCEL_OPTION) {
@@ -376,11 +380,11 @@ public class VistaUnivers extends Vista{
              }*/
         }
         catch (Exception ex){
-            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+            error_ex("Exception: " + ex.getMessage());
         }
-
+        
     }
-
+    
     private void carregar(ActionEvent event){
         try{
             content = new JPanel();
@@ -395,8 +399,13 @@ public class VistaUnivers extends Vista{
             if (estado == JFileChooser.APPROVE_OPTION) {
                 archivo = elegirArchivo.getSelectedFile();
                 String direccion = archivo.toString();
-                cu.carregarUniversos(direccion);
-                done();
+                String direccion_copy = direccion;
+                direccion_copy = direccion_copy.substring((direccion_copy.length())-3,direccion_copy.length());
+                if(direccion_copy.equals("uni")){
+                    cu.carregarUniversos(direccion);
+                    done();
+                }
+                else{error_ex("Exception: Extencio del fitxer incorrecte (hauria de ser '.rec') ");}
                 
             }
             /*
@@ -405,12 +414,12 @@ public class VistaUnivers extends Vista{
              }*/
         }
         catch (Exception ex){
-            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+            error_ex("Exception: " + ex.getMessage());
         }
-
+        
     }
     
-
+    
     
     
     //do-functions
@@ -427,7 +436,7 @@ public class VistaUnivers extends Vista{
             paint(content);
         }
         catch (Exception ex){
-            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+            error_ex("Exception: " + ex.getMessage());
         }
         
     }
@@ -443,10 +452,10 @@ public class VistaUnivers extends Vista{
             paint(content);
         }
         catch (Exception ex){
-            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+            error_ex("Exception: " + ex.getMessage());
         }
     }
-
+    
     private void doobtenirIdUnivers(ActionEvent event){
         try{
             String aux = text.getText();
@@ -456,10 +465,10 @@ public class VistaUnivers extends Vista{
             paint(content);
         }
         catch (Exception ex){
-            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
-        }        
+            error_ex("Exception: " + ex.getMessage());
+        }
     }
-
+    
     private void doobtenirNumPlanetes(ActionEvent event){
         try{
             String aux = text.getText();
@@ -469,14 +478,14 @@ public class VistaUnivers extends Vista{
             paint(content);
         }
         catch (Exception ex){
-            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
-        }        
+            error_ex("Exception: " + ex.getMessage());
+        }
     }
-
+    
     private void doassignarPlaneta(ActionEvent event){
         try{
             cu.afegirPlanetaUnivers(text.getText(),text2.getText());
-        
+            
             content = new JPanel();
             label = new JLabel("Fet.");
             content.setLayout( new BorderLayout() );
@@ -487,14 +496,14 @@ public class VistaUnivers extends Vista{
             
         }
         catch (Exception ex){
-            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
-       }
+            error_ex("Exception: " + ex.getMessage());
+        }
     }
-
+    
     private void dodesassignarPlaneta(ActionEvent event){
         try{
             cu.desafegirPlanetaUnivers(text.getText(),text2.getText());
-        
+            
             content = new JPanel();
             label = new JLabel("Fet.");
             content.setLayout( new BorderLayout() );
@@ -505,10 +514,10 @@ public class VistaUnivers extends Vista{
             
         }
         catch (Exception ex){
-            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
-       }
+            error_ex("Exception: " + ex.getMessage());
+        }
     }
-
+    
     private void doobtenirPlanetes(ActionEvent event){
         try{
             String aux = text.getText();
@@ -517,10 +526,10 @@ public class VistaUnivers extends Vista{
             paint(content);
         }
         catch (Exception ex){
-            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
-        }        
+            error_ex("Exception: " + ex.getMessage());
+        }
     }
-
+    
     private void doobtenirDistanciaPlanetes(ActionEvent event){
         try{
             String aux = text.getText();
@@ -529,10 +538,10 @@ public class VistaUnivers extends Vista{
             paint(content);
         }
         catch (Exception ex){
-            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
-        }        
+            error_ex("Exception: " + ex.getMessage());
+        }
     }
-
+    
     private void doobtenirNecessitatsPlanetes(ActionEvent event){
         try{
             String aux = text.getText();
@@ -541,10 +550,10 @@ public class VistaUnivers extends Vista{
             paint(content);
         }
         catch (Exception ex){
-            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
-        }        
+            error_ex("Exception: " + ex.getMessage());
+        }
     }
-
+    
     private void doobtenirRecursosPlanetes(ActionEvent event){
         try{
             String aux = text.getText();
@@ -553,8 +562,8 @@ public class VistaUnivers extends Vista{
             paint(content);
         }
         catch (Exception ex){
-            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
-        }        
+            error_ex("Exception: " + ex.getMessage());
+        }
     }
     
     private void donomUnivers(ActionEvent event){
@@ -563,58 +572,70 @@ public class VistaUnivers extends Vista{
             done();
         }
         catch (Exception ex){
-            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
-        }
-    
-    
-    }
-    
-/*
-    private void doguardarUnivers(ActionEvent event){
-        try{
-            cu.guardarUniversos(text.getText());
-            
-            content = new JPanel();
-            label = new JLabel("Exit al Guardar.");
-            content.setLayout( new BorderLayout() );
-            content.setPreferredSize( new Dimension( 400, 100 ) );
-            content.setMinimumSize( new Dimension( 100, 50 ) );
-            content.add(label, BorderLayout.NORTH );
-            paint(content);
-        }
-        catch (Exception ex){
-            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
-        }
-    }
-    
-    private void docarregarUnivers(ActionEvent event){
-        try{
-            cu.carregarUniversos(text.getText());
-            
-            content = new JPanel();
-            label = new JLabel("Exit al Carregar.");
-            content.setLayout( new BorderLayout() );
-            content.setPreferredSize( new Dimension( 400, 100 ) );
-            content.setMinimumSize( new Dimension( 100, 50 ) );
-            content.add(label, BorderLayout.NORTH );
-            paint(content);
-        }
-        catch (Exception ex){
-            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+            error_ex("Exception: " + ex.getMessage());
         }
         
+        
     }
- */
+    
+    /*
+     private void doguardarUnivers(ActionEvent event){
+     try{
+     cu.guardarUniversos(text.getText());
+     
+     content = new JPanel();
+     label = new JLabel("Exit al Guardar.");
+     content.setLayout( new BorderLayout() );
+     content.setPreferredSize( new Dimension( 400, 100 ) );
+     content.setMinimumSize( new Dimension( 100, 50 ) );
+     content.add(label, BorderLayout.NORTH );
+     paint(content);
+     }
+     catch (Exception ex){
+     JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+     }
+     }
+     
+     private void docarregarUnivers(ActionEvent event){
+     try{
+     cu.carregarUniversos(text.getText());
+     
+     content = new JPanel();
+     label = new JLabel("Exit al Carregar.");
+     content.setLayout( new BorderLayout() );
+     content.setPreferredSize( new Dimension( 400, 100 ) );
+     content.setMinimumSize( new Dimension( 100, 50 ) );
+     content.add(label, BorderLayout.NORTH );
+     paint(content);
+     }
+     catch (Exception ex){
+     JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+     }
+     
+     }
+     */
     private void done(){
         
         content = new JPanel();
-        label = new JLabel("Fet.");
+        label = new JLabel("   Fet.(aka Good!)");
+        label.setForeground(Color.blue);
         content.setLayout( new BorderLayout() );
         content.setPreferredSize( new Dimension( 400, 100 ) );
         content.setMinimumSize( new Dimension( 100, 50 ) );
         content.add(label, BorderLayout.NORTH );
         paint(content);
     }
+    public void error_ex(String a){
+        content = new JPanel();
+        label = new JLabel("-> "+a);
+        label.setForeground(Color.red);
+        content.setLayout( new BorderLayout() );
+        content.setPreferredSize( new Dimension( 400, 100 ) );
+        content.setMinimumSize( new Dimension( 100, 50 ) );
+        content.add(label, BorderLayout.NORTH );
+        paint(content);
+    }
+    
     
     public void paint(JPanel p){
         v.revalidatepanel3(p);

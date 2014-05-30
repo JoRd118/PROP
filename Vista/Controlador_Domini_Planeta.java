@@ -545,7 +545,7 @@ public class Controlador_Domini_Planeta {
         cpp.modificar_coordenades_planeta(nom,x,y);
     }
     
-    public void modificarCoordPlanetaVista(String nom, boolean classeM){
+    public void modificarClassePlanetaVista(String nom, boolean classeM){
         cpp.modificar_classe_planeta(nom,classeM);
     
     }

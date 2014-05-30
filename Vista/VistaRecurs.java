@@ -201,7 +201,7 @@ public class VistaRecurs extends Vista{
             paint(content);
         }
         catch (Exception ex){
-            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+            error_ex("Exception: " + ex.getMessage());
         }
         
     }
@@ -227,17 +227,23 @@ public class VistaRecurs extends Vista{
             if (estado == JFileChooser.APPROVE_OPTION) {
                 archivo = elegirArchivo.getSelectedFile();
                 String direccion = archivo.toString();
-                cr.guardarRecursos(direccion);
-                done();
                 
+                String direccion_copy = direccion;
+                direccion_copy = direccion_copy.substring((direccion_copy.length())-3,direccion_copy.length());
+                
+                if(direccion_copy.equals("rec")){
+                    cr.guardarRecursos(direccion);
+                    done();
+                }
+                else{error_ex("Exception: Extencio del fitxer incorrecte (hauria de ser '.rec') ");}
             }
             /*
-            else if (estado == JFileChooser.CANCEL_OPTION) {
-                JOptionPane.showMessageDialog(null, "No se eligio archivo", "Error", 0);
-            }*/
+             else if (estado == JFileChooser.CANCEL_OPTION) {
+             JOptionPane.showMessageDialog(null, "No se eligio archivo", "Error", 0);
+             }*/
         }
         catch (Exception ex){
-            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+            error_ex("Exception: " + ex.getMessage());
         }
     }
     
@@ -255,8 +261,13 @@ public class VistaRecurs extends Vista{
             if (estado == JFileChooser.APPROVE_OPTION) {
                 archivo = elegirArchivo.getSelectedFile();
                 String direccion = archivo.toString();
-                cr.carregarRecursos(direccion);
-                done();
+                String direccion_copy = direccion;
+                direccion_copy = direccion_copy.substring((direccion_copy.length())-3,direccion_copy.length());
+                if(direccion_copy.equals("rec")){
+                    cr.carregarRecursos(direccion);
+                    done();
+                }
+                else{error_ex("Exception: Extencio del fitxer incorrecte (hauria de ser '.rec') ");}
                 
             }
             /*
@@ -265,7 +276,7 @@ public class VistaRecurs extends Vista{
              }*/
         }
         catch (Exception ex){
-            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+            error_ex("Exception: " + ex.getMessage());
         }
         
     }
@@ -290,16 +301,10 @@ public class VistaRecurs extends Vista{
         try{
             cr.altaRecurs(text.getText());
             
-            content = new JPanel();
-            label = new JLabel("Fet.");
-            content.setLayout( new BorderLayout() );
-            content.setPreferredSize( new Dimension( 400, 100 ) );
-            content.setMinimumSize( new Dimension( 100, 50 ) );
-            content.add(label, BorderLayout.NORTH );
-            paint(content);
+            done();
         }
         catch (Exception ex){
-            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+            error_ex("Exception: " + ex.getMessage());
         }
         
     }
@@ -308,16 +313,10 @@ public class VistaRecurs extends Vista{
         try{
             cr.baixaRecursVista(text.getText());
             
-            content = new JPanel();
-            label = new JLabel("Fet.");
-            content.setLayout( new BorderLayout() );
-            content.setPreferredSize( new Dimension( 400, 100 ) );
-            content.setMinimumSize( new Dimension( 100, 50 ) );
-            content.add(label, BorderLayout.NORTH );
-            paint(content);
+            done();
         }
         catch (Exception ex){
-            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+            error_ex("Exception: " + ex.getMessage());
         }
         
     }
@@ -331,7 +330,7 @@ public class VistaRecurs extends Vista{
             paint(content);
         }
         catch (Exception ex){
-            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+            error_ex("Exception: " + ex.getMessage());
         }
     }
     
@@ -344,60 +343,71 @@ public class VistaRecurs extends Vista{
             paint(content);
         }
         catch (Exception ex){
-            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+            error_ex("Exception: " + ex.getMessage());
         }
         
     }
     /*
-    private void doguardarRecurs(ActionEvent event){
-        try{
-            cr.guardarRecursos(text.getText());
-            
-            content = new JPanel();
-            label = new JLabel("Exit al Guardar.");
-            content.setLayout( new BorderLayout() );
-            content.setPreferredSize( new Dimension( 400, 100 ) );
-            content.setMinimumSize( new Dimension( 100, 50 ) );
-            content.add(label, BorderLayout.NORTH );
-            paint(content);
-        }
-        catch (Exception ex){
-            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
-        }
-    }
-   
-    private void docarregarRecurs(ActionEvent event){
-        try{
-            cr.carregarRecursos(text.getText());
-            
-            content = new JPanel();
-            label = new JLabel("Exit al Carregar.");
-            content.setLayout( new BorderLayout() );
-            content.setPreferredSize( new Dimension( 400, 100 ) );
-            content.setMinimumSize( new Dimension( 100, 50 ) );
-            content.add(label, BorderLayout.NORTH );
-            paint(content);
-        }
-        catch (Exception ex){
-            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
-        }
-        
-    }
-    */
+     private void doguardarRecurs(ActionEvent event){
+     try{
+     cr.guardarRecursos(text.getText());
+     
+     content = new JPanel();
+     label = new JLabel("Exit al Guardar.");
+     content.setLayout( new BorderLayout() );
+     content.setPreferredSize( new Dimension( 400, 100 ) );
+     content.setMinimumSize( new Dimension( 100, 50 ) );
+     content.add(label, BorderLayout.NORTH );
+     paint(content);
+     }
+     catch (Exception ex){
+     JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+     }
+     }
+     
+     private void docarregarRecurs(ActionEvent event){
+     try{
+     cr.carregarRecursos(text.getText());
+     
+     content = new JPanel();
+     label = new JLabel("Exit al Carregar.");
+     content.setLayout( new BorderLayout() );
+     content.setPreferredSize( new Dimension( 400, 100 ) );
+     content.setMinimumSize( new Dimension( 100, 50 ) );
+     content.add(label, BorderLayout.NORTH );
+     paint(content);
+     }
+     catch (Exception ex){
+     JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+     }
+     
+     }
+     */
     private void donomRecurs(ActionEvent event){
         try{
             cr.modificar_nom_recursVista(text.getText(),text2.getText());
             done();
         }
         catch (Exception ex){
-            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+            error_ex("Exception: " + ex.getMessage());
         }
     }
     
     private void done(){
         
         content = new JPanel();
-        label = new JLabel("Fet.");
+        label = new JLabel("   Fet.(aka Good!)");
+        label.setForeground(Color.blue);
+        content.setLayout( new BorderLayout() );
+        content.setPreferredSize( new Dimension( 400, 100 ) );
+        content.setMinimumSize( new Dimension( 100, 50 ) );
+        content.add(label, BorderLayout.NORTH );
+        paint(content);
+    }
+    public void error_ex(String a){
+        content = new JPanel();
+        label = new JLabel("-> "+a);
+        label.setForeground(Color.red);
         content.setLayout( new BorderLayout() );
         content.setPreferredSize( new Dimension( 400, 100 ) );
         content.setMinimumSize( new Dimension( 100, 50 ) );
