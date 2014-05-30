@@ -168,6 +168,9 @@ public class VistaGlobal extends JFrame {
     }
     
     private void buttonQAPListener(ActionEvent event){
+        VistaQAP vq = new VistaQAP();
+        JPanel p = vq.construct();
+        revalidatepanel2(p);
         
     }
     

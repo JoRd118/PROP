@@ -64,10 +64,15 @@ public class Controlador_Domini_Univers{
     //Pre: True
     //Post: Dona de baixa l'univers amb el nom escollit
 	public void baixaUnivers(String nom){
-		if(u.contains(nom) == false) throw new IllegalArgumentException(msg_univers_no_exists);
-		else{
-			u.remove(nom);
-		}
+        if(u.contains(nom) == false) throw new IllegalArgumentException(msg_univers_no_exists);
+        else{
+            Univers aux = u.obtain(nom);
+            Iterable<String> planetes = aux.obtenirPlanetes();
+            for(String a : planetes){
+                desafegirPlanetaUnivers(nom, a);
+            }
+            u.remove(nom);
+        }
 	}
     
     //Pre: True
@@ -383,10 +388,10 @@ public class Controlador_Domini_Univers{
                         int y2 = p.obtenirCoordenades().obtenirCoordenadesY();
                         if(x == x2 && y == y2) throw new IllegalArgumentException(msg_univers_coords);
                     }
-                    cp.modificarCoordenades(nom,x,y);
                 }
             }
         }
+        cp.modificarCoordenades(nom,x,y);
     }
     
     public void modificar_classe_planeta(String nom, boolean classeM){

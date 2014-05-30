@@ -70,13 +70,24 @@ public class Controlador_Domini_Planeta {
 	//Post: S'esborra el planeta amb el nom demanat
 	public void baixaPlaneta(String nom) {
         if(Conjunt_Planetes_Desassignat.contains(nom)){
-        	Conjunt_Planetes_Desassignat.remove(nom);
-       	} else if (Conjunt_Planetes_Assignat.contains(nom)) {
-       		Conjunt_Planetes_Assignat.remove(nom);
+            Planeta aux = Conjunt_Planetes_Desassignat.obtain(nom);
+            Paquet aux2 = aux.obtenirPaquet();
+            if(aux2 != null){
+                cp.desassignarPaquet(cp.obtenirIdPaquet(aux2));
+            }
+            Conjunt_Planetes_Desassignat.remove(nom);
+        } else if (Conjunt_Planetes_Assignat.contains(nom)) {
+            Planeta aux = Conjunt_Planetes_Assignat.obtain(nom);
+            Paquet aux2 = aux.obtenirPaquet();
+            if(aux2 != null){
+                cp.desassignarPaquet(cp.obtenirIdPaquet(aux2));
+            }
+            Conjunt_Planetes_Assignat.remove(nom);
         } else {
-       		throw new IllegalArgumentException(msg_planeta_no_exists);
+            throw new IllegalArgumentException(msg_planeta_no_exists);
         }
-	}
+    
+    }
     
     //Pre:
     //Post: Si el planeta nomP passar en el vector de Conjunt_Planetes_Assignat
@@ -360,13 +371,13 @@ public class Controlador_Domini_Planeta {
         for(String a : planetes){
             Planeta aux = Conjunt_Planetes_Assignat.obtain(a);
             Paquet p = aux.obtenirPaquet();
-            if(id == p.obtenirId()) desassignarPaquet(aux.obtenirNom());
+            if(p != null && id == p.obtenirId()) desassignarPaquet(aux.obtenirNom());
         }
         planetes = Conjunt_Planetes_Desassignat.obtainAllTST();
         for(String a : planetes){
             Planeta aux = Conjunt_Planetes_Desassignat.obtain(a);
             Paquet p = aux.obtenirPaquet();
-            if(id == p.obtenirId()) desassignarPaquet(aux.obtenirNom());
+            if(p != null && id == p.obtenirId()) desassignarPaquet(aux.obtenirNom());
         }
     	cp.baixaPaquet(id);
     }
@@ -505,6 +516,20 @@ public class Controlador_Domini_Planeta {
             list += "#";
             cd.writeTextFile(list);
         }
+    }
+    
+    public int obtenirPaquetPlaneta(String a){
+        int aux = -1;
+        if (Conjunt_Planetes_Desassignat.contains(a) || Conjunt_Planetes_Assignat.contains(a)) {
+			Planeta p;
+            if (Conjunt_Planetes_Assignat.contains(a)) p = Conjunt_Planetes_Assignat.obtain(a);
+            else p = Conjunt_Planetes_Desassignat.obtain(a);
+			if (p.obtenirClasse()) {
+                Paquet aux2 = p.obtenirPaquet();
+                aux = cp.obtenirIdPaquet(aux2);
+            }
+		} else throw new IllegalArgumentException(msg_planeta_no_exists);
+        return aux;
     }
 
     public void baixaPlanetaVista(String a){

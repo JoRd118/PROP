@@ -13,6 +13,7 @@ public class Controlador_Presentacio{
     private Controlador_Domini_Paquet cp;
     private Controlador_Domini_Planeta cpl;
     private Controlador_Domini_Univers cu;
+    private Controlador_Domini_QAP q;
     
     public Controlador_Presentacio(){
         v = new VistaGlobal();
@@ -26,6 +27,7 @@ public class Controlador_Presentacio{
         cp = new Controlador_Domini_Paquet(cr,this);
         cpl = new Controlador_Domini_Planeta(cp, cr, this);
         cu = new Controlador_Domini_Univers(cpl, cr, cp, this);
+        q = new Controlador_Domini_QAP(cr, cu, this);
     }
     
     public void guardarTot(String a) throws IOException{

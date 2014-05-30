@@ -21,8 +21,17 @@ public abstract class Vista extends SubVista{
     public JPanel  content;
     public JTextField text;
     public JTextField text2;
+    public JTextField text3;
     public JScrollPane sp;
+    public JScrollPane sp2;
+    public JScrollPane sp3;
+    public JScrollPane sp4;
+    public JScrollPane sp5;
     public JTextArea textarea;
+    public JTextArea textarea2;
+    public JTextArea textarea3;
+    public JTextArea textarea4;
+    public JTextArea textarea5;
     public JLabel  label;
     public JLabel  label2;
     public JButton b;
@@ -109,6 +118,57 @@ public abstract class Vista extends SubVista{
         content.add(chinButton);
         content.add(chinButton2);
         content.add(b);
+    
+    
+    }
+    //TextBox(x3) + button
+    public void contentSchemaF(){
+        
+        content = new JPanel();
+        text = new JTextField();
+        text2 = new JTextField();
+        text3 = new JTextField();
+        label = new JLabel("OP:Modificar Valor:");
+        label2 = new JLabel("Posició: i,j");
+        b = new JButton("OK");
+        content.setLayout( new GridLayout(6, 2, 5, 5) );
+        content.setPreferredSize( new Dimension( 400, 100 ) );
+        content.setMinimumSize( new Dimension( 100, 50 ) );
+        content.add(label);
+        content.add(text);
+        content.add(label2);
+        content.add(text2);
+        content.add(text3);
+        content.add(b);
+    }
+    
+    public void contentSchemaG(){
+    
+        content = new JPanel();
+        textarea = new JTextArea();
+        textarea2 = new JTextArea();
+        textarea3 = new JTextArea();
+        textarea4 = new JTextArea();
+        textarea5 = new JTextArea();
+        sp = new JScrollPane(textarea);
+        sp2 = new JScrollPane(textarea2);
+        sp3 = new JScrollPane(textarea3);
+        sp4 = new JScrollPane(textarea4);
+        sp5 = new JScrollPane(textarea5);
+        label = new JLabel("OP:InseriMatrius MatDistancies, MatNececitats, MatRecursos, VecPlanetes, VecRecursos:");
+        b = new JButton("OK");
+        content.setLayout( new GridLayout(8, 2, 5, 5) );
+        content.setPreferredSize( new Dimension( 400, 100 ) );
+        content.setMinimumSize( new Dimension( 100, 50 ) );
+        content.add(label);
+        content.add(sp);
+        content.add(sp2);
+        content.add(sp3);
+        content.add(sp4);
+        content.add(sp5);
+        content.add(b);
+        
+    
     
     
     }

@@ -631,7 +631,7 @@ public class VistaPlaneta extends Vista{
         try{
             String aux = text.getText();
             contentSchemaB();
-            label = new JLabel("ID Planeta: "+ cp.obtenirId(aux)+" Nom Planeta: "+ aux +" Classe Planeta: "+ cp.obtenirClasse(aux)+ " Coords Planeta: "+ cp.obtenirCoordenadesVista(aux));
+            label = new JLabel("ID Planeta: "+ cp.obtenirId(aux)+" Nom Planeta: "+ aux +" Classe Planeta: "+ cp.obtenirClasse(aux)+ " Coords Planeta: "+ cp.obtenirCoordenadesVista(aux) + " Paquet:" + cp.obtenirPaquetPlaneta(aux));
             content.add(label, BorderLayout.NORTH );
             paint(content);
         }
