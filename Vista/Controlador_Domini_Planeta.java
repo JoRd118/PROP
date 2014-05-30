@@ -6,6 +6,7 @@ public class Controlador_Domini_Planeta {
 	private TST<Planeta> Conjunt_Planetes_Desassignat;
 	private Controlador_Domini_Recurs cr;
 	private Controlador_Domini_Paquet cp;
+    private Controlador_Presentacio cpp;
 	private Controlador_Dades cd;
     private Identificador id;
     
@@ -32,13 +33,14 @@ public class Controlador_Domini_Planeta {
         v = new VistaPlaneta(this);
 	}
     
-	public Controlador_Domini_Planeta(Controlador_Domini_Paquet p, Controlador_Domini_Recurs r) {
+	public Controlador_Domini_Planeta(Controlador_Domini_Paquet p, Controlador_Domini_Recurs r, Controlador_Presentacio p1) {
 	 	Conjunt_Planetes_Assignat = new TST<Planeta>();
 	 	Conjunt_Planetes_Desassignat = new TST<Planeta>();
 		cr = r;
 	 	cp = p;
 		cd = new Controlador_Dades();
         id = new Identificador();
+        cpp = p1;
         v = new VistaPlaneta(this);
 	}
     
@@ -494,5 +496,23 @@ public class Controlador_Domini_Planeta {
             list += "#";
             cd.writeTextFile(list);
         }
+    }
+    
+    public void baixaPlanetaVista(String a){
+        cpp.borrar_planeta(a);
+    }
+    
+    public void modificarNomPlanetaVista(String old_name, String new_name){
+        cpp.modificar_nom_planeta(old_name, new_name);
+    
+    }
+    
+    public void modificarCoordPlanetaVista(String nom, int x, int y){
+        cpp.modificar_coordenades_planeta(nom,x,y);
+    }
+    
+    public void modificarCoordPlanetaVista(String nom, boolean classeM){
+        cpp.modificar_classe_planeta(nom,classeM);
+    
     }
 }

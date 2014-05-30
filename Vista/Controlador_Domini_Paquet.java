@@ -12,6 +12,7 @@ public class Controlador_Domini_Paquet{
     private TST<Paquet> pa; // Paquets assignats
     private Controlador_Domini_Recurs cr;
     private Controlador_Dades cp;
+    private Controlador_Presentacio cpp;
     private Identificador ide;
 
     private static String msg_paquet_no_exists = "Error de Paquet: Paquet demanat no existeix.";
@@ -32,12 +33,22 @@ public class Controlador_Domini_Paquet{
         ide = new Identificador();
         v = new VistaPaquet(this);
     }
-    
+
     public Controlador_Domini_Paquet(Controlador_Domini_Recurs n) {
         p = new TST<Paquet>();
         pa = new TST<Paquet>();
         cp = new Controlador_Dades();
         cr = n;
+        ide = new Identificador();
+        v = new VistaPaquet(this);
+    }
+    
+    public Controlador_Domini_Paquet(Controlador_Domini_Recurs n, Controlador_Presentacio p1) {
+        p = new TST<Paquet>();
+        pa = new TST<Paquet>();
+        cp = new Controlador_Dades();
+        cr = n;
+        cpp = p1;
         ide = new Identificador();
         v = new VistaPaquet(this);
     }
@@ -261,4 +272,12 @@ public class Controlador_Domini_Paquet{
             cp.writeTextFile(list);
         }
     }
+    
+    
+    public void baixaPaquetVista(int id){
+        cpp.borrar_paquet(id);
+    }
+    
+    
+    
 }

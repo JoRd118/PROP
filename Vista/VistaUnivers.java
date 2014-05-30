@@ -3,6 +3,11 @@ import java.io.IOException;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import javax.swing.JFileChooser;
+import java.io.File;
+import java.awt.Desktop;
+import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
 /**
  * @param args the command line arguments
  */
@@ -13,7 +18,7 @@ public class VistaUnivers extends Vista{
     private VistaGlobal v;
 
 
-   // private JButton buttonUniversOP8 = new JButton("<Down>ModificarNom");
+   
 
     private JButton buttonUniversOP1 = new JButton("NumPlanetes");    
     private JButton buttonUniversOP2 = new JButton("AfegirPlaneta");
@@ -22,7 +27,7 @@ public class VistaUnivers extends Vista{
     private JButton buttonUniversOP5 = new JButton("MatriuDistanciaPlanetes");
     private JButton buttonUniversOP6 = new JButton("MatriuNecessitatsPlanetes");
     private JButton buttonUniversOP7 = new JButton("MatriuRecursosPlanetes");  
-    
+   private JButton buttonUniversOP8 = new JButton("ModificarNom");
     
     
 
@@ -43,7 +48,7 @@ public class VistaUnivers extends Vista{
         univers = new JPanel();
         univers.setLayout(new GridLayout(3, 2, 5, 5));
         univers.add(buttonAlta = new JButton("AltaUnivers"));
-        //univers.add(buttonBaixa = new JButton("BaixaUnivers"));
+        univers.add(buttonBaixa = new JButton("BaixaUnivers"));
         univers.add(buttonObtenirID = new JButton("ObtenirID"));
         univers.add(buttonllistat = new JButton("Llistar"));
         univers.add(buttonUniversOP1);
@@ -53,6 +58,7 @@ public class VistaUnivers extends Vista{
         univers.add(buttonUniversOP5);
         univers.add(buttonUniversOP6);
         univers.add(buttonUniversOP7);
+        univers.add(buttonUniversOP8);
         univers.add(buttonGuardar = new JButton("Guardar"));
         univers.add(buttonCarregar = new JButton("Carregar"));
         
@@ -72,21 +78,22 @@ public class VistaUnivers extends Vista{
                 altaUnivers(event);
             }
         });
-        /*
+        
         buttonBaixa.addActionListener
         (new ActionListener() {
             public void actionPerformed (ActionEvent event) {
                 baixaUnivers(event);
             }
         });
-         */
-        /*
-        buttonUniversOP3.addActionListener
+        
+        
+        buttonUniversOP8.addActionListener
         (new ActionListener() {
             public void actionPerformed (ActionEvent event) {
                 modificarNom(event);
             }
-        });*/
+        });
+        
         //ObtenirID
         buttonObtenirID.addActionListener
         (new ActionListener() {
@@ -330,49 +337,83 @@ public class VistaUnivers extends Vista{
         paint(content);
 
     }
-
-    private void guardar(ActionEvent event){
-        label = new JLabel("OP:Guardar - ABSOLUTE PATH - :");
-        contentSchemaA();
-        
-        content.add(label, BorderLayout.NORTH );
-        
+    
+    private void modificarNom(ActionEvent event){
+        label = new JLabel("OP:Mod Nom Univers  Nom Univers:");
+        label2 = new JLabel("New Nom:");
+        contentSchemaD();
         b.addActionListener
         (new ActionListener() {
             public void actionPerformed (ActionEvent event) {
-                doguardarUnivers(event);
+                donomUnivers(event);
             }
         });
-        
         paint(content);
+    
+    }
+
+    private void guardar(ActionEvent event){
+        try{
+            content = new JPanel();
+            paint(content);
+            JFileChooser elegirArchivo = new JFileChooser();
+            File archivo = null;
+            FileFilter tipo = new FileNameExtensionFilter(".txt", "txt");
+            elegirArchivo.addChoosableFileFilter(tipo);
+            
+            int estado = elegirArchivo.showDialog(null, "Guardar");
+            
+            if (estado == JFileChooser.APPROVE_OPTION) {
+                archivo = elegirArchivo.getSelectedFile();
+                String direccion = archivo.toString();
+                cu.guardarUniversos(direccion);
+                done();
+                
+            }
+            /*
+             else if (estado == JFileChooser.CANCEL_OPTION) {
+             JOptionPane.showMessageDialog(null, "No se eligio archivo", "Error", 0);
+             }*/
+        }
+        catch (Exception ex){
+            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+        }
 
     }
 
     private void carregar(ActionEvent event){
-        label = new JLabel("OP:Carregar - ABSOLUTE PATH - :");
-        contentSchemaA();
-
-        content.add(label, BorderLayout.NORTH );
-        
-        b.addActionListener
-        (new ActionListener() {
-            public void actionPerformed (ActionEvent event) {
-                docarregarUnivers(event);
+        try{
+            content = new JPanel();
+            paint(content);
+            JFileChooser elegirArchivo = new JFileChooser();
+            File archivo = null;
+            FileFilter tipo = new FileNameExtensionFilter(".txt", "txt");
+            elegirArchivo.addChoosableFileFilter(tipo);
+            
+            int estado = elegirArchivo.showDialog(null, "Carregar");
+            
+            if (estado == JFileChooser.APPROVE_OPTION) {
+                archivo = elegirArchivo.getSelectedFile();
+                String direccion = archivo.toString();
+                cu.carregarUniversos(direccion);
+                done();
+                
             }
-        });
-        
-        paint(content);
-
+            /*
+             else if (estado == JFileChooser.CANCEL_OPTION) {
+             JOptionPane.showMessageDialog(null, "No se eligio archivo", "Error", 0);
+             }*/
+        }
+        catch (Exception ex){
+            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+        }
 
     }
-    public void paint(JPanel p){
-        v.revalidatepanel3(p);
-    }
+    
 
-
-
-
-
+    
+    
+    //do-functions
     private void doaltaUnivers(ActionEvent event){
         try{
             cu.altaUnivers(text.getText());
@@ -515,7 +556,20 @@ public class VistaUnivers extends Vista{
             JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
         }        
     }
-
+    
+    private void donomUnivers(ActionEvent event){
+        try{
+            cu.modificacioNomUnivers(text.getText(),text2.getText());
+            done();
+        }
+        catch (Exception ex){
+            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+        }
+    
+    
+    }
+    
+/*
     private void doguardarUnivers(ActionEvent event){
         try{
             cu.guardarUniversos(text.getText());
@@ -550,6 +604,22 @@ public class VistaUnivers extends Vista{
         }
         
     }
+ */
+    private void done(){
+        
+        content = new JPanel();
+        label = new JLabel("Fet.");
+        content.setLayout( new BorderLayout() );
+        content.setPreferredSize( new Dimension( 400, 100 ) );
+        content.setMinimumSize( new Dimension( 100, 50 ) );
+        content.add(label, BorderLayout.NORTH );
+        paint(content);
+    }
+    
+    public void paint(JPanel p){
+        v.revalidatepanel3(p);
+    }
+    
     
     
 }

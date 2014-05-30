@@ -48,6 +48,10 @@ public class Univers {
       if(planetes.contains(nom)) return planetes.obtain(nom);
       else throw new IllegalArgumentException(msg_planeta_no_exists);
    }
+
+   public Boolean hihaPlaneta(String nom){
+    return planetes.contains(nom);
+   }
    //Pre: True
    //Post: Obté una Iterable<String> de tots els planetes que hi ha al univers
    public Iterable<String> obtenirPlanetes(){

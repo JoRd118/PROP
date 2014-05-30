@@ -3,6 +3,11 @@ import java.io.IOException;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import javax.swing.JFileChooser;
+import java.io.File;
+import java.awt.Desktop;
+import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
 /**
  * @param args the command line arguments
  */
@@ -45,8 +50,11 @@ public class VistaPlaneta extends Vista{
         planeta = new JPanel();
         planeta.setLayout(new GridLayout(3, 2, 5, 5));
         planeta.add(buttonAlta = new JButton("AltaPlaneta"));
-        //planeta.add(buttonBaixa = new JButton("BaixaPlaneta"));
+        planeta.add(buttonBaixa = new JButton("BaixaPlaneta"));
         planeta.add(buttonObtenirID = new JButton("ObtenirID"));
+        planeta.add(buttonPlanetaOP5);
+        planeta.add(buttonPlanetaOP6);
+        planeta.add(buttonPlanetaOP7);
         planeta.add(buttonPlanetaOP9);
         planeta.add(buttonPlanetaOP10);
         planeta.add(buttonPlanetaOP11);
@@ -60,6 +68,7 @@ public class VistaPlaneta extends Vista{
         planeta.add(buttonPlanetaOP19);
         planeta.add(buttonGuardar = new JButton("Guardar"));
         planeta.add(buttonCarregar = new JButton("Carregar"));
+        
         
         
         assignar_actionListeners();
@@ -77,18 +86,39 @@ public class VistaPlaneta extends Vista{
                 altaPlaneta(event);
             }
         });
-        /*
+        
         buttonBaixa.addActionListener
         (new ActionListener() {
             public void actionPerformed (ActionEvent event) {
                 baixaPlaneta(event);
             }
         });
-        */
+        
         buttonObtenirID.addActionListener
         (new ActionListener() {
             public void actionPerformed (ActionEvent event) {
                 obtenirId(event);
+            }
+        });
+        
+        buttonPlanetaOP5.addActionListener
+        (new ActionListener() {
+            public void actionPerformed (ActionEvent event) {
+                modnom(event);
+            }
+        });
+        
+        buttonPlanetaOP6.addActionListener
+        (new ActionListener() {
+            public void actionPerformed (ActionEvent event) {
+                modcoord(event);
+            }
+        });
+        
+        buttonPlanetaOP7.addActionListener
+        (new ActionListener() {
+            public void actionPerformed (ActionEvent event) {
+                modclasse(event);
             }
         });
         
@@ -183,10 +213,11 @@ public class VistaPlaneta extends Vista{
             }
         });
         
-        
-        
-        
     }
+    
+    
+    
+    
     
     private void altaPlaneta (ActionEvent event){
         contentSchemaE();
@@ -324,7 +355,8 @@ public class VistaPlaneta extends Vista{
     
     private void baixaNecessitats (ActionEvent event){
         label = new JLabel("OP:BaixaNecessitat  Nom Planeta:");
-        contentSchemaA();
+        label2 = new JLabel("Nom Recurs:");
+        contentSchemaD();
         b.addActionListener
         (new ActionListener() {
             public void actionPerformed (ActionEvent event) {
@@ -396,36 +428,121 @@ public class VistaPlaneta extends Vista{
         paint(content);
     }
     
-    private void guardar (ActionEvent event){
-        label = new JLabel("OP:Guardar - ABSOLUTE PATH - :");
-        contentSchemaA();
-        content.add(label, BorderLayout.NORTH );
-        
+    private void modnom(ActionEvent event){
+        label = new JLabel("OP:Mod Nom Planeta  Nom Planeta:");
+        label2 = new JLabel("new Nom:");
+        contentSchemaD();
         b.addActionListener
         (new ActionListener() {
             public void actionPerformed (ActionEvent event) {
-                doguardarPlanetes(event);
+                donomPlaneta(event);
             }
         });
-        
         paint(content);
+    
+    }
+    
+    private void modclasse(ActionEvent event){
+        label = new JLabel("OP:Mod Classe Planeta  Nom Planeta:");
+        label2 = new JLabel("new Classe:");
+        chinButton = new JCheckBox("Planeta Tipus M");
+        chinButton.setMnemonic(KeyEvent.VK_C);
+        chinButton.setSelected(true);
+        
+        chinButton2 = new JCheckBox(" NO Planeta Tipus M");
+        chinButton2.setMnemonic(KeyEvent.VK_C);
+        chinButton2.setSelected(false);
+        
+        text = new JTextField();
+        b = new JButton("OK");
+        
+        content = new JPanel();
+        content.setLayout( new GridLayout(6, 2, 5, 5) );
+        content.setPreferredSize( new Dimension( 400, 100 ) );
+        
+        content.add(label);
+        content.add(text);
+        content.add(label2);
+        content.add(chinButton);
+        content.add(chinButton2);
+        content.add(b);
+        b.addActionListener
+        (new ActionListener() {
+            public void actionPerformed (ActionEvent event) {
+                doclassePlaneta(event);
+            }
+        });
+        paint(content);
+    }
+    
+    private void modcoord(ActionEvent event){
+        label = new JLabel("OP:Mod Coord Planeta  Nom Planeta:");
+        label2 = new JLabel("new Coord:");
+        contentSchemaD();
+        b.addActionListener
+        (new ActionListener() {
+            public void actionPerformed (ActionEvent event) {
+                docoordPlaneta(event);
+            }
+        });
+        paint(content);
+    }
+    
+    private void guardar (ActionEvent event){
+        try{
+            content = new JPanel();
+            paint(content);
+            JFileChooser elegirArchivo = new JFileChooser();
+            File archivo = null;
+            FileFilter tipo = new FileNameExtensionFilter(".txt", "txt");
+            elegirArchivo.addChoosableFileFilter(tipo);
+            
+            int estado = elegirArchivo.showDialog(null, "Guardar");
+            
+            if (estado == JFileChooser.APPROVE_OPTION) {
+                archivo = elegirArchivo.getSelectedFile();
+                String direccion = archivo.toString();
+                cp.guardarPlanetes(direccion);
+                done();
+                
+            }
+            /*
+             else if (estado == JFileChooser.CANCEL_OPTION) {
+             JOptionPane.showMessageDialog(null, "No se eligio archivo", "Error", 0);
+             }*/
+        }
+        catch (Exception ex){
+            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+        }
         
     }
     
     private void carregar (ActionEvent event){
-        label = new JLabel("OP:Carregar - ABSOLUTE PATH - :");
-        contentSchemaA();
-        content.add(label, BorderLayout.NORTH );
-        
-        b.addActionListener
-        (new ActionListener() {
-            public void actionPerformed (ActionEvent event) {
-                docarregarPlaneta(event);
+        try{
+            content = new JPanel();
+            paint(content);
+            JFileChooser elegirArchivo = new JFileChooser();
+            File archivo = null;
+            FileFilter tipo = new FileNameExtensionFilter(".txt", "txt");
+            elegirArchivo.addChoosableFileFilter(tipo);
+            
+            int estado = elegirArchivo.showDialog(null, "Carregar");
+            
+            if (estado == JFileChooser.APPROVE_OPTION) {
+                archivo = elegirArchivo.getSelectedFile();
+                String direccion = archivo.toString();
+                cp.carregarPlanetes(direccion);
+                done();
+                
             }
-        });
-        
-        paint(content);
-        
+            /*
+             else if (estado == JFileChooser.CANCEL_OPTION) {
+             JOptionPane.showMessageDialog(null, "No se eligio archivo", "Error", 0);
+             }*/
+        }
+        catch (Exception ex){
+            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+        }
     }
     
 //do-functions
@@ -453,7 +570,7 @@ public class VistaPlaneta extends Vista{
     
     private void dobaixaPlaneta(ActionEvent event){
         try{
-            cp.baixaPlaneta(text.getText());
+            cp.baixaPlanetaVista(text.getText());
             content = new JPanel();
             label = new JLabel("Fet.");
             content.setLayout( new BorderLayout() );
@@ -599,11 +716,43 @@ public class VistaPlaneta extends Vista{
         catch (Exception ex){
             JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
         }
-    
-    
-    
     }
     
+    private void donomPlaneta(ActionEvent event){
+        try{
+            cp.modificarNomPlanetaVista(text.getText(),text2.getText());
+            done();
+        }
+        catch (Exception ex){
+            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+        }
+    }
+    
+    private void doclassePlaneta(ActionEvent event){
+        try{
+            if(chinButton.isSelected()){cp.modificarCoordPlanetaVista(text.getText(),true);}
+            else if(chinButton2.isSelected()){cp.modificarCoordPlanetaVista(text.getText(),false);}
+            else{
+                throw new IllegalArgumentException("Cal Seleccionar el tipus M");
+            }
+            
+            done();
+        }
+        catch (Exception ex){
+            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+        }
+    }
+    private void docoordPlaneta(ActionEvent event){
+        try{
+            String[] aux = text2.getText().split(",");
+            cp.modificarCoordPlanetaVista(text.getText(),Integer.parseInt(aux[0]),Integer.parseInt(aux[1]));
+        }
+        catch (Exception ex){
+            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+        }
+        
+    }
+    /*
     private void doguardarPlanetes(ActionEvent event){
         try{
             cp.guardarPlanetes(text.getText());
@@ -637,11 +786,8 @@ public class VistaPlaneta extends Vista{
         catch (Exception ex){
             JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
         }
-    
-    
     }
-    
-    
+    */
     
     private void done(){
         

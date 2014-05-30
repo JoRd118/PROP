@@ -3,6 +3,11 @@ import java.io.IOException;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import javax.swing.JFileChooser;
+import java.io.File;
+import java.awt.Desktop;
+import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
 /**
  * @param args the command line arguments
  */
@@ -34,10 +39,12 @@ public class VistaRecurs extends Vista{
         recurs = new JPanel();
         recurs.setLayout(new GridLayout(3, 2, 5, 5));
         recurs.add(buttonAlta = new JButton("AltaRecurs"));
+        recurs.add(buttonBaixa = new JButton("BaixaRecurs"));
         recurs.add(buttonObtenir = new JButton("ObtenirRecurs"));
         recurs.add(buttonObtenirID = new JButton("ObtenirID"));
         recurs.add(buttonllistat = new JButton("Llistar"));
         recurs.add(buttonRecursOP2);
+        recurs.add(buttonModNom = new JButton("ModificarNom"));
         recurs.add(buttonGuardar = new JButton("Guardar"));
         recurs.add(buttonCarregar = new JButton("Carregar"));
         
@@ -100,6 +107,21 @@ public class VistaRecurs extends Vista{
             }
         });
         
+        buttonModNom.addActionListener
+        (new ActionListener() {
+            public void actionPerformed (ActionEvent event) {
+                modnom(event);
+            }
+        });
+        
+        buttonBaixa.addActionListener
+        (new ActionListener() {
+            public void actionPerformed (ActionEvent event) {
+                baixaRecurs(event);
+            }
+        });
+        
+        
     }
     
     
@@ -118,6 +140,24 @@ public class VistaRecurs extends Vista{
         });
         
         paint(content);
+    }
+    
+    private void baixaRecurs(ActionEvent event){
+        label = new JLabel("OP:BaixaRecurs  Nom Recurs:");
+        contentSchemaA();
+        
+        content.add(label, BorderLayout.NORTH );
+        
+        b.addActionListener
+        (new ActionListener() {
+            public void actionPerformed (ActionEvent event) {
+                dobaixaRecurs(event);
+            }
+        });
+        
+        paint(content);
+        
+        
     }
     
     private void obtenirRecurs(ActionEvent event){
@@ -174,40 +214,78 @@ public class VistaRecurs extends Vista{
     }
     
     private void guardar(ActionEvent event){
-        label = new JLabel("OP:Guardar - ABSOLUTE PATH - :");
-        contentSchemaA();
-        
-        content.add(label, BorderLayout.NORTH );
-        
-        b.addActionListener
-        (new ActionListener() {
-            public void actionPerformed (ActionEvent event) {
-                doguardarRecurs(event);
+        try{
+            content = new JPanel();
+            paint(content);
+            JFileChooser elegirArchivo = new JFileChooser();
+            File archivo = null;
+            FileFilter tipo = new FileNameExtensionFilter(".txt", "txt");
+            elegirArchivo.addChoosableFileFilter(tipo);
+            
+            int estado = elegirArchivo.showDialog(null, "Guardar");
+            
+            if (estado == JFileChooser.APPROVE_OPTION) {
+                archivo = elegirArchivo.getSelectedFile();
+                String direccion = archivo.toString();
+                cr.guardarRecursos(direccion);
+                done();
+                
             }
-        });
-        
-        paint(content);
-        
+            /*
+            else if (estado == JFileChooser.CANCEL_OPTION) {
+                JOptionPane.showMessageDialog(null, "No se eligio archivo", "Error", 0);
+            }*/
+        }
+        catch (Exception ex){
+            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+        }
     }
     
     private void carregar(ActionEvent event){
-        label = new JLabel("OP:Carregar - ABSOLUTE PATH - :");
-        contentSchemaA();
-        
-        content.add(label, BorderLayout.NORTH );
-        
-        b.addActionListener
-        (new ActionListener() {
-            public void actionPerformed (ActionEvent event) {
-                docarregarRecurs(event);
+        try{
+            content = new JPanel();
+            paint(content);
+            JFileChooser elegirArchivo = new JFileChooser();
+            File archivo = null;
+            FileFilter tipo = new FileNameExtensionFilter(".txt", "txt");
+            elegirArchivo.addChoosableFileFilter(tipo);
+            
+            int estado = elegirArchivo.showDialog(null, "Carregar");
+            
+            if (estado == JFileChooser.APPROVE_OPTION) {
+                archivo = elegirArchivo.getSelectedFile();
+                String direccion = archivo.toString();
+                cr.carregarRecursos(direccion);
+                done();
+                
             }
-        });
-        
-        paint(content);
+            /*
+             else if (estado == JFileChooser.CANCEL_OPTION) {
+             JOptionPane.showMessageDialog(null, "No se eligio archivo", "Error", 0);
+             }*/
+        }
+        catch (Exception ex){
+            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+        }
         
     }
     
+    private void modnom(ActionEvent event){
+        label = new JLabel("OP:Mod Nom Recurs  Nom Recurs:");
+        label2 = new JLabel("New Nom:");
+        contentSchemaD();
+        b.addActionListener
+        (new ActionListener() {
+            public void actionPerformed (ActionEvent event) {
+                donomRecurs(event);
+            }
+        });
+        paint(content);
+        
+        
+    }
     
+    //do-functions
     private void doaltaRecurs(ActionEvent event){
         try{
             cr.altaRecurs(text.getText());
@@ -228,7 +306,8 @@ public class VistaRecurs extends Vista{
     
     private void dobaixaRecurs(ActionEvent event){
         try{
-            cr.baixaRecurs(text.getText());
+            cr.baixaRecursVista(text.getText());
+            
             content = new JPanel();
             label = new JLabel("Fet.");
             content.setLayout( new BorderLayout() );
@@ -240,6 +319,7 @@ public class VistaRecurs extends Vista{
         catch (Exception ex){
             JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
         }
+        
     }
     
     private void doobtenirRecurs(ActionEvent event){
@@ -268,7 +348,7 @@ public class VistaRecurs extends Vista{
         }
         
     }
-    
+    /*
     private void doguardarRecurs(ActionEvent event){
         try{
             cr.guardarRecursos(text.getText());
@@ -285,7 +365,7 @@ public class VistaRecurs extends Vista{
             JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
         }
     }
-    
+   
     private void docarregarRecurs(ActionEvent event){
         try{
             cr.carregarRecursos(text.getText());
@@ -302,6 +382,27 @@ public class VistaRecurs extends Vista{
             JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
         }
         
+    }
+    */
+    private void donomRecurs(ActionEvent event){
+        try{
+            cr.modificar_nom_recursVista(text.getText(),text2.getText());
+            done();
+        }
+        catch (Exception ex){
+            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+        }
+    }
+    
+    private void done(){
+        
+        content = new JPanel();
+        label = new JLabel("Fet.");
+        content.setLayout( new BorderLayout() );
+        content.setPreferredSize( new Dimension( 400, 100 ) );
+        content.setMinimumSize( new Dimension( 100, 50 ) );
+        content.add(label, BorderLayout.NORTH );
+        paint(content);
     }
     
     public void paint(JPanel p){

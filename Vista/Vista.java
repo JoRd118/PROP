@@ -1,6 +1,7 @@
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+
 /**
  * @param args the command line arguments
  */
@@ -14,6 +15,7 @@ public abstract class Vista extends SubVista{
     public JButton buttonGuardar;
     public JButton buttonObtenir;
     public JButton buttonObtenirID;
+    public JButton buttonModNom;
     
     //Common Content
     public JPanel  content;
@@ -85,7 +87,7 @@ public abstract class Vista extends SubVista{
     public void contentSchemaE(){
         chinButton = new JCheckBox("Planeta Tipus M");
         chinButton.setMnemonic(KeyEvent.VK_C);
-        chinButton.setSelected(true);
+        chinButton.setSelected(false);
         
         chinButton2 = new JCheckBox(" NO Planeta Tipus M");
         chinButton2.setMnemonic(KeyEvent.VK_C);

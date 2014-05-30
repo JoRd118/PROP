@@ -3,6 +3,11 @@ import java.io.IOException;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import javax.swing.JFileChooser;
+import java.io.File;
+import java.awt.Desktop;
+import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
 /**
  * @param args the command line arguments
  */
@@ -33,7 +38,7 @@ public class VistaPaquet extends Vista{
         paquet = new JPanel();
         paquet.setLayout(new GridLayout(3, 2, 5, 5));
         paquet.add(buttonAlta = new JButton("AltaPaquet"));
-        //paquet.add(buttonBaixa = new JButton("BaixaPaquet"));
+        paquet.add(buttonBaixa = new JButton("BaixaPaquet"));
         paquet.add(buttonPaquetOP3);
         paquet.add(buttonObtenir = new JButton("ObtenirPaquet"));
         paquet.add(buttonPaquetOP8);
@@ -56,14 +61,14 @@ public class VistaPaquet extends Vista{
             }
         });
 
-        /*
+        
         buttonBaixa.addActionListener
         (new ActionListener() {
             public void actionPerformed (ActionEvent event) {
                 baixaPaquet(event);
             }
         });
-         */
+        
 
         buttonPaquetOP3.addActionListener
         (new ActionListener() {
@@ -198,41 +203,68 @@ public class VistaPaquet extends Vista{
     }
 
     private void guardar(ActionEvent event){
-        contentSchemaA();
-        label = new JLabel("OP:Guardar - ABSOLUTE PATH - :");
-        content.add(label, BorderLayout.NORTH );
-        
-        b.addActionListener
-        (new ActionListener() {
-            public void actionPerformed (ActionEvent event) {
-                doguardarPaquets(event);
+        try{
+            content = new JPanel();
+            paint(content);
+            JFileChooser elegirArchivo = new JFileChooser();
+            File archivo = null;
+            FileFilter tipo = new FileNameExtensionFilter(".txt", "txt");
+            elegirArchivo.addChoosableFileFilter(tipo);
+            
+            int estado = elegirArchivo.showDialog(null, "Guardar");
+            
+            if (estado == JFileChooser.APPROVE_OPTION) {
+                archivo = elegirArchivo.getSelectedFile();
+                String direccion = archivo.toString();
+                cp.guardarPaquets(direccion);
+                done();
+                
             }
-        });
-        
-        paint(content);
+            /*
+             else if (estado == JFileChooser.CANCEL_OPTION) {
+             JOptionPane.showMessageDialog(null, "No se eligio archivo", "Error", 0);
+             }*/
+        }
+        catch (Exception ex){
+            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+        }
+
 
     }
 
     private void carregar(ActionEvent event){
-        contentSchemaA();
-        label = new JLabel("OP:Carregar - ABSOLUTE PATH - :");
-        content.add(label, BorderLayout.NORTH );
-        
-        b.addActionListener
-        (new ActionListener() {
-            public void actionPerformed (ActionEvent event) {
-                docarregarPaquet(event);
+        try{
+            content = new JPanel();
+            paint(content);
+            JFileChooser elegirArchivo = new JFileChooser();
+            File archivo = null;
+            FileFilter tipo = new FileNameExtensionFilter(".txt", "txt");
+            elegirArchivo.addChoosableFileFilter(tipo);
+            
+            int estado = elegirArchivo.showDialog(null, "Carregar");
+            
+            if (estado == JFileChooser.APPROVE_OPTION) {
+                archivo = elegirArchivo.getSelectedFile();
+                String direccion = archivo.toString();
+                cp.carregarPaquets(direccion);
+                done();
+                
             }
-        });
-        
-        paint(content);
+            /*
+             else if (estado == JFileChooser.CANCEL_OPTION) {
+             JOptionPane.showMessageDialog(null, "No se eligio archivo", "Error", 0);
+             }*/
+        }
+        catch (Exception ex){
+            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+        }
 
     }
     
 //do-functions
     private void dobaixaRecurs(ActionEvent event){
         try{
-            cp.baixaPaquet(Integer.parseInt(text.getText()));
+            cp.baixaPaquetVista(Integer.parseInt(text.getText()));
             content = new JPanel();
             label = new JLabel("Fet.");
             content.setLayout( new BorderLayout() );
@@ -283,7 +315,7 @@ public class VistaPaquet extends Vista{
 
     
     }
-    
+    /*
     private void doguardarPaquets(ActionEvent event){
         try{
             cp.guardarPaquets(text.getText());
@@ -319,11 +351,19 @@ public class VistaPaquet extends Vista{
         catch (Exception ex){
             JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
         }
-        
 
-    
     }
-    
+     */
+    private void done(){
+        
+        content = new JPanel();
+        label = new JLabel("Fet.");
+        content.setLayout( new BorderLayout() );
+        content.setPreferredSize( new Dimension( 400, 100 ) );
+        content.setMinimumSize( new Dimension( 100, 50 ) );
+        content.add(label, BorderLayout.NORTH );
+        paint(content);
+    }
     
     public void paint(JPanel p){
         v.revalidatepanel3(p);
