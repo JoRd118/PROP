@@ -213,23 +213,23 @@ public class Driver_Entrada{
                         int aux1;
                         distan = scan.nextLine();
                         aux1 = Integer.parseInt(distan);
-                        distan += "\n";
-                        for(i = 0; i < aux1 + 1; ++i) {
-                            distan += scan.nextLine() + "\n";
+                        distan += "\n" + scan.nextLine();
+                        for(i = 0; i < aux1; ++i) {
+                            distan += "\n" + scan.nextLine();
                         }
                         
                         nece = scan.nextLine();
                         aux1 = Integer.parseInt(nece);
-                        nece += "\n";
-                        for(i = 0; i < aux1 + 1; ++i) {
-                            nece += scan.nextLine() + "\n";
+                        nece += "\n" + scan.nextLine();
+                        for(i = 0; i < aux1; ++i) {
+                            nece += "\n" + scan.nextLine();
                         }
 
                         recur = scan.nextLine();
                         aux1 = Integer.parseInt(recur);
-                        recur += "\n";
-                        for(i = 0; i < aux1 + 1; ++i) {
-                            recur += scan.nextLine() + "\n";
+                        recur += "\n" + scan.nextLine();
+                        for(i = 0; i < aux1; ++i) {
+                            recur += "\n" + scan.nextLine();
                         }
 
                         p = scan.nextLine();

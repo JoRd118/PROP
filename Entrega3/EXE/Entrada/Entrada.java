@@ -168,8 +168,6 @@ public class Entrada {
         recu = linia[1].split(",");
         if (recu.length != nrec) throw new IllegalArgumentException(msg_inv);
 
-        		System.out.println(nplant);
-        		System.out.println(nrec);
         linia = rec.split("\n");
         if(nplant != Integer.parseInt(linia[0]) && nrec != Integer.parseInt(linia[1])) throw new IllegalArgumentException(msg_inv);
         mat_rec_plan = new int[nplant][nrec];
