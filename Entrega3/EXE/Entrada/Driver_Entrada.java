@@ -15,25 +15,28 @@ public class Driver_Entrada{
         System.out.println("\t 01) public Entrada().");
         System.out.println("\t 02) public Entrada(double[][] dis, int[][] nec, int[][] rec, String[] pl, String[] re).");
         System.out.println("\t 03) public void modificarMatrius(double[][] dis, int[][] nec, int[][] rec, String[] pl, String[] re).");
-        System.out.println("\t 04) public double obtenirPosDis(int i, int j).");
-        System.out.println("\t 05) public int obtenirPosNecPlaneta(int i, int j).");
-        System.out.println("\t 06) public int obtenirPosRecPlaneta(int i, int j).");
-        System.out.println("\t 07) public String obtenirPosRecu(int i).");
-        System.out.println("\t 08) public String obtenirPosPlan(int i).");
-        System.out.println("\t 09) public void modificarPosDis(int i, int j, double valor).");
-        System.out.println("\t 10) public void modificarPosNecPlaneta(int i, int j, int valor)");
-        System.out.println("\t 11) public void modificarPosRecPlaneta(int i, int j, int valor).");
-        System.out.println("\t 12) public void modificarPosRecu(int i, String valor).");
-        System.out.println("\t 13) public void modificarPosPlan(int i, String valor).");
-        System.out.println("\t 14) public double[][] obtenirMatriuDisPla().");
-        System.out.println("\t 15) public int[][] obtenirMatriuNecPla().");
-        System.out.println("\t 16) public int[][] obtenirMatriuRecPla().");
-        System.out.println("\t 17) public String[] obtenirVectorRecu().");
-        System.out.println("\t 18) public String[] obtenirVectorPlan().");
-        System.out.println("\t 19) public String obtenirMatriuDisString().");
-        System.out.println("\t 20) public String obtenirMatriuNecString().");
-        System.out.println("\t 21) public String obtenirMatriuRecString().");
-        System.out.println("\t 22) public void modificarMatriusString(String dist, String nec, String rec, String p, String r).");
+        System.out.println("\t 04) public void modificarMatriusString(String dist, String nec, String rec, String p, String r).");
+        System.out.println("\t 05) public double obtenirPosDis(int i, int j).");
+        System.out.println("\t 06) public int obtenirPosNecPlaneta(int i, int j).");
+        System.out.println("\t 07) public int obtenirPosRecPlaneta(int i, int j).");
+        System.out.println("\t 08) public String obtenirPosRecu(int i).");
+        System.out.println("\t 09) public String obtenirPosPlan(int i).");
+        System.out.println("\t 10) public void modificarPosDis(int i, int j, double valor).");
+        System.out.println("\t 11) public void modificarPosNecPlaneta(int i, int j, int valor)");
+        System.out.println("\t 12) public void modificarPosRecPlaneta(int i, int j, int valor).");
+        System.out.println("\t 13) public void modificarPosRecu(int i, String valor).");
+        System.out.println("\t 14) public void modificarPosPlan(int i, String valor).");
+        System.out.println("\t 15) public double[][] obtenirMatriuDisPla().");
+        System.out.println("\t 16) public int[][] obtenirMatriuNecPla().");
+        System.out.println("\t 17) public int[][] obtenirMatriuRecPla().");
+        System.out.println("\t 18) public String[] obtenirVectorRecu().");
+        System.out.println("\t 19) public String[] obtenirVectorPlan().");
+        System.out.println("\t 20) public String obtenirMatriuDisString().");
+        System.out.println("\t 21) public String obtenirMatriuNecString().");
+        System.out.println("\t 22) public String obtenirMatriuRecString().");
+        System.out.println("\t 23) public String obtenirRecursosString()");
+        System.out.println("\t 24) public String obtenirPlanetesString()");
+        System.out.println("\t 25) public String obtenirMatrius()");
         System.out.println("\t 00) Salida.");
     }
     
@@ -202,67 +205,103 @@ public class Driver_Entrada{
                         break;
 
                     case "04":
-                        i = Integer.parseInt(scan.nextLine());
-                        j = Integer.parseInt(scan.nextLine());
-                        System.out.println(en.obtenirPosDis(i,j));
+                        String distan;
+                        String nece;
+                        String recur;
+                        String p;
+                        String r;
+                        int aux1;
+                        distan = scan.nextLine();
+                        aux1 = Integer.parseInt(distan);
+                        distan += "\n";
+                        for(i = 0; i < aux1 + 1; ++i) {
+                            distan += scan.nextLine() + "\n";
+                        }
+                        
+                        nece = scan.nextLine();
+                        aux1 = Integer.parseInt(nece);
+                        nece += "\n";
+                        for(i = 0; i < aux1 + 1; ++i) {
+                            nece += scan.nextLine() + "\n";
+                        }
+
+                        recur = scan.nextLine();
+                        aux1 = Integer.parseInt(recur);
+                        recur += "\n";
+                        for(i = 0; i < aux1 + 1; ++i) {
+                            recur += scan.nextLine() + "\n";
+                        }
+
+                        p = scan.nextLine();
+                        p += "\n" + scan.nextLine();
+
+                        r = scan.nextLine();
+                        r += "\n" + scan.nextLine();
+                        en.modificarMatriusString(distan, nece, recur, p, r);
                         break;
 
                     case "05":
                         i = Integer.parseInt(scan.nextLine());
                         j = Integer.parseInt(scan.nextLine());
-                        System.out.println(en.obtenirPosNecPlaneta(i,j));
+                        System.out.println(en.obtenirPosDis(i,j));
                         break;
 
                     case "06":
                         i = Integer.parseInt(scan.nextLine());
                         j = Integer.parseInt(scan.nextLine());
-                        System.out.println(en.obtenirPosRecPlaneta(i,j));
+                        System.out.println(en.obtenirPosNecPlaneta(i,j));
                         break;
 
                     case "07":
                         i = Integer.parseInt(scan.nextLine());
-                        System.out.println(en.obtenirPosRecu(i));
+                        j = Integer.parseInt(scan.nextLine());
+                        System.out.println(en.obtenirPosRecPlaneta(i,j));
                         break;
 
                     case "08":
                         i = Integer.parseInt(scan.nextLine());
-                        System.out.println(en.obtenirPosPlan(i));
+                        System.out.println(en.obtenirPosRecu(i));
                         break;
 
                     case "09":
+                        i = Integer.parseInt(scan.nextLine());
+                        System.out.println(en.obtenirPosPlan(i));
+                        break;
+
+                    case "10":
                         i = Integer.parseInt(scan.nextLine());
                         j = Integer.parseInt(scan.nextLine());
                         valor_dou = Double.parseDouble(scan.nextLine());
                         en.modificarPosDis(i,j,valor_dou);
                         break;
 
-                    case "10":
+                    case "11":
                         i = Integer.parseInt(scan.nextLine());
                         j = Integer.parseInt(scan.nextLine());
                         valor_int = Integer.parseInt(scan.nextLine());
                         en.modificarPosNecPlaneta(i,j,valor_int);
                         break;
 
-                    case "11":
+                    case "12":
                         i = Integer.parseInt(scan.nextLine());
                         j = Integer.parseInt(scan.nextLine());
                         valor_int = Integer.parseInt(scan.nextLine());
                         en.modificarPosRecPlaneta(i,j,valor_int);
                         break;
 
-                    case "12":
+                    case "13":
                         i = Integer.parseInt(scan.nextLine());
                         valor_str = scan.nextLine();
                         en.modificarPosRecu(i, valor_str);
                         break;
 
-                    case "13":
+                    case "14":
                         i = Integer.parseInt(scan.nextLine());
                         valor_str = scan.nextLine();
                         en.modificarPosPlan(i,valor_str);
                         break;
 
-                    case "14":
+                    case "15":
                         dou = en.obtenirMatriuDisPla();
                         for (i = 0; i < dou.length; ++i) {
                             for (j = 0; j < dou[0].length; ++j) {
@@ -273,7 +312,7 @@ public class Driver_Entrada{
                         System.out.println();
                         break;
 
-                    case "15":
+                    case "16":
                         in = en.obtenirMatriuNecPla();
                         for (i = 0; i < in.length; ++i) {
                             for (j = 0; j < in[0].length; ++j) {
@@ -284,7 +323,7 @@ public class Driver_Entrada{
                         System.out.println();
                         break;
 
-                    case "16":
+                    case "17":
                         in = en.obtenirMatriuRecPla();
                         for (i = 0; i < in.length; ++i) {
                             for (j = 0; j < in[0].length; ++j) {
@@ -295,7 +334,7 @@ public class Driver_Entrada{
                         System.out.println();
                         break;
 
-                    case "17":
+                    case "18":
                         str = en.obtenirVectorRecu();
                         for (i = 0; i < str.length; ++i) {
                             System.out.print(str[i] + "\t");
@@ -303,7 +342,7 @@ public class Driver_Entrada{
                         System.out.println();
                         break;
 
-                    case "18":
+                    case "19":
                         str = en.obtenirVectorPlan();
                         for (i = 0; i < str.length; ++i) {
                             System.out.print(str[i] + "\t");
@@ -311,53 +350,28 @@ public class Driver_Entrada{
                         System.out.println();
                         break;
 
-                    case "19":
+                    case "20":
                         System.out.println(en.obtenirMatriuDisString());
                         break;
 
-                    case "20":
+                    case "21":
                         System.out.println(en.obtenirMatriuNecString());
                         break;
 
-                    case "21":
+                    case "22":
                         System.out.println(en.obtenirMatriuRecString());
                         break;
 
-                    case "22":
-                        String distan;
-                        String nece;
-                        String recur;
-                        String p;
-                        String r;
-                        int aux;
-                        distan = scan.nextLine();
-                        aux = Integer.parseInt(distan);
-                        distan += "\n";
-                        for(i = 0; i < aux + 1; ++i) {
-                            distan += scan.nextLine() + "\n";
-                        }
-                        
-                        nece = scan.nextLine();
-                        aux = Integer.parseInt(nece);
-                        nece += "\n";
-                        for(i = 0; i < aux + 1; ++i) {
-                            nece += scan.nextLine() + "\n";
-                        }
+                    case "23":
+                        System.out.println(en.obtenirRecursosString());
+                        break;
 
-                        recur = scan.nextLine();
-                        aux = Integer.parseInt(recur);
-                        recur += "\n";
-                        for(i = 0; i < aux + 1; ++i) {
-                            recur += scan.nextLine() + "\n";
-                        }
-
-                        p = scan.nextLine();
-                        p += "\n" + scan.nextLine();
-
-                        r = scan.nextLine();
-                        r += "\n" + scan.nextLine();
-                    
-                        en.modificarMatriusString(distan, nece, recur, p, r);
+                    case "24":
+                        System.out.println(en.obtenirPlanetesString());
+                        break;
+            
+                    case "25":
+                        System.out.println(en.obtenirMatrius());
                         break;
 
                     default:

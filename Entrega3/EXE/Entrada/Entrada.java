@@ -106,6 +106,41 @@ public class Entrada {
 		return aux;
 	}
 
+	public String obtenirRecursosString() {
+		String aux = new String();
+		for(int i = 0; i < recu.length; ++i) {
+			if (i > 0) aux += ",";
+			aux += recu[i];
+		}
+		aux += "\n";
+		return aux;
+	}
+
+	public String obtenirPlanetesString() {
+		String aux = new String();
+		for(int i = 0; i < plan.length; ++i) {
+			if (i > 0) aux += ",";
+			aux += plan[i];
+		}
+		aux += "\n";
+		return aux;
+	}
+
+	public String obtenirMatrius() {
+		String aux = new String();
+		aux = "Matrius distancies\n";
+		aux += obtenirMatriuDisString();
+		aux += "Matrius necessitats\n";
+		aux += obtenirMatriuNecString();
+		aux += "Matrius recursos\n";
+		aux += obtenirMatriuRecString();
+		aux += "Vector recursos\n";
+		aux += obtenirRecursosString();
+		aux += "Matrius Planetes\n";
+		aux += obtenirPlanetesString();
+		return aux;
+	}
+
 	//Modificadores 
 	public void modificarMatrius(double[][] dis, int[][] nec, int[][] rec, String[] pl, String[] re) {
 		mat_dis_plan = dis;
