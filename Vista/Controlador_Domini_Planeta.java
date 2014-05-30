@@ -19,6 +19,7 @@ public class Controlador_Domini_Planeta {
     private static String msg_planeta_no_classM = "Error Planeta: el Planeta no es classe M.";
     private static String msg_planeta_classM = "Error Planeta: el Planeta no es classe M.";
     private static String msg_carregar = "Error de Planeta: Carregar no es pot portar a terme perque ja s'han introduit dades.";
+    private static String msg_planeta_assignat = "Error de Planeta: Planeta ja assignat";
     
     
     private VistaPlaneta v;
@@ -43,6 +44,7 @@ public class Controlador_Domini_Planeta {
         cpp = p1;
         v = new VistaPlaneta(this);
 	}
+    
     
     //Pre: coord que siguin valides
     //Post: S'haura creat un planeta en el Conjunt_Planetes_Desassignat
@@ -84,7 +86,7 @@ public class Controlador_Domini_Planeta {
 			Planeta p = Conjunt_Planetes_Desassignat.obtain(nomP);
 			Conjunt_Planetes_Assignat.insert(nomP, p);
 			Conjunt_Planetes_Desassignat.remove(nomP);
-		} else throw new IllegalArgumentException(msg_planeta_no_exists);
+		} else throw new IllegalArgumentException(msg_planeta_assignat);
 	}
     
     //Pre:
@@ -267,8 +269,11 @@ public class Controlador_Domini_Planeta {
             if(Conjunt_Planetes_Assignat.contains(nomP)) p = Conjunt_Planetes_Assignat.obtain(nomP);
             else p = Conjunt_Planetes_Desassignat.obtain(nomP);
             if(p.obtenirClasse()){
-             	Paquet pq = cp.obtenirPaquetAssignar(id);
-               	p.assignarPaquet(pq);
+             	if(p.obtenirPaquet() == null){
+                    Paquet pq = cp.obtenirPaquetAssignar(id);
+                    p.assignarPaquet(pq);
+                }
+                else{ throw new IllegalArgumentException(msg_planeta_paquet_assginat);}
             } else throw new IllegalArgumentException(msg_planeta_no_classM);
 		} else throw new IllegalArgumentException(msg_planeta_no_exists);
 	}
@@ -280,7 +285,11 @@ public class Controlador_Domini_Planeta {
 			Planeta p;
             if (Conjunt_Planetes_Assignat.contains(nomP)) p = Conjunt_Planetes_Assignat.obtain(nomP);
             else p = Conjunt_Planetes_Desassignat.obtain(nomP);
-			if (p.obtenirClasse()) p.desassignarPaquet();
+			if (p.obtenirClasse()) {
+                Paquet aux = p.obtenirPaquet();
+                cp.desassignarPaquet(aux.obtenirId());
+                p.desassignarPaquet();
+            }
 		} else throw new IllegalArgumentException(msg_planeta_no_exists);
 	}
 	
@@ -497,7 +506,7 @@ public class Controlador_Domini_Planeta {
             cd.writeTextFile(list);
         }
     }
-    
+
     public void baixaPlanetaVista(String a){
         cpp.borrar_planeta(a);
     }

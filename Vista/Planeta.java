@@ -42,7 +42,7 @@ public class Planeta {
          coord.modificarCoordenades(x, y);
          classeM = classe;
         Necessitats = new TST<Recurs>();
-        p = new Paquet();
+        /*p = new Paquet();*/
         p = null;
     }
 
