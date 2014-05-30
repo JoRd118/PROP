@@ -190,7 +190,7 @@ public class Entrada {
 
         linia = dist.split("\n");
         if(nplant != Integer.parseInt(linia[0]) && nplant != Integer.parseInt(linia[1])) throw new IllegalArgumentException(msg_inv);
-        mat_dis_plan = new double[nplant][nrec];
+        mat_dis_plan = new double[nplant][nplant];
         for(int i = 0; i < nplant; ++i) {
         	col = linia[i + 2].split(",");
         	for(int j = 0; j < nplant; ++j) {
