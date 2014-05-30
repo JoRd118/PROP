@@ -83,23 +83,23 @@ public class bbNode {
   		String s = new String();
 		s = s + "\n";
 		s = s + "Node: " +idnode+" (pare: " +idnodepare+ ")\n";
-		s = s + "idplaneta: " + idplaneta + "\n";
+		s = s + "\tidplaneta: " + idplaneta + "\n";
     	if(cami != null) {
-    		s = s + "Visitats:";
+    		s = s + "\tVisitats:";
       		for(int ip:cami) s = s +" "+ip;
 		  	s= s + "\n";
 		}
-		s = s + "es solucio: " + essolucio + "\n";
-		s = s + "nivell: " + nivell + "\n";
-		s = s + "recorregut: " + recorregut + "\n";
-		s = s + "cotarestant: " + cotarestant + "\n";
+		s = s + "\tes solucio: " + essolucio + "\n";
+		s = s + "\tnivell: " + nivell + "\n";
+		s = s + "\trecorregut: " + recorregut + "\n";
+		s = s + "\tcotarestant: " + cotarestant + "\n";
     	if(necessitatspendents != null) {
-    		s = s + "necessitats pendents:";
+    		s = s + "\tnecessitats pendents:";
       		for(int ir:necessitatspendents) s = s + " " + ir;
 		 	s = s + "\n";
 			}
     	if(planetespendents != null) {
-    		s = s + "planetes pendents";
+    		s = s + "	planetes pendents";
       		for(int ip:planetespendents) s = s + " " + ip;
 			s = s + "\n";
   		}

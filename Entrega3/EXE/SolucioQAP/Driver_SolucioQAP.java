@@ -2,9 +2,6 @@ import java.util.*;
 import java.io.IOException;
 import java.util.*;
 import java.io.Console;
-import javax.swing.JTree;
-import javax.swing.tree.DefaultMutableTreeNode;
-import javax.swing.tree.DefaultTreeModel;
 
 public class Driver_SolucioQAP {
 
@@ -30,8 +27,9 @@ public class Driver_SolucioQAP {
         System.out.println("\t 15) public void modificarLlistaNodes(ArrayList<bbNode> llistanodes).");
         System.out.println("\t 16) public void assignarArbre(ArbreNode nodea).");
         System.out.println("\t 17) public void processarSolucions().");
-			
-	}
+        System.out.println("\t 18) public String arbreSolucio().");
+        System.out.println("\t 19) public String printSolucioQAP().");
+  }
 
 	public static void main(String[] args){
 		String nomClase = "SolucioQAP";
@@ -146,6 +144,16 @@ public class Driver_SolucioQAP {
             break;
             case "17":
               sQAP.processarSolucions();
+              break;
+            case "18":  // public String arbreSolucio()
+              String arbresol;
+              arbresol = sQAP.arbreSolucio();
+              System.out.println(arbresol);
+              break;
+            case "19":  // public String printSolucioQAP()
+              String solu;
+              solu = sQAP.printSolucioQAP();
+              System.out.println(solu);
               break;
 					default:
 						System.out.println("Opcio no valida");
