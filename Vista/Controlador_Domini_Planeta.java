@@ -114,7 +114,7 @@ public class Controlador_Domini_Planeta {
     //Pre:
     //Post: El nom de un planeta es canvia per el nou nom
 	public void modificarNom(String nom, String newnom) {
-		if (Conjunt_Planetes_Desassignat.contains(newnom)) throw new IllegalArgumentException(msg_planeta_repetit);
+		if (Conjunt_Planetes_Desassignat.contains(newnom)|| Conjunt_Planetes_Assignat.contains(newnom)) throw new IllegalArgumentException(msg_planeta_repetit);
 		else {
 			if (Conjunt_Planetes_Desassignat.contains(nom)) {
 				Planeta pl = Conjunt_Planetes_Desassignat.obtain(nom);
@@ -401,6 +401,7 @@ public class Controlador_Domini_Planeta {
         }
     	cp.borrar_recurs3(nom);
     }
+
     
     public void modificar_nom_recurs2(String old_name, String new_name){
     	TST<Planeta> planetes_amb_recurs = new TST<Planeta>();
@@ -433,6 +434,7 @@ public class Controlador_Domini_Planeta {
     		altaNecessitats(a, new_name);
     	}
     }
+
     //Pre:
     //Post: Guardar en el fitxer nomFitxer totes les dades becessaries pero tornar a carregar i que tot estigui igual
     public void guardarPlanetes(String nomFitxer) throws IOException{
