@@ -524,11 +524,15 @@ public class Controlador_Domini_Planeta {
 			Planeta p;
             if (Conjunt_Planetes_Assignat.contains(a)) p = Conjunt_Planetes_Assignat.obtain(a);
             else p = Conjunt_Planetes_Desassignat.obtain(a);
-			if (p.obtenirClasse()) {
+			
+            if (p.obtenirClasse()) {
                 Paquet aux2 = p.obtenirPaquet();
-                aux = cp.obtenirIdPaquet(aux2);
+                if(aux2 != null){
+                    aux = cp.obtenirIdPaquet(aux2);
+                }
             }
-		} else throw new IllegalArgumentException(msg_planeta_no_exists);
+		}
+        else throw new IllegalArgumentException(msg_planeta_no_exists);
         return aux;
     }
 

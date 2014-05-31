@@ -640,10 +640,17 @@ public class VistaPlaneta extends Vista{
             String aux = text.getText();
             contentSchemaB();
             int aux3 = cp.obtenirPaquetPlaneta(aux);
+            
             String aux4 = "No te paquet";
-            if(aux3 > 0) aux4 = " " + aux3;
+            if(aux3 >= 0) aux4 = " " + aux3;
+            
             label = new JLabel("ID Planeta: "+ cp.obtenirId(aux)+" Nom Planeta: "+ aux +" Classe Planeta: "+ cp.obtenirClasse(aux)+ " Coords Planeta: "+ cp.obtenirCoordenadesVista(aux) + " Paquet:" + aux4);
-            content.add(label, BorderLayout.NORTH );
+            /*System.out.println("HERE");
+            System.out.println(cp.obtenirId(aux));
+            System.out.println(cp.obtenirClasse(aux));
+            System.out.println(cp.obtenirCoordenadesVista(aux));
+             label = new JLabel("ID Planeta: "+ cp.obtenirId(aux)+" Nom Planeta: "+ aux +" Classe Planeta: "+ cp.obtenirClasse(aux)+ " Coords Planeta: "+ cp.obtenirCoordenadesVista(aux));*/
+            content.add(label, BorderLayout.NORTH);
             paint(content);
         }
         catch (Exception ex){
