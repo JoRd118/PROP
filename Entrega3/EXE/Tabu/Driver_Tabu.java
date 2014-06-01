@@ -22,6 +22,7 @@ public class Driver_Tabu {
         System.out.println("\t 09) public ArrayList<Integer> obtenirLlistaMillors()");
         System.out.println("\t 10) public ArrayList<Integer> obtenirLlistaParcials()");
         System.out.println("\t 11) public void processarSolucions().");
+	   System.out.println("\t 12) public void printSolucioQAP().");
     }
     
     
@@ -51,65 +52,6 @@ public class Driver_Tabu {
                         break;
                         
                     case "02":
-                        /*
-                        String aux = scan.nextLine();
-                        int indexPlanetaCalcul = Integer.parseInt(aux);
-                        
-                        aux = scan.nextLine();
-                        int auxSize = Integer.parseInt(aux);
-                        String[] mPlanetes = new String[auxSize];
-                        for(i = 0; i < auxSize; ++i){
-                            mPlanetes[i] = scan.nextLine();
-                        }
-                        
-                        aux = scan.nextLine();
-                        int auxSize2 = Integer.parseInt(aux);
-                        String[] mRecursos = new String[auxSize2];
-                        for(int i2 = 0; i2 < auxSize2; ++i2){
-                            mRecursos[i2] = scan.nextLine();
-                        }
-                        
-                        
-                        
-                        enti = scan.nextLine();
-                        nfiles = Integer.parseInt(enti);
-                        enti = scan.nextLine();
-                        ncolumnes = Integer.parseInt(enti);
-                        double mDistancies[][] = new double[nfiles][ncolumnes];
-                        for (int i3 = 0; i3 < nfiles; i3++) {
-                            String linia = scan.nextLine();
-                            String[] elements = linia.split(",");
-                            for (int j = 0; j < ncolumnes; j++) {
-                                mDistancies[i3][j] = Double.valueOf(elements[j]);
-                            }
-                        }
-                        
-                        enti = scan.nextLine();
-                        nfiles = Integer.parseInt(enti);
-                        enti = scan.nextLine();
-                        ncolumnes = Integer.parseInt(enti);
-                        int mDisponibilitats[][] = new int[nfiles][ncolumnes];
-                        for (int i4 = 0; i4 < nfiles; i4++) {
-                            String linia = scan.nextLine();
-                            String[] elements = linia.split(",");
-                            for (int j = 0; j < ncolumnes; j++) {
-                                mDisponibilitats[i4][j] = Integer.parseInt(elements[j]);
-                            }
-                        }
-                        
-                        enti = scan.nextLine();
-                        nfiles = Integer.parseInt(enti);
-                        enti = scan.nextLine();
-                        ncolumnes = Integer.parseInt(enti);
-                        int mNecessitats[][] = new int[nfiles][ncolumnes];
-                        for (int i5 = 0; i5 < nfiles; i5++) {
-                            String linia = scan.nextLine();
-                            String[] elements = linia.split(",");
-                            for (int j = 0; j < ncolumnes; j++) {
-                                mNecessitats[i5][j] = Integer.parseInt(elements[j]);
-                            }
-                        }
-                         */
                         // index planeta a calcular
                         entrada = scan.nextLine();
                         int indexPlanetaCalcul = Integer.parseInt(entrada);
@@ -211,7 +153,10 @@ public class Driver_Tabu {
                     case "11":
                         sQAP.processarSolucions();
                         break;
-                        
+                    case "12":
+                        entrada = sQAP.printSolucioQAP();
+                        System.out.println(entrada);
+                        break;
                     case "00":
                         out = true;
                         break;

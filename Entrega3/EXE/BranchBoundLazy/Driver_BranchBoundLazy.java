@@ -17,6 +17,8 @@ public class Driver_BranchBoundLazy {
         System.out.println("\t 08) public ArrayList<Integer> obtenirLlistaMillors()");
         System.out.println("\t 09) public ArrayList<Integer> obtenirLlistaParcials()");
         System.out.println("\t 10) public void processarSolucions().");
+	System.out.println("\t 11) public String arbreSolucio().");
+	System.out.println("\t 12) public String printSolucioQAP().");
 
     }
 public static void main(String[] args) {
@@ -140,6 +142,12 @@ while(!out){
                     case "10":
                         sQAP.processarSolucions();
                         break;
+		    case "11":
+			System.out.println(sQAP.arbreSolucio());
+			break;
+		    case "12":
+			System.out.println(sQAP.printSolucioQAP());
+			break;
                     case "00":
                         out = true;
                         break;
