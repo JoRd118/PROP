@@ -363,9 +363,9 @@ public class Controlador_Domini_Univers{
     
     public void modificar_nom_planeta(String old_name, String new_name){
         String aux = existeixplanetaunivers(old_name);
-        if(!aux.equals("none")){            
-            cp.modificarNom(old_name, new_name);
+        if(!aux.equals("none")){    
             desafegirPlanetaUnivers(aux, old_name);
+            cp.modificarNom(old_name, new_name);
             afegirPlanetaUnivers(aux, new_name);
         }
         else {cp.modificarNom(old_name, new_name);}
