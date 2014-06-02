@@ -15,7 +15,7 @@ public class Controlador_Domini_Planeta {
     private static String msg_recurs_repetit = "Error de Recurs: Ja existeix un recurs amb aquest nom.";
     private static String msg_recurs_no_exists = "Error de Recurs: Recurs demanat no existeix.";
     private static String msg_planeta_paquet_assginat = "Error de Planeta: Aquest Planeta ja te un Paquet assignat.";
-    private static String msg_planeta_cap_paquet_assginat = "Error de Planeta: Aquest Planeta no te un Paquet assignat.";
+    private static String msg_planeta_cap_paquet_assginat = "Error de Planeta: Hi ha un Planeta que no te un Paquet assignat.";
     private static String msg_planeta_no_classM = "Error Planeta: el Planeta no es classe M.";
     private static String msg_planeta_classM = "Error Planeta: el Planeta no es classe M.";
     private static String msg_carregar = "Error de Planeta: Carregar no es pot portar a terme perque ja s'han introduit dades.";
