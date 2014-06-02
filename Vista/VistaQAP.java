@@ -358,8 +358,9 @@ public class VistaQAP extends Vista{
     
     private void solucioSeguent(ActionEvent event){
         try{
+            String aux = q.solucioSeguent();
             contentSchemaC();
-            textarea.setText(q.solucioSeguent());
+            textarea.setText(aux);
             paint(content);
         }
         catch (Exception ex){
@@ -370,8 +371,9 @@ public class VistaQAP extends Vista{
     
     private void solucioAnterior(ActionEvent event){
         try{
+            String aux = q.solucioAnterior();
             contentSchemaC();
-            textarea.setText(q.solucioAnterior());
+            textarea.setText(aux);
             paint(content);
         }
         catch (Exception ex){
@@ -392,8 +394,13 @@ public class VistaQAP extends Vista{
     
     private void solucio(ActionEvent event){
         try{
+            content = new JPanel();
+            label = new JLabel("Processant solució...");
+            content.add(label);
+            paint(content);
+            String aux = q.solucioAll();
             contentSchemaC();
-            textarea.setText(q.solucioAll());
+            textarea.setText(aux);
             paint(content);
         }
         catch (Exception ex){
@@ -444,6 +451,9 @@ public class VistaQAP extends Vista{
     //do-functions
     private void dorun(ActionEvent event, String a){
         try{
+            content = new JPanel();
+            label = new JLabel("Running...");
+            content.add(label);
             q.run_algorithm(a);
             content = new JPanel();
             label = new JLabel(q.printTemps());
