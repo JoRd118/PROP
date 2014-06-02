@@ -199,10 +199,10 @@ public class VistaQAP extends Vista{
     }
     
     private void calcularMatrius(ActionEvent event){
-        label = new JLabel("OP:CalcularMatrius  Nom Univers:");
-        contentSchemaA();
         
-        content.add(label, BorderLayout.NORTH );
+        contentSchemaA();
+        label.setText("OP:CalcularMatrius  Nom Univers:");
+        
         
         b.addActionListener
         (new ActionListener() {
@@ -212,8 +212,8 @@ public class VistaQAP extends Vista{
         });
         
         paint(content);
-    
-    
+        
+        
     }
     
     private void run_algorithm(ActionEvent event){
@@ -247,7 +247,7 @@ public class VistaQAP extends Vista{
             }
         });
         
-    
+        
     }
     
     private void modificarValorDistancies(ActionEvent event){
@@ -260,7 +260,7 @@ public class VistaQAP extends Vista{
             }
         });
         paint(content);
-    
+        
     }
     
     private void modificarValorNecessitats(ActionEvent event){
@@ -294,7 +294,7 @@ public class VistaQAP extends Vista{
             paint(content);
         }
         catch (Exception ex){
-           error_ex("Exception: " + ex.getMessage());
+            error_ex("Exception: " + ex.getMessage());
         }
     }
     
@@ -307,7 +307,7 @@ public class VistaQAP extends Vista{
         catch (Exception ex){
             error_ex("Exception: " + ex.getMessage());
         }
-    
+        
     }
     
     private void obtenirMatRec(ActionEvent event){
@@ -330,7 +330,7 @@ public class VistaQAP extends Vista{
         catch (Exception ex){
             error_ex("Exception: " + ex.getMessage());
         }
-    
+        
     }
     
     private void obtenirPlanetes(ActionEvent event){
@@ -342,7 +342,7 @@ public class VistaQAP extends Vista{
         catch (Exception ex){
             error_ex("Exception: " + ex.getMessage());
         }
-    
+        
     }
     
     private void afegirMatrius(ActionEvent event){
@@ -365,7 +365,7 @@ public class VistaQAP extends Vista{
         catch (Exception ex){
             error_ex("Exception: " + ex.getMessage());
         }
-    
+        
     }
     
     private void solucioAnterior(ActionEvent event){
@@ -404,6 +404,8 @@ public class VistaQAP extends Vista{
     private void guardar_solucioQAP(ActionEvent event){
         try{
             content = new JPanel();
+            label_Exe = new JLabel();
+            content.add(label_Exe);
             paint(content);
             JFileChooser elegirArchivo = new JFileChooser();
             File archivo = null;
@@ -417,11 +419,15 @@ public class VistaQAP extends Vista{
                 String direccion = archivo.toString();
                 String direccion_copy = direccion;
                 direccion_copy = direccion_copy.substring((direccion_copy.length())-3,direccion_copy.length());
-                if(direccion_copy.equals("qap")){
-                q.guardar_solucioQAP(direccion);
-                done();
+                if(direccion.contains(".")){
+                    if(direccion_copy.equals("qap")){
+                        q.guardar_solucioQAP(direccion);
+                        done();
+                    }
+                    else{error_ex("Exception: Extencio del fitxer incorrecte (hauria de ser '.qap') ");}
                 }
-                else{error_ex("Exception: Extencio del fitxer incorrecte (hauria de ser '.rec') ");}
+                else{error_ex("Exception: Fitxer sense extenció (hauria de ser '.qap') ");}
+                
             }
             /*
              else if (estado == JFileChooser.CANCEL_OPTION) {
@@ -429,16 +435,16 @@ public class VistaQAP extends Vista{
              }*/
         }
         catch (Exception ex){
-           error_ex("Exception: " + ex.getMessage());
+            error_ex("Exception: " + ex.getMessage());
         }
-    
+        
     }
     
     
     //do-functions
     private void dorun(ActionEvent event, String a){
         try{
-         q.run_algorithm(a);
+            q.run_algorithm(a);
             content = new JPanel();
             label = new JLabel(q.printTemps());
             content.setLayout( new BorderLayout() );
@@ -449,7 +455,7 @@ public class VistaQAP extends Vista{
             
         }
         catch (Exception ex){
-           error_ex("Exception: " + ex.getMessage());
+            error_ex("Exception: " + ex.getMessage());
         }
     }
     
@@ -460,12 +466,12 @@ public class VistaQAP extends Vista{
             int j = Integer.parseInt(text3.getText());
             q.modificarValorDistancies(i,j,valor);
             done();
-        
+            
         }
         catch (Exception ex){
-           error_ex("Exception: " + ex.getMessage());
+            error_ex("Exception: " + ex.getMessage());
         }
-    
+        
     }
     
     private void domodificarValorNecessitats(ActionEvent event){
@@ -478,7 +484,7 @@ public class VistaQAP extends Vista{
             
         }
         catch (Exception ex){
-           error_ex("Exception: " + ex.getMessage());
+            error_ex("Exception: " + ex.getMessage());
         }
     }
     
@@ -492,7 +498,7 @@ public class VistaQAP extends Vista{
             
         }
         catch (Exception ex){
-           error_ex("Exception: " + ex.getMessage());
+            error_ex("Exception: " + ex.getMessage());
         }
     }
     
@@ -501,7 +507,7 @@ public class VistaQAP extends Vista{
             //System.out.println(textarea.getText());
             q.afegirMatrius(textarea.getText(),textarea2.getText(),textarea3.getText(),textarea4.getText(),textarea5.getText());
             done();
-        
+            
         }
         catch (Exception ex){
             error_ex("Exception: " + ex.getMessage());
@@ -515,7 +521,7 @@ public class VistaQAP extends Vista{
         catch (Exception ex){
             error_ex("Exception: " + ex.getMessage());
         }
-    
+        
     }
     
     

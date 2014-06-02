@@ -235,9 +235,8 @@ public class VistaPlaneta extends Vista{
     }
     
     private void baixaPlaneta (ActionEvent event){
-        label = new JLabel("OP:BaixaPlaneta  Nom Planeta:");
-         contentSchemaA();
-        content.add(label, BorderLayout.NORTH );
+        contentSchemaA();
+        label.setText("OP:BaixaPlaneta  Nom Planeta:");
         
         b.addActionListener
         (new ActionListener() {
@@ -251,9 +250,8 @@ public class VistaPlaneta extends Vista{
     }
     
     private void obtenirId (ActionEvent event){
-        label = new JLabel("OP:ObtenirIdPlaneta  Nom Planeta:");
         contentSchemaA();
-        content.add(label, BorderLayout.NORTH );
+        label.setText("OP:ObtenirIdPlaneta  Nom Planeta:");
         
         b.addActionListener
         (new ActionListener() {
@@ -268,9 +266,8 @@ public class VistaPlaneta extends Vista{
     }
     
     private void obtenirClasse (ActionEvent event){
-        label = new JLabel("OP:ObtenirClassePlaneta  Nom Planeta:");
         contentSchemaA();
-        content.add(label, BorderLayout.NORTH );
+        label.setText("OP:ObtenirClassePlaneta  Nom Planeta:");
         
         b.addActionListener
         (new ActionListener() {
@@ -284,9 +281,8 @@ public class VistaPlaneta extends Vista{
     }
     
     private void obtenirCoordenades (ActionEvent event){
-        label = new JLabel("OP:ObtenirCoordPlaneta  Nom Planeta:");
         contentSchemaA();
-        content.add(label, BorderLayout.NORTH );
+        label.setText("OP:ObtenirCoordPlaneta  Nom Planeta:");
         
         b.addActionListener
         (new ActionListener() {
@@ -300,9 +296,8 @@ public class VistaPlaneta extends Vista{
     }
     
     private void obtenirPlaneta (ActionEvent event){
-        label = new JLabel("OP:ObtenirPlaneta  Nom Planeta:");
         contentSchemaA();
-        content.add(label, BorderLayout.NORTH );
+        label.setText("OP:ObtenirPlaneta  Nom Planeta:");
         
         b.addActionListener
         (new ActionListener() {
@@ -322,7 +317,7 @@ public class VistaPlaneta extends Vista{
             paint(content);
         }
         catch (Exception ex){
-           error_ex("Exception: " + ex.getMessage());
+            error_ex("Exception: " + ex.getMessage());
         }
         
     }
@@ -334,15 +329,15 @@ public class VistaPlaneta extends Vista{
             paint(content);
         }
         catch (Exception ex){
-           error_ex("Exception: " + ex.getMessage());
+            error_ex("Exception: " + ex.getMessage());
         }
         
     }
     
     private void altaNecessitats(ActionEvent event){
-        label = new JLabel("OP:AltaNecessitat  Nom Planeta:");
-        label2 = new JLabel("Nom Recurs:");
         contentSchemaD();
+        label.setText("OP:AltaNecessitat  Nom Planeta:");
+        label2.setText("Nom Recurs:");
         b.addActionListener
         (new ActionListener() {
             public void actionPerformed (ActionEvent event) {
@@ -354,9 +349,9 @@ public class VistaPlaneta extends Vista{
     }
     
     private void baixaNecessitats (ActionEvent event){
-        label = new JLabel("OP:BaixaNecessitat  Nom Planeta:");
-        label2 = new JLabel("Nom Recurs:");
         contentSchemaD();
+        label.setText("OP:BaixaNecessitat  Nom Planeta:");
+        label2.setText("Nom Recurs:");
         b.addActionListener
         (new ActionListener() {
             public void actionPerformed (ActionEvent event) {
@@ -368,9 +363,9 @@ public class VistaPlaneta extends Vista{
     }
     
     private void assignarPaquet (ActionEvent event){
-        label = new JLabel("OP:AssignarPaquet  Nom Planeta:");
-        label2 = new JLabel("ID Paquet:");
         contentSchemaD();
+        label.setText("OP:AssignarPaquet  Nom Planeta:");
+        label2.setText("ID Paquet:");
         b.addActionListener
         (new ActionListener() {
             public void actionPerformed (ActionEvent event) {
@@ -382,9 +377,8 @@ public class VistaPlaneta extends Vista{
     }
     
     private void desassignarPaquet (ActionEvent event){
-        label = new JLabel("OP:DeassignarPaquet  Nom Planeta:");
         contentSchemaA();
-        content.add(label, BorderLayout.NORTH );
+        label.setText("OP:DeassignarPaquet  Nom Planeta:");
         
         b.addActionListener
         (new ActionListener() {
@@ -398,9 +392,8 @@ public class VistaPlaneta extends Vista{
     }
     
     private void obtenirRecursosDisponibles (ActionEvent event){
-        label = new JLabel("OP:RecursosDisponibles  Nom Planeta:");
         contentSchemaA();
-        content.add(label, BorderLayout.NORTH );
+        label.setText("OP:RecursosDisponibles  Nom Planeta:");
         
         b.addActionListener
         (new ActionListener() {
@@ -414,9 +407,8 @@ public class VistaPlaneta extends Vista{
     }
     
     private void obtenirNecessitats (ActionEvent event){
-        label = new JLabel("OP:ObtenirNecesitats  Nom Planeta:");
         contentSchemaA();
-        content.add(label, BorderLayout.NORTH );
+        label.setText("OP:ObtenirNecesitats  Nom Planeta:");
         
         b.addActionListener
         (new ActionListener() {
@@ -429,9 +421,9 @@ public class VistaPlaneta extends Vista{
     }
     
     private void modnom(ActionEvent event){
-        label = new JLabel("OP:Mod Nom Planeta  Nom Planeta:");
-        label2 = new JLabel("new Nom:");
         contentSchemaD();
+        label.setText("OP:Mod Nom Planeta  Nom Planeta:");
+        label2.setText("new Nom:");
         b.addActionListener
         (new ActionListener() {
             public void actionPerformed (ActionEvent event) {
@@ -439,7 +431,7 @@ public class VistaPlaneta extends Vista{
             }
         });
         paint(content);
-    
+        
     }
     
     private void modclasse(ActionEvent event){
@@ -454,10 +446,11 @@ public class VistaPlaneta extends Vista{
         chinButton2.setSelected(false);
         
         text = new JTextField();
+        label_Exe = new JLabel();
         b = new JButton("OK");
         
         content = new JPanel();
-        content.setLayout( new GridLayout(6, 2, 5, 5) );
+        content.setLayout( new GridLayout(9, 2, 5, 5) );
         content.setPreferredSize( new Dimension( 400, 100 ) );
         
         content.add(label);
@@ -466,6 +459,7 @@ public class VistaPlaneta extends Vista{
         content.add(chinButton);
         content.add(chinButton2);
         content.add(b);
+        content.add(label_Exe);
         b.addActionListener
         (new ActionListener() {
             public void actionPerformed (ActionEvent event) {
@@ -476,9 +470,9 @@ public class VistaPlaneta extends Vista{
     }
     
     private void modcoord(ActionEvent event){
-        label = new JLabel("OP:Mod Coord Planeta  Nom Planeta:");
-        label2 = new JLabel("new Coord:");
         contentSchemaD();
+        label.setText("OP:Mod Coord Planeta  Nom Planeta:");
+        label2.setText("new Coord:");
         b.addActionListener
         (new ActionListener() {
             public void actionPerformed (ActionEvent event) {
@@ -491,6 +485,8 @@ public class VistaPlaneta extends Vista{
     private void guardar (ActionEvent event){
         try{
             content = new JPanel();
+            label_Exe = new JLabel();
+            content.add(label_Exe);
             paint(content);
             JFileChooser elegirArchivo = new JFileChooser();
             File archivo = null;
@@ -504,11 +500,14 @@ public class VistaPlaneta extends Vista{
                 String direccion = archivo.toString();
                 String direccion_copy = direccion;
                 direccion_copy = direccion_copy.substring((direccion_copy.length())-3,direccion_copy.length());
-                if(direccion_copy.equals("pla")){
-                cp.guardarPlanetes(direccion);
-                done();
+                if(direccion.contains(".")){
+                    if(direccion_copy.equals("pla")){
+                        cp.guardarPlanetes(direccion);
+                        done();
+                    }
+                    else{error_ex("Exception: Extencio del fitxer incorrecte (hauria de ser '.pla') ");}
                 }
-                 else{error_ex("Exception: Extencio del fitxer incorrecte (hauria de ser '.rec') ");}
+                else{error_ex("Exception: Fitxer sense extenció (hauria de ser '.pla') ");}
             }
             /*
              else if (estado == JFileChooser.CANCEL_OPTION) {
@@ -516,7 +515,7 @@ public class VistaPlaneta extends Vista{
              }*/
         }
         catch (Exception ex){
-           error_ex("Exception: " + ex.getMessage());
+            error_ex("Exception: " + ex.getMessage());
         }
         
     }
@@ -524,6 +523,8 @@ public class VistaPlaneta extends Vista{
     private void carregar (ActionEvent event){
         try{
             content = new JPanel();
+            label_Exe = new JLabel();
+            content.add(label_Exe);
             paint(content);
             JFileChooser elegirArchivo = new JFileChooser();
             File archivo = null;
@@ -537,11 +538,14 @@ public class VistaPlaneta extends Vista{
                 String direccion = archivo.toString();
                 String direccion_copy = direccion;
                 direccion_copy = direccion_copy.substring((direccion_copy.length())-3,direccion_copy.length());
-                if(direccion_copy.equals("pla")){
-                cp.carregarPlanetes(direccion);
-                done();
+                if(direccion.contains(".")){
+                    if(direccion_copy.equals("pla")){
+                        cp.carregarPlanetes(direccion);
+                        done();
+                    }
+                    else{error_ex("Exception: Extencio del fitxer incorrecte (hauria de ser '.pla') ");}
                 }
-                else{error_ex("Exception: Extencio del fitxer incorrecte (hauria de ser '.rec') ");}
+                else{error_ex("Exception: Fitxer sense extenció (hauria de ser '.pla') ");}
             }
             /*
              else if (estado == JFileChooser.CANCEL_OPTION) {
@@ -549,11 +553,11 @@ public class VistaPlaneta extends Vista{
              }*/
         }
         catch (Exception ex){
-           error_ex("Exception: " + ex.getMessage());
+            error_ex("Exception: " + ex.getMessage());
         }
     }
     
-//do-functions
+    //do-functions
     private void doaltaPlaneta(ActionEvent event){
         try{
             String nom = text.getText();
@@ -572,7 +576,7 @@ public class VistaPlaneta extends Vista{
             paint(content);
         }
         catch (Exception ex){
-           error_ex("Exception: " + ex.getMessage());
+            error_ex("Exception: " + ex.getMessage());
         }
     }
     
@@ -586,12 +590,12 @@ public class VistaPlaneta extends Vista{
             content.setMinimumSize( new Dimension( 100, 50 ) );
             content.add(label, BorderLayout.NORTH );
             paint(content);
-        
+            
         }
         catch (Exception ex){
-           error_ex("Exception: " + ex.getMessage());
+            error_ex("Exception: " + ex.getMessage());
         }
-    
+        
     }
     
     private void doobtenirIdPlaneta(ActionEvent event){
@@ -603,9 +607,9 @@ public class VistaPlaneta extends Vista{
             paint(content);
         }
         catch (Exception ex){
-           error_ex("Exception: " + ex.getMessage());
+            error_ex("Exception: " + ex.getMessage());
         }
-    
+        
     }
     
     private void doobtenirclassePlaneta(ActionEvent event){
@@ -617,9 +621,9 @@ public class VistaPlaneta extends Vista{
             paint(content);
         }
         catch (Exception ex){
-           error_ex("Exception: " + ex.getMessage());
+            error_ex("Exception: " + ex.getMessage());
         }
-    
+        
     }
     private void doobtenirCoordPlaneta(ActionEvent event){
         try{
@@ -632,7 +636,7 @@ public class VistaPlaneta extends Vista{
         catch (Exception ex){
             error_ex("Exception: " + ex.getMessage());
         }
-    
+        
     }
     
     private void doobtenirPlaneta(ActionEvent event){
@@ -646,9 +650,9 @@ public class VistaPlaneta extends Vista{
             
             label = new JLabel("ID Planeta: "+ cp.obtenirId(aux)+" Nom Planeta: "+ aux +" Classe Planeta: "+ cp.obtenirClasse(aux)+ " Coords Planeta: "+ cp.obtenirCoordenadesVista(aux) + " Paquet:" + aux4);
             /*System.out.println("HERE");
-            System.out.println(cp.obtenirId(aux));
-            System.out.println(cp.obtenirClasse(aux));
-            System.out.println(cp.obtenirCoordenadesVista(aux));
+             System.out.println(cp.obtenirId(aux));
+             System.out.println(cp.obtenirClasse(aux));
+             System.out.println(cp.obtenirCoordenadesVista(aux));
              label = new JLabel("ID Planeta: "+ cp.obtenirId(aux)+" Nom Planeta: "+ aux +" Classe Planeta: "+ cp.obtenirClasse(aux)+ " Coords Planeta: "+ cp.obtenirCoordenadesVista(aux));*/
             content.add(label, BorderLayout.NORTH);
             paint(content);
@@ -656,7 +660,7 @@ public class VistaPlaneta extends Vista{
         catch (Exception ex){
             error_ex("Exception: " + ex.getMessage());
         }
-    
+        
     }
     
     private void doaltaNecesitat(ActionEvent event){
@@ -668,9 +672,9 @@ public class VistaPlaneta extends Vista{
             
         }
         catch (Exception ex){
-           error_ex("Exception: " + ex.getMessage());
+            error_ex("Exception: " + ex.getMessage());
         }
-    
+        
     }
     
     private void dobaixaNecesitat(ActionEvent event){
@@ -681,7 +685,7 @@ public class VistaPlaneta extends Vista{
             
         }
         catch (Exception ex){
-           error_ex("Exception: " + ex.getMessage());
+            error_ex("Exception: " + ex.getMessage());
         }
     }
     
@@ -693,9 +697,9 @@ public class VistaPlaneta extends Vista{
             
         }
         catch (Exception ex){
-           error_ex("Exception: " + ex.getMessage());
+            error_ex("Exception: " + ex.getMessage());
         }
-    
+        
     }
     
     private void dodesassignarPaquet(ActionEvent event){
@@ -706,7 +710,7 @@ public class VistaPlaneta extends Vista{
             
         }
         catch (Exception ex){
-           error_ex("Exception: " + ex.getMessage());
+            error_ex("Exception: " + ex.getMessage());
         }
         
     }
@@ -719,7 +723,7 @@ public class VistaPlaneta extends Vista{
             paint(content);
         }
         catch (Exception ex){
-          error_ex("Exception: " + ex.getMessage());
+            error_ex("Exception: " + ex.getMessage());
         }
         
     }
@@ -772,41 +776,41 @@ public class VistaPlaneta extends Vista{
         
     }
     /*
-    private void doguardarPlanetes(ActionEvent event){
-        try{
-            cp.guardarPlanetes(text.getText());
-            
-            content = new JPanel();
-            label = new JLabel("Exit al Guardar.");
-            content.setLayout( new BorderLayout() );
-            content.setPreferredSize( new Dimension( 400, 100 ) );
-            content.setMinimumSize( new Dimension( 100, 50 ) );
-            content.add(label, BorderLayout.NORTH );
-            paint(content);
-        }
-        catch (Exception ex){
-            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
-        }
-    
-    }
-    
-    private void docarregarPlaneta(ActionEvent event){
-        try{
-            cp.carregarPlanetes(text.getText());
-            
-            content = new JPanel();
-            label = new JLabel("Exit al Carregar.");
-            content.setLayout( new BorderLayout() );
-            content.setPreferredSize( new Dimension( 400, 100 ) );
-            content.setMinimumSize( new Dimension( 100, 50 ) );
-            content.add(label, BorderLayout.NORTH );
-            paint(content);
-        }
-        catch (Exception ex){
-            JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
-        }
-    }
-    */
+     private void doguardarPlanetes(ActionEvent event){
+     try{
+     cp.guardarPlanetes(text.getText());
+     
+     content = new JPanel();
+     label = new JLabel("Exit al Guardar.");
+     content.setLayout( new BorderLayout() );
+     content.setPreferredSize( new Dimension( 400, 100 ) );
+     content.setMinimumSize( new Dimension( 100, 50 ) );
+     content.add(label, BorderLayout.NORTH );
+     paint(content);
+     }
+     catch (Exception ex){
+     JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+     }
+     
+     }
+     
+     private void docarregarPlaneta(ActionEvent event){
+     try{
+     cp.carregarPlanetes(text.getText());
+     
+     content = new JPanel();
+     label = new JLabel("Exit al Carregar.");
+     content.setLayout( new BorderLayout() );
+     content.setPreferredSize( new Dimension( 400, 100 ) );
+     content.setMinimumSize( new Dimension( 100, 50 ) );
+     content.add(label, BorderLayout.NORTH );
+     paint(content);
+     }
+     catch (Exception ex){
+     JOptionPane.showMessageDialog(null, "Exception: " + ex.getMessage());
+     }
+     }
+     */
     
     private void done(){
         
@@ -820,14 +824,8 @@ public class VistaPlaneta extends Vista{
         paint(content);
     }
     public void error_ex(String a){
-        content = new JPanel();
-        label = new JLabel("-> "+a);
-        label.setForeground(Color.red);
-        content.setLayout( new BorderLayout() );
-        content.setPreferredSize( new Dimension( 400, 100 ) );
-        content.setMinimumSize( new Dimension( 100, 50 ) );
-        content.add(label, BorderLayout.NORTH );
-        paint(content);
+        label_Exe.setText("-> "+a);
+        label_Exe.setForeground(Color.red);
     }
     
     public void paint(JPanel p){

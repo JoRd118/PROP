@@ -127,10 +127,8 @@ public class VistaRecurs extends Vista{
     
     
     private void altaRecurs(ActionEvent event){
-        label = new JLabel("OP:AltaRecurs  Nom Recurs:");
         contentSchemaA();
-        
-        content.add(label, BorderLayout.NORTH );
+        label.setText("OP:AltaRecurs  Nom Recurs:");
         
         b.addActionListener
         (new ActionListener() {
@@ -143,10 +141,9 @@ public class VistaRecurs extends Vista{
     }
     
     private void baixaRecurs(ActionEvent event){
-        label = new JLabel("OP:BaixaRecurs  Nom Recurs:");
         contentSchemaA();
+        label.setText("OP:BaixaRecurs  Nom Recurs:");
         
-        content.add(label, BorderLayout.NORTH );
         
         b.addActionListener
         (new ActionListener() {
@@ -161,10 +158,9 @@ public class VistaRecurs extends Vista{
     }
     
     private void obtenirRecurs(ActionEvent event){
-        label = new JLabel("OP:ObtenirRecurs  Nom Recurs:");
         contentSchemaA();
+        label.setText("OP:ObtenirRecurs  Nom Recurs:");
         
-        content.add(label, BorderLayout.NORTH );
         
         b.addActionListener
         (new ActionListener() {
@@ -178,10 +174,9 @@ public class VistaRecurs extends Vista{
     }
     
     private void obtenirId(ActionEvent event){
-        label = new JLabel("OP:ObtenirIdRecurs  Nom Recurs:");
         contentSchemaA();
+        label.setText("OP:ObtenirIdRecurs  Nom Recurs:");
         
-        content.add(label, BorderLayout.NORTH );
         
         b.addActionListener
         (new ActionListener() {
@@ -216,6 +211,8 @@ public class VistaRecurs extends Vista{
     private void guardar(ActionEvent event){
         try{
             content = new JPanel();
+            label_Exe = new JLabel();
+            content.add(label_Exe);
             paint(content);
             JFileChooser elegirArchivo = new JFileChooser();
             File archivo = null;
@@ -230,12 +227,15 @@ public class VistaRecurs extends Vista{
                 
                 String direccion_copy = direccion;
                 direccion_copy = direccion_copy.substring((direccion_copy.length())-3,direccion_copy.length());
-                
-                if(direccion_copy.equals("rec")){
-                    cr.guardarRecursos(direccion);
-                    done();
+                if(direccion.contains(".")){
+                    if(direccion_copy.equals("rec")){
+                        cr.guardarRecursos(direccion);
+                        done();
+                    }
+                    else{error_ex("Exception: Extencio del fitxer incorrecte (hauria de ser '.rec') ");}
                 }
-                else{error_ex("Exception: Extencio del fitxer incorrecte (hauria de ser '.rec') ");}
+                else{error_ex("Exception: Fitxer sense extenció (hauria de ser '.rec') ");}
+                
             }
             /*
              else if (estado == JFileChooser.CANCEL_OPTION) {
@@ -250,6 +250,8 @@ public class VistaRecurs extends Vista{
     private void carregar(ActionEvent event){
         try{
             content = new JPanel();
+            label_Exe = new JLabel();
+            content.add(label_Exe);
             paint(content);
             JFileChooser elegirArchivo = new JFileChooser();
             File archivo = null;
@@ -263,12 +265,15 @@ public class VistaRecurs extends Vista{
                 String direccion = archivo.toString();
                 String direccion_copy = direccion;
                 direccion_copy = direccion_copy.substring((direccion_copy.length())-3,direccion_copy.length());
-                if(direccion_copy.equals("rec")){
-                    cr.carregarRecursos(direccion);
-                    done();
+                if(direccion.contains(".")){
+                    if(direccion_copy.equals("rec")){
+                        cr.carregarRecursos(direccion);
+                        done();
+                    }
+                    
+                    else{error_ex("Exception: Extencio del fitxer incorrecte (hauria de ser '.rec') ");}
                 }
-                else{error_ex("Exception: Extencio del fitxer incorrecte (hauria de ser '.rec') ");}
-                
+                else{error_ex("Exception: Fitxer sense extenció (hauria de ser '.rec') ");}
             }
             /*
              else if (estado == JFileChooser.CANCEL_OPTION) {
@@ -405,15 +410,8 @@ public class VistaRecurs extends Vista{
         paint(content);
     }
     public void error_ex(String a){
-        content = new JPanel();
-        label = new JLabel("-> "+a);
-        label.setForeground(Color.red);
-        content.setLayout( new BorderLayout() );
-        content.setPreferredSize( new Dimension( 400, 100 ) );
-        content.setMinimumSize( new Dimension( 100, 50 ) );
-        content.add(label, BorderLayout.NORTH );
-        paint(content);
-        //v.revalidatepanel4(content);
+        label_Exe.setText("-> "+a);
+        label_Exe.setForeground(Color.red);
     }
     
     public void paint(JPanel p){

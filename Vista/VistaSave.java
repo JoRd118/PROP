@@ -59,6 +59,8 @@ public class VistaSave extends Vista{
     public void save(ActionEvent event){
         try{
             content = new JPanel();
+            label_Exe = new JLabel();
+            content.add(label_Exe);
             paint(content);
             JFileChooser elegirArchivo = new JFileChooser();
             File archivo = null;
@@ -88,7 +90,7 @@ public class VistaSave extends Vista{
                     cp.guardar_Q(direccion);
                     done();
                 }
-                else{error_ex("Exception: Extencio del fitxer incorrecte (hauria de ser '.rec') ");}
+                else{error_ex("Exception: Extencio del fitxer incorrecte (hauria de ser '.txt') ");}
             }
             /*
              else if (estado == JFileChooser.CANCEL_OPTION) {

@@ -34,6 +34,7 @@ public abstract class Vista extends SubVista{
     public JTextArea textarea5;
     public JLabel  label;
     public JLabel  label2;
+    public JLabel  label_Exe;
     public JButton b;
     public JCheckBox chinButton;
     public JCheckBox chinButton2;
@@ -44,46 +45,54 @@ public abstract class Vista extends SubVista{
     public void contentSchemaA(){
         content = new JPanel();
         text = new JTextField();
+        label = new JLabel();
+        label_Exe = new JLabel();
         b = new JButton("OK");
-        content.setLayout( new BorderLayout() );
+        content.setLayout( new GridLayout(4, 2, 5, 5) );
         content.setPreferredSize( new Dimension( 400, 100 ) );
         content.setMinimumSize( new Dimension( 100, 50 ) );
-        
-        content.add(text, BorderLayout.CENTER );
-        content.add(b, BorderLayout.EAST);
+        content.add(label);
+        content.add(text);
+        content.add(b);
+        content.add(label_Exe);
     }
     
     //Sortida resultats en una label.
     public void contentSchemaB(){
         content = new JPanel();
         
-        content.setLayout( new BorderLayout() );
+        content.setLayout(new GridLayout(6, 2, 5, 5));
         content.setPreferredSize( new Dimension( 400, 100 ) );
         content.setMinimumSize( new Dimension( 100, 50 ) );
+        
         
     }
     //llistat + scroll
     public void contentSchemaC(){
         content = new JPanel();
-        
-        content.setLayout( new BorderLayout() );
+        label_Exe = new JLabel();
+        content.setLayout(new GridLayout(6, 2, 5, 5));
         content.setPreferredSize( new Dimension( 400, 100 ) );
         content.setMinimumSize( new Dimension( 100, 50 ) );
         
         textarea = new JTextArea(10,50);
         sp = new JScrollPane(textarea);
         content = new JPanel();
-        content.add(sp, BorderLayout.CENTER);
+        content.add(sp);
+        content.add(label_Exe);
     }
     
     ////Entrada text box(x2) + button de confirmació.
     public void contentSchemaD(){
-
+        
         content = new JPanel();
         text = new JTextField();
         text2 = new JTextField();
+        label = new JLabel();
+        label2 = new JLabel();
+        label_Exe = new JLabel();
         b = new JButton("OK");
-        content.setLayout( new GridLayout(6, 2, 5, 5) );
+        content.setLayout( new GridLayout(7, 2, 5, 5) );
         content.setPreferredSize( new Dimension( 400, 100 ) );
         content.setMinimumSize( new Dimension( 100, 50 ) );
         content.add(label);
@@ -91,6 +100,7 @@ public abstract class Vista extends SubVista{
         content.add(label2);
         content.add(text2);
         content.add(b);
+        content.add(label_Exe);
     }
     
     public void contentSchemaE(){
@@ -105,10 +115,11 @@ public abstract class Vista extends SubVista{
         content = new JPanel();
         text = new JTextField();
         text2 = new JTextField();
+        label_Exe = new JLabel();
         label = new JLabel("OP:AltaPlaneta  Nom Planeta:");
         label2 = new JLabel("Coordenades: X,Y");
         b = new JButton("OK");
-        content.setLayout( new GridLayout(6, 2, 5, 5) );
+        content.setLayout( new GridLayout(9, 2, 5, 5) );
         content.setPreferredSize( new Dimension( 400, 100 ) );
         content.setMinimumSize( new Dimension( 100, 50 ) );
         content.add(label);
@@ -118,8 +129,10 @@ public abstract class Vista extends SubVista{
         content.add(chinButton);
         content.add(chinButton2);
         content.add(b);
-    
-    
+        content.add(label_Exe);
+        
+        
+        
     }
     //TextBox(x3) + button
     public void contentSchemaF(){
@@ -128,10 +141,11 @@ public abstract class Vista extends SubVista{
         text = new JTextField();
         text2 = new JTextField();
         text3 = new JTextField();
+        label_Exe = new JLabel();
         label = new JLabel("OP:Modificar Valor:");
         label2 = new JLabel("Posició: i,j");
         b = new JButton("OK");
-        content.setLayout( new GridLayout(6, 2, 5, 5) );
+        content.setLayout( new GridLayout(7, 2, 5, 5) );
         content.setPreferredSize( new Dimension( 400, 100 ) );
         content.setMinimumSize( new Dimension( 100, 50 ) );
         content.add(label);
@@ -140,16 +154,19 @@ public abstract class Vista extends SubVista{
         content.add(text2);
         content.add(text3);
         content.add(b);
+        content.add(label_Exe);
+        
     }
     
     public void contentSchemaG(){
-    
+        
         content = new JPanel();
         textarea = new JTextArea();
         textarea2 = new JTextArea();
         textarea3 = new JTextArea();
         textarea4 = new JTextArea();
         textarea5 = new JTextArea();
+        label_Exe = new JLabel();
         sp = new JScrollPane(textarea);
         sp2 = new JScrollPane(textarea2);
         sp3 = new JScrollPane(textarea3);
@@ -167,6 +184,7 @@ public abstract class Vista extends SubVista{
         content.add(sp4);
         content.add(sp5);
         content.add(b);
+        content.add(label_Exe);
         
     }
     
