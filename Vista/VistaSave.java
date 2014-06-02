@@ -34,11 +34,15 @@ public class VistaSave extends Vista{
         
     }
     
+    public JPanel construct(){
+        return save;
+    }
+    
     private void createVistaSave(){
         save = new JPanel();
-         save.setLayout(new GridLayout(3, 2, 5, 5));
+        save.setLayout(new GridLayout(3, 2, 5, 5));
         save.add(buttonGuardar = new JButton("Guardar"));
-     assignar_actionListeners();
+        assignar_actionListeners();
     }
     
     private void assignar_actionListeners(){
@@ -66,9 +70,25 @@ public class VistaSave extends Vista{
             if (estado == JFileChooser.APPROVE_OPTION) {
                 archivo = elegirArchivo.getSelectedFile();
                 String direccion = archivo.toString();
-                cp.guardarTot(direccion);
-                done();
                 
+                String direccion_copy = direccion;
+                direccion_copy = direccion_copy.substring((direccion_copy.length())-3,direccion_copy.length());
+                
+                if(direccion_copy.equals("txt")){
+                    cp.guardar_I(direccion);
+                    direccion = direccion.replace("txt", "rec");
+                    cp.guardar_R(direccion);
+                    direccion = direccion.replace("rec","paq");
+                    cp.guardar_P(direccion);
+                    direccion = direccion.replace("paq","pla");
+                    cp.guardar_Pl(direccion);
+                    direccion = direccion.replace("pla","uni");
+                    cp.guardar_U(direccion);
+                    direccion = direccion.replace("uni","qap");
+                    cp.guardar_Q(direccion);
+                    done();
+                }
+                else{error_ex("Exception: Extencio del fitxer incorrecte (hauria de ser '.rec') ");}
             }
             /*
              else if (estado == JFileChooser.CANCEL_OPTION) {
@@ -81,9 +101,18 @@ public class VistaSave extends Vista{
         
     }
     
-    public JPanel construct(){
-        return save;
+    public void instruccions(){
+        save = new JPanel();
+        save.setLayout(new GridLayout(10, 2, 5, 5));
+        
+        label = new JLabel("Istruccions: OP: Guardar tot.");
+        label2 = new JLabel("Indicar l'ubicació on es vol guardar. El nom del fitxer ha de ser: _____.txt ");
+        
+        save.add(label);
+        save.add(label2);
+    
     }
+    
     
     private void done(){
         
@@ -106,7 +135,7 @@ public class VistaSave extends Vista{
         content.add(label, BorderLayout.NORTH );
         paint(content);
     }
-
+    
     
     public void paint(JPanel p){
         v.revalidatepanel3(p);

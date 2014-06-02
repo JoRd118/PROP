@@ -15,6 +15,7 @@ public class Controlador_Domini_Recurs{
     private static String msg_recurs_no_exists = "Error de Recurs: Recurs demanat no existeix.";
     private static String msg_recurs_repetit = "Error de Recurs: Ja existeix un recurs amb aquest nom.";
     private static String msg_carregar = "Error de Recurs: Carregar no es pot portar a terme perque ja s'han introduit dades.";
+    private static String inst = "Cada fitxer creat conte l'informació d'una de les classes.";
     
     //Vista
     private VistaRecurs v;
@@ -136,6 +137,13 @@ public class Controlador_Domini_Recurs{
             //System.out.println(substring);
             t.writeTextFile(substring);
         }
+        t.tancarFitxer();
+    }
+    
+    public void guardarInst(String nomFitxer)throws IOException{
+        t.obrirFitxer(nomFitxer);
+        t.deleteFile();
+        t.writeTextFile(inst);
         t.tancarFitxer();
     }
     

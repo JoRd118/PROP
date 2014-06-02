@@ -24,89 +24,16 @@ public class SolucioQAP {
 		llistaparcials = new ArrayList<Integer>();
     arbre = null;
   }
-
-//   public void imprimirSolucio() {
-//     System.out.println("==========================");
-//     System.out.println("PLANETA.......: "+planeta);
-//     System.out.println("--------------------------");
-//     System.out.println("  Algoritme...: "+nomalgoritme);
-//     System.out.println("  TerraFormat.: "+terraformat);
-//     if(observacions != "") System.out.println("  Observacions: "+observacions);
-//     if(terraformat) {
-//       System.out.println("    Millor recorregut..: "+millorrecorregut);
-//       //System.out.println("    Planetes solucio...: "+planetessolucio);
-//     }
-//     String s = new String();
-//     System.out.println("--------------------------");
-//     System.out.println("Llista de Nodes      -----");
-//     System.out.println("--------------------------");
-//     // Pintem els nodes
-//     if(llistanodes != null) {
-//       for(bbNode nn:llistanodes) s = nn.imprimirNode();
-//     }
-//     System.out.println("--------------------------");
-//     System.out.println("Nodes solucio millor -----");
-//     System.out.println("--------------------------");
-//     if(llistamillors != null) {
-//       if(llistamillors.size() >= 1) for(Integer i:llistamillors) s = llistanodes.get(i).imprimirNode();
-//     }
-//     System.out.println("--------------------------");
-//     System.out.println("Nodes solucio parcial ----");
-//     System.out.println("--------------------------");
-//     if(llistamillors != null) {
-//       if(llistaparcials.size() >= 1) for(Integer i:llistaparcials) s = llistanodes.get(i).imprimirNode();
-//     }
-//     System.out.println("==========================");
-//     System.out.println();
-
-// //-------------------------------------------------------------------
-//   //  if(arbre != null) {
-//       // Construccio i visualitzacio de la finestra
-//     //  JFrame v = new JFrame();
-//       //JScrollPane scroll = new JScrollPane(arbre);
-//       //v.getContentPane().add(scroll);
-//       //v.pack();
-//       //v.setVisible(true);
-//       //v.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-//     //}
-// //-------------------------------------------------------------------
-    
-//     // Si volem accedir al contingut
-//     if(arbre != null) {
-//       System.out.println("--------------------------");
-//       System.out.println("Arbre                -----");
-//       System.out.println("--------------------------");
-// /*
-//       ArbreNode node = arbre.obtenirNodeArrel();
-//       if(node != null) {
-//         System.out.println("Node Arrel[" + node.obtenirIdNode() + "]: " + node.obtenirNomPlaneta());
-//       }
-//       // Recorrem els nodes de l'arbre
-//       ArrayList<ArbreNode> llista = new ArrayList<ArbreNode>(arbre.toList());
-//       for(ArbreNode an:llista) {
-//         int id = an.obtenirIdNode();
-//         if((id>=0)&&(id<llistanodes.size())) {
-//           llistanodes.get(an.obtenirIdNode()).imprimirNode();
-//         }
-//       }
-// */
-//       System.out.println();
-//       System.out.println(arbre.toString());
- 
-      
-//     }
-
-//   }
+  
     public String arbreSolucio() {
       String s = new String();
-      s = s + obtenirPlaneta() + "\n";
+      s = s + "ARBRE Solució: " + obtenirPlaneta() + "\n";
       Arbre arbre = new Arbre();
       arbre = obtenirArbre();
       if (arbre == null) {
-        s = s + "No te arbre.\n";
+        s = s + "El Planeta NO te arbre.\n";
         s = s + obtenirObservacions() + "\n"; 
       } else {
-        s = s + "Arbre Solucio planeta " + obtenirPlaneta()+ "\n";
         String arbrestring = arbre.toString();
         s = s + arbrestring;
       }
@@ -120,7 +47,7 @@ public class SolucioQAP {
         s = s + "Terraformat: " + obtenirTerraformat() + "\n";
         if (obtenirObservacions() != "") s = s + "Observacions: " + obtenirObservacions() + "\n";
         if (obtenirTerraformat()) s = s + "Millor Recorregut: " + obtenirMillorRecorregut() + "\n";
-        s = s + "   Llista de Nodes:\n";
+        s = s + "Llista de Nodes:\n";
         if (obtenirLlistaNodes() != null) {
             for (bbNode nn:obtenirLlistaNodes()) s = s + nn.imprimirNode();
             s = s + "\n";
@@ -142,6 +69,7 @@ public class SolucioQAP {
                 }
             }        
         }
+        s = s + "\n";
         return s;
     }
   

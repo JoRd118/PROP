@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.lang.Thread;
 /**
  *
  *Classe Recurs
@@ -6,7 +7,11 @@ import java.io.IOException;
  *@author Claudi
  */
 
-public class Controlador_Presentacio{
+public class Controlador_Presentacio extends Thread{
+    
+    private Thread1 t1;
+    private Thread2 t2;
+    
     private VistaGlobal v;
     private VistaSave s;
     private Controlador_Domini_Recurs cr;
@@ -23,23 +28,44 @@ public class Controlador_Presentacio{
         //sv = new  SubVista(v);
         //Instencia tots els controladors.
         s = new VistaSave(this);
+        
         cr = new Controlador_Domini_Recurs(this);
         cp = new Controlador_Domini_Paquet(cr,this);
         cpl = new Controlador_Domini_Planeta(cp, cr, this);
         cu = new Controlador_Domini_Univers(cpl, cr, cp, this);
         q = new Controlador_Domini_QAP(cr, cu, this);
+        
     }
     
-    public void guardarTot(String a) throws IOException{
-        
+    public void guardar_R(String a)throws IOException{
         cr.guardarRecursos(a);
-        System.out.println(a);
+    }
+    
+    public void guardar_P(String a)throws IOException{
+        cp.guardarPaquets(a);
+    }
+    
+    public void guardar_Pl(String a)throws IOException{
+        cpl.guardarPlanetes(a);
+    }
+    
+    public void guardar_U(String a)throws IOException{
+        cu.guardarUniversos(a);
+    }
+    
+    public void guardar_Q(String a)throws IOException{
+        q.guardar_solucioQAP(a);
+    }
+    
+    public void guardar_I(String a)throws IOException{
+        cr.guardarInst(a);
+    
     }
     
     public void borrar_planeta(String a){
         /*String[] aux = a.split("/");
-        String[] aux2 = aux.[aux.length-1].split(".");
-        aux2[0] = aux2[0] + "Recurs";*/
+         String[] aux2 = aux.[aux.length-1].split(".");
+         aux2[0] = aux2[0] + "Recurs";*/
         cu.borrar_planeta(a);
     }
     

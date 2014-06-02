@@ -9,6 +9,7 @@ public class VistaGlobal extends JFrame {
     private     JPanel      panel1;
     private     JPanel      panel2;
     private     JPanel      panel3;
+    private     JPanel      panel4;
     
     
     private JButton buttonRecurs = new JButton("Recurs");
@@ -33,6 +34,7 @@ public class VistaGlobal extends JFrame {
         createPanel1();
         createPanel2();
         createPanel3();
+        createPanel4();
         
         // Create a splitter pane
         splitPaneV = new JSplitPane( JSplitPane.VERTICAL_SPLIT );
@@ -41,6 +43,7 @@ public class VistaGlobal extends JFrame {
         splitPaneH = new JSplitPane( JSplitPane.HORIZONTAL_SPLIT );
         splitPaneH.setLeftComponent( panel1 );
         splitPaneH.setRightComponent( panel2 );
+
         
         splitPaneV.setLeftComponent( splitPaneH );
         splitPaneV.setRightComponent( panel3 );
@@ -83,12 +86,22 @@ public class VistaGlobal extends JFrame {
     
     public void createPanel3(){
         panel3 = new JPanel();
-        panel3.setLayout( new BorderLayout() );
+        panel3.setLayout( new GridLayout(15, 2, 5, 5) );
         panel3.setPreferredSize( new Dimension( 400, 100 ) );
         panel3.setMinimumSize( new Dimension( 100, 50 ) );
         
-        panel3.add( new JLabel( "Welcome." ), BorderLayout.NORTH );
+        panel3.add( new JLabel( "Welcome to Tatooine." ));
+        panel3.add( new JLabel( "Authors:--" ));
+        panel3.add( new JLabel( "Have fun, and please you do not try to crach this app." ));
         //panel3.add( new JTextArea(), BorderLayout.CENTER );
+    }
+    
+    public void createPanel4(){
+        panel4 = new JPanel();
+        panel4.setBackground(Color.white);
+        panel4.setPreferredSize( new Dimension( 5, 5 ) );
+        panel3.setMaximumSize( new Dimension( 1, 1 ) );
+    
     }
     
     
@@ -178,6 +191,10 @@ public class VistaGlobal extends JFrame {
         VistaSave vs = new VistaSave();
         JPanel p = vs.construct();
         revalidatepanel2(p);
+        vs.instruccions();
+        p = vs.construct();
+        revalidatepanel3(p);
+        
     }
     
     
@@ -194,6 +211,12 @@ public class VistaGlobal extends JFrame {
         panel3 = p;
         splitPaneV.setRightComponent( panel3 );
         panel3.revalidate();
+    }
+    
+    public void revalidatepanel4(JPanel p){
+        panel4 = p;
+        splitPaneV.setBottomComponent(panel4);
+        panel4.revalidate();
     }
     
 }

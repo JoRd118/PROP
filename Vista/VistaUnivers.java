@@ -358,7 +358,7 @@ public class VistaUnivers extends Vista{
             paint(content);
             JFileChooser elegirArchivo = new JFileChooser();
             File archivo = null;
-            FileFilter tipo = new FileNameExtensionFilter(".txt", "txt");
+            FileFilter tipo = new FileNameExtensionFilter(".uni", "uni");
             elegirArchivo.addChoosableFileFilter(tipo);
             
             int estado = elegirArchivo.showDialog(null, "Guardar");
@@ -391,7 +391,7 @@ public class VistaUnivers extends Vista{
             paint(content);
             JFileChooser elegirArchivo = new JFileChooser();
             File archivo = null;
-            FileFilter tipo = new FileNameExtensionFilter(".txt", "txt");
+            FileFilter tipo = new FileNameExtensionFilter(".uni", "uni");
             elegirArchivo.addChoosableFileFilter(tipo);
             
             int estado = elegirArchivo.showDialog(null, "Carregar");

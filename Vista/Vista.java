@@ -168,10 +168,6 @@ public abstract class Vista extends SubVista{
         content.add(sp5);
         content.add(b);
         
-    
-    
-    
     }
-    
     
 }

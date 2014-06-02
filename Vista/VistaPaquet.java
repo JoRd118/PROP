@@ -208,7 +208,7 @@ public class VistaPaquet extends Vista{
             paint(content);
             JFileChooser elegirArchivo = new JFileChooser();
             File archivo = null;
-            FileFilter tipo = new FileNameExtensionFilter(".txt", "txt");
+            FileFilter tipo = new FileNameExtensionFilter(".paq", "paq");
             elegirArchivo.addChoosableFileFilter(tipo);
             
             int estado = elegirArchivo.showDialog(null, "Guardar");
@@ -242,7 +242,7 @@ public class VistaPaquet extends Vista{
             paint(content);
             JFileChooser elegirArchivo = new JFileChooser();
             File archivo = null;
-            FileFilter tipo = new FileNameExtensionFilter(".txt", "txt");
+            FileFilter tipo = new FileNameExtensionFilter(".paq", "paq");
             elegirArchivo.addChoosableFileFilter(tipo);
             
             int estado = elegirArchivo.showDialog(null, "Carregar");

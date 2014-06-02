@@ -219,7 +219,7 @@ public class VistaRecurs extends Vista{
             paint(content);
             JFileChooser elegirArchivo = new JFileChooser();
             File archivo = null;
-            FileFilter tipo = new FileNameExtensionFilter(".txt", "txt");
+            FileFilter tipo = new FileNameExtensionFilter(".rec", "rec");
             elegirArchivo.addChoosableFileFilter(tipo);
             
             int estado = elegirArchivo.showDialog(null, "Guardar");
@@ -253,7 +253,7 @@ public class VistaRecurs extends Vista{
             paint(content);
             JFileChooser elegirArchivo = new JFileChooser();
             File archivo = null;
-            FileFilter tipo = new FileNameExtensionFilter(".txt", "txt");
+            FileFilter tipo = new FileNameExtensionFilter(".rec", "rec");
             elegirArchivo.addChoosableFileFilter(tipo);
             
             int estado = elegirArchivo.showDialog(null, "Carregar");
@@ -413,6 +413,7 @@ public class VistaRecurs extends Vista{
         content.setMinimumSize( new Dimension( 100, 50 ) );
         content.add(label, BorderLayout.NORTH );
         paint(content);
+        //v.revalidatepanel4(content);
     }
     
     public void paint(JPanel p){
