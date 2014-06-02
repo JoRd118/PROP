@@ -311,7 +311,7 @@ public class Controlador_Domini_Planeta {
 			Planeta p;
 			if (Conjunt_Planetes_Assignat.contains(nomP)) p = Conjunt_Planetes_Assignat.obtain(nomP);
 			else p = Conjunt_Planetes_Desassignat.obtain(nomP);
-			if (p.obtenirClasse()) {
+			if (p.obtenirClasse() && p.obtenirPaquet() != null) {
 				Paquet pq = p.obtenirPaquet();
                 
 				return cp.llistatRecursosPaquetIterator(cp.obtenirIdPaquet(pq));

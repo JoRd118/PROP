@@ -123,7 +123,7 @@ public class Controlador_Domini_Univers{
 		}
 	}
     
-    public String matriuDistanciaPlanetes2(String nom){
+    public String matriuDistanciaPlanetes2(String nom) throws IOException{
         String aux = new String();
         double[][] matriu = matriuDistanciaPlanetes(nom);
         for(int i = 0; i < matriu.length; ++i){
@@ -177,7 +177,7 @@ public class Controlador_Domini_Univers{
   		}
   	}
     
-    public String matriuNecesitatsPlanetes2(String nom){
+    public String matriuNecesitatsPlanetes2(String nom) throws IOException{
         String aux = new String();
         int[][] matriu = matriuNecesitatsPlanetes(nom);
         for(int i = 0; i < matriu.length; ++i){
@@ -229,7 +229,7 @@ public class Controlador_Domini_Univers{
   		}
   	}
     
-    public String matriuRecursosPlanetes2(String nom){
+    public String matriuRecursosPlanetes2(String nom) throws IOException{
         String aux = new String();
         int[][] matriu = matriuRecursosPlanetes(nom);
         for(int i = 0; i < matriu.length; ++i){
@@ -342,7 +342,7 @@ public class Controlador_Domini_Univers{
         return planetes;
     }
 
-    public String vectorPlanetesVista(String nomUnivers){
+    public String vectorPlanetesVista(String nomUnivers) throws IOException{
         Univers aux = u.obtain(nomUnivers);
         Iterable<String> aux1 = aux.obtenirPlanetes();
         String plan = new String();
