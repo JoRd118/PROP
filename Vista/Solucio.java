@@ -16,7 +16,7 @@ public class Solucio {
 private static String msg_temps = "Error de Solucio: No s'ha afegit cap temps.";
 	public Solucio() {
         sol = new ArrayList<SolucioQAP>();
-        print_sol = 0;
+        print_sol = -1;
         temps = -1;
     }
 
@@ -44,22 +44,22 @@ private static String msg_temps = "Error de Solucio: No s'ha afegit cap temps.";
 
 
     public String printSolucioSeguent() {
+        ++print_sol;
         if (print_sol >= sol.size()) throw new IllegalArgumentException(msg_solucions);
         String aux = new String();
         SolucioQAP aux1 = sol.get(print_sol);
         aux = aux1.printSolucioQAP();
         if (!algo.equals("TABU")) aux += aux1.arbreSolucio();
-        ++print_sol;
         return aux;
     }
 
     public String printSolucioAnterior() {
-        if (print_sol < sol.size()) throw new IllegalArgumentException(msg_solucions);
+        --print_sol;
+        if (print_sol < 0) throw new IllegalArgumentException(msg_solucions);
         String aux = new String();
         SolucioQAP aux1 = sol.get(print_sol);
         aux = aux1.printSolucioQAP() + "\n";
         if (!algo.equals("TABU")) aux += aux1.arbreSolucio();
-        --print_sol;
         return aux;
     }
 
