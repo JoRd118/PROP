@@ -23,7 +23,7 @@ public class VistaUnivers extends Vista{
     private JButton buttonUniversOP1 = new JButton("NumPlanetes");
     private JButton buttonUniversOP2 = new JButton("AfegirPlaneta");
     private JButton buttonUniversOP3 = new JButton("DesafegirPlaneta");
-    private JButton buttonUniversOP4 = new JButton("VectorPlanetes");
+    private JButton buttonUniversOP4 = new JButton("PlanetesUnivers");
     private JButton buttonUniversOP5 = new JButton("MatriuDistanciaPlanetes");
     private JButton buttonUniversOP6 = new JButton("MatriuNecessitatsPlanetes");
     private JButton buttonUniversOP7 = new JButton("MatriuRecursosPlanetes");
@@ -524,8 +524,9 @@ public class VistaUnivers extends Vista{
     private void doobtenirPlanetes(ActionEvent event){
         try{
             String aux = text.getText();
+            String aux2 = cu.vectorPlanetesVista(aux);
             contentSchemaC();
-            textarea.setText(cu.vectorPlanetesVista(aux));
+            textarea.setText(aux2);
             paint(content);
         }
         catch (Exception ex){
@@ -536,8 +537,9 @@ public class VistaUnivers extends Vista{
     private void doobtenirDistanciaPlanetes(ActionEvent event){
         try{
             String aux = text.getText();
+            String aux2 = cu.matriuDistanciaPlanetes2(aux);
             contentSchemaC();
-            textarea.setText(cu.matriuDistanciaPlanetes2(aux));
+            textarea.setText(aux);
             paint(content);
         }
         catch (Exception ex){
@@ -548,8 +550,9 @@ public class VistaUnivers extends Vista{
     private void doobtenirNecessitatsPlanetes(ActionEvent event){
         try{
             String aux = text.getText();
+            String aux2 = cu.matriuNecesitatsPlanetes2(aux);
             contentSchemaC();
-            textarea.setText(cu.matriuNecesitatsPlanetes2(aux));
+            textarea.setText(aux2);
             paint(content);
         }
         catch (Exception ex){
@@ -560,8 +563,9 @@ public class VistaUnivers extends Vista{
     private void doobtenirRecursosPlanetes(ActionEvent event){
         try{
             String aux = text.getText();
+            String aux2 = cu.matriuRecursosPlanetes2(aux);
             contentSchemaC();
-            textarea.setText(cu.matriuRecursosPlanetes2(aux));
+            textarea.setText(aux2);
             paint(content);
         }
         catch (Exception ex){

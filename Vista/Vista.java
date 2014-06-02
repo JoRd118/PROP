@@ -71,15 +71,16 @@ public abstract class Vista extends SubVista{
     public void contentSchemaC(){
         content = new JPanel();
         label_Exe = new JLabel();
-        content.setLayout(new GridLayout(6, 2, 5, 5));
+        content.setLayout(new GridLayout(4, 2, 5, 5));
         content.setPreferredSize( new Dimension( 400, 100 ) );
         content.setMinimumSize( new Dimension( 100, 50 ) );
         
         textarea = new JTextArea(30,50);
         sp = new JScrollPane(textarea);
         content = new JPanel();
-        content.add(sp);
         content.add(label_Exe);
+        content.add(sp);
+        
     }
     
     ////Entrada text box(x2) + button de confirmació.
