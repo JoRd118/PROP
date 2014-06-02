@@ -363,7 +363,7 @@ public class VistaUnivers extends Vista{
                 String direccion_copy = direccion;
                 direccion_copy = direccion_copy.substring((direccion_copy.length())-3,direccion_copy.length());
                 if(direccion.contains(".")){
-                    if(direccion.equals(".uni")){
+                    if(direccion_copy.equals("uni")){
                         cu.guardarUniversos(direccion);
                         done();
                     }
@@ -402,7 +402,7 @@ public class VistaUnivers extends Vista{
                 String direccion_copy = direccion;
                 direccion_copy = direccion_copy.substring((direccion_copy.length())-3,direccion_copy.length());
                 if(direccion.contains(".")){
-                    if(direccion.equals(".uni")){
+                    if(direccion_copy.equals("uni")){
                         cu.carregarUniversos(direccion);
                         done();
                     }
