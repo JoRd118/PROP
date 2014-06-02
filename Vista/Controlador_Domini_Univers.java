@@ -341,6 +341,23 @@ public class Controlador_Domini_Univers{
         }
         return planetes;
     }
+
+    public String vectorPlanetesVista(String nomUnivers){
+        Univers aux = u.obtain(nomUnivers);
+        Iterable<String> aux1 = aux.obtenirPlanetes();
+        String plan = new String();
+
+        for(String a : aux1){
+            Planeta p = aux.obtenirPlaneta(a);
+            if(p.obtenirClasse()){
+                plan = plan + a + "  (classeM)\n";
+            }
+            else{
+                plan = plan + a + "  (No classeM)\n";
+            }
+        }
+        return plan;
+    }
     
     //NOVES FUNCIONS!
     public void borrar_planeta(String nom){

@@ -525,7 +525,7 @@ public class VistaUnivers extends Vista{
         try{
             String aux = text.getText();
             contentSchemaC();
-            textarea.setText(cu.numPlanetesUnivers2(aux));
+            textarea.setText(cu.vectorPlanetesVista(aux));
             paint(content);
         }
         catch (Exception ex){
