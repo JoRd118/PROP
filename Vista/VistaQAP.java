@@ -517,6 +517,7 @@ public class VistaQAP extends Vista{
     private void docalcularMatrius(ActionEvent event){
         try{
             q.calcularMatrius(text.getText());
+            done();
         }
         catch (Exception ex){
             error_ex("Exception: " + ex.getMessage());
@@ -539,14 +540,8 @@ public class VistaQAP extends Vista{
         paint(content);
     }
     public void error_ex(String a){
-        content = new JPanel();
-        label = new JLabel("-> "+a);
-        label.setForeground(Color.red);
-        content.setLayout( new BorderLayout() );
-        content.setPreferredSize( new Dimension( 400, 100 ) );
-        content.setMinimumSize( new Dimension( 100, 50 ) );
-        content.add(label, BorderLayout.NORTH );
-        paint(content);
+        label_Exe.setText("-> "+a);
+        label_Exe.setForeground(Color.red);
     }
     
     public void paint(JPanel p){

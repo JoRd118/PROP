@@ -75,7 +75,7 @@ public abstract class Vista extends SubVista{
         content.setPreferredSize( new Dimension( 400, 100 ) );
         content.setMinimumSize( new Dimension( 100, 50 ) );
         
-        textarea = new JTextArea(10,50);
+        textarea = new JTextArea(30,50);
         sp = new JScrollPane(textarea);
         content = new JPanel();
         content.add(sp);
