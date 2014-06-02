@@ -454,6 +454,7 @@ public class VistaQAP extends Vista{
             content = new JPanel();
             label = new JLabel("Running...");
             content.add(label);
+            paint(content);
             q.run_algorithm(a);
             content = new JPanel();
             label = new JLabel(q.printTemps());
