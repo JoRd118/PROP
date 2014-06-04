@@ -13,7 +13,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  */
 public class VistaPlaneta extends Vista{
     
-    private static Controlador_Domini_Planeta cp;
+    private static Controlador_Presentacio_Planeta cp;
     private static JPanel planeta;
     private VistaGlobal v;
     
@@ -39,7 +39,7 @@ public class VistaPlaneta extends Vista{
         createVistaPlaneta();
     }
     
-    public VistaPlaneta(Controlador_Domini_Planeta a){
+    public VistaPlaneta(Controlador_Presentacio_Planeta a){
         v = super.getF();
         cp = a;
         createVistaPlaneta();
@@ -439,7 +439,7 @@ public class VistaPlaneta extends Vista{
         label2 = new JLabel("new Classe:");
         chinButton = new JCheckBox("Planeta Tipus M");
         chinButton.setMnemonic(KeyEvent.VK_C);
-        chinButton.setSelected(true);
+        chinButton.setSelected(false);
         
         chinButton2 = new JCheckBox(" NO Planeta Tipus M");
         chinButton2.setMnemonic(KeyEvent.VK_C);
@@ -567,13 +567,7 @@ public class VistaPlaneta extends Vista{
             else{
                 throw new IllegalArgumentException("Cal Seleccionar el tipus M");
             }
-            content = new JPanel();
-            label = new JLabel("Fet.");
-            content.setLayout( new BorderLayout() );
-            content.setPreferredSize( new Dimension( 400, 100 ) );
-            content.setMinimumSize( new Dimension( 100, 50 ) );
-            content.add(label, BorderLayout.NORTH );
-            paint(content);
+            done();
         }
         catch (Exception ex){
             error_ex("Exception: " + ex.getMessage());
@@ -583,13 +577,7 @@ public class VistaPlaneta extends Vista{
     private void dobaixaPlaneta(ActionEvent event){
         try{
             cp.baixaPlanetaVista(text.getText());
-            content = new JPanel();
-            label = new JLabel("Fet.");
-            content.setLayout( new BorderLayout() );
-            content.setPreferredSize( new Dimension( 400, 100 ) );
-            content.setMinimumSize( new Dimension( 100, 50 ) );
-            content.add(label, BorderLayout.NORTH );
-            paint(content);
+            done();
             
         }
         catch (Exception ex){

@@ -10,32 +10,19 @@ public class Controlador_Domini_Recurs{
     
     private TST<Recurs> r;
     private Controlador_Dades t;
-    private Controlador_Presentacio cp;
     private Identificador i;
     private static String msg_recurs_no_exists = "Error de Recurs: Recurs demanat no existeix.";
     private static String msg_recurs_repetit = "Error de Recurs: Ja existeix un recurs amb aquest nom.";
     private static String msg_carregar = "Error de Recurs: Carregar no es pot portar a terme perque ja s'han introduit dades.";
     private static String inst = "Cada fitxer creat conte l'informació d'una de les classes.";
     
-    //Vista
-    private VistaRecurs v;
     
     public Controlador_Domini_Recurs(){
         r = new TST<Recurs>();
         t = new Controlador_Dades();
         i = new Identificador();
-        v = new VistaRecurs(this);
     }
-    
-    public Controlador_Domini_Recurs(Controlador_Presentacio p){
-        r = new TST<Recurs>();
-        t = new Controlador_Dades();
-        i = new Identificador();
-        cp = p;
-        v = new VistaRecurs(this);
-    }
-    
-    
+
     public void altaRecurs(String nom){
         //Buscar REPETITS
         if(r.contains(nom))throw new IllegalArgumentException(msg_recurs_repetit);
@@ -157,17 +144,5 @@ public class Controlador_Domini_Recurs{
             altaRecurs(elements[i]);
         }
         t.tancarFitxer();
-    }
-    
-    public void baixaRecursVista(String n){
-        cp.borrar_recurs(n);
-    }
-    
-    public void modificar_nom_recursVista(String a,String b){
-        cp.modificar_nom_recurs(a,b);
-        
-        
-        
-        
     }
 }

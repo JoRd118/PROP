@@ -13,7 +13,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  */
 public class VistaUnivers extends Vista{
     
-    private static Controlador_Domini_Univers cu;
+    private static Controlador_Presentacio_Univers cu;
     private static JPanel univers;
     private VistaGlobal v;
     
@@ -37,7 +37,7 @@ public class VistaUnivers extends Vista{
         createVistaUnivers();
     }
     
-    public VistaUnivers(Controlador_Domini_Univers a){
+    public VistaUnivers(Controlador_Presentacio_Univers a){
         v = super.getF();
         cu = a;
         createVistaUnivers();
@@ -260,7 +260,7 @@ public class VistaUnivers extends Vista{
     
     private void desafegirPlaneta(ActionEvent event){
         contentSchemaD();
-        label.setText("OP:Assignar Univers-Planeta  Nom Univers:");
+        label.setText("OP:Desassignar Univers-Planeta  Nom Univers:");
         label2.setText("Nom Planeta:");
         
         b.addActionListener
@@ -430,13 +430,7 @@ public class VistaUnivers extends Vista{
         try{
             cu.altaUnivers(text.getText());
             
-            content = new JPanel();
-            label = new JLabel("Fet.");
-            content.setLayout( new BorderLayout() );
-            content.setPreferredSize( new Dimension( 400, 100 ) );
-            content.setMinimumSize( new Dimension( 100, 50 ) );
-            content.add(label, BorderLayout.NORTH );
-            paint(content);
+            done();
         }
         catch (Exception ex){
             error_ex("Exception: " + ex.getMessage());
@@ -446,13 +440,7 @@ public class VistaUnivers extends Vista{
     private void dobaixaUnivers(ActionEvent event){
         try{
             cu.baixaUnivers(text.getText());
-            content = new JPanel();
-            label = new JLabel("Fet.");
-            content.setLayout( new BorderLayout() );
-            content.setPreferredSize( new Dimension( 400, 100 ) );
-            content.setMinimumSize( new Dimension( 100, 50 ) );
-            content.add(label, BorderLayout.NORTH );
-            paint(content);
+            done();
         }
         catch (Exception ex){
             error_ex("Exception: " + ex.getMessage());
@@ -489,13 +477,7 @@ public class VistaUnivers extends Vista{
         try{
             cu.afegirPlanetaUnivers(text.getText(),text2.getText());
             
-            content = new JPanel();
-            label = new JLabel("Fet.");
-            content.setLayout( new BorderLayout() );
-            content.setPreferredSize( new Dimension( 400, 100 ) );
-            content.setMinimumSize( new Dimension( 100, 50 ) );
-            content.add(label, BorderLayout.NORTH );
-            paint(content);
+            done();
             
         }
         catch (Exception ex){
@@ -507,13 +489,7 @@ public class VistaUnivers extends Vista{
         try{
             cu.desafegirPlanetaUnivers(text.getText(),text2.getText());
             
-            content = new JPanel();
-            label = new JLabel("Fet.");
-            content.setLayout( new BorderLayout() );
-            content.setPreferredSize( new Dimension( 400, 100 ) );
-            content.setMinimumSize( new Dimension( 100, 50 ) );
-            content.add(label, BorderLayout.NORTH );
-            paint(content);
+            done();
             
         }
         catch (Exception ex){

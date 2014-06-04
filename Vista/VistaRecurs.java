@@ -13,7 +13,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  */
 public class VistaRecurs extends Vista{
     
-    private static Controlador_Domini_Recurs cr;
+    private static Controlador_Presentacio_Recurs cr;
     private static JPanel recurs;
     private VistaGlobal v;
     
@@ -28,7 +28,7 @@ public class VistaRecurs extends Vista{
         createVistaRecurs();
     }
     
-    public VistaRecurs(Controlador_Domini_Recurs a){
+    public VistaRecurs(Controlador_Presentacio_Recurs a){
         v = super.getF();
         cr = a;
         createVistaRecurs();
@@ -191,8 +191,9 @@ public class VistaRecurs extends Vista{
     
     private void llistatRecurs(ActionEvent event){
         try{
+            String aux = cr.llistatRecurs();
             contentSchemaC();
-            textarea.setText(cr.llistatRecurs());
+            if(aux != null){textarea.setText(aux);}
             paint(content);
         }
         catch (Exception ex){
@@ -287,9 +288,10 @@ public class VistaRecurs extends Vista{
     }
     
     private void modnom(ActionEvent event){
-        label = new JLabel("OP:Mod Nom Recurs  Nom Recurs:");
-        label2 = new JLabel("New Nom:");
         contentSchemaD();
+        label.setText("OP:Mod Nom Recurs  Nom Recurs:");
+        label2.setText("New Nom:");
+        
         b.addActionListener
         (new ActionListener() {
             public void actionPerformed (ActionEvent event) {
@@ -327,12 +329,12 @@ public class VistaRecurs extends Vista{
     }
     
     private void doobtenirRecurs(ActionEvent event){
+                    contentSchemaB();
+                    paint(content);
         try{
             String aux = text.getText();
-            contentSchemaB();
-            label = new JLabel("Nom Recurs: "+ cr.obtenirNom(cr.obtenirRecurs(aux)) + "  Id: " + cr.obtenirId(cr.obtenirNom(cr.obtenirRecurs(aux))));
+            label = new JLabel("Nom Recurs: "+ aux + "  Id: " + cr.obtenirId(aux));
             content.add(label, BorderLayout.NORTH );
-            paint(content);
         }
         catch (Exception ex){
             error_ex("Exception: " + ex.getMessage());
@@ -343,7 +345,7 @@ public class VistaRecurs extends Vista{
         try{
             String aux = text.getText();
             contentSchemaB();
-            label = new JLabel("Nom Recurs: "+ cr.obtenirNom(cr.obtenirRecurs(aux)) + "  Id: " + cr.obtenirId(cr.obtenirNom(cr.obtenirRecurs(aux))));
+            label = new JLabel("Nom Recurs: "+ aux + "  Id: " + cr.obtenirId(aux));
             content.add(label, BorderLayout.NORTH );
             paint(content);
         }

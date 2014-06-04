@@ -12,7 +12,6 @@ public class Controlador_Domini_Paquet{
     private TST<Paquet> pa; // Paquets assignats
     private Controlador_Domini_Recurs cr;
     private Controlador_Dades cp;
-    private Controlador_Presentacio cpp;
     private Identificador ide;
 
     private static String msg_paquet_no_exists = "Error de Paquet: Paquet demanat no existeix.";
@@ -23,7 +22,6 @@ public class Controlador_Domini_Paquet{
     private static String msg_paquet_no_assignat = "Error de Paquet: Paquet demanat no ha estat assignat.";
     private static String msg_carregar = "Error de Paquet: Carregar no es pot portar a terme perque ja s'han introduit dades.";
     
-    private VistaPaquet v;
     
     public Controlador_Domini_Paquet() {
         p = new TST<Paquet>();
@@ -31,7 +29,6 @@ public class Controlador_Domini_Paquet{
         cr = new Controlador_Domini_Recurs();
         cp = new Controlador_Dades();
         ide = new Identificador();
-        v = new VistaPaquet(this);
     }
 
     public Controlador_Domini_Paquet(Controlador_Domini_Recurs n) {
@@ -40,9 +37,8 @@ public class Controlador_Domini_Paquet{
         cp = new Controlador_Dades();
         cr = n;
         ide = new Identificador();
-        v = new VistaPaquet(this);
     }
-    
+    /*
     public Controlador_Domini_Paquet(Controlador_Domini_Recurs n, Controlador_Presentacio p1) {
         p = new TST<Paquet>();
         pa = new TST<Paquet>();
@@ -52,6 +48,7 @@ public class Controlador_Domini_Paquet{
         ide = new Identificador();
         v = new VistaPaquet(this);
     }
+    */
     
     public void altaPaquet() {
         int id = ide.id();
@@ -171,7 +168,7 @@ public class Controlador_Domini_Paquet{
         else throw new IllegalArgumentException(msg_paquet_no_exists);
     }
 
-    public String llistatRecursosPaquet(int id){
+    public String llistatRecursosPaquet(int id) throws IOException{
         String id_string = Integer.toString(id);
         if (p.contains(id_string)) {
             Paquet paq = p.obtain(id_string);
@@ -272,12 +269,4 @@ public class Controlador_Domini_Paquet{
             cp.writeTextFile(list);
         }
     }
-    
-    
-    public void baixaPaquetVista(int id){
-        cpp.borrar_paquet(id);
-    }
-    
-    
-    
-}
+  }

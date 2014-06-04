@@ -6,7 +6,6 @@ public class Controlador_Domini_Planeta {
 	private TST<Planeta> Conjunt_Planetes_Desassignat;
 	private Controlador_Domini_Recurs cr;
 	private Controlador_Domini_Paquet cp;
-    private Controlador_Presentacio cpp;
 	private Controlador_Dades cd;
     private Identificador id;
     
@@ -22,8 +21,6 @@ public class Controlador_Domini_Planeta {
     private static String msg_planeta_assignat = "Error de Planeta: Planeta ja assignat";
     
     
-    private VistaPlaneta v;
-    
 	public Controlador_Domini_Planeta(){
 		Conjunt_Planetes_Assignat = new TST<Planeta>();
 		Conjunt_Planetes_Desassignat = new TST<Planeta>();
@@ -31,18 +28,15 @@ public class Controlador_Domini_Planeta {
 		cp = new Controlador_Domini_Paquet(cr);
 		cd = new Controlador_Dades();
         id = new Identificador();
-        v = new VistaPlaneta(this);
 	}
     
-	public Controlador_Domini_Planeta(Controlador_Domini_Paquet p, Controlador_Domini_Recurs r, Controlador_Presentacio p1) {
+	public Controlador_Domini_Planeta(Controlador_Domini_Paquet p, Controlador_Domini_Recurs r) {
 	 	Conjunt_Planetes_Assignat = new TST<Planeta>();
 	 	Conjunt_Planetes_Desassignat = new TST<Planeta>();
 		cr = r;
 	 	cp = p;
 		cd = new Controlador_Dades();
         id = new Identificador();
-        cpp = p1;
-        v = new VistaPlaneta(this);
 	}
     
     
@@ -321,7 +315,7 @@ public class Controlador_Domini_Planeta {
 		else throw new IllegalArgumentException(msg_planeta_no_exists);
 	}
     
-    public String obtenirRecursosDisponiblesVista(String nomP) {
+    public String obtenirRecursosDisponiblesVista(String nomP) throws IOException{
         if (Conjunt_Planetes_Desassignat.contains(nomP) || Conjunt_Planetes_Assignat.contains(nomP)) {
             Planeta p;
             if (Conjunt_Planetes_Assignat.contains(nomP)) p = Conjunt_Planetes_Assignat.obtain(nomP);
@@ -538,21 +532,4 @@ public class Controlador_Domini_Planeta {
         return aux;
     }
 
-    public void baixaPlanetaVista(String a){
-        cpp.borrar_planeta(a);
-    }
-    
-    public void modificarNomPlanetaVista(String old_name, String new_name){
-        cpp.modificar_nom_planeta(old_name, new_name);
-    
-    }
-    
-    public void modificarCoordPlanetaVista(String nom, int x, int y){
-        cpp.modificar_coordenades_planeta(nom,x,y);
-    }
-    
-    public void modificarClassePlanetaVista(String nom, boolean classeM){
-        cpp.modificar_classe_planeta(nom,classeM);
-    
-    }
 }

@@ -10,11 +10,9 @@ public class Controlador_Domini_QAP{
     private Controlador_Dades t;
     private Controlador_Domini_Univers cdu;
     private Controlador_Domini_Recurs cdr;
-    private Controlador_Presentacio cp;
     private boolean entrada_val;
     private static String msg_entrada = "Error QAP: L'entrda no s'ha introduit o no s'ha calculat abans de l'algoritme.";
     
-    private VistaQAP v;
     
     public Controlador_Domini_QAP(){
         e = new Entrada();
@@ -35,65 +33,53 @@ public class Controlador_Domini_QAP{
         cdr = nou_cdr;
         entrada_val = false;
     }
-    
-    public Controlador_Domini_QAP(Controlador_Domini_Recurs nou_cdr, Controlador_Domini_Univers nou_cdu, Controlador_Presentacio p){
-        e = new Entrada();
-        t = new Controlador_Dades();
-        solucio = new Solucio();
-        q = new QAP();
-        cdu = nou_cdu;
-        cdr = nou_cdr;
-        cp = p;
-        entrada_val = false;
-        v = new VistaQAP(this);
-    }
 
-    public void modificarValorDistancies(int i, int j, double valor) {
+    public void modificarValorDistancies(int i, int j, double valor) throws IOException{
         if (entrada_val) {
         e.modificarPosDis(i, j, valor);
         }
         else throw new IllegalArgumentException(msg_entrada);
     }
 
-    public void modificarValorNecessitats(int i, int j, int valor) {
+    public void modificarValorNecessitats(int i, int j, int valor) throws IOException{
         if (entrada_val) {
         e.modificarPosNecPlaneta(i, j, valor);
         }
         else throw new IllegalArgumentException(msg_entrada);
     }
 
-    public void modificarValorRecursos(int i, int j, int valor) {
+    public void modificarValorRecursos(int i, int j, int valor) throws IOException{
         if (entrada_val) {
         e.modificarPosRecPlaneta(i, j, valor);
         }
         else throw new IllegalArgumentException(msg_entrada);
     }
 
-    public String obtenirMatDis() {
+    public String obtenirMatDis() throws IOException{
         if (entrada_val) {
         return e.obtenirMatriuDisString();
         }
         else throw new IllegalArgumentException(msg_entrada);
     }
-    public String obtenirMatNec() {
+    public String obtenirMatNec() throws IOException{
         if (entrada_val) {
         return e.obtenirMatriuNecString();
         }
         else throw new IllegalArgumentException(msg_entrada);
     }
-    public String obtenirMatRec() {
+    public String obtenirMatRec() throws IOException{
         if (entrada_val) {
         return e.obtenirMatriuRecString();
         }
         else throw new IllegalArgumentException(msg_entrada);
     }
-    public String obtenirRecu() {
+    public String obtenirRecu() throws IOException{
         if (entrada_val) {
         return e.obtenirRecursosString();
         }
         else throw new IllegalArgumentException(msg_entrada);
     }
-    public String obtenirPlan() {
+    public String obtenirPlan() throws IOException{
         if (entrada_val) {
         return e.obtenirPlanetesString();
         }
@@ -117,19 +103,19 @@ public class Controlador_Domini_QAP{
         e.modificarMatrius(cdu.matriuDistanciaPlanetes(nom_u), cdu.matriuNecesitatsPlanetes(nom_u), cdu.matriuRecursosPlanetes(nom_u), cdu.vectorPlanetes(nom_u), recu);  
     }
 
-    public String solucioSeguent() {
+    public String solucioSeguent() throws IOException{
         return solucio.printSolucioSeguent();
     }
 
-    public String solucioAnterior() {
+    public String solucioAnterior() throws IOException{
         return solucio.printSolucioAnterior();
     }
 
-    public String printTemps() {
+    public String printTemps() throws IOException{
         return Long.toString(solucio.obtenirTemps());
     }
 
-    public String solucioAll() {
+    public String solucioAll() throws IOException{
         return solucio.printSolucio();
     }
     

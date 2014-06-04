@@ -13,7 +13,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  */
 public class VistaQAP extends Vista{
     
-    private static Controlador_Domini_QAP q;
+    private static Controlador_Presentacio_QAP q;
     private static JPanel qap;
     private VistaGlobal v;
     
@@ -48,7 +48,7 @@ public class VistaQAP extends Vista{
         createVistaQAP();
     }
     
-    public VistaQAP(Controlador_Domini_QAP a){
+    public VistaQAP(Controlador_Presentacio_QAP a){
         v = super.getF();
         q = a;
         createVistaQAP();
@@ -220,15 +220,18 @@ public class VistaQAP extends Vista{
         JButton buttonBBL = new JButton("Lazy");
         JButton buttonBBE = new JButton("Eager");
         JButton buttonTabu = new JButton("Tabu");
+        label = new JLabel();
         content = new JPanel();
         content.add(buttonBBL);
         content.add(buttonBBE);
         content.add(buttonTabu);
+        content.add(label);
         paint(content);
         
         buttonBBL.addActionListener
         (new ActionListener() {
             public void actionPerformed (ActionEvent event) {
+                label.setText("Running...");
                 dorun(event, "BBL");
             }
         });
@@ -236,6 +239,7 @@ public class VistaQAP extends Vista{
         buttonBBE.addActionListener
         (new ActionListener() {
             public void actionPerformed (ActionEvent event) {
+                label.setText("Running...");
                 dorun(event, "BBE");
             }
         });
@@ -243,6 +247,7 @@ public class VistaQAP extends Vista{
         buttonTabu.addActionListener
         (new ActionListener() {
             public void actionPerformed (ActionEvent event) {
+                label.setText("Running...");
                 dorun(event, "TABU");
             }
         });
@@ -288,10 +293,13 @@ public class VistaQAP extends Vista{
     }
     
     private void obtenirMatDis(ActionEvent event){
-        try{
             contentSchemaC();
-            textarea.setText(q.obtenirMatDis());
-            paint(content);
+        paint(content);
+        try{
+            String aux = q.obtenirMatDis();
+
+            textarea.setText(aux);
+
         }
         catch (Exception ex){
             error_ex("Exception: " + ex.getMessage());
@@ -299,10 +307,13 @@ public class VistaQAP extends Vista{
     }
     
     private void obtenirMatNec(ActionEvent event){
-        try{
             contentSchemaC();
-            textarea.setText(q.obtenirMatNec());
-            paint(content);
+        paint(content);
+        try{
+            String aux = q.obtenirMatNec();
+
+            textarea.setText(aux);
+            
         }
         catch (Exception ex){
             error_ex("Exception: " + ex.getMessage());
@@ -311,10 +322,11 @@ public class VistaQAP extends Vista{
     }
     
     private void obtenirMatRec(ActionEvent event){
-        try{
             contentSchemaC();
-            textarea.setText(q.obtenirMatRec());
-            paint(content);
+                    paint(content);
+        try{
+            String aux = q.obtenirMatRec();
+            textarea.setText(aux);
         }
         catch (Exception ex){
             error_ex("Exception: " + ex.getMessage());
@@ -322,10 +334,11 @@ public class VistaQAP extends Vista{
     }
     
     private void obtenirRecu(ActionEvent event){
+        contentSchemaC();
+        paint(content);
         try{
-            contentSchemaC();
-            textarea.setText(q.obtenirRecu());
-            paint(content);
+            String aux = q.obtenirRecu();
+            textarea.setText(aux);
         }
         catch (Exception ex){
             error_ex("Exception: " + ex.getMessage());
@@ -334,10 +347,13 @@ public class VistaQAP extends Vista{
     }
     
     private void obtenirPlanetes(ActionEvent event){
+        contentSchemaC();
+                    paint(content);
         try{
-            contentSchemaC();
-            textarea.setText(q.obtenirPlan());
-            paint(content);
+            String aux = q.obtenirPlan();
+            
+            textarea.setText(aux);
+
         }
         catch (Exception ex){
             error_ex("Exception: " + ex.getMessage());
@@ -357,11 +373,13 @@ public class VistaQAP extends Vista{
     }
     
     private void solucioSeguent(ActionEvent event){
+        contentSchemaC();
+        paint(content);
         try{
             String aux = q.solucioSeguent();
-            contentSchemaC();
+            
             textarea.setText(aux);
-            paint(content);
+            
         }
         catch (Exception ex){
             error_ex("Exception: " + ex.getMessage());
@@ -370,11 +388,13 @@ public class VistaQAP extends Vista{
     }
     
     private void solucioAnterior(ActionEvent event){
+            contentSchemaC();
+         paint(content);
         try{
             String aux = q.solucioAnterior();
-            contentSchemaC();
+
             textarea.setText(aux);
-            paint(content);
+           
         }
         catch (Exception ex){
             error_ex("Exception: " + ex.getMessage());
@@ -382,10 +402,12 @@ public class VistaQAP extends Vista{
     }
     
     private void printTemps(ActionEvent event){
+        contentSchemaC();
+        paint(content);
         try{
-            contentSchemaC();
+            
             textarea.setText(q.printTemps());
-            paint(content);
+            
         }
         catch (Exception ex){
             error_ex("Exception: " + ex.getMessage());
@@ -393,11 +415,8 @@ public class VistaQAP extends Vista{
     }
     
     private void solucio(ActionEvent event){
+        espera("Processant solució...");
         try{
-            content = new JPanel();
-            label = new JLabel("Processant solució...");
-            content.add(label);
-            paint(content);
             String aux = q.solucioAll();
             contentSchemaC();
             textarea.setText(aux);
@@ -450,11 +469,8 @@ public class VistaQAP extends Vista{
     
     //do-functions
     private void dorun(ActionEvent event, String a){
+        espera("Running...");
         try{
-            content = new JPanel();
-            label = new JLabel("Running...");
-            content.add(label);
-            paint(content);
             q.run_algorithm(a);
             content = new JPanel();
             label = new JLabel(q.printTemps());
@@ -553,6 +569,16 @@ public class VistaQAP extends Vista{
     public void error_ex(String a){
         label_Exe.setText("-> "+a);
         label_Exe.setForeground(Color.red);
+    }
+    
+    public void espera(String a){
+        content = new JPanel();
+        label = new JLabel(a);
+        label_Exe = new JLabel();
+        content.add(label);
+        content.add(label_Exe);
+        
+        paint(content);
     }
     
     public void paint(JPanel p){

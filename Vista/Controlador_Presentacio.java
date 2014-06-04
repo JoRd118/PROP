@@ -9,16 +9,13 @@ import java.lang.Thread;
 
 public class Controlador_Presentacio extends Thread{
     
-    private Thread1 t1;
-    private Thread2 t2;
-    
     private VistaGlobal v;
     private VistaSave s;
-    private Controlador_Domini_Recurs cr;
-    private Controlador_Domini_Paquet cp;
-    private Controlador_Domini_Planeta cpl;
-    private Controlador_Domini_Univers cu;
-    private Controlador_Domini_QAP q;
+    private Controlador_Presentacio_Recurs cr;
+    private Controlador_Presentacio_Paquet cp;
+    private Controlador_Presentacio_Planeta cpl;
+    private Controlador_Presentacio_Univers cu;
+    private Controlador_Presentacio_QAP q;
     
     public Controlador_Presentacio(){
         v = new VistaGlobal();
@@ -29,11 +26,11 @@ public class Controlador_Presentacio extends Thread{
         //Instencia tots els controladors.
         s = new VistaSave(this);
         
-        cr = new Controlador_Domini_Recurs(this);
-        cp = new Controlador_Domini_Paquet(cr,this);
-        cpl = new Controlador_Domini_Planeta(cp, cr, this);
-        cu = new Controlador_Domini_Univers(cpl, cr, cp, this);
-        q = new Controlador_Domini_QAP(cr, cu, this);
+        cr = new Controlador_Presentacio_Recurs(this);
+        cp = new Controlador_Presentacio_Paquet(cr,this);
+        cpl = new Controlador_Presentacio_Planeta(cp, cr, this);
+        cu = new Controlador_Presentacio_Univers(cpl, cr, cp, this);
+        q = new Controlador_Presentacio_QAP(cr, cu, this);
         
     }
     

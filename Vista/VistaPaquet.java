@@ -13,7 +13,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  */
 public class VistaPaquet extends Vista{
     
-    private static Controlador_Domini_Paquet cp;
+    private static Controlador_Presentacio_Paquet cp;
     private static JPanel paquet;
     private VistaGlobal v;
     
@@ -27,7 +27,7 @@ public class VistaPaquet extends Vista{
         createVistaPaquet();
     }
     
-    public VistaPaquet(Controlador_Domini_Paquet a){
+    public VistaPaquet(Controlador_Presentacio_Paquet a){
         v = super.getF();
         cp = a;
         createVistaPaquet();
@@ -117,9 +117,9 @@ public class VistaPaquet extends Vista{
     private void altaPaquet (ActionEvent event){
         try{
             cp.altaPaquet();
-            
             content = new JPanel();
-            label = new JLabel("Paquet creat.");
+            label = new JLabel("S'ha creat un nou Paquet.");
+            label.setForeground(Color.blue);
             content.setLayout( new BorderLayout() );
             content.setPreferredSize( new Dimension( 400, 100 ) );
             content.setMinimumSize( new Dimension( 100, 50 ) );
@@ -282,13 +282,7 @@ public class VistaPaquet extends Vista{
     private void dobaixaRecurs(ActionEvent event){
         try{
             cp.baixaPaquetVista(Integer.parseInt(text.getText()));
-            content = new JPanel();
-            label = new JLabel("Fet.");
-            content.setLayout( new BorderLayout() );
-            content.setPreferredSize( new Dimension( 400, 100 ) );
-            content.setMinimumSize( new Dimension( 100, 50 ) );
-            content.add(label, BorderLayout.NORTH );
-            paint(content);
+            done();
             
         }
         catch (Exception ex){
@@ -302,13 +296,7 @@ public class VistaPaquet extends Vista{
         try{
             cp.assignarRecurs(Integer.parseInt(text.getText()),text2.getText());
             
-            content = new JPanel();
-            label = new JLabel("Fet.");
-            content.setLayout( new BorderLayout() );
-            content.setPreferredSize( new Dimension( 400, 100 ) );
-            content.setMinimumSize( new Dimension( 100, 50 ) );
-            content.add(label, BorderLayout.NORTH );
-            paint(content);
+            done();
             
         }
         catch (Exception ex){
@@ -318,14 +306,15 @@ public class VistaPaquet extends Vista{
     }
     
     private void doobtenirPaquet(ActionEvent event){
+        contentSchemaC();
+        paint(content);
         try{
             String aux = text.getText();
             String aux2 = cp.llistatRecursosPaquet(cp.obtenirIdPaquet(cp.obtenirPaquet(Integer.parseInt(aux))));
-            contentSchemaC();
             textarea.setText(aux2);
             //label = new JLabel("ID Paquet: "+ cp.obtenirIdPaquet(cp.obtenirPaquet(Integer.parseInt(aux))));
             //content.add(label, BorderLayout.NORTH );
-            paint(content);
+
         }
         catch (Exception ex){
             error_ex("Exception: " + ex.getMessage());
