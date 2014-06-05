@@ -148,8 +148,6 @@ public class Controlador_Domini_Planeta {
     //Post: La classeM de un planeta passar a ser de classeM si classeM es true
 	public void modificarClasse(String nom, boolean classeM) {
         if(Conjunt_Planetes_Assignat.contains(nom) || Conjunt_Planetes_Desassignat.contains(nom)) {
-        	throw new IllegalArgumentException(msg_planeta_classM);
-        } else{
             if (Conjunt_Planetes_Desassignat.contains(nom)){ Conjunt_Planetes_Desassignat.obtain(nom).modificacioClasse(classeM); }
             else if (Conjunt_Planetes_Assignat.contains(nom)) { Conjunt_Planetes_Assignat.obtain(nom).modificacioClasse(classeM); }
             else {
