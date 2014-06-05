@@ -9,7 +9,7 @@ public class BranchBoundEager extends BranchBound {
 
   protected void gesBranch(int indexPlanetaCalcul, ArrayList<Integer> planetesPendents, ArrayList<Integer> necessitatsPendents,
                            String[] mPlanetes, double[][] mDistancies, int[][] mDisponibilitats, SolucioQAP sol) {
-
+    
     // Variables per controlar la solucio
     boolean solucioTrobada = false;
     double millorRecorregut = 0;

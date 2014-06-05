@@ -96,7 +96,6 @@ public abstract class BranchBound {
         sol.assignarArbre(mutArrel);       
         
       } else if(hiHaSolucio && (planetesPendents.size() >= 2)) {
-
         gesBranch(indexPlanetaCalcul, planetesPendents, necessitatsPendents, mPlanetes, mDistancies, mDisponibilitats, sol);
           
       } else {
