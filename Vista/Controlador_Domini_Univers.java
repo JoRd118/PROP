@@ -119,7 +119,7 @@ public class Controlador_Domini_Univers{
 		}
 	}
     
-    public String matriuDistanciaPlanetes2(String nom){
+    public String matriuDistanciaPlanetes2(String nom) throws IOException {
         String aux = new String();
         double[][] matriu = matriuDistanciaPlanetes(nom);
         for(int i = 0; i < matriu.length; ++i){
@@ -187,7 +187,7 @@ public class Controlador_Domini_Univers{
     
     //Pre: True
     //Post: Et retorna la matriu de Necesitas dels planetes del univers escollit
-	public int[][] matriuNecesitatsPlanetes(String nom_univers){
+	public int[][] matriuNecesitatsPlanetes(String nom_univers) {
   		if(u.contains(nom_univers) == false) throw new IllegalArgumentException(msg_univers_no_exists);
   		else{
             int planetesm = 0;
@@ -306,7 +306,7 @@ public class Controlador_Domini_Univers{
     }
     
     
-    public String numPlanetesUnivers2(String nom){
+    public String numPlanetesUnivers2(String nom) throws IOException {
         String aux = new String();
         String[] vector = vectorPlanetes(nom);
         for(int i = 0; i < vector.length; ++i){
@@ -316,29 +316,34 @@ public class Controlador_Domini_Univers{
     }
     
     
-    public String[] vectorPlanetes(String nomUnivers){
-        int planetesm = 0;
-        Univers aux = u.obtain(nomUnivers);
-        Iterable<String> aux1 = aux.obtenirPlanetes();
-        Iterable<String> planm = aux.obtenirPlanetes();
-        for(String a : planm){ //contar quans planetes M hi ha
-            Planeta p = aux.obtenirPlaneta(a);
-            if(p.obtenirClasse()) ++planetesm;
-        }
-        String[] planetes = new String[planetesm];
-        int i = 0;
+    public String[] vectorPlanetes(String nomUnivers) {
+        if(u.contains(nomUnivers) == false) throw new IllegalArgumentException(msg_univers_no_exists);
+        else{
+         int planetesm = 0;
+         Univers aux = u.obtain(nomUnivers);
+         Iterable<String> aux1 = aux.obtenirPlanetes();
+          Iterable<String> planm = aux.obtenirPlanetes();
+          for(String a : planm){ //contar quans planetes M hi ha
+              Planeta p = aux.obtenirPlaneta(a);
+              if(p.obtenirClasse()) ++planetesm;
+           }
+           String[] planetes = new String[planetesm];
+           int i = 0;
         
-        for(String a : aux1){
-            Planeta p = aux.obtenirPlaneta(a);
-            if(p.obtenirClasse()){
-                planetes[i] = a;
-                ++i;
-            }
+          for(String a : aux1){
+              Planeta p = aux.obtenirPlaneta(a);
+              if(p.obtenirClasse()){
+                  planetes[i] = a;
+                  ++i;
+              }
+          }
+          return planetes;
         }
-        return planetes;
     }
 
     public String vectorPlanetesVista(String nomUnivers)throws IOException{
+        if(u.contains(nomUnivers) == false) throw new IllegalArgumentException(msg_univers_no_exists);
+        else{
         Univers aux = u.obtain(nomUnivers);
         Iterable<String> aux1 = aux.obtenirPlanetes();
         String plan = new String();
@@ -353,6 +358,7 @@ public class Controlador_Domini_Univers{
             }
         }
         return plan;
+        }
     }
     
     //NOVES FUNCIONS!

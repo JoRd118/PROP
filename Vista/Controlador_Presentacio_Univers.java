@@ -76,7 +76,7 @@ public class Controlador_Presentacio_Univers{
 		return cu.numPlanetesUnivers(nom);
 	}
     
-    public String matriuDistanciaPlanetes2(String nom){
+    public String matriuDistanciaPlanetes2(String nom)  throws IOException{
         return cu.numPlanetesUnivers2(nom);
     }
     
@@ -226,7 +226,7 @@ public class Controlador_Presentacio_Univers{
     }
     
     
-    public String numPlanetesUnivers2(String nom){
+    public String numPlanetesUnivers2(String nom)  throws IOException{
         return cu.numPlanetesUnivers2(nom);
     }
     
