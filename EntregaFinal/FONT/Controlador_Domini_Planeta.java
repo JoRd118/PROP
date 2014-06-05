@@ -291,8 +291,10 @@ public class Controlador_Domini_Planeta {
             else p = Conjunt_Planetes_Desassignat.obtain(nomP);
 			if (p.obtenirClasse()) {
                 Paquet aux = p.obtenirPaquet();
-                cp.desassignarPaquet(aux.obtenirId());
-                p.desassignarPaquet();
+                if (aux != null) {
+                    cp.desassignarPaquet(aux.obtenirId());
+                    p.desassignarPaquet();
+                }
             }
 		} else throw new IllegalArgumentException(msg_planeta_no_exists);
 	}
