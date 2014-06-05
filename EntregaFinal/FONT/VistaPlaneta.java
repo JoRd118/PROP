@@ -663,8 +663,7 @@ public class VistaPlaneta extends Vista{
     private void doaltaNecesitat(ActionEvent event){
         try{
             cp.altaNecessitats(text.getText(),text2.getText());
-            
-            dorecursosDisponib2(text.getText());
+            doobtenirneed2(text.getText());
             
             
         }
@@ -678,7 +677,7 @@ public class VistaPlaneta extends Vista{
         try{
             cp.baixaNecessitats(text.getText(),text2.getText());
             
-            dorecursosDisponib2(text.getText());
+            doobtenirneed2(text.getText());
             
         }
         catch (Exception ex){
@@ -686,16 +685,17 @@ public class VistaPlaneta extends Vista{
         }
     }
     
-    private void dorecursosDisponib2(String a){
+    private void doobtenirneed2(String a){
+        contentSchemaC();
+        paint(content);
         try{
-            contentSchemaC();
-            textarea.setText(cp.obtenirRecursosDisponiblesVista(a));
+            textarea.setText(cp.obtenirNecessitatsVista(a));
             
-            paint(content);
         }
         catch (Exception ex){
             error_ex("Exception: " + ex.getMessage());
         }
+        
     }
     
     
