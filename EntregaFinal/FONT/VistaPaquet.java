@@ -295,7 +295,7 @@ public class VistaPaquet extends Vista{
         try{
             cp.assignarRecurs(Integer.parseInt(text.getText()),text2.getText());
             
-            done();
+            doobtenirPaquet2(text.getText());
             
         }
         catch (Exception ex){
@@ -314,6 +314,24 @@ public class VistaPaquet extends Vista{
             //label = new JLabel("ID Paquet: "+ cp.obtenirIdPaquet(cp.obtenirPaquet(Integer.parseInt(aux))));
             //content.add(label, BorderLayout.NORTH );
 
+        }
+        catch (Exception ex){
+            error_ex("Exception: " + ex.getMessage());
+        }
+        
+        
+    }
+    
+    private void doobtenirPaquet2(String a){
+        contentSchemaC();
+        paint(content);
+        try{
+            String aux = a;
+            String aux2 = cp.llistatRecursosPaquet(cp.obtenirIdPaquet(cp.obtenirPaquet(Integer.parseInt(aux))));
+            textarea.setText(aux2);
+            //label = new JLabel("ID Paquet: "+ cp.obtenirIdPaquet(cp.obtenirPaquet(Integer.parseInt(aux))));
+            //content.add(label, BorderLayout.NORTH );
+            
         }
         catch (Exception ex){
             error_ex("Exception: " + ex.getMessage());

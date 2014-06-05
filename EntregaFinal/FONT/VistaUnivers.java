@@ -477,7 +477,7 @@ public class VistaUnivers extends Vista{
         try{
             cu.afegirPlanetaUnivers(text.getText(),text2.getText());
             
-            done();
+            doobtenirPlanetes2(text.getText());
             
         }
         catch (Exception ex){
@@ -489,13 +489,27 @@ public class VistaUnivers extends Vista{
         try{
             cu.desafegirPlanetaUnivers(text.getText(),text2.getText());
             
-            done();
+            doobtenirPlanetes2(text.getText());
             
         }
         catch (Exception ex){
             error_ex("Exception: " + ex.getMessage());
         }
     }
+    
+    private void doobtenirPlanetes2(String a){
+        try{
+            String aux = a;
+            String aux2 = cu.vectorPlanetesVista(aux);
+            contentSchemaC();
+            textarea.setText(aux2);
+            paint(content);
+        }
+        catch (Exception ex){
+            error_ex("Exception: " + ex.getMessage());
+        }
+    }
+    
     
     private void doobtenirPlanetes(ActionEvent event){
         try{
