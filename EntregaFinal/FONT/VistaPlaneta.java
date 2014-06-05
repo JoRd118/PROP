@@ -739,11 +739,13 @@ public class VistaPlaneta extends Vista{
     }
     
     private void dorecursosDisponib(ActionEvent event){
+        contentSchemaC();
+        paint(content);
         try{
-            contentSchemaC();
+            
             textarea.setText(cp.obtenirRecursosDisponiblesVista(text.getText()));
             
-            paint(content);
+            
         }
         catch (Exception ex){
             error_ex("Exception: " + ex.getMessage());
