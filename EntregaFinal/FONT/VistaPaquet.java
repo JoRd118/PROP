@@ -117,14 +117,8 @@ public class VistaPaquet extends Vista{
     private void altaPaquet (ActionEvent event){
         try{
             cp.altaPaquet();
-            content = new JPanel();
-            label = new JLabel("S'ha creat un nou Paquet.");
-            label.setForeground(Color.blue);
-            content.setLayout( new BorderLayout() );
-            content.setPreferredSize( new Dimension( 400, 100 ) );
-            content.setMinimumSize( new Dimension( 100, 50 ) );
-            content.add(label, BorderLayout.NORTH );
-            paint(content);
+            llistatPaquetsNoAssignats(event);
+            
         }
         catch (Exception ex){
             error_ex("Exception: " + ex.getMessage());
@@ -282,7 +276,12 @@ public class VistaPaquet extends Vista{
     private void dobaixaRecurs(ActionEvent event){
         try{
             cp.baixaPaquetVista(Integer.parseInt(text.getText()));
-            done();
+            String a = cp.llistatPaquetsAssignats();
+            String b = cp.llistatPaquetsNoAssignats();
+            contentSchemaC();
+            textarea.setText("Assignats: \n"+ a +"Desassignats: \n"+b);
+            paint(content);
+            
             
         }
         catch (Exception ex){

@@ -415,7 +415,8 @@ public class VistaQAP extends Vista{
     }
     
     private void solucio(ActionEvent event){
-        espera("Processant solució...");
+        espera();
+        label.setText("Procesant...");
         try{
             String aux = q.solucioAll();
             contentSchemaC();
@@ -469,7 +470,8 @@ public class VistaQAP extends Vista{
     
     //do-functions
     private void dorun(ActionEvent event, String a){
-        espera("Running...");
+        espera();
+        label.setText("Running...");
         try{
             q.run_algorithm(a);
             content = new JPanel();
@@ -571,13 +573,13 @@ public class VistaQAP extends Vista{
         label_Exe.setForeground(Color.red);
     }
     
-    public void espera(String a){
+    public void espera(){
         content = new JPanel();
-        label = new JLabel(a);
+        content.setLayout( new GridLayout(6, 1, 5, 5) );
+        label = new JLabel();
         label_Exe = new JLabel();
         content.add(label);
         content.add(label_Exe);
-        
         paint(content);
     }
     

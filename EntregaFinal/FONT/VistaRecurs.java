@@ -307,8 +307,7 @@ public class VistaRecurs extends Vista{
     private void doaltaRecurs(ActionEvent event){
         try{
             cr.altaRecurs(text.getText());
-            
-            done();
+            llistatRecurs(event);
         }
         catch (Exception ex){
             error_ex("Exception: " + ex.getMessage());
@@ -319,8 +318,7 @@ public class VistaRecurs extends Vista{
     private void dobaixaRecurs(ActionEvent event){
         try{
             cr.baixaRecursVista(text.getText());
-            
-            done();
+            llistatRecurs(event);
         }
         catch (Exception ex){
             error_ex("Exception: " + ex.getMessage());
@@ -393,7 +391,7 @@ public class VistaRecurs extends Vista{
     private void donomRecurs(ActionEvent event){
         try{
             cr.modificar_nom_recursVista(text.getText(),text2.getText());
-            done();
+            llistatRecurs(event);
         }
         catch (Exception ex){
             error_ex("Exception: " + ex.getMessage());

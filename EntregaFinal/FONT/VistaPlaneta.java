@@ -567,7 +567,11 @@ public class VistaPlaneta extends Vista{
             else{
                 throw new IllegalArgumentException("Cal Seleccionar el tipus M");
             }
-            done();
+            String a = cp.llistarPlanetesAssignat();
+            String b = cp.llistarPlanetesDesassignat();
+            contentSchemaC();
+            textarea.setText("Assignats: \n"+ a +"Desassignats: \n"+b);
+            paint(content);
         }
         catch (Exception ex){
             error_ex("Exception: " + ex.getMessage());
@@ -577,7 +581,12 @@ public class VistaPlaneta extends Vista{
     private void dobaixaPlaneta(ActionEvent event){
         try{
             cp.baixaPlanetaVista(text.getText());
-            done();
+            
+            String a = cp.llistarPlanetesAssignat();
+            String b = cp.llistarPlanetesDesassignat();
+            contentSchemaC();
+            textarea.setText("Assignats: \n"+ a +"Desassignats: \n"+b);
+            paint(content);
             
         }
         catch (Exception ex){
@@ -731,7 +740,11 @@ public class VistaPlaneta extends Vista{
     private void donomPlaneta(ActionEvent event){
         try{
             cp.modificarNomPlanetaVista(text.getText(),text2.getText());
-            done();
+            String a = cp.llistarPlanetesAssignat();
+            String b = cp.llistarPlanetesDesassignat();
+            contentSchemaC();
+            textarea.setText("Assignats: \n"+ a +"Desassignats: \n"+b);
+            paint(content);
         }
         catch (Exception ex){
             error_ex("Exception: " + ex.getMessage());
@@ -746,7 +759,7 @@ public class VistaPlaneta extends Vista{
                 throw new IllegalArgumentException("Cal Seleccionar el tipus M");
             }
             
-            done();
+            doobtenirPlaneta2(text.getText());
         }
         catch (Exception ex){
             error_ex("Exception: " + ex.getMessage());
@@ -756,7 +769,30 @@ public class VistaPlaneta extends Vista{
         try{
             String[] aux = text2.getText().split(",");
             cp.modificarCoordPlanetaVista(text.getText(),Integer.parseInt(aux[0]),Integer.parseInt(aux[1]));
-            done();
+            doobtenirPlaneta2(text.getText());
+        }
+        catch (Exception ex){
+            error_ex("Exception: " + ex.getMessage());
+        }
+        
+    }
+    private void doobtenirPlaneta2(String a){
+        try{
+            String aux = a;
+            contentSchemaB();
+            int aux3 = cp.obtenirPaquetPlaneta(aux);
+            
+            String aux4 = "No te paquet";
+            if(aux3 >= 0) aux4 = " " + aux3;
+            
+            label = new JLabel("ID Planeta: "+ cp.obtenirId(aux)+" Nom Planeta: "+ aux +" Classe Planeta: "+ cp.obtenirClasse(aux)+ " Coords Planeta: "+ cp.obtenirCoordenadesVista(aux) + " Paquet:" + aux4);
+            /*System.out.println("HERE");
+             System.out.println(cp.obtenirId(aux));
+             System.out.println(cp.obtenirClasse(aux));
+             System.out.println(cp.obtenirCoordenadesVista(aux));
+             label = new JLabel("ID Planeta: "+ cp.obtenirId(aux)+" Nom Planeta: "+ aux +" Classe Planeta: "+ cp.obtenirClasse(aux)+ " Coords Planeta: "+ cp.obtenirCoordenadesVista(aux));*/
+            content.add(label, BorderLayout.NORTH);
+            paint(content);
         }
         catch (Exception ex){
             error_ex("Exception: " + ex.getMessage());

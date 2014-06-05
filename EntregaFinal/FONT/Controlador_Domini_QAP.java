@@ -118,7 +118,7 @@ public class Controlador_Domini_QAP{
 
     public String printTemps() throws IOException{
         if (!sortida_val) throw new IllegalArgumentException(msg_solucio);
-        return Long.toString(solucio.obtenirTemps());
+        return Long.toString(solucio.obtenirTemps()) + " microsegons.";
     }
 
     public String solucioAll() throws IOException{

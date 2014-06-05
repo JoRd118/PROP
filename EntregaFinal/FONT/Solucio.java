@@ -70,7 +70,7 @@ public class Solucio {
     public String printSolucio() {
         String aux = new String();
         aux = entrada + "\n\n";
-        aux += "Temps: " + temps + "ms\n";
+        aux += "Temps: " + temps + "microseg\n";
         for (int i = 0; i < sol.size(); ++i) {
             SolucioQAP aux1 = sol.get(i);
             //System.out.println(aux1.printSolucioQAP());

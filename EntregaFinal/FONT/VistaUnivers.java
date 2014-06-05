@@ -430,7 +430,7 @@ public class VistaUnivers extends Vista{
         try{
             cu.altaUnivers(text.getText());
             
-            done();
+            llistatUniversos(event);
         }
         catch (Exception ex){
             error_ex("Exception: " + ex.getMessage());
@@ -440,7 +440,7 @@ public class VistaUnivers extends Vista{
     private void dobaixaUnivers(ActionEvent event){
         try{
             cu.baixaUnivers(text.getText());
-            done();
+            llistatUniversos(event);
         }
         catch (Exception ex){
             error_ex("Exception: " + ex.getMessage());
@@ -552,7 +552,7 @@ public class VistaUnivers extends Vista{
     private void donomUnivers(ActionEvent event){
         try{
             cu.modificacioNomUnivers(text.getText(),text2.getText());
-            done();
+            llistatUniversos(event);
         }
         catch (Exception ex){
             error_ex("Exception: " + ex.getMessage());

@@ -10,7 +10,7 @@ public class QAP {
         //Solucio sol = new Solucio();
         sol.algoritme(opcio);
         long time_start, time_end;
-        time_start = System.currentTimeMillis();
+        time_start = System.nanoTime();
 		double[][] mDistancies = e.obtenirMatriuDisPla();
         int[][] mDisponibilitats = e.obtenirMatriuRecPla();
         int[][] mNecessitats = e.obtenirMatriuNecPla();
@@ -36,7 +36,7 @@ public class QAP {
         //System.out.println("Hola" + sol.obtenirTemps());
         //System.out.println(sol.printSolucio());
         //System.out.println("adeu");
-        time_end = System.currentTimeMillis();
-        sol.afegirTemps(time_end - time_start);
+        time_end = System.nanoTime();
+        sol.afegirTemps((time_end - time_start)/1000);
     }
 }
