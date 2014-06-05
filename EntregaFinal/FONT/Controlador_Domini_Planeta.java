@@ -17,6 +17,7 @@ public class Controlador_Domini_Planeta {
     private static String msg_planeta_cap_paquet_assginat = "Error de Planeta: Hi ha una Planeta que no te un Paquet assignat.";
     private static String msg_planeta_no_classM = "Error Planeta: el Planeta no es classe M.";
     private static String msg_planeta_classM = "Error Planeta: el Planeta no es classe M.";
+    private static String msg_planeta_NOClass = "Error Planeta: el Planeta NO es pot canviar de classe";
     private static String msg_carregar = "Error de Planeta: Carregar no es pot portar a terme perque ja s'han introduit dades.";
     private static String msg_planeta_assignat = "Error de Planeta: Planeta ja assignat";
     
@@ -148,12 +149,12 @@ public class Controlador_Domini_Planeta {
     //Post: La classeM de un planeta passar a ser de classeM si classeM es true
 	public void modificarClasse(String nom, boolean classeM) {
         if(Conjunt_Planetes_Assignat.contains(nom) || Conjunt_Planetes_Desassignat.contains(nom)) {
-            if (Conjunt_Planetes_Desassignat.contains(nom)){ Conjunt_Planetes_Desassignat.obtain(nom).modificacioClasse(classeM); }
-            else if (Conjunt_Planetes_Assignat.contains(nom)) { Conjunt_Planetes_Assignat.obtain(nom).modificacioClasse(classeM); }
-            else {
-                throw new IllegalArgumentException(msg_planeta_no_exists);
-            }
-        }
+            if (Conjunt_Planetes_Desassignat.contains(nom)){ 
+                Planeta aux = Conjunt_Planetes_Desassignat.obtain(nom);
+                if ((aux.obtenirPaquet() == null)) aux.modificacioClasse(classeM);
+                else throw new IllegalArgumentException(msg_planeta_NOClass);
+            } else throw new IllegalArgumentException(msg_planeta_NOClass);
+        } else throw new IllegalArgumentException(msg_planeta_no_exists);
     }
     
     //Pre:
