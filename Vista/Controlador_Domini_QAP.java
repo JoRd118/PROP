@@ -11,7 +11,9 @@ public class Controlador_Domini_QAP{
     private Controlador_Domini_Univers cdu;
     private Controlador_Domini_Recurs cdr;
     private boolean entrada_val;
-    private static String msg_entrada = "Error QAP: L'entrda no s'ha introduit o no s'ha calculat abans de l'algoritme.";
+    private boolean sortida_val;
+    private static String msg_entrada = "Error QAP: L'entrda no s'ha introduit o no s'ha calculat.";
+    private static String msg_solucio = "Error QAP: No es pot mostra la solucio ja que no s'ha executat algoritme.";
     
     
     public Controlador_Domini_QAP(){
@@ -22,6 +24,7 @@ public class Controlador_Domini_QAP{
         cdr = new Controlador_Domini_Recurs();
         cdu = new Controlador_Domini_Univers();
         entrada_val = false;
+        sortida_val = false;
     }
     
     public Controlador_Domini_QAP(Controlador_Domini_Recurs nou_cdr, Controlador_Domini_Univers nou_cdu){
@@ -104,18 +107,22 @@ public class Controlador_Domini_QAP{
     }
 
     public String solucioSeguent() throws IOException{
+        if (!sortida_val) throw new IllegalArgumentException(msg_solucio);
         return solucio.printSolucioSeguent();
     }
 
     public String solucioAnterior() throws IOException{
+        if (!sortida_val) throw new IllegalArgumentException(msg_solucio);
         return solucio.printSolucioAnterior();
     }
 
     public String printTemps() throws IOException{
+        if (!sortida_val) throw new IllegalArgumentException(msg_solucio);
         return Long.toString(solucio.obtenirTemps());
     }
 
     public String solucioAll() throws IOException{
+        if (!sortida_val) throw new IllegalArgumentException(msg_solucio);
         return solucio.printSolucio();
     }
     
@@ -124,7 +131,8 @@ public class Controlador_Domini_QAP{
             solucio = new Solucio();
             solucio.afegirEntrada(e.obtenirMatrius());
             q.run_algorithm(e,solucio,algorithm);
-            solucio.printSolucio();
+            sortida_val = true;
+            //solucio.printSolucio();
         }
         else throw new IllegalArgumentException(msg_entrada);
     }
