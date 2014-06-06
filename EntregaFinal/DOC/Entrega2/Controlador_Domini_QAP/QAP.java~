@@ -1,0 +1,50 @@
+import java.util.*;
+import java.io.IOException;
+
+public class QAP {
+	//private Entrada e;
+	//private SolucioQAP s;
+	private static String msg_QAP = "Error de QAP: Algorisme no trobat";
+
+	public QAP() {}
+
+	public void run_algorithm(Entrada e, SolucioQAP s, String opcio) {
+		//e = e1;
+		//s = s1;
+		double[][] mDistancies = e.obtenirMatriuDisPla();
+        int[][] mDisponibilitats = e.obtenirMatriuRecPla();
+        int[][] mNecessitats = e.obtenirMatriuNecPla();
+        String[] mPlanetes = e.obtenirVectorPlan();
+        String[] mRecursos = e.obtenirVectorRecu();
+        for(int ipclc = 0;ipclc<mPlanetes.length;ipclc++) {
+            if(opcio.equals("BBL")) {
+                BranchBound bb = new BranchBoundLazy();
+                s = bb.Calcular(ipclc, mPlanetes, mRecursos, mDistancies, mDisponibilitats, mNecessitats);
+                s.processarSolucions();
+                // s_aux.imprimirSolucio();
+                //s = s_aux;
+                //solucions.add(s_aux);
+                // System.out.println("BB DONE!");
+            } else if(opcio.equals("BBE")) {
+                BranchBound bb = new BranchBoundEager();
+                SolucioQAP s_aux = bb.Calcular(ipclc, mPlanetes, mRecursos, mDistancies, mDisponibilitats, mNecessitats);
+                s_aux.processarSolucions();
+                // s_aux.imprimirSolucio();
+                s = s_aux;
+                //solucions.add(s_aux);
+                // System.out.println("BB DONE!");
+            } else if(opcio.equals("TABU")) {
+                Tabu t = new Tabu();
+                SolucioQAP s_aux = t.Calcular(ipclc, mPlanetes, mRecursos, mDistancies, mDisponibilitats, mNecessitats);
+                s_aux.processarSolucions();
+                // s_aux.imprimirSolucio();
+                s = s_aux;
+                //solucions.add(s_aux);
+                // System.out.println("TABU DONE!");
+            }
+            else throw new IllegalArgumentException(msg_QAP);
+        }
+	}
+
+
+}

@@ -1,0 +1,448 @@
+Matrius distancies
+0.0,114.94781424629178,99.62429422585637,116.76472069936193,130.86252328302402
+114.94781424629178,0.0,83.35466393669883,2.23606797749979,17.029386365926403
+99.62429422585637,83.35466393669883,0.0,83.24061508662703,87.92041856133307
+116.76472069936193,2.23606797749979,83.24061508662703,0.0,14.866068747318506
+130.86252328302402,17.029386365926403,87.92041856133307,14.866068747318506,0.0
+Matrius necessitats
+0,1,0,0,0,0,0,0,0,0
+1,0,1,0,1,0,1,0,0,1
+0,0,0,0,1,1,1,0,0,0
+1,0,0,0,0,0,0,1,1,0
+0,1,0,1,0,1,0,0,0,1
+Matrius recursos
+0,1,1,1,0,1,0,0,0,0
+0,0,0,1,0,1,0,0,0,0
+1,0,0,0,1,0,1,1,0,1
+0,1,0,0,0,0,1,1,0,0
+1,0,1,0,0,0,0,0,0,0
+Vector recursos
+Aigua,Ferro,Fusta,Oli,Pebre,Pedra,Plastic,Sal,Vidre,Vinagre
+Matrius Planetes
+Apolo,Mart,Saturn,Terra,Venus
+
+
+Temps: 22127microseg
+PLANETA: Apolo
+Algoritme: Branch and bound lazy
+Terraformat: true
+Observacions: El planeta s'ha terraformat tot sol.
+Millor Recorregut: 0.0
+Llista de Nodes:
+Nodes solucio millor:
+Nodes solucio parcial:
+
+
+ARBRE Solució: Apolo
+El Planeta NO te arbre.
+El planeta s'ha terraformat tot sol.
+PLANETA: Mart
+Algoritme: Branch and bound lazy
+Terraformat: true
+Millor Recorregut: 100.38405030262523
+Llista de Nodes:
+
+Node: 0 (pare: -1)
+idplaneta: 1
+Visitats: 1
+es solucio: false
+nivell: 0
+recorregut: 0.0
+cotarestant: 47.47518059685153
+necessitats pendents: 0 2 4 6 9
+planetes pendents 0 2 3 4
+
+Node: 1 (pare: 0)
+idplaneta: 0
+Visitats: 1 0
+es solucio: false
+nivell: 1
+recorregut: 114.94781424629178
+cotarestant: 28.20972625342535
+necessitats pendents: 0 4 6 9
+planetes pendents 2 3 4
+
+Node: 2 (pare: 0)
+idplaneta: 2
+Visitats: 1 2
+es solucio: false
+nivell: 1
+recorregut: 83.35466393669883
+cotarestant: 34.058772731852805
+necessitats pendents: 2
+planetes pendents 0 4
+
+Node: 3 (pare: 0)
+idplaneta: 3
+Visitats: 1 3
+es solucio: false
+nivell: 1
+recorregut: 2.23606797749979
+cotarestant: 0.0
+necessitats pendents: 0 2 4 9
+planetes pendents 0 2 4
+
+Node: 4 (pare: 0)
+idplaneta: 4
+Visitats: 1 4
+es solucio: false
+nivell: 1
+recorregut: 17.029386365926403
+cotarestant: 8.94427190999916
+necessitats pendents: 4 6 9
+planetes pendents 2 3
+
+Node: 5 (pare: 3)
+idplaneta: 0
+Visitats: 1 3 0
+es solucio: false
+nivell: 2
+recorregut: 117.18388222379157
+cotarestant: 68.11754546370561
+necessitats pendents: 0 4 9
+planetes pendents 2 4
+
+Node: 6 (pare: 3)
+idplaneta: 2
+Visitats: 1 3 2
+es solucio: false
+nivell: 2
+recorregut: 85.59073191419861
+cotarestant: 34.058772731852805
+necessitats pendents: 2
+planetes pendents 0 4
+
+Node: 7 (pare: 3)
+idplaneta: 4
+Visitats: 1 3 4
+es solucio: false
+nivell: 2
+recorregut: 19.265454343426192
+cotarestant: 0.0
+necessitats pendents: 4 9
+planetes pendents 2
+
+Node: 8 (pare: 7)
+idplaneta: 2
+Visitats: 1 3 4 2
+es solucio: true
+nivell: 3
+recorregut: 102.62011828012501
+cotarestant: 0.0
+
+Node: 9 (pare: 6)
+idplaneta: 4
+Visitats: 1 3 2 4
+es solucio: true
+nivell: 3
+recorregut: 102.62011828012501
+cotarestant: 0.0
+
+Node: 10 (pare: 2)
+idplaneta: 4
+Visitats: 1 2 4
+es solucio: true
+nivell: 2
+recorregut: 100.38405030262523
+cotarestant: 0.0
+
+Nodes solucio millor:
+
+Node: 10 (pare: 2)
+idplaneta: 4
+Visitats: 1 2 4
+es solucio: true
+nivell: 2
+recorregut: 100.38405030262523
+cotarestant: 0.0
+
+Nodes solucio parcial:
+
+Node: 8 (pare: 7)
+idplaneta: 2
+Visitats: 1 3 4 2
+es solucio: true
+nivell: 3
+recorregut: 102.62011828012501
+cotarestant: 0.0
+
+Node: 9 (pare: 6)
+idplaneta: 4
+Visitats: 1 3 2 4
+es solucio: true
+nivell: 3
+recorregut: 102.62011828012501
+cotarestant: 0.0
+
+
+ARBRE Solució: Mart
+{0 Mart 0,[1 Apolo 1,2 Saturn 2,3 Terra 3,4 Venus 4]}
+{1 Apolo 1,[15 Saturn -,16 Terra -,17 Venus -]}
+{2 Saturn 2,[13 Apolo -,14 Venus 10]}
+{14 Venus 10,[]}
+{3 Terra 3,[5 Apolo 5,6 Saturn 6,7 Venus 7]}
+{5 Apolo 5,[11 Saturn -,12 Venus -]}
+{6 Saturn 6,[9 Apolo -,10 Venus 9]}
+{10 Venus 9,[]}
+{7 Venus 7,[8 Saturn 8]}
+{8 Saturn 8,[]}
+{4 Venus 4,[]}
+PLANETA: Saturn
+Algoritme: Branch and bound lazy
+Terraformat: true
+Millor Recorregut: 83.35466393669883
+Llista de Nodes:
+
+Node: 0 (pare: -1)
+idplaneta: 2
+Visitats: 2
+es solucio: false
+nivell: 0
+recorregut: 0.0
+cotarestant: 166.70932787339765
+necessitats pendents: 5
+planetes pendents 0 1
+
+Node: 1 (pare: 0)
+idplaneta: 0
+Visitats: 2 0
+es solucio: true
+nivell: 1
+recorregut: 99.62429422585637
+cotarestant: 0.0
+
+Node: 2 (pare: 0)
+idplaneta: 1
+Visitats: 2 1
+es solucio: true
+nivell: 1
+recorregut: 83.35466393669883
+cotarestant: 0.0
+
+Nodes solucio millor:
+
+Node: 2 (pare: 0)
+idplaneta: 1
+Visitats: 2 1
+es solucio: true
+nivell: 1
+recorregut: 83.35466393669883
+cotarestant: 0.0
+
+Nodes solucio parcial:
+
+Node: 1 (pare: 0)
+idplaneta: 0
+Visitats: 2 0
+es solucio: true
+nivell: 1
+recorregut: 99.62429422585637
+cotarestant: 0.0
+
+
+ARBRE Solució: Saturn
+{0 Saturn 0,[1 Apolo 1,2 Mart 2]}
+{1 Apolo 1,[]}
+{2 Mart 2,[]}
+PLANETA: Terra
+Algoritme: Branch and bound lazy
+Terraformat: false
+Observacions: No hi ha solucio possible !
+Llista de Nodes:
+Nodes solucio millor:
+Nodes solucio parcial:
+
+
+ARBRE Solució: Terra
+El Planeta NO te arbre.
+No hi ha solucio possible !
+PLANETA: Venus
+Algoritme: Branch and bound lazy
+Terraformat: true
+Millor Recorregut: 119.81587367457797
+Llista de Nodes:
+
+Node: 0 (pare: -1)
+idplaneta: 4
+Visitats: 4
+es solucio: false
+nivell: 0
+recorregut: 0.0
+cotarestant: 108.38911646844534
+necessitats pendents: 1 3 5 9
+planetes pendents 0 1 2 3
+
+Node: 1 (pare: 0)
+idplaneta: 0
+Visitats: 4 0
+es solucio: false
+nivell: 1
+recorregut: 130.86252328302402
+cotarestant: 87.92041856133307
+necessitats pendents: 9
+planetes pendents 2
+
+Node: 2 (pare: 0)
+idplaneta: 1
+Visitats: 4 1
+es solucio: false
+nivell: 1
+recorregut: 17.029386365926403
+cotarestant: 44.598206241955516
+necessitats pendents: 1 9
+planetes pendents 0 2 3
+
+Node: 3 (pare: 0)
+idplaneta: 2
+Visitats: 4 2
+es solucio: false
+nivell: 1
+recorregut: 87.92041856133307
+cotarestant: 93.52304772112683
+necessitats pendents: 1 3 5
+planetes pendents 0 1 3
+
+Node: 4 (pare: 0)
+idplaneta: 3
+Visitats: 4 3
+es solucio: false
+nivell: 1
+recorregut: 14.866068747318506
+cotarestant: 0.0
+necessitats pendents: 3 5 9
+planetes pendents 0 1 2
+
+Node: 5 (pare: 4)
+idplaneta: 0
+Visitats: 4 3 0
+es solucio: false
+nivell: 2
+recorregut: 145.72859203034253
+cotarestant: 87.92041856133307
+necessitats pendents: 9
+planetes pendents 2
+
+Node: 6 (pare: 4)
+idplaneta: 1
+Visitats: 4 3 1
+es solucio: false
+nivell: 2
+recorregut: 31.895455113244907
+cotarestant: 0.0
+necessitats pendents: 9
+planetes pendents 2
+
+Node: 7 (pare: 4)
+idplaneta: 2
+Visitats: 4 3 2
+es solucio: false
+nivell: 2
+recorregut: 102.78648730865157
+cotarestant: 68.11754546370561
+necessitats pendents: 3 5
+planetes pendents 0 1
+
+Node: 8 (pare: 6)
+idplaneta: 2
+Visitats: 4 3 1 2
+es solucio: true
+nivell: 3
+recorregut: 119.81587367457797
+cotarestant: 0.0
+
+Node: 9 (pare: 7)
+idplaneta: 1
+Visitats: 4 3 2 1
+es solucio: true
+nivell: 3
+recorregut: 119.81587367457797
+cotarestant: 0.0
+
+Node: 10 (pare: 3)
+idplaneta: 1
+Visitats: 4 2 1
+es solucio: false
+nivell: 2
+recorregut: 104.94980492725946
+cotarestant: 29.732137494637012
+necessitats pendents: 1
+planetes pendents 0 3
+
+Node: 11 (pare: 3)
+idplaneta: 3
+Visitats: 4 2 3
+es solucio: false
+nivell: 2
+recorregut: 102.78648730865157
+cotarestant: 68.11754546370561
+necessitats pendents: 3 5
+planetes pendents 0 1
+
+Node: 12 (pare: 11)
+idplaneta: 1
+Visitats: 4 2 3 1
+es solucio: true
+nivell: 3
+recorregut: 119.81587367457797
+cotarestant: 0.0
+
+Node: 13 (pare: 10)
+idplaneta: 3
+Visitats: 4 2 1 3
+es solucio: true
+nivell: 3
+recorregut: 119.81587367457797
+cotarestant: 0.0
+
+Nodes solucio millor:
+
+Node: 8 (pare: 6)
+idplaneta: 2
+Visitats: 4 3 1 2
+es solucio: true
+nivell: 3
+recorregut: 119.81587367457797
+cotarestant: 0.0
+
+Node: 13 (pare: 10)
+idplaneta: 3
+Visitats: 4 2 1 3
+es solucio: true
+nivell: 3
+recorregut: 119.81587367457797
+cotarestant: 0.0
+
+Node: 12 (pare: 11)
+idplaneta: 1
+Visitats: 4 2 3 1
+es solucio: true
+nivell: 3
+recorregut: 119.81587367457797
+cotarestant: 0.0
+
+Node: 9 (pare: 7)
+idplaneta: 1
+Visitats: 4 3 2 1
+es solucio: true
+nivell: 3
+recorregut: 119.81587367457797
+cotarestant: 0.0
+
+Nodes solucio parcial:
+
+
+ARBRE Solució: Venus
+{0 Venus 0,[1 Apolo 1,2 Mart 2,3 Saturn 3,4 Terra 4]}
+{1 Apolo 1,[19 Saturn -]}
+{2 Mart 2,[]}
+{3 Saturn 3,[12 Apolo -,13 Mart 10,14 Terra 11]}
+{13 Mart 10,[17 Apolo -,18 Terra 13]}
+{18 Terra 13,[]}
+{14 Terra 11,[15 Apolo -,16 Mart 12]}
+{16 Mart 12,[]}
+{4 Terra 4,[5 Apolo 5,6 Mart 6,7 Saturn 7]}
+{5 Apolo 5,[11 Saturn -]}
+{6 Mart 6,[8 Saturn 8]}
+{8 Saturn 8,[]}
+{7 Saturn 7,[9 Apolo -,10 Mart 9]}
+{10 Mart 9,[]}

@@ -1,0 +1,159 @@
+Matrius distancies
+0.0,114.94781424629178,99.62429422585637,116.76472069936193,130.86252328302402
+114.94781424629178,0.0,83.35466393669883,2.23606797749979,17.029386365926403
+99.62429422585637,83.35466393669883,0.0,83.24061508662703,87.92041856133307
+116.76472069936193,2.23606797749979,83.24061508662703,0.0,14.866068747318506
+130.86252328302402,17.029386365926403,87.92041856133307,14.866068747318506,0.0
+Matrius necessitats
+0,1,0,0,0,0,0,0,0,0
+1,0,1,0,1,0,1,0,0,1
+0,0,0,0,1,1,1,0,0,0
+1,0,0,0,0,0,0,1,1,0
+0,1,0,1,0,1,0,0,0,1
+Matrius recursos
+0,1,1,1,0,1,0,0,0,0
+0,0,0,1,0,1,0,0,0,0
+1,0,0,0,1,0,1,1,0,1
+0,1,0,0,0,0,1,1,0,0
+1,0,1,0,0,0,0,0,0,0
+Vector recursos
+Aigua,Ferro,Fusta,Oli,Pebre,Pedra,Plastic,Sal,Vidre,Vinagre
+Matrius Planetes
+Apolo,Mart,Saturn,Terra,Venus
+
+
+Temps: 11982microseg
+PLANETA: Apolo
+Algoritme: Tabu
+Terraformat: true
+Observacions: El planeta s'ha terraformat tot sol.
+Millor Recorregut: 0.0
+Llista de Nodes:
+
+Node: 0 (pare: -1)
+idplaneta: 0
+Visitats: 0
+es solucio: true
+nivell: 0
+recorregut: 0.0
+cotarestant: 0.0
+
+Nodes solucio millor:
+
+Node: 0 (pare: -1)
+idplaneta: 0
+Visitats: 0
+es solucio: true
+nivell: 0
+recorregut: 0.0
+cotarestant: 0.0
+
+Nodes solucio parcial:
+
+
+PLANETA: Mart
+Algoritme: Tabu
+Terraformat: true
+Millor Recorregut: 100.38405030262523
+Llista de Nodes:
+
+Node: 0 (pare: -1)
+idplaneta: 2
+Visitats: 1 3 4 2
+es solucio: true
+nivell: 0
+recorregut: 102.62011828012501
+cotarestant: 0.0
+
+Node: 1 (pare: -1)
+idplaneta: 4
+Visitats: 1 2 4
+es solucio: true
+nivell: 0
+recorregut: 100.38405030262523
+cotarestant: 0.0
+
+Nodes solucio millor:
+
+Node: 1 (pare: -1)
+idplaneta: 4
+Visitats: 1 2 4
+es solucio: true
+nivell: 0
+recorregut: 100.38405030262523
+cotarestant: 0.0
+
+Nodes solucio parcial:
+
+Node: 0 (pare: -1)
+idplaneta: 2
+Visitats: 1 3 4 2
+es solucio: true
+nivell: 0
+recorregut: 102.62011828012501
+cotarestant: 0.0
+
+
+PLANETA: Saturn
+Algoritme: Tabu
+Terraformat: true
+Millor Recorregut: 83.35466393669883
+Llista de Nodes:
+
+Node: 0 (pare: -1)
+idplaneta: 1
+Visitats: 2 1
+es solucio: true
+nivell: 0
+recorregut: 83.35466393669883
+cotarestant: 0.0
+
+Nodes solucio millor:
+
+Node: 0 (pare: -1)
+idplaneta: 1
+Visitats: 2 1
+es solucio: true
+nivell: 0
+recorregut: 83.35466393669883
+cotarestant: 0.0
+
+Nodes solucio parcial:
+
+
+PLANETA: Terra
+Algoritme: Tabu
+Terraformat: false
+Observacions: No hi ha solucio possible !
+Llista de Nodes:
+Nodes solucio millor:
+Nodes solucio parcial:
+
+
+PLANETA: Venus
+Algoritme: Tabu
+Terraformat: true
+Millor Recorregut: 119.81587367457797
+Llista de Nodes:
+
+Node: 0 (pare: -1)
+idplaneta: 2
+Visitats: 4 1 3 2
+es solucio: true
+nivell: 0
+recorregut: 119.81587367457797
+cotarestant: 0.0
+
+Nodes solucio millor:
+
+Node: 0 (pare: -1)
+idplaneta: 2
+Visitats: 4 1 3 2
+es solucio: true
+nivell: 0
+recorregut: 119.81587367457797
+cotarestant: 0.0
+
+Nodes solucio parcial:
+
+
