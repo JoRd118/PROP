@@ -22,7 +22,7 @@ Matrius Planetes
 Apolo,Mart,Saturn,Terra,Venus
 
 
-Temps: 10619microseg
+Temps: 18470microseg
 PLANETA: Apolo
 Algoritme: Branch and bound eager
 Terraformat: true
