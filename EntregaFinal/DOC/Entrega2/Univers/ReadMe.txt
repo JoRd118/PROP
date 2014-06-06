@@ -1,4 +1,9 @@
 Compilar Planeta: [Ruta]
 
 javac *.java
-java Driver_Planeta < Joc_Prova_Planeta.in
+
+Executar Manualment: [Ruta]
+java Driver_Univers
+
+Executar Joc Proves: [Ruta]
+java Driver_Univers < Joc_Prova_Univers.in
